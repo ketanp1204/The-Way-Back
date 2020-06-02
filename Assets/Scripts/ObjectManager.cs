@@ -14,10 +14,12 @@ public class ObjectManager : MonoBehaviour
     private RaycastHit2D hit;
     public OptionsManager optionsManager;
 
+    /* Player Logic
     // public GameObject player;
     // public Vector2 targetPosition;
     // public float speed;
     // public bool isMoving;
+    */
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +50,7 @@ public class ObjectManager : MonoBehaviour
             // Test whether ray hits any collider
             if(hit.collider != null)
             {
-                /*
+                /* Player Logic
                 if(hit.collider.gameObject.tag == "Ground")
                 {
                     // Player starts moving
@@ -63,10 +65,10 @@ public class ObjectManager : MonoBehaviour
 
                 if (hit.collider.gameObject.tag == "Object")
                 {
-                    Debug.Log("Object Hit: " + hit.collider.gameObject.name);
                     optionsManager.selectedObject = hit.collider.gameObject;
                     optionsManager.InitializeResponse();
-                    /*
+
+                    /* To prevent object from being clicked on twice
                     if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)
                     {
                         hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith = true;
@@ -79,7 +81,6 @@ public class ObjectManager : MonoBehaviour
 
                 if(hit.collider.gameObject.tag == "LOSAResponseObject")
                 {
-                    Debug.Log("Object Hit: " + hit.collider.gameObject.name);
                     optionsManager.selectedObject = hit.collider.gameObject;
                     optionsManager.InitializeResponse();
                 }
@@ -92,7 +93,7 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
-    /*
+    /* Player Logic
     private void FixedUpdate()
     {
         // Move the player if mouse is clicked
