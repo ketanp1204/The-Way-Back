@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DisplayName : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class DisplayName : MonoBehaviour
 
     void OnMouseOver()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         // Get object attributes
         Vector3 viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
         viewportPosition = new Vector3(viewportPosition.x, viewportPosition.y - 0.1f);

@@ -6,13 +6,16 @@ using UnityEngine.EventSystems;
 
 public class ObjectManager : MonoBehaviour
 {
-
+    // Configuration parameters
     public Vector3 mousePosition;
     public Vector3 mousePositionWorld;
     public Vector2 mousePositionWorld2D;
-    public Camera mainCamera;
     private RaycastHit2D hit;
+
+    // Cached References
+    public Camera mainCamera;
     public OptionsManager optionsManager;
+    public LevelChanger levelChanger;
 
     /* Player Logic
     // public GameObject player;
@@ -83,6 +86,16 @@ public class ObjectManager : MonoBehaviour
                 {
                     optionsManager.selectedObject = hit.collider.gameObject;
                     optionsManager.InitializeResponse();
+                }
+
+                if (hit.collider.gameObject.tag == "PrevLevel")
+                {
+                    levelChanger.LoadPreviousLevel();
+                }
+                
+                if(hit.collider.gameObject.tag == "NextLevel")
+                {
+                    levelChanger.LoadNextLevel();
                 }
             }
             else

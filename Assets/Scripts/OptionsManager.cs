@@ -3,16 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
 {
-    // State variables
-    public bool optionsActive = false;
-    public bool descriptionActive = false;
 
     // Configuration parameters
     public int numberOfButtons;
@@ -33,28 +29,34 @@ public class OptionsManager : MonoBehaviour
     void Start()
     {
         optionsBox.SetActive(false);
-        descriptionBox.SetActive(false);
+    }
+
+    void Update()
+    {
+        if(optionsBox.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        {
+            optionsBox.SetActive(false);
+        }
     }
 
     public void InitializeResponse()
     {
         objectProperties = selectedObject.GetComponent<ObjectProperties>();
 
-        // Object has options to choose from
+        // Object has options to choose from instead of only LOSA reactions
         if (objectProperties.numberOfLOSAResponses == 0)
         {
             if (objectProperties.description != "")
             {
-                descriptionActive = true;
                 descriptionBox.SetActive(true);
                 descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.description;
             }
             numberOfButtons = objectProperties.numberOfResponses;
             if (numberOfButtons != 0)
             {
-                optionsActive = true;
                 optionsBox.SetActive(true);
 
+                // Store the responses of the individual option buttons into a dictionary
                 if (numberOfButtons == 3)
                 {
                     responses.Add(0, objectProperties.option1responses);
@@ -73,9 +75,14 @@ public class OptionsManager : MonoBehaviour
 
                 for(int i = 0; i < numberOfButtons; i++)
                 {
+                    // Instantiate a new option button
                     option = Instantiate(optionPrefab, optionsBox.transform);
                     option.gameObject.SetActive(true);
+
+                    // Fill the text field with the option text
                     option.GetComponentInChildren<TextMeshProUGUI>().text = responses[i][0];
+
+                    // Handle click behaviour of the button
                     int buttonIndex = i;
                     int reaction = objectProperties.reactions[i];
                     handleClick = () => HandleResponse(buttonIndex, reaction);
@@ -86,15 +93,14 @@ public class OptionsManager : MonoBehaviour
         // Object has only LOSA responses
         else
         {
-            descriptionActive = true;
             descriptionBox.SetActive(true);
             float LOSA = gameSession.GetLOSA();
             string responseText = "";
-            if(LOSA <= 30)
+            if(LOSA < 30)
             {
                 responseText = objectProperties.losaResponseLow;
             }
-            else if(LOSA > 30 && LOSA <= 70)
+            else if(LOSA >= 30 && LOSA < 70)
             {
                 responseText = objectProperties.losaResponseMedium;
             }
@@ -117,43 +123,35 @@ public class OptionsManager : MonoBehaviour
         {
             selectedObject.SetActive(false);
         } 
+
+        // Show a response text if any present
         if(responses.Count > 0)
         {
-            Debug.Log("button index: " + buttonIndex);
-            Debug.Log("response length: " + responses[buttonIndex].Length);
             if (responses[buttonIndex].Length > 1)
             {
                 ShowNextDescription(buttonIndex);
             }
+            else
+            {
+                descriptionBox.SetActive(false);
+            }
         }
         
-
+        // Clear the options and descriptions
         responses.Clear();
         foreach(Transform child in optionsBox.transform)
         {
             Destroy(child.gameObject);
         }
-        optionsActive = false;
         optionsBox.SetActive(false);
     }
 
     private void ShowNextDescription(int buttonIndex)
     {
-        if(!descriptionActive)
+        if(!descriptionBox.activeSelf)
         {
-            descriptionActive = true;
             descriptionBox.SetActive(true);
         }
         descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responses[buttonIndex][1];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(descriptionActive && Input.GetKeyDown(KeyCode.Space))
-        {
-            descriptionBox.SetActive(false);
-            descriptionActive = false;
-        }
     }
 }

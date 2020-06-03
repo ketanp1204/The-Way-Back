@@ -13,11 +13,11 @@ public class LevelChanger : MonoBehaviour
     public void LoadNextLevel()
     {
         // Start fade animation co-routine
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(NextLevel(SceneManager.GetActiveScene().buildIndex + 1));
 
     }
 
-    IEnumerator LoadLevel(int levelIndex)
+    IEnumerator NextLevel(int levelIndex)
     {
         // Play fade animation
         transition.SetTrigger("CrossfadeStart");
@@ -27,5 +27,30 @@ public class LevelChanger : MonoBehaviour
 
         // Load next Scene
         SceneManager.LoadScene(levelIndex);
+    }
+
+    public void LoadPreviousLevel()
+    {
+        // Start fade animation co-routine
+        StartCoroutine(PreviousLevel(SceneManager.GetActiveScene().buildIndex - 1));
+
+    }
+
+    IEnumerator PreviousLevel(int levelIndex)
+    {
+        // Play fade animation
+        transition.SetTrigger("CrossfadeStart");
+
+        // Wait for fade animation to end
+        yield return new WaitForSeconds(transitionTime);
+
+        // Load next Scene
+        SceneManager.LoadScene(levelIndex);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Application Quit");
+        Application.Quit();
     }
 }
