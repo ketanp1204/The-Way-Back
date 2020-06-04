@@ -35,7 +35,7 @@ public class OptionsManager : MonoBehaviour
     {
         if(optionsBox.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
-            optionsBox.SetActive(false);
+            CloseAndClearOptionsBox();
         }
     }
 
@@ -117,15 +117,15 @@ public class OptionsManager : MonoBehaviour
     {
         // Check whether response is positive or negative
         gameSession.ChangeLOSA(reaction);
-        
+
         // Destroy object if specified in object properties
-        if(reaction == 0 && objectProperties.destroyOnNegativeResponse)
+        if (reaction == 0 && objectProperties.destroyOnNegativeResponse)
         {
             selectedObject.SetActive(false);
-        } 
+        }
 
         // Show a response text if any present
-        if(responses.Count > 0)
+        if (responses.Count > 0)
         {
             if (responses[buttonIndex].Length > 1)
             {
@@ -136,10 +136,15 @@ public class OptionsManager : MonoBehaviour
                 descriptionBox.SetActive(false);
             }
         }
-        
+
         // Clear the options and descriptions
+        CloseAndClearOptionsBox();
+    }
+
+    private void CloseAndClearOptionsBox()
+    {
         responses.Clear();
-        foreach(Transform child in optionsBox.transform)
+        foreach (Transform child in optionsBox.transform)
         {
             Destroy(child.gameObject);
         }

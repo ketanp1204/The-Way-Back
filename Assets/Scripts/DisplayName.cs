@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class DisplayName : MonoBehaviour
 {
-
+    public string objectName;
     public GameObject objectNamePanel;
     
     // Start is called before the first frame update
@@ -37,10 +37,9 @@ public class DisplayName : MonoBehaviour
         if (objectNamePanel != null)
         {
             objectNamePanel.SetActive(true);
-            objectNamePanel.GetComponentInChildren<TextMeshProUGUI>().text = gameObject.name;
+            objectNamePanel.GetComponentInChildren<TextMeshProUGUI>().text = objectName;
             objectNamePanel.GetComponent<RectTransform>().anchorMin = position;
             objectNamePanel.GetComponent<RectTransform>().anchorMax = position;
-            objectNamePanel.GetComponentInChildren<TextMeshProUGUI>().text = name;
         }
     }
 
