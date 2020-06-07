@@ -53,10 +53,12 @@ public class ObjectManager : MonoBehaviour
 
                 if (hit.collider.gameObject.tag == "Object")
                 {
-                    optionsManager.selectedObject = hit.collider.gameObject;
-                    optionsManager.InitializeResponse();
+                    if (!optionsManager.transform.Find("Description Box").gameObject.activeSelf)
+                    {
+                        optionsManager.selectedObject = hit.collider.gameObject;
+                        optionsManager.InitializeResponse();
+                    }
 
-                    /* To prevent object from being clicked on twice
                     if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)
                     {
                         hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith = true;
@@ -64,7 +66,6 @@ public class ObjectManager : MonoBehaviour
                         optionsManager.selectedObject = hit.collider.gameObject;
                         optionsManager.InitializeResponse();
                     }
-                    */
                 }
 
                 if(hit.collider.gameObject.tag == "LOSAResponseObject")
@@ -83,11 +84,6 @@ public class ObjectManager : MonoBehaviour
                     levelChanger.LoadNextLevel();
                 }
             }
-            else
-            {
-                Debug.LogError("No object hit");
-            }
-
         }
     }
 }
