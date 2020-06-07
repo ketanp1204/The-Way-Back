@@ -56,7 +56,7 @@ public class OptionsManager : MonoBehaviour
             {
                 descriptionBox.SetActive(true);
                 descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.description;
-                FadeIn(descriptionBoxCG);
+                GameSession.FadeIn(descriptionBoxCG);
             }
             numberOfButtons = objectProperties.numberOfResponses;
             if (numberOfButtons != 0)
@@ -96,7 +96,7 @@ public class OptionsManager : MonoBehaviour
                     option.onClick.AddListener(handleClick);
                 }
 
-                FadeIn(optionsBoxCG);
+                GameSession.FadeIn(optionsBoxCG);
             }
         }
         // Object has only LOSA responses
@@ -118,7 +118,7 @@ public class OptionsManager : MonoBehaviour
                 responseText = objectProperties.losaResponseHigh;
             }
             descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responseText;
-            FadeIn(descriptionBoxCG);
+            GameSession.FadeIn(descriptionBoxCG);
         }
         
     }
@@ -139,14 +139,14 @@ public class OptionsManager : MonoBehaviour
         {
             if (responses[buttonIndex].Length > 1)
             {
-                FadeOut(descriptionBoxCG);
+                GameSession.FadeOut(descriptionBoxCG);
                 ShowNextDescription(buttonIndex);
             }
             else
             {
-                FadeOut(descriptionBoxCG);
+                GameSession.FadeOut(descriptionBoxCG);
                 // descriptionBox.SetActive(false);
-                StartCoroutine(DisableGameObjectAfterDelay(descriptionBox));
+                StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
             }
         }
 
@@ -154,16 +154,16 @@ public class OptionsManager : MonoBehaviour
         CloseAndClearOptionsBox();
     }
 
-    private void CloseAndClearOptionsBox()
+    public void CloseAndClearOptionsBox()
     {
         responses.Clear();
         foreach (Transform child in optionsBox.transform)
         {
             Destroy(child.gameObject);
         }
-        FadeOut(optionsBoxCG);
+        GameSession.FadeOut(optionsBoxCG);
         // optionsBox.SetActive(false);
-        StartCoroutine(DisableGameObjectAfterDelay(optionsBox));
+        StartCoroutine(GameSession.DisableGameObjectAfterDelay(optionsBox));
     }
 
     private void ShowNextDescription(int buttonIndex)
@@ -173,47 +173,6 @@ public class OptionsManager : MonoBehaviour
             descriptionBox.SetActive(true);
         }
         descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responses[buttonIndex][1];
-        FadeIn(descriptionBoxCG);
-    }
-
-    public void FadeIn(CanvasGroup canvasGroup)
-    {
-        StartCoroutine(FadeCanvasGroup(canvasGroup, 0f, 1f));
-    }
-
-    public void FadeOut(CanvasGroup canvasGroup)
-    {
-        StartCoroutine(FadeCanvasGroup(canvasGroup, 1f, 0f));
-    }
-
-    public IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float lerpTime = 0.3f)
-    {
-        float _timeStartedLerping = Time.time;
-        float timeSinceStarted = Time.time - _timeStartedLerping;
-        float percentageComplete = timeSinceStarted / lerpTime;
-
-        while(true)
-        {
-            timeSinceStarted = Time.time - _timeStartedLerping;
-            percentageComplete = timeSinceStarted / lerpTime;
-
-            float currentValue = Mathf.Lerp(start, end, percentageComplete);
-
-            canvasGroup.alpha = currentValue;
-
-            if(percentageComplete >= 1)
-            {
-                break;
-            }
-
-            yield return new WaitForEndOfFrame();
-        }
-    }
-
-    public IEnumerator DisableGameObjectAfterDelay(GameObject gO)
-    {
-        yield return new WaitForSeconds(0.3f);
-
-        gO.SetActive(false);
+        GameSession.FadeIn(descriptionBoxCG);
     }
 }

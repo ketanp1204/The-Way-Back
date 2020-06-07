@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameSession : MonoBehaviour
 {
+    private static GameSession instance;
     // Configuration parameters
     private float levelOfSelfAwareness;
     private string instructions = "Click on objects to get options to choose from which modifies your LOSA score. " +
@@ -26,6 +27,7 @@ public class GameSession : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         levelOfSelfAwareness = 0f;
         LOSA.text = "LOSA: " + levelOfSelfAwareness;
         if(instructionsEnabled)
@@ -108,17 +110,17 @@ public class GameSession : MonoBehaviour
         Application.Quit();
     }
 
-    public void FadeIn(CanvasGroup canvasGroup)
+    public static void FadeIn(CanvasGroup canvasGroup)
     {
-        StartCoroutine(FadeCanvasGroup(canvasGroup, 0f, 1f));
+        instance.StartCoroutine(FadeCanvasGroup(canvasGroup, 0f, 1f));
     }
 
-    public void FadeOut(CanvasGroup canvasGroup)
+    public static void FadeOut(CanvasGroup canvasGroup)
     {
-        StartCoroutine(FadeCanvasGroup(canvasGroup, 1f, 0f));
+        instance.StartCoroutine(FadeCanvasGroup(canvasGroup, 1f, 0f));
     }
 
-    public IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float lerpTime = 0.3f)
+    public static IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float lerpTime = 0.3f)
     {
         float _timeStartedLerping = Time.time;
         float timeSinceStarted = Time.time - _timeStartedLerping;
@@ -142,7 +144,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    public IEnumerator DisableGameObjectAfterDelay(GameObject gO)
+    public static IEnumerator DisableGameObjectAfterDelay(GameObject gO)
     {
         yield return new WaitForSeconds(0.3f);
 

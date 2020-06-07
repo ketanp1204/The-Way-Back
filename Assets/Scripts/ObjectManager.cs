@@ -18,12 +18,16 @@ public class ObjectManager : MonoBehaviour
     // Cached References
     public Camera mainCamera;
     public OptionsManager optionsManager;
+    private GameObject descriptionBox;
+    private GameObject optionsBox;
     public LevelChanger levelChanger;
 
     // Start is called before the first frame update
     void Start()
     {
         optionsManager = FindObjectOfType<OptionsManager>();
+        descriptionBox = optionsManager.transform.Find("Description Box").gameObject;
+        optionsBox = optionsManager.transform.Find("Options Box").gameObject;
     }
 
     // Update is called once per frame
@@ -47,13 +51,11 @@ public class ObjectManager : MonoBehaviour
             hit = Physics2D.Raycast(mousePositionWorld2D, Vector2.zero);
 
             // Test whether ray hits any collider
-            if(hit.collider != null)
+            if (hit.collider != null)
             {
-
-
-                if (hit.collider.gameObject.tag == "Object")
+                if (!descriptionBox.activeSelf)
                 {
-                    if (!optionsManager.transform.Find("Description Box").gameObject.activeSelf)
+                    if (hit.collider.gameObject.tag == "Object")
                     {
                         if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)
                         {
@@ -62,27 +64,58 @@ public class ObjectManager : MonoBehaviour
                             optionsManager.selectedObject = hit.collider.gameObject;
                             optionsManager.InitializeResponse();
                         }
-                    }
-                }
 
-                if (hit.collider.gameObject.tag == "LOSAResponseObject")
-                {
-                    if (!optionsManager.transform.Find("Description Box").gameObject.activeSelf)
+                        /*
+                        if (!optionsManager.transform.Find("Description Box").gameObject.activeSelf)
+                        {
+                            
+                        }
+                        */
+                    }
+
+                    if (hit.collider.gameObject.tag == "LOSAResponseObject")
                     {
                         optionsManager.selectedObject = hit.collider.gameObject;
                         optionsManager.InitializeResponse();
+                        /*
+                        if (!optionsManager.transform.Find("Description Box").gameObject.activeSelf)
+                        {
+                            optionsManager.selectedObject = hit.collider.gameObject;
+                            optionsManager.InitializeResponse();
+                        }
+                        */
+                    }
+
+                    if (hit.collider.gameObject.tag == "PrevLevel")
+                    {
+                        levelChanger.LoadPreviousLevel();
+                    }
+
+                    if (hit.collider.gameObject.tag == "NextLevel")
+                    {
+                        levelChanger.LoadNextLevel();
                     }
                 }
-
-                if (hit.collider.gameObject.tag == "PrevLevel")
+                else
                 {
-                    levelChanger.LoadPreviousLevel();
+                    GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>());
+                    if(optionsBox.activeSelf)
+                    {
+                        GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>());
+                    }
+                    StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
+                    optionsManager.CloseAndClearOptionsBox();
                 }
-                
-                if(hit.collider.gameObject.tag == "NextLevel")
+            }
+            else
+            {
+                GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>());
+                if (optionsBox.gameObject.activeSelf)
                 {
-                    levelChanger.LoadNextLevel();
+                    GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>());
                 }
+                StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
+                optionsManager.CloseAndClearOptionsBox();
             }
         }
     }
