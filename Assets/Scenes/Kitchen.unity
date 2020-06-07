@@ -2531,7 +2531,7 @@ GameObject:
   - component: {fileID: 2135029011}
   m_Layer: 0
   m_Name: K_Window
-  m_TagString: Object
+  m_TagString: LOSAResponseObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -55,23 +55,23 @@ public class ObjectManager : MonoBehaviour
                 {
                     if (!optionsManager.transform.Find("Description Box").gameObject.activeSelf)
                     {
-                        optionsManager.selectedObject = hit.collider.gameObject;
-                        optionsManager.InitializeResponse();
-                    }
-
-                    if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)
-                    {
-                        hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith = true;
-                        Debug.Log("Object Hit: " + hit.collider.gameObject.name);
-                        optionsManager.selectedObject = hit.collider.gameObject;
-                        optionsManager.InitializeResponse();
+                        if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)
+                        {
+                            hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith = true;
+                            Debug.Log("Object Hit: " + hit.collider.gameObject.name);
+                            optionsManager.selectedObject = hit.collider.gameObject;
+                            optionsManager.InitializeResponse();
+                        }
                     }
                 }
 
-                if(hit.collider.gameObject.tag == "LOSAResponseObject")
+                if (hit.collider.gameObject.tag == "LOSAResponseObject")
                 {
-                    optionsManager.selectedObject = hit.collider.gameObject;
-                    optionsManager.InitializeResponse();
+                    if (!optionsManager.transform.Find("Description Box").gameObject.activeSelf)
+                    {
+                        optionsManager.selectedObject = hit.collider.gameObject;
+                        optionsManager.InitializeResponse();
+                    }
                 }
 
                 if (hit.collider.gameObject.tag == "PrevLevel")
