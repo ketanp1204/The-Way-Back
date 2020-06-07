@@ -7,8 +7,11 @@ using UnityEngine.EventSystems;
 public class ObjectManager : MonoBehaviour
 {
     // Configuration parameters
+    [HideInInspector]
     public Vector3 mousePosition;
+    [HideInInspector]
     public Vector3 mousePositionWorld;
+    [HideInInspector]
     public Vector2 mousePositionWorld2D;
     private RaycastHit2D hit;
 
@@ -16,13 +19,6 @@ public class ObjectManager : MonoBehaviour
     public Camera mainCamera;
     public OptionsManager optionsManager;
     public LevelChanger levelChanger;
-
-    /* Player Logic
-    // public GameObject player;
-    // public Vector2 targetPosition;
-    // public float speed;
-    // public bool isMoving;
-    */
 
     // Start is called before the first frame update
     void Start()

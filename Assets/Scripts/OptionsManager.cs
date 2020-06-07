@@ -11,6 +11,7 @@ public class OptionsManager : MonoBehaviour
 {
 
     // Configuration parameters
+    [HideInInspector]
     public int numberOfButtons;
     Button option;
     UnityAction handleClick;
@@ -19,8 +20,8 @@ public class OptionsManager : MonoBehaviour
     // Cached references
     public GameObject optionsBox;
     public Button optionPrefab;
-    public Button[] optionButtons;
     public GameObject descriptionBox;
+    [HideInInspector]
     public GameObject selectedObject;
     public GameSession gameSession;
     private ObjectProperties objectProperties;

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectProperties : MonoBehaviour
-{ 
+{
+    public string objectName;
 
     [TextArea(3, 10)]
     public string description;
 
+    [HideInInspector]
     public int numberOfResponses;
 
     [TextArea(3, 10)]
@@ -30,8 +32,12 @@ public class ObjectProperties : MonoBehaviour
     [TextArea(3, 10)]
     public string losaResponseHigh;
 
+    [HideInInspector]
     public int numberOfLOSAResponses;
+
     public bool destroyOnNegativeResponse;
+
+    [HideInInspector]
     public bool interactedWith = false;
 
     // Start is called before the first frame update
@@ -64,9 +70,13 @@ public class ObjectProperties : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseOver()
     {
-        
+        DisplayObjectName.ShowName_static(objectName);
+    }
+
+    void OnMouseExit()
+    {
+        DisplayObjectName.HideName_static();
     }
 }

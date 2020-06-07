@@ -17,7 +17,9 @@ public class GameSession : MonoBehaviour
     public GameObject pauseMenuUI;
 
     // State variables
+    [HideInInspector]
     public static bool GameIsPaused = false;
+    public bool instructionsEnabled;
 
 
     // Start is called before the first frame update
@@ -25,7 +27,10 @@ public class GameSession : MonoBehaviour
     {
         levelOfSelfAwareness = 0f;
         LOSA.text = "LOSA: " + levelOfSelfAwareness;
-        StartCoroutine(showInstructions());
+        if(instructionsEnabled)
+        {
+            StartCoroutine(showInstructions());
+        }
     }
 
     // Update is called once per frame
