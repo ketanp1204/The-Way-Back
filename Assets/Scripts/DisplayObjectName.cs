@@ -85,7 +85,5 @@ public class DisplayObjectName : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-
-        Debug.Log("done");
     }
 }

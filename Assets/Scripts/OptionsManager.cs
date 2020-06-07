@@ -18,9 +18,11 @@ public class OptionsManager : MonoBehaviour
     Dictionary<int, string[]> responses = new Dictionary<int, string[]>();
 
     // Cached references
-    public GameObject optionsBox;
     public Button optionPrefab;
+    public GameObject optionsBox;
     public GameObject descriptionBox;
+    private CanvasGroup optionsBoxCG;
+    private CanvasGroup descriptionBoxCG;
     [HideInInspector]
     public GameObject selectedObject;
     public GameSession gameSession;
@@ -29,6 +31,9 @@ public class OptionsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        optionsBoxCG = optionsBox.GetComponent<CanvasGroup>();
+        optionsBoxCG.alpha = 0f;
+        descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
         optionsBox.SetActive(false);
     }
 
@@ -51,6 +56,7 @@ public class OptionsManager : MonoBehaviour
             {
                 descriptionBox.SetActive(true);
                 descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.description;
+                FadeIn(descriptionBoxCG);
             }
             numberOfButtons = objectProperties.numberOfResponses;
             if (numberOfButtons != 0)
@@ -89,6 +95,8 @@ public class OptionsManager : MonoBehaviour
                     handleClick = () => HandleResponse(buttonIndex, reaction);
                     option.onClick.AddListener(handleClick);
                 }
+
+                FadeIn(optionsBoxCG);
             }
         }
         // Object has only LOSA responses
@@ -110,6 +118,7 @@ public class OptionsManager : MonoBehaviour
                 responseText = objectProperties.losaResponseHigh;
             }
             descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responseText;
+            FadeIn(descriptionBoxCG);
         }
         
     }
@@ -130,11 +139,14 @@ public class OptionsManager : MonoBehaviour
         {
             if (responses[buttonIndex].Length > 1)
             {
+                FadeOut(descriptionBoxCG);
                 ShowNextDescription(buttonIndex);
             }
             else
             {
-                descriptionBox.SetActive(false);
+                FadeOut(descriptionBoxCG);
+                // descriptionBox.SetActive(false);
+                StartCoroutine(DisableGameObjectAfterDelay(descriptionBox));
             }
         }
 
@@ -149,19 +161,21 @@ public class OptionsManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        optionsBox.SetActive(false);
+        FadeOut(optionsBoxCG);
+        // optionsBox.SetActive(false);
+        StartCoroutine(DisableGameObjectAfterDelay(optionsBox));
     }
 
     private void ShowNextDescription(int buttonIndex)
     {
-        if(!descriptionBox.activeSelf)
+        if(descriptionBoxCG.alpha != 0)
         {
             descriptionBox.SetActive(true);
         }
         descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responses[buttonIndex][1];
+        FadeIn(descriptionBoxCG);
     }
 
-    /*
     public void FadeIn(CanvasGroup canvasGroup)
     {
         StartCoroutine(FadeCanvasGroup(canvasGroup, 0f, 1f));
@@ -194,8 +208,12 @@ public class OptionsManager : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-
-        Debug.Log("done");
     }
-    */
+
+    public IEnumerator DisableGameObjectAfterDelay(GameObject gO)
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        gO.SetActive(false);
+    }
 }

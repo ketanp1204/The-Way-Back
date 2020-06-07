@@ -49,17 +49,6 @@ public class ObjectManager : MonoBehaviour
             // Test whether ray hits any collider
             if(hit.collider != null)
             {
-                /* Player Logic
-                if(hit.collider.gameObject.tag == "Ground")
-                {
-                    // Player starts moving
-                    isMoving = true;
-                    targetPosition = hit.point;
-
-                    // Check whether player moves left or right
-                    CheckSpriteFlip();
-                }
-                */
 
 
                 if (hit.collider.gameObject.tag == "Object")
@@ -101,37 +90,4 @@ public class ObjectManager : MonoBehaviour
 
         }
     }
-
-    /* Player Logic
-    private void FixedUpdate()
-    {
-        // Move the player if mouse is clicked
-        if(isMoving)
-        {
-            player.transform.position = Vector3.MoveTowards(player.transform.position, targetPosition, speed);
-        }
-
-        // Check whether player has reached the destination point
-        if(player.transform.position.x == targetPosition.x && player.transform.position.y == targetPosition.y)
-        {
-            // Player stops moving
-            isMoving = false;
-        }
-    }
-
-    void CheckSpriteFlip()
-    {
-        if(player.transform.position.x > targetPosition.x)
-        {
-            // Player goes left
-            player.GetComponentInChildren<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            // Player goes right
-            player.GetComponentInChildren<SpriteRenderer>().flipX = false;
-        }
-    }
-
-    */
 }
