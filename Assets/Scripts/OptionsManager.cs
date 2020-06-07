@@ -160,4 +160,42 @@ public class OptionsManager : MonoBehaviour
         }
         descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responses[buttonIndex][1];
     }
+
+    /*
+    public void FadeIn(CanvasGroup canvasGroup)
+    {
+        StartCoroutine(FadeCanvasGroup(canvasGroup, 0f, 1f));
+    }
+
+    public void FadeOut(CanvasGroup canvasGroup)
+    {
+        StartCoroutine(FadeCanvasGroup(canvasGroup, 1f, 0f));
+    }
+
+    public IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float lerpTime = 0.3f)
+    {
+        float _timeStartedLerping = Time.time;
+        float timeSinceStarted = Time.time - _timeStartedLerping;
+        float percentageComplete = timeSinceStarted / lerpTime;
+
+        while(true)
+        {
+            timeSinceStarted = Time.time - _timeStartedLerping;
+            percentageComplete = timeSinceStarted / lerpTime;
+
+            float currentValue = Mathf.Lerp(start, end, percentageComplete);
+
+            canvasGroup.alpha = currentValue;
+
+            if(percentageComplete >= 1)
+            {
+                break;
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        Debug.Log("done");
+    }
+    */
 }

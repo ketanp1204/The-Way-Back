@@ -70,7 +70,7 @@ public class ObjectProperties : MonoBehaviour
         }
     }
 
-    void OnMouseOver()
+    void OnMouseEnter()
     {
         DisplayObjectName.ShowName_static(objectName);
     }
