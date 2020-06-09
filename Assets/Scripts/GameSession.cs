@@ -147,7 +147,7 @@ public class GameSession : MonoBehaviour
     public static IEnumerator DisableGameObjectAfterDelay(GameObject gO)
     {
         yield return new WaitForSeconds(0.3f);
-
+        
         gO.SetActive(false);
     }
 }

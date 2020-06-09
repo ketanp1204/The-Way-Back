@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ObjectManager : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class ObjectManager : MonoBehaviour
     private GameObject descriptionBox;
     private GameObject optionsBox;
     public LevelChanger levelChanger;
+    public GameObject interactableObjects;
+    public GameObject closeUpObjects;
+    public GameObject backButton;
+    private GameObject zoomedInObject;
 
     // Start is called before the first frame update
     void Start()
@@ -60,30 +65,24 @@ public class ObjectManager : MonoBehaviour
                         if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)
                         {
                             hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith = true;
-                            Debug.Log("Object Hit: " + hit.collider.gameObject.name);
                             optionsManager.selectedObject = hit.collider.gameObject;
                             optionsManager.InitializeResponse();
                         }
-
-                        /*
-                        if (!optionsManager.transform.Find("Description Box").gameObject.activeSelf)
-                        {
-                            
-                        }
-                        */
                     }
 
                     if (hit.collider.gameObject.tag == "LOSAResponseObject")
                     {
                         optionsManager.selectedObject = hit.collider.gameObject;
                         optionsManager.InitializeResponse();
-                        /*
-                        if (!optionsManager.transform.Find("Description Box").gameObject.activeSelf)
-                        {
-                            optionsManager.selectedObject = hit.collider.gameObject;
-                            optionsManager.InitializeResponse();
-                        }
-                        */
+                    }
+
+                    if (hit.collider.gameObject.tag == "CloseUp")
+                    {
+                        // Fade In and Out Animation
+                        StartCoroutine(LevelChanger.CrossFadeStart(true));
+
+                        // Load close up view
+                        StartCoroutine(LoadCloseUp());
                     }
 
                     if (hit.collider.gameObject.tag == "PrevLevel")
@@ -118,5 +117,35 @@ public class ObjectManager : MonoBehaviour
                 optionsManager.CloseAndClearOptionsBox();
             }
         }
+    }
+
+    public void ExitCloseUpView()
+    {
+        // Fade In and Out Animation
+        StartCoroutine(LevelChanger.CrossFadeStart(true));
+        
+        // Go back from Close Up View
+        StartCoroutine(ExitCloseUp());
+    }
+    public IEnumerator LoadCloseUp()
+    {
+        yield return new WaitForSeconds(1f);
+
+        interactableObjects.SetActive(false);
+        backButton.SetActive(true);
+        zoomedInObject = closeUpObjects.transform.Find(hit.collider.gameObject.GetComponent<ObjectProperties>().objectName).gameObject;
+        zoomedInObject.GetComponent<SpriteRenderer>().enabled = true;
+        zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(true);
+    }
+
+    public IEnumerator ExitCloseUp()
+    {
+        yield return new WaitForSeconds(1f);
+
+        interactableObjects.SetActive(true);
+        backButton.SetActive(false);
+        zoomedInObject.GetComponent<SpriteRenderer>().enabled = false;
+        zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(false);
+        zoomedInObject = null;
     }
 }

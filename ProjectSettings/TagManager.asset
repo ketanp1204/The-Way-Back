@@ -9,6 +9,7 @@ TagManager:
   - LOSAResponseObject
   - PrevLevel
   - NextLevel
+  - CloseUp
   layers:
   - Default
   - TransparentFX

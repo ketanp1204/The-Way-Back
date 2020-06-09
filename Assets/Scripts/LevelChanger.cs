@@ -5,20 +5,58 @@ using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour
 {
-
-    private int nextLevelIndex;
     public float transitionTime = 1f;
     public Animator transition;
+    private static LevelChanger instance;
+
+    void Start()
+    {
+        instance = this;
+    }
 
     public void LoadNextLevel()
     {
         // Start fade animation co-routine
-        StartCoroutine(NextLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        instance.StartCoroutine(CrossFadeStart(false));
 
+        // Load Next Scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void LoadPreviousLevel()
+    {
+        // Start fade animation co-routine
+        instance.StartCoroutine(CrossFadeStart(false));
+
+        // Load Previous Scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+
+    public static IEnumerator CrossFadeStart(bool endAfter)
+    {
+        // Play fade animation
+        instance.transition.SetTrigger("CrossfadeStart");
+
+        // Wait for fade animation to end
+        yield return new WaitForSeconds(instance.transitionTime);
+
+        if(endAfter)
+        {
+            instance.transition.SetTrigger("CrossfadeEnd");
+            endAfter = false;
+        }
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Application Quit");
+        Application.Quit();
+    }
+
+    /*
     IEnumerator NextLevel(int levelIndex)
     {
+        
         // Play fade animation
         transition.SetTrigger("CrossfadeStart");
 
@@ -27,15 +65,13 @@ public class LevelChanger : MonoBehaviour
 
         // Load next Scene
         SceneManager.LoadScene(levelIndex);
+        
     }
+    */
 
-    public void LoadPreviousLevel()
-    {
-        // Start fade animation co-routine
-        StartCoroutine(PreviousLevel(SceneManager.GetActiveScene().buildIndex - 1));
 
-    }
 
+    /*
     IEnumerator PreviousLevel(int levelIndex)
     {
         // Play fade animation
@@ -47,10 +83,7 @@ public class LevelChanger : MonoBehaviour
         // Load next Scene
         SceneManager.LoadScene(levelIndex);
     }
+    */
 
-    public void QuitGame()
-    {
-        Debug.Log("Application Quit");
-        Application.Quit();
-    }
+
 }

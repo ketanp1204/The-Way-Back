@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 227700185}
   - component: {fileID: 227700184}
   m_Layer: 0
-  m_Name: living_room
+  m_Name: Living Room Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
