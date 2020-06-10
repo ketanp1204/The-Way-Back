@@ -92,15 +92,10 @@ public class GameSession : MonoBehaviour
         FadeIn(descriptionBoxCG);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // descriptionBoxCG.alpha = 0f;
-    }
-
     // Update is called once per frame
     void Update()
     {
+        
         if (descriptionBox != null && descriptionBox.activeSelf)
         {
             if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
