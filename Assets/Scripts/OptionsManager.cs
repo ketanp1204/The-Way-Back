@@ -18,14 +18,14 @@ public class OptionsManager : MonoBehaviour
     Dictionary<int, string[]> responses = new Dictionary<int, string[]>();
 
     // Cached references
+    [HideInInspector]
+    public GameObject selectedObject;
     public Button optionPrefab;
     public GameObject optionsBox;
     public GameObject descriptionBox;
     private CanvasGroup optionsBoxCG;
     private CanvasGroup descriptionBoxCG;
-    [HideInInspector]
-    public GameObject selectedObject;
-    public GameSession gameSession;
+    private GameObject gameSession;
     private ObjectProperties objectProperties;
 
     // Start is called before the first frame update
@@ -35,6 +35,7 @@ public class OptionsManager : MonoBehaviour
         optionsBoxCG.alpha = 0f;
         descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
         optionsBox.SetActive(false);
+        gameSession = GameObject.Find("GameSession");
     }
 
     void Update()
@@ -103,7 +104,7 @@ public class OptionsManager : MonoBehaviour
         else
         {
             descriptionBox.SetActive(true);
-            float LOSA = gameSession.GetLOSA();
+            float LOSA = gameSession.GetComponent<GameSession>().GetLOSA();
             string responseText = "";
             if(LOSA < 30)
             {
@@ -126,7 +127,7 @@ public class OptionsManager : MonoBehaviour
     private void HandleResponse(int buttonIndex, int reaction)
     {
         // Check whether response is positive or negative
-        gameSession.ChangeLOSA(reaction);
+        gameSession.GetComponent<GameSession>().ChangeLOSA(reaction);
 
         // Destroy object if specified in object properties
         if (reaction == 0 && objectProperties.destroyOnNegativeResponse)

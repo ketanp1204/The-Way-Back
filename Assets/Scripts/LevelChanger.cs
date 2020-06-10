@@ -7,7 +7,7 @@ public class LevelChanger : MonoBehaviour
 {
     public float transitionTime = 1f;
     public Animator transition;
-    private static LevelChanger instance;
+    public static LevelChanger instance;
 
     void Start()
     {
@@ -20,7 +20,15 @@ public class LevelChanger : MonoBehaviour
         instance.StartCoroutine(CrossFadeStart(false));
 
         // Load Next Scene
-        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+        int sceneIndexToLoad = SceneManager.GetActiveScene().buildIndex + 1;
+        if(sceneIndexToLoad != SceneManager.sceneCountInBuildSettings)
+        {
+            StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+        }
+        else
+        {
+            Debug.LogWarning("No next scene exists");
+        }
     }
 
     public void LoadPreviousLevel()
@@ -59,38 +67,4 @@ public class LevelChanger : MonoBehaviour
         Debug.Log("Application Quit");
         Application.Quit();
     }
-
-    /*
-    IEnumerator NextLevel(int levelIndex)
-    {
-        
-        // Play fade animation
-        transition.SetTrigger("CrossfadeStart");
-
-        // Wait for fade animation to end
-        yield return new WaitForSeconds(transitionTime);
-
-        // Load next Scene
-        SceneManager.LoadScene(levelIndex);
-        
-    }
-    */
-
-
-
-    /*
-    IEnumerator PreviousLevel(int levelIndex)
-    {
-        // Play fade animation
-        transition.SetTrigger("CrossfadeStart");
-
-        // Wait for fade animation to end
-        yield return new WaitForSeconds(transitionTime);
-
-        // Load next Scene
-        SceneManager.LoadScene(levelIndex);
-    }
-    */
-
-
 }

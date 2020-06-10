@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ObjectManager : MonoBehaviour
 {
+    public static ObjectManager instance;
+
     // Configuration parameters
-    [HideInInspector]
-    public Vector3 mousePosition;
     [HideInInspector]
     public Vector3 mousePositionWorld;
     [HideInInspector]
@@ -17,22 +18,57 @@ public class ObjectManager : MonoBehaviour
     private RaycastHit2D hit;
 
     // Cached References
-    public Camera mainCamera;
-    public OptionsManager optionsManager;
+    private Camera mainCamera;
+    private OptionsManager optionsManager;
+    private LevelChanger levelChanger;
+    private GameObject interactableObjects;
+    private GameObject closeUpObjects;
     private GameObject descriptionBox;
     private GameObject optionsBox;
-    public LevelChanger levelChanger;
-    public GameObject interactableObjects;
-    public GameObject closeUpObjects;
-    public GameObject backButton;
     private GameObject zoomedInObject;
+    private GameObject staticUI;
+    private GameObject backButton;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SetReferences();
+    }
+
+    private void SetReferences()
+    {
+        mainCamera = Camera.main;
         optionsManager = FindObjectOfType<OptionsManager>();
-        descriptionBox = optionsManager.transform.Find("Description Box").gameObject;
-        optionsBox = optionsManager.transform.Find("Options Box").gameObject;
+        if (optionsManager != null)
+        {
+            descriptionBox = optionsManager.transform.Find("Description Box").gameObject;
+            optionsBox = optionsManager.transform.Find("Options Box").gameObject;
+        }
+        levelChanger = FindObjectOfType<LevelChanger>();
+        interactableObjects = GameObject.Find("Interactable Objects");
+        closeUpObjects = GameObject.Find("CloseUpObjects");
+        staticUI = GameObject.Find("StaticUI");
+        backButton = staticUI.transform.Find("BackButton").gameObject;
+        backButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,29 +76,21 @@ public class ObjectManager : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (EventSystem.current.IsPointerOverGameObject())                                              // Prevent player from clicking through UI elements
                 return;
 
-            // Get 3D mouse position in Screen Space Coordinates
-            mousePosition = Input.mousePosition;
+            mousePositionWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);                        // Convert mouse position to 3D World Coordinates
+            mousePositionWorld2D = new Vector2(mousePositionWorld.x, mousePositionWorld.y);                 // Convert mouse position to 2D world coordinates
+            hit = Physics2D.Raycast(mousePositionWorld2D, Vector2.zero);                                    // Origin, Direction, Length of Ray, int layerMask (to exclude certain objects)
 
-            // Convert mouse position to 3D World Coordinates
-            mousePositionWorld = mainCamera.ScreenToWorldPoint(mousePosition);
-
-            // Convert mouse position to 2D world coordinates
-            mousePositionWorld2D = new Vector2(mousePositionWorld.x, mousePositionWorld.y);
-
-            // Raycast2D : public static RaycastHit2D Raycast(Vector2 origin, Vector2 direction, float distance (length of ray), int layerMask (to exclude certain objects)
-            hit = Physics2D.Raycast(mousePositionWorld2D, Vector2.zero);
-
-            // Test whether ray hits any collider
-            if (hit.collider != null)
+           
+            if (hit.collider != null)                                                                       // Test whether ray hits any collider
             {
                 if (!descriptionBox.activeSelf)
                 {
                     if (hit.collider.gameObject.tag == "Object")
                     {
-                        if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)
+                        if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)   // Prevent player from clicking an object twice
                         {
                             hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith = true;
                             optionsManager.selectedObject = hit.collider.gameObject;
@@ -78,11 +106,9 @@ public class ObjectManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "CloseUp")
                     {
-                        // Fade In and Out Animation
-                        StartCoroutine(LevelChanger.CrossFadeStart(true));
-
-                        // Load close up view
-                        StartCoroutine(LoadCloseUp());
+                        
+                        StartCoroutine(LevelChanger.CrossFadeStart(true));               // Fade In and Out Animation
+                        StartCoroutine(LoadCloseUp());                                   // Load close up view
                     }
 
                     if (hit.collider.gameObject.tag == "PrevLevel")
@@ -97,35 +123,31 @@ public class ObjectManager : MonoBehaviour
                 }
                 else
                 {
-                    GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>());
-                    if(optionsBox.activeSelf)
-                    {
-                        GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>());
-                    }
-                    StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
-                    optionsManager.CloseAndClearOptionsBox();
+                    CloseTextBoxes();
                 }
             }
             else
             {
-                GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>());
-                if (optionsBox.gameObject.activeSelf)
-                {
-                    GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>());
-                }
-                StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
-                optionsManager.CloseAndClearOptionsBox();
+                CloseTextBoxes();
             }
         }
     }
 
+    private void CloseTextBoxes()
+    {
+        GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>());
+        if (optionsBox.activeSelf)
+        {
+            GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>());
+        }
+        StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
+        optionsManager.CloseAndClearOptionsBox();
+    }
+
     public void ExitCloseUpView()
     {
-        // Fade In and Out Animation
-        StartCoroutine(LevelChanger.CrossFadeStart(true));
-        
-        // Go back from Close Up View
-        StartCoroutine(ExitCloseUp());
+        StartCoroutine(LevelChanger.CrossFadeStart(true));          // Fade In and Out Animation
+        StartCoroutine(ExitCloseUp());                              // Go back from Close Up View
     }
     public IEnumerator LoadCloseUp()
     {
