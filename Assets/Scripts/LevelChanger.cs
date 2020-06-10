@@ -20,7 +20,7 @@ public class LevelChanger : MonoBehaviour
         instance.StartCoroutine(CrossFadeStart(false));
 
         // Load Next Scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void LoadPreviousLevel()
@@ -29,7 +29,14 @@ public class LevelChanger : MonoBehaviour
         instance.StartCoroutine(CrossFadeStart(false));
 
         // Load Previous Scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex - 1));
+    }
+
+    IEnumerator LoadScene(int buildIndex)
+    {
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(buildIndex);
     }
 
     public static IEnumerator CrossFadeStart(bool endAfter)
