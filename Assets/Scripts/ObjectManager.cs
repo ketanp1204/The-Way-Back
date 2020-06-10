@@ -62,12 +62,16 @@ public class ObjectManager : MonoBehaviour
                 {
                     if (hit.collider.gameObject.tag == "Object")
                     {
+                        /*
                         if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)
                         {
                             hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith = true;
                             optionsManager.selectedObject = hit.collider.gameObject;
                             optionsManager.InitializeResponse();
                         }
+                        */
+                        optionsManager.selectedObject = hit.collider.gameObject;
+                        optionsManager.InitializeResponse();
                     }
 
                     if (hit.collider.gameObject.tag == "LOSAResponseObject")

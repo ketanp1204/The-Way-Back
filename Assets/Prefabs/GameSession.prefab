@@ -46,4 +46,4 @@ MonoBehaviour:
   LOSA: {fileID: 0}
   descriptionBox: {fileID: 0}
   pauseMenuUI: {fileID: 0}
-  instructionsEnabled: 0
+  instructionsEnabled: 1

@@ -342,18 +342,6 @@ Transform:
   m_Father: {fileID: 814084384}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &515882584 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 272359834545565805, guid: b4a678f67aaf59440997ab9f81ecc5ed,
-    type: 3}
-  m_PrefabInstance: {fileID: 272359834384567861}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!20 &519420031 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4097791531200882319, guid: 4c2b9234ec18d474e97efd70f4f382d8,
@@ -729,6 +717,7 @@ Transform:
   m_LocalScale: {x: 1.1976048, y: 1.1904762, z: 1}
   m_Children:
   - {fileID: 1614811834}
+  - {fileID: 2099142486}
   m_Father: {fileID: 1752475984}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1213,6 +1202,43 @@ Transform:
   m_Father: {fileID: 814084384}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1848746843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4097791531200882316, guid: 4c2b9234ec18d474e97efd70f4f382d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4097791531558149872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1848746844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848746843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1850747973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1491,100 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60fbb0e55f237447898eb85b5339a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2099142485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2099142486}
+  - component: {fileID: 2099142487}
+  - component: {fileID: 2099142488}
+  m_Layer: 0
+  m_Name: S_Tap
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2099142486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099142485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1354450418}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2099142487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099142485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Tap
+  description: It once used to have a shinier glance.
+  numberOfResponses: 0
+  option1responses:
+  - Drink Water
+  - Fresh. Apparently nothing special, yet so significant. Importance has the habit
+    to hide in the most simplest things.
+  option2responses:
+  - Water The Plants
+  - Well, I am not the only one who is depending on water. And you are depending
+    on me as much as I am depending on you.
+  option3responses: []
+  reactions: 0100000001000000
+  losaResponseLow: 
+  losaResponseMedium: 
+  losaResponseHigh: 
+  numberOfLOSAResponses: 0
+  destroyOnNegativeResponse: 0
+  interactedWith: 0
+--- !u!60 &2099142488
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099142485}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.0263453, y: 1.3356824}
+      - {x: 0.48338285, y: 1.483383}
+      - {x: 0.1823926, y: 0.72572637}
+      - {x: -0.5711168, y: -1.3924097}
+      - {x: 0.071066566, y: -2.425848}
+      - {x: 1.7678069, y: -0.34104946}
 --- !u!1 &2111159984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,7 +1638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111159984}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3536539, y: 1.6197524, z: 13.686523}
+  m_LocalPosition: {x: 1.23, y: 1.52, z: 13.686523}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
@@ -1576,7 +1696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135029006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.483654, y: 2.5697525, z: 4}
+  m_LocalPosition: {x: 2.483654, y: 2.5697525, z: 1.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
@@ -1810,6 +1930,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a678f67aaf59440997ab9f81ecc5ed, type: 3}
+--- !u!1 &272359834384567862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 272359834545565795, guid: b4a678f67aaf59440997ab9f81ecc5ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 272359834384567861}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &732669967938855268 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 715345184317255505, guid: b4a678f67aaf59440997ab9f81ecc5ed,
@@ -1833,6 +1959,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813312694806174478, guid: 2fc73e09649fade4396e2c2c875ae8e9,
+        type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813312694806174478, guid: 2fc73e09649fade4396e2c2c875ae8e9,
+        type: 3}
+      propertyPath: sounds.Array.data[0].spatialBlend
+      value: 0.201
       objectReference: {fileID: 0}
     - target: {fileID: 1813312694806174479, guid: 2fc73e09649fade4396e2c2c875ae8e9,
         type: 3}
@@ -1957,7 +2093,7 @@ PrefabInstance:
         type: 3}
       propertyPath: LOSA
       value: 
-      objectReference: {fileID: 515882584}
+      objectReference: {fileID: 272359834384567862}
     - target: {fileID: 3166219227722357157, guid: 97814b1da46628f4c8e79f8cb85d102a,
         type: 3}
       propertyPath: descriptionBox
@@ -1972,6 +2108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameSession
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357158, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97814b1da46628f4c8e79f8cb85d102a, type: 3}

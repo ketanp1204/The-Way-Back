@@ -7,7 +7,7 @@ public class LevelChanger : MonoBehaviour
 {
     public float transitionTime = 1f;
     public Animator transition;
-    private static LevelChanger instance;
+    public static LevelChanger instance;
 
     void Start()
     {

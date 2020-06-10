@@ -1,19 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 
 public class GameSession : MonoBehaviour
 {
-    private static GameSession instance;
+    public static GameSession instance;
     // Configuration parameters
-    private float levelOfSelfAwareness;
+    public float levelOfSelfAwareness = 0;
     private string instructions = "Click on objects to get options to choose from which modifies your LOSA score. " +
                                   "The LOSA score shown is just for visualization and will not be included in the final game. " +
                                   "Certain objects like the window will have only reactions when you click on them based on your current LOSA Score";
 
     // Cached References
-    public TextMeshProUGUI LOSA;
+    public GameObject LOSA;
     public GameObject descriptionBox;
     public GameObject pauseMenuUI;
     private CanvasGroup descriptionBoxCG;
@@ -22,14 +23,29 @@ public class GameSession : MonoBehaviour
     [HideInInspector]
     public static bool GameIsPaused = false;
     public bool instructionsEnabled;
+    
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+    }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
-        levelOfSelfAwareness = 0f;
-        LOSA.text = "LOSA: " + levelOfSelfAwareness;
+        LOSA = GameObject.Find("LOSA");
+
+        LOSA.GetComponent<TextMeshProUGUI>().text = "LOSA: " + levelOfSelfAwareness;
         if(instructionsEnabled)
         {
             StartCoroutine(showInstructions());
@@ -41,11 +57,29 @@ public class GameSession : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
+        if(LOSA == null)
         {
-            FadeOut(descriptionBoxCG);
-            // descriptionBox.SetActive(false);
-            StartCoroutine(DisableGameObjectAfterDelay(descriptionBox));
+            LOSA = GameObject.Find("LOSA");
+        }
+        if(descriptionBox == null)
+        {
+            descriptionBox = GameObject.Find("Description Box");
+        }
+        if(pauseMenuUI == null)
+        {
+            pauseMenuUI = GameObject.Find("PauseMenu");
+        }
+
+        LOSA.GetComponent<TextMeshProUGUI>().text = "LOSA: " + levelOfSelfAwareness;
+
+        if (descriptionBox != null && descriptionBoxCG != null && descriptionBox.activeSelf)
+        {
+            if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
+            {
+                FadeOut(descriptionBoxCG);
+                // descriptionBox.SetActive(false);
+                StartCoroutine(DisableGameObjectAfterDelay(descriptionBox));
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -83,7 +117,7 @@ public class GameSession : MonoBehaviour
                 levelOfSelfAwareness -= 10f;
             }
         }
-        LOSA.text = "LOSA: " + levelOfSelfAwareness;
+        LOSA.GetComponent<TextMeshProUGUI>().text = "LOSA: " + levelOfSelfAwareness;
     }
 
     public float GetLOSA()
@@ -133,7 +167,10 @@ public class GameSession : MonoBehaviour
 
             float currentValue = Mathf.Lerp(start, end, percentageComplete);
 
-            canvasGroup.alpha = currentValue;
+            if(canvasGroup != null)
+            {
+                canvasGroup.alpha = currentValue;
+            }
 
             if (percentageComplete >= 1)
             {
