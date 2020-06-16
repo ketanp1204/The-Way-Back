@@ -262,12 +262,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!20 &114871021 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 4097791531200882319, guid: 4c2b9234ec18d474e97efd70f4f382d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 172360643}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &172360643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -444,7 +438,7 @@ GameObject:
   - component: {fileID: 227700185}
   - component: {fileID: 227700184}
   m_Layer: 0
-  m_Name: Living Room Background
+  m_Name: MorningImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,6 +603,99 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95adb405fd542d64f9292d8a2743bbad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &653563938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653563939}
+  - component: {fileID: 653563941}
+  - component: {fileID: 653563940}
+  m_Layer: 0
+  m_Name: Gramophone
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653563939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653563938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.01, y: 1.47, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1479276895}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &653563940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653563938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Gramophone
+  description: This is by far my favourite record. The surface is already dusty,
+    because I listen to it so much that I don't even put the record back into its
+    case.
+  numberOfResponses: 0
+  option1responses:
+  - 'Remove the record
+
+'
+  - I prefer taking it on me to put the record out of the case whenever I want to
+    listen to it instead of taking the risk that it breaks.
+  option2responses:
+  - 'Play The Record
+
+'
+  option3responses: []
+  reactions: 0000000001000000
+  losaResponseLow: 
+  losaResponseMedium: 
+  losaResponseHigh: 
+  numberOfLOSAResponses: 0
+  destroyOnNegativeResponse: 0
+  interactedWith: 0
+--- !u!61 &653563941
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653563938}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.041715622, y: -0.01668644}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.317038, y: 1.5673313}
+  m_EdgeRadius: 0
 --- !u!1001 &717465863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -761,6 +848,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4555616, y: 1.2193451}
   m_EdgeRadius: 0
+--- !u!1 &864324170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 864324171}
+  m_Layer: 0
+  m_Name: NightImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &864324171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864324170}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &981751693
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,15 +923,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Television
-  description: Television
+  description: My beloved window to other dimensions! You have been serving well
+    and kept me distracted from uncomfortable situations with which I did not want
+    to deal with .But I assume your time has come to an end and I need to replace
+    you...
   numberOfResponses: 0
   option1responses:
-  - Positive response
+  - Repair It
+  - Well, even if I wanted to, except for turning it off and back on again, I have
+    no clue about these technical matters. I guess I will just turn it off.
   option2responses:
-  - Negative Response
-  option3responses:
-  - Positive response
-  reactions: 010000000000000001000000
+  - Turn it off
+  - To be honest, I actually don't know why I keep on gettng annoyed at this old
+    box. Neither the image's nor the sound's quality is pleasent. I think I have
+    to seperate myself from the emotional value and throw it away.
+  option3responses: []
+  reactions: 0100000002000000
   losaResponseLow: 
   losaResponseMedium: 
   losaResponseHigh: 
@@ -879,6 +1003,7 @@ Transform:
   - {fileID: 981751694}
   - {fileID: 2040358468}
   - {fileID: 2816336}
+  - {fileID: 653563939}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1032,43 +1157,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a678f67aaf59440997ab9f81ecc5ed, type: 3}
---- !u!1 &1907989527 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4097791531200882316, guid: 4c2b9234ec18d474e97efd70f4f382d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 172360643}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1907989528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907989527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
 --- !u!1 &2040358467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,12 +1213,16 @@ MonoBehaviour:
     and wonderful snapshots of joyful situations. But instead of sharing their luck,
     I don't feel happy. I rather feel bad and empty. Does that make me a bad person?
   option2responses:
-  - Call Parents
-  - This is an idea that I've been having already for a while now, however I never
-    turned it into reality. What is blocking me? Why is it so hard to call my own
-    family? Does that make me a bad person?
-  option3responses: []
-  reactions: 0000000001000000
+  - Check the Weather
+  - Checking the weather would only make sense, if I planned on going outside to
+    do something. However this might be a good idea. Let me see... Ah it it is going
+    to rain the next days. Well, what a pity.
+  option3responses:
+  - Charge It
+  - 'Well, if I only knew where my charging cable is hidden. Today is the second
+    day I am looking for it. Perhaps I just need to buy a new one, even though I
+    would feel relieved if the battery just died. '
+  reactions: 020000000000000000000000
   losaResponseLow: 
   losaResponseMedium: 
   losaResponseHigh: 
@@ -1229,7 +1321,7 @@ PrefabInstance:
         type: 3}
       propertyPath: mainCamera
       value: 
-      objectReference: {fileID: 114871021}
+      objectReference: {fileID: 0}
     - target: {fileID: 5450097849358638884, guid: 0ffc3628a07658d468050b0205d47838,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1594,19 +1686,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2074529838, guid: 8dbe908dba0e1f640908a1a33ec8f345, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 1600261549, guid: 8dbe908dba0e1f640908a1a33ec8f345, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1720185011}
     - target: {fileID: 2074529840, guid: 8dbe908dba0e1f640908a1a33ec8f345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 561447606}
-    - target: {fileID: 2900653159403377175, guid: 8dbe908dba0e1f640908a1a33ec8f345,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2900653159409608022, guid: 8dbe908dba0e1f640908a1a33ec8f345,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

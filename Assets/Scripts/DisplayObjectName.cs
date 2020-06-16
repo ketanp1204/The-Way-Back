@@ -35,12 +35,12 @@ public class DisplayObjectName : MonoBehaviour
         float textPaddingSize = 8f;
         Vector2 backgroundSize = new Vector2(objectNameText.preferredWidth + textPaddingSize * 2f, objectNameText.preferredHeight + textPaddingSize * 2f);
         backgroundRectTransform.sizeDelta = backgroundSize;
-        GameSession.FadeIn(canvasGroup);
+        GameSession.FadeIn(canvasGroup, 0f);
     }
 
     private void HideName()
     {
-        GameSession.FadeOut(canvasGroup);
+        GameSession.FadeOut(canvasGroup, 0f);
     }
 
     public static void ShowName_static(string name)

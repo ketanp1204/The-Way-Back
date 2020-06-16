@@ -135,10 +135,10 @@ public class ObjectManager : MonoBehaviour
 
     private void CloseTextBoxes()
     {
-        GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>());
+        GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>(), 0f);
         if (optionsBox.activeSelf)
         {
-            GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>());
+            GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>(), 0f);
         }
         StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
         optionsManager.CloseAndClearOptionsBox();

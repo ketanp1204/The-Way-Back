@@ -57,7 +57,7 @@ public class OptionsManager : MonoBehaviour
             {
                 descriptionBox.SetActive(true);
                 descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.description;
-                GameSession.FadeIn(descriptionBoxCG);
+                GameSession.FadeIn(descriptionBoxCG, 0f);
             }
             numberOfButtons = objectProperties.numberOfResponses;
             if (numberOfButtons != 0)
@@ -97,7 +97,7 @@ public class OptionsManager : MonoBehaviour
                     option.onClick.AddListener(handleClick);
                 }
 
-                GameSession.FadeIn(optionsBoxCG);
+                GameSession.FadeIn(optionsBoxCG, 1f);
             }
         }
         // Object has only LOSA responses
@@ -119,7 +119,7 @@ public class OptionsManager : MonoBehaviour
                 responseText = objectProperties.losaResponseHigh;
             }
             descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responseText;
-            GameSession.FadeIn(descriptionBoxCG);
+            GameSession.FadeIn(descriptionBoxCG, 0f);
         }
         
     }
@@ -140,12 +140,12 @@ public class OptionsManager : MonoBehaviour
         {
             if (responses[buttonIndex].Length > 1)
             {
-                GameSession.FadeOut(descriptionBoxCG);
+                GameSession.FadeOut(descriptionBoxCG, 0f);
                 ShowNextDescription(buttonIndex);
             }
             else
             {
-                GameSession.FadeOut(descriptionBoxCG);
+                GameSession.FadeOut(descriptionBoxCG, 0f);
                 // descriptionBox.SetActive(false);
                 StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
             }
@@ -162,7 +162,7 @@ public class OptionsManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        GameSession.FadeOut(optionsBoxCG);
+        GameSession.FadeOut(optionsBoxCG, 0f);
         // optionsBox.SetActive(false);
         StartCoroutine(GameSession.DisableGameObjectAfterDelay(optionsBox));
     }
@@ -174,6 +174,6 @@ public class OptionsManager : MonoBehaviour
             descriptionBox.SetActive(true);
         }
         descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responses[buttonIndex][1];
-        GameSession.FadeIn(descriptionBoxCG);
+        GameSession.FadeIn(descriptionBoxCG, 0f);
     }
 }

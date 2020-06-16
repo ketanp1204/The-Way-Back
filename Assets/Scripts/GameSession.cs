@@ -16,6 +16,10 @@ public class GameSession : MonoBehaviour
                                   "Certain objects like the window will have only reactions when you click on them based on your current LOSA Score";
 
     // Cached References
+    public GameObject morningImage;
+    public GameObject nightImage;
+    private GameObject k_shoppingList_day;
+    private GameObject k_shoppingList_night;
     private GameObject staticUI;
     private GameObject dynamicUI;
     private GameObject LOSA;
@@ -56,6 +60,10 @@ public class GameSession : MonoBehaviour
 
     void SetReferences()
     {
+        morningImage = GameObject.Find("MorningImage");
+        nightImage = GameObject.Find("NightImage");
+        k_shoppingList_day = GameObject.Find("K_ShoppingList_Day");
+        k_shoppingList_night = GameObject.Find("K_ShoppingList_Night");
         staticUI = GameObject.Find("StaticUI");
         dynamicUI = GameObject.Find("DynamicUI");
         LOSA = staticUI.transform.Find("LOSAPanel/LOSA").gameObject;
@@ -89,7 +97,7 @@ public class GameSession : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         descriptionBox.SetActive(true);
         descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = instructions;
-        FadeIn(descriptionBoxCG);
+        FadeIn(descriptionBoxCG, 0f);
     }
 
     // Update is called once per frame
@@ -100,7 +108,7 @@ public class GameSession : MonoBehaviour
         {
             if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
             {
-                FadeOut(descriptionBoxCG);
+                FadeOut(descriptionBoxCG, 0f);
                 StartCoroutine(DisableGameObjectAfterDelay(descriptionBox));
             }
         }
@@ -165,17 +173,17 @@ public class GameSession : MonoBehaviour
         Application.Quit();
     }
 
-    public static void FadeIn(CanvasGroup canvasGroup)
+    public static void FadeIn(CanvasGroup canvasGroup, float delay)
     {
-        instance.StartCoroutine(FadeCanvasGroup(canvasGroup, 0f, 1f));
+        instance.StartCoroutine(FadeCanvasGroup(canvasGroup, 0f, 1f, delay));
     }
 
-    public static void FadeOut(CanvasGroup canvasGroup)
+    public static void FadeOut(CanvasGroup canvasGroup, float delay)
     {
-        instance.StartCoroutine(FadeCanvasGroup(canvasGroup, 1f, 0f));
+        instance.StartCoroutine(FadeCanvasGroup(canvasGroup, 1f, 0f, delay));
     }
 
-    public static IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float lerpTime = 0.3f)
+    public static IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float delay, float lerpTime = 0.3f)
     {
         float _timeStartedLerping = Time.time;
         float timeSinceStarted = Time.time - _timeStartedLerping;
@@ -207,5 +215,50 @@ public class GameSession : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         
         gO.SetActive(false);
+    }
+
+    public void transitionIntoNight()
+    {
+        if(morningImage != null)
+        {
+            StartCoroutine(FadeOutImage(morningImage.GetComponent<SpriteRenderer>(), 5f));
+        }
+        if(nightImage != null)
+        {
+            StartCoroutine(FadeInImage(nightImage.GetComponent<SpriteRenderer>(), 5f));
+            
+        }
+        if(k_shoppingList_day != null)
+        {
+            StartCoroutine(FadeOutImage(k_shoppingList_day.GetComponent<SpriteRenderer>(), 5f));
+        }
+        if(k_shoppingList_night != null)
+        {
+            StartCoroutine(FadeInImage(k_shoppingList_night.GetComponent<SpriteRenderer>(), 5f));
+        }
+    }
+
+    private IEnumerator FadeOutImage(SpriteRenderer sR, float duration)
+    {
+        float start = Time.time;
+        while(Time.time <= start + duration)
+        {
+            Color color = sR.color;
+            color.a = 1f - Mathf.Clamp01((Time.time - start) / duration);
+            sR.color = color;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private IEnumerator FadeInImage(SpriteRenderer sR, float duration)
+    {
+        float start = Time.time;
+        while (Time.time <= start + duration)
+        {
+            Color color = sR.color;
+            color.a = 0f + Mathf.Clamp01((Time.time - start) / duration);
+            sR.color = color;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
