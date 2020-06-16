@@ -97,7 +97,7 @@ public class OptionsManager : MonoBehaviour
                     option.onClick.AddListener(handleClick);
                 }
 
-                GameSession.FadeIn(optionsBoxCG, 1f);
+                GameSession.FadeIn(optionsBoxCG, 1.5f);
             }
         }
         // Object has only LOSA responses

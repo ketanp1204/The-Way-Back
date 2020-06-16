@@ -185,6 +185,8 @@ public class GameSession : MonoBehaviour
 
     public static IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float delay, float lerpTime = 0.3f)
     {
+        yield return new WaitForSeconds(delay);
+
         float _timeStartedLerping = Time.time;
         float timeSinceStarted = Time.time - _timeStartedLerping;
         float percentageComplete = timeSinceStarted / lerpTime;
