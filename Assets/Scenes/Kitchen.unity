@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -565,6 +565,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &951619957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 951619958}
+  - component: {fileID: 951619960}
+  - component: {fileID: 951619959}
+  m_Layer: 0
+  m_Name: S_Dishes
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &951619958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951619957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.52, y: -1.82, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1638938631}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &951619959
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951619957}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.43244672, y: 2.411142}
+      - {x: -2.999489, y: -2.4677467}
+      - {x: -2.5964377, y: -2.7177072}
+      - {x: 2.7955394, y: -2.6981263}
+      - {x: 4.2513103, y: 2.2208865}
+--- !u!114 &951619960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951619957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Dishes
+  description: Dishes
+  numberOfResponses: 0
+  option1responses:
+  - A positive response
+  option2responses:
+  - A negative response
+  option3responses: []
+  reactions: 0100000002000000
+  losaResponseLow: 
+  losaResponseMedium: 
+  losaResponseHigh: 
+  numberOfLOSAResponses: 0
+  destroyOnNegativeResponse: 0
+  interactedWith: 0
 --- !u!1 &964695777
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +933,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1752475984}
+  - {fileID: 1815173959}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1018,11 +1108,15 @@ PrefabInstance:
     - target: {fileID: 1600261550, guid: 8dbe908dba0e1f640908a1a33ec8f345, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7b5161ec97d76544f87aa1247c944688,
+      objectReference: {fileID: 21300000, guid: 9f60af838ba7dc849bc1c86247992540,
         type: 3}
     - target: {fileID: 1600261550, guid: 8dbe908dba0e1f640908a1a33ec8f345, type: 3}
       propertyPath: m_Type
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600261550, guid: 8dbe908dba0e1f640908a1a33ec8f345, type: 3}
+      propertyPath: m_Color.a
+      value: 0.68235296
       objectReference: {fileID: 0}
     - target: {fileID: 2074529840, guid: 8dbe908dba0e1f640908a1a33ec8f345, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1147,12 +1241,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7b5161ec97d76544f87aa1247c944688,
+      objectReference: {fileID: 21300000, guid: 9f60af838ba7dc849bc1c86247992540,
         type: 3}
     - target: {fileID: 2900653160246253661, guid: 8dbe908dba0e1f640908a1a33ec8f345,
         type: 3}
       propertyPath: m_Type
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2900653160246253661, guid: 8dbe908dba0e1f640908a1a33ec8f345,
         type: 3}
@@ -1561,6 +1655,38 @@ MonoBehaviour:
   numberOfLOSAResponses: 0
   destroyOnNegativeResponse: 0
   interactedWith: 0
+--- !u!1 &1638938630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1638938631}
+  m_Layer: 0
+  m_Name: InteractableObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1638938631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638938630}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.119760476, y: 0, z: 0}
+  m_LocalScale: {x: 1.1976048, y: 1.1904762, z: 1}
+  m_Children:
+  - {fileID: 951619958}
+  - {fileID: 2065339245}
+  m_Father: {fileID: 1815173959}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752475983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,7 +1698,7 @@ GameObject:
   - component: {fileID: 1752475984}
   - component: {fileID: 1752475985}
   m_Layer: 0
-  m_Name: Sink
+  m_Name: CU_Sink_Day
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1632,7 +1758,89 @@ SpriteRenderer:
   m_SortingLayerID: -676469529
   m_SortingLayer: 3
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 02df75bf011ba4544988f6bc8fc3b7fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a21d3f6995f68d47a8db06b8c4b4fde, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 19.2, y: 10.81}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1815173958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815173959}
+  - component: {fileID: 1815173960}
+  m_Layer: 0
+  m_Name: CU_Sink_Night
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1815173959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815173958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 0, z: 0}
+  m_LocalScale: {x: 0.835, y: 0.84, z: 1}
+  m_Children:
+  - {fileID: 1638938631}
+  m_Father: {fileID: 1265611016}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1815173960
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815173958}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -676469529
+  m_SortingLayer: 3
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: ecf7a8de268514148b93e8bf0bfc8885, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1965,6 +2173,100 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60fbb0e55f237447898eb85b5339a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2065339244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2065339245}
+  - component: {fileID: 2065339247}
+  - component: {fileID: 2065339246}
+  m_Layer: 0
+  m_Name: S_Tap
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2065339245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065339244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1638938631}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &2065339246
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065339244}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.0263453, y: 1.3356824}
+      - {x: 0.48338285, y: 1.483383}
+      - {x: 0.1823926, y: 0.72572637}
+      - {x: -0.5711168, y: -1.3924097}
+      - {x: 0.071066566, y: -2.425848}
+      - {x: 1.7678069, y: -0.34104946}
+--- !u!114 &2065339247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065339244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: Tap
+  description: It once used to have a shinier glance.
+  numberOfResponses: 0
+  option1responses:
+  - Drink Water
+  - Fresh. Apparently nothing special, yet so significant. Importance has the habit
+    to hide in the most simplest things.
+  option2responses:
+  - Water The Plants
+  - Well, I am not the only one who is depending on water. And you are depending
+    on me as much as I am depending on you, little friend.
+  option3responses: []
+  reactions: 0100000001000000
+  losaResponseLow: 
+  losaResponseMedium: 
+  losaResponseHigh: 
+  numberOfLOSAResponses: 0
+  destroyOnNegativeResponse: 0
+  interactedWith: 0
 --- !u!1 &2099142485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,14 +2392,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectName: Plant
-  description: Plant
+  description: Why did you place me inside a house, seperated from the sun, wind,
+    air and fresh ground? I am a free spirit trapped in a cage, given the minimum
+    just to survive.' Hm? Did... Did this plant just say something to me?
   numberOfResponses: 0
   option1responses:
-  - A negative response
+  - Check the plant's ground
+  - Well, I've heard of people talking to plants, but plants talking to people, that
+    is new to me. However it seems that you are humid enough, still you seem to feel
+    so miserable? I thought I'd do you a favor, I am sorry.
   option2responses:
-  - A positive response
-  option3responses: []
-  reactions: 0200000001000000
+  - Check Own Physical Condition
+  - Well, I've heard of people talking to plants, but plants talking to people, that
+    is new to me. Neither my forehead is too warm nor am I feeling dizzy. So I guess
+    my mind was playing tricks on me. Let's leave it at that.
+  option3responses:
+  - Answer
+  - 'Well, I''ve heard of people talking to plants, but plants talking to people,
+    that is new to me. But I understand you. Your roots should know what it feels
+    like to spread without barriers, I can relate. People should go outside instead
+    of keeping you trapped inside houses wasting their time. '
+  reactions: 010000000000000001000000
   losaResponseLow: 
   losaResponseMedium: 
   losaResponseHigh: 
@@ -2653,8 +2968,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7b5161ec97d76544f87aa1247c944688,
+      objectReference: {fileID: 21300000, guid: 9f60af838ba7dc849bc1c86247992540,
         type: 3}
+    - target: {fileID: 3481831047972398045, guid: eca7d330445745f41a6b01db962cb973,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eca7d330445745f41a6b01db962cb973, type: 3}
 --- !u!224 &3481831046537035187 stripped
@@ -2790,8 +3110,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7b5161ec97d76544f87aa1247c944688, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 9f60af838ba7dc849bc1c86247992540, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

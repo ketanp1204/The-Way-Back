@@ -16,21 +16,26 @@ public class GameSession : MonoBehaviour
                                   "Certain objects like the window will have only reactions when you click on them based on your current LOSA Score";
 
     // Cached References
-    public GameObject morningImage;
-    public GameObject nightImage;
+    private GameObject morningImage;
+    private GameObject nightImage;
     private GameObject k_shoppingList_day;
     private GameObject k_shoppingList_night;
+    private GameObject k_sink_day;
+    private GameObject k_sink_night;
     private GameObject staticUI;
     private GameObject dynamicUI;
     private GameObject LOSA;
     private GameObject descriptionBox;
     private GameObject pauseMenuUI;
     private CanvasGroup descriptionBoxCG;
+    private ObjectManager objectManager;
 
     // State variables
     [HideInInspector]
     public static bool GameIsPaused = false;
     public bool instructionsEnabled;
+    public bool timeOfDayNight = false;
+    public bool closeUpObjects = false;
     
     void Awake()
     {
@@ -64,6 +69,8 @@ public class GameSession : MonoBehaviour
         nightImage = GameObject.Find("NightImage");
         k_shoppingList_day = GameObject.Find("K_ShoppingList_Day");
         k_shoppingList_night = GameObject.Find("K_ShoppingList_Night");
+        k_sink_day = GameObject.Find("CU_Sink_Day");
+        k_sink_night = GameObject.Find("CU_Sink_Night");
         staticUI = GameObject.Find("StaticUI");
         dynamicUI = GameObject.Find("DynamicUI");
         LOSA = staticUI.transform.Find("LOSAPanel/LOSA").gameObject;
@@ -75,6 +82,7 @@ public class GameSession : MonoBehaviour
         descriptionBox.SetActive(false);
         pauseMenuUI = staticUI.transform.Find("PauseMenu").gameObject;
         pauseMenuUI.SetActive(false);
+        objectManager = FindObjectOfType<ObjectManager>();
     }
 
     void ShowInstructionsAndLOSA()
@@ -103,7 +111,6 @@ public class GameSession : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (descriptionBox != null && descriptionBox.activeSelf)
         {
             if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
@@ -123,6 +130,12 @@ public class GameSession : MonoBehaviour
             {
                 Pause();
             }
+        }
+
+        if (!closeUpObjects)
+        {
+            morningImage.GetComponent<SpriteRenderer>().enabled = true;
+            nightImage.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
@@ -221,28 +234,82 @@ public class GameSession : MonoBehaviour
 
     public void transitionIntoNight()
     {
-        if(morningImage != null)
+        if (closeUpObjects)
         {
-            StartCoroutine(FadeOutImage(morningImage.GetComponent<SpriteRenderer>(), 5f));
+            morningImage.GetComponent<SpriteRenderer>().enabled = false;
+            nightImage.GetComponent<SpriteRenderer>().enabled = false;
         }
-        if(nightImage != null)
+
+        if (!timeOfDayNight)
         {
-            StartCoroutine(FadeInImage(nightImage.GetComponent<SpriteRenderer>(), 5f));
-            
+            timeOfDayNight = true;
+            if (morningImage != null)
+            {
+                StartCoroutine(FadeOutImage(morningImage, 5f, false));
+            }
+            if (nightImage != null)
+            {
+                StartCoroutine(FadeInImage(nightImage, 5f));
+            }
+            if (k_shoppingList_day != null)
+            {
+                StartCoroutine(FadeOutImage(k_shoppingList_day, 5f, false));
+            }
+            if (k_shoppingList_night != null)
+            {
+                StartCoroutine(FadeInImage(k_shoppingList_night, 5f));
+            }
+            if (k_sink_day != null && closeUpObjects == true)
+            {
+                StartCoroutine(FadeOutImage(k_sink_day, 5f, true));
+            }
+            if (k_sink_night != null && closeUpObjects == true)
+            {
+                if (k_sink_night.GetComponent<SpriteRenderer>().enabled == false)
+                {
+                    k_sink_night.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                StartCoroutine(FadeInImage(k_sink_night, 5f));
+            }
         }
-        if(k_shoppingList_day != null)
+        else
         {
-            StartCoroutine(FadeOutImage(k_shoppingList_day.GetComponent<SpriteRenderer>(), 5f));
-        }
-        if(k_shoppingList_night != null)
-        {
-            StartCoroutine(FadeInImage(k_shoppingList_night.GetComponent<SpriteRenderer>(), 5f));
+            timeOfDayNight = false;
+            if (morningImage != null)
+            {
+                StartCoroutine(FadeInImage(morningImage, 5f));
+            }
+            if (nightImage != null)
+            {
+                StartCoroutine(FadeOutImage(nightImage, 5f, false));
+            }
+            if (k_shoppingList_day != null)
+            {
+                StartCoroutine(FadeInImage(k_shoppingList_day, 5f));
+            }
+            if (k_shoppingList_night != null)
+            {
+                StartCoroutine(FadeOutImage(k_shoppingList_night, 5f, false));
+            }
+            if (k_sink_day != null && closeUpObjects == true)
+            {
+                if (k_sink_day.GetComponent<SpriteRenderer>().enabled == false)
+                {
+                    k_sink_day.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                StartCoroutine(FadeInImage(k_sink_day, 5f));
+            }
+            if (k_sink_night != null && closeUpObjects == true)
+            {
+                StartCoroutine(FadeOutImage(k_sink_night, 5f, true));
+            }
         }
     }
 
-    private IEnumerator FadeOutImage(SpriteRenderer sR, float duration)
+    private IEnumerator FadeOutImage(GameObject g, float duration, bool dSR)
     {
         float start = Time.time;
+        SpriteRenderer sR = g.GetComponent<SpriteRenderer>();
         while(Time.time <= start + duration)
         {
             Color color = sR.color;
@@ -250,11 +317,29 @@ public class GameSession : MonoBehaviour
             sR.color = color;
             yield return new WaitForEndOfFrame();
         }
+        if (dSR)
+        {
+            disableSpriteRenderer(sR);
+            if(g.name == "CU_Sink_Day")
+            {
+                objectManager.zoomedInObject = k_sink_night;
+            }
+            else if(g.name == "CU_Sink_Night")
+            {
+                objectManager.zoomedInObject = k_sink_day;
+            }
+        }
     }
 
-    private IEnumerator FadeInImage(SpriteRenderer sR, float duration)
+    private void disableSpriteRenderer(SpriteRenderer sR)
+    {
+        sR.enabled = false;
+    }
+
+    private IEnumerator FadeInImage(GameObject g, float duration)
     {
         float start = Time.time;
+        SpriteRenderer sR = g.GetComponent<SpriteRenderer>();
         while (Time.time <= start + duration)
         {
             Color color = sR.color;

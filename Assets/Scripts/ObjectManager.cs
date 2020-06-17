@@ -21,13 +21,15 @@ public class ObjectManager : MonoBehaviour
     private Camera mainCamera;
     private OptionsManager optionsManager;
     private LevelChanger levelChanger;
+    private GameSession gameSession;
     private GameObject interactableObjects;
     private GameObject closeUpObjects;
     private GameObject descriptionBox;
     private GameObject optionsBox;
-    private GameObject zoomedInObject;
+    public GameObject zoomedInObject;
     private GameObject staticUI;
     private GameObject backButton;
+
 
     void Awake()
     {
@@ -64,6 +66,7 @@ public class ObjectManager : MonoBehaviour
             optionsBox = optionsManager.transform.Find("Options Box").gameObject;
         }
         levelChanger = FindObjectOfType<LevelChanger>();
+        gameSession = FindObjectOfType<GameSession>();
         interactableObjects = GameObject.Find("Interactable Objects");
         closeUpObjects = GameObject.Find("CloseUpObjects");
         staticUI = GameObject.Find("StaticUI");
@@ -106,7 +109,7 @@ public class ObjectManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "CloseUp")
                     {
-                        
+                        gameSession.closeUpObjects = true;
                         StartCoroutine(LevelChanger.CrossFadeStart(true));               // Fade In and Out Animation
                         StartCoroutine(LoadCloseUp());                                   // Load close up view
                     }
@@ -146,6 +149,7 @@ public class ObjectManager : MonoBehaviour
 
     public void ExitCloseUpView()
     {
+        gameSession.closeUpObjects = false;
         StartCoroutine(LevelChanger.CrossFadeStart(true));          // Fade In and Out Animation
         StartCoroutine(ExitCloseUp());                              // Go back from Close Up View
     }
@@ -155,8 +159,20 @@ public class ObjectManager : MonoBehaviour
 
         interactableObjects.SetActive(false);
         backButton.SetActive(true);
-        zoomedInObject = closeUpObjects.transform.Find(hit.collider.gameObject.GetComponent<ObjectProperties>().objectName).gameObject;
-        zoomedInObject.GetComponent<SpriteRenderer>().enabled = true;
+        if(!gameSession.timeOfDayNight)
+        {
+            string objectName = "CU_" + hit.collider.gameObject.GetComponent<ObjectProperties>().objectName + "_Day";
+            zoomedInObject = closeUpObjects.transform.Find(objectName).gameObject;
+        }
+        else
+        {
+            string objectName = "CU_" + hit.collider.gameObject.GetComponent<ObjectProperties>().objectName + "_Night";
+            zoomedInObject = closeUpObjects.transform.Find(objectName).gameObject;
+        }
+        if(zoomedInObject.GetComponent<SpriteRenderer>().enabled == false)
+        {
+            zoomedInObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(true);
     }
 
@@ -166,7 +182,10 @@ public class ObjectManager : MonoBehaviour
 
         interactableObjects.SetActive(true);
         backButton.SetActive(false);
-        zoomedInObject.GetComponent<SpriteRenderer>().enabled = false;
+        if (zoomedInObject.GetComponent<SpriteRenderer>().enabled == true)
+        {
+            zoomedInObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(false);
         zoomedInObject = null;
     }
