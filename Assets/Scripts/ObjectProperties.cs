@@ -1,72 +1,115 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectProperties : MonoBehaviour
 {
-    public string objectName;
+    public enum ObjectType
+    {
+        LOSAResponseOnly,
+        LOSAMediumThenOptions,
+        LOSAHighThenOptions,
+        OptionLOSAUpdateOnly,
+        OptionDestroyOnNegative,
+        OptionDestroyOnPositive,
+        OptionBehaviorAfterChoice
+    }
 
+    [System.Serializable]
+    public class LOSAResponseTexts
+    {
+        public string LowLOSA;
+        public string MedLOSA;
+        public string HighLOSA;
+    }
+
+    // Cached References
+    private OptionsManager optionsManager;
+
+    // Variables
+    public ObjectType[] objectType;
+    public string objectName;
     [TextArea(3, 10)]
     public string description;
-
     [HideInInspector]
     public int numberOfResponses;
-
+    [TextArea(3, 10)]
+    public string option1Text;
     [TextArea(3, 10)]
     public string[] option1responses;
-
+    [TextArea(3, 10)]
+    public string option2Text;
     [TextArea(3, 10)]
     public string[] option2responses;
-
+    [TextArea(3, 10)]
+    public string option3Text;
     [TextArea(3, 10)]
     public string[] option3responses;
-
     public int[] reactions;
-
+    public LOSAResponseTexts losaResponseTexts;
+    /*
     [TextArea(3, 10)]
     public string losaResponseLow;
-
     [TextArea(3, 10)]
     public string losaResponseMedium;
-
     [TextArea(3, 10)]
     public string losaResponseHigh;
-
+    */
     [HideInInspector]
     public int numberOfLOSAResponses;
-
-    public bool destroyOnNegativeResponse;
-
+    public Dictionary<int, string[]> responses = new Dictionary<int, string[]>();
+    public string[] optionTexts;
     [HideInInspector]
-    public bool interactedWith = false;
+    public bool interactedWith = false; 
+    public bool destroyOnNegativeResponse;
+    public int LOSAUpdateResponse;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        if (losaResponseLow != "")
+        if (option3Text != "" & option2Text != "" && option1Text != "")
         {
-            numberOfLOSAResponses = 3;
+            numberOfResponses = 3;
+            optionTexts = new string[3];
+            optionTexts[0] = option1Text;
+            optionTexts[1] = option2Text;
+            optionTexts[2] = option3Text;
+        }
+        else if (option3Text == "" && option2Text != "" && option1Text != "")
+        {
+            numberOfResponses = 2;
+            optionTexts = new string[2];
+            optionTexts[0] = option1Text;
+            optionTexts[1] = option2Text;
+        }
+        else if (option3Text == "" && option2Text == "" && option1Text != "")
+        {
+            numberOfResponses = 1;
+            optionTexts = new string[1];
+            optionTexts[0] = option1Text;
         }
         else
         {
-            numberOfLOSAResponses = 0;
+            numberOfResponses = 0;
+            optionTexts = null;
+        }
 
-            if (option3responses.Length != 0 & option2responses.Length > 0 && option1responses.Length > 0)
-            {
-                numberOfResponses = 3;
-            }
-            else if (option3responses.Length == 0 && option2responses.Length > 0 && option1responses.Length > 0)
-            {
-                numberOfResponses = 2;
-            }
-            else if (option3responses.Length == 0 && option2responses.Length == 0 && option1responses.Length > 0)
-            {
-                numberOfResponses = 1;
-            }
-            else
-            {
-                numberOfResponses = 0;
-            }
+        if (numberOfResponses == 3)
+        {
+            responses.Add(0, option1responses);
+            responses.Add(1, option2responses);
+            responses.Add(2, option3responses);
+        }
+        else if (numberOfResponses == 2)
+        {
+            responses.Add(0, option1responses);
+            responses.Add(1, option2responses);
+        }
+        else if (numberOfResponses == 1)
+        {
+            responses.Add(0, option1responses);
         }
     }
 
@@ -78,5 +121,52 @@ public class ObjectProperties : MonoBehaviour
     void OnMouseExit()
     {
         DisplayObjectName.HideName_static();
+    }
+
+    public void HandleResponse(bool firstCall)
+    {
+        optionsManager = FindObjectOfType<OptionsManager>();
+        ObjectType temp;
+        if (firstCall)
+        {
+            temp = objectType[0];
+        }
+        else
+        {
+            temp = objectType[1];
+        }
+        switch(temp)
+        {
+            case ObjectType.LOSAResponseOnly:
+                optionsManager.HandleLOSAResponseOnly();
+                break;
+
+            case ObjectType.LOSAMediumThenOptions:
+                optionsManager.HandleLOSAMediumThenOptions();
+                break;
+
+            case ObjectType.LOSAHighThenOptions:
+                optionsManager.HandleLOSAHighThenOptions();
+                break;
+
+            case ObjectType.OptionLOSAUpdateOnly:
+                optionsManager.HandleOptionLOSAUpdateOnly();
+                break;
+
+            case ObjectType.OptionDestroyOnPositive:
+                optionsManager.HandleOptionDestroyOnPositive();
+                break;
+
+            case ObjectType.OptionDestroyOnNegative:
+                optionsManager.HandleOptionDestroyOnNegative();
+                break;
+
+            case ObjectType.OptionBehaviorAfterChoice:
+                optionsManager.HandleOptionBehaviorAfterChoice();
+                break;
+
+            default:
+                break;
+        }
     }
 }

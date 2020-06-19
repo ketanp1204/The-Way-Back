@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Throw away the list
+  m_text: Scroll Through Social Media
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aeafe40b20293f042918dc22ac8109bf, type: 2}
   m_sharedMaterial: {fileID: -3792538961910080839, guid: aeafe40b20293f042918dc22ac8109bf,
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_margin: {x: 14.5, y: 5, z: 14.5, w: 5}
   m_textInfo:
     textComponent: {fileID: 6776971144866101342}
-    characterCount: 19
+    characterCount: 27
     spriteCount: 0
     spaceCount: 3
     wordCount: 4
@@ -194,7 +194,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 854.8948, y: -77.5}
-  m_SizeDelta: {x: 500, y: 75}
+  m_SizeDelta: {x: 500, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6776971145883545752
 CanvasRenderer:

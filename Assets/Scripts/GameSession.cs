@@ -16,12 +16,12 @@ public class GameSession : MonoBehaviour
                                   "Certain objects like the window will have only reactions when you click on them based on your current LOSA Score";
 
     // Cached References
-    private GameObject morningImage;
-    private GameObject nightImage;
-    private GameObject k_shoppingList_day;
-    private GameObject k_shoppingList_night;
-    private GameObject k_sink_day;
-    private GameObject k_sink_night;
+    public GameObject morningImage;
+    public GameObject nightImage;
+    public GameObject k_shoppingList_day;
+    public GameObject k_shoppingList_night;
+    public GameObject k_sink_day;
+    public GameObject k_sink_night;
     private GameObject staticUI;
     private GameObject dynamicUI;
     private GameObject LOSA;
@@ -71,6 +71,23 @@ public class GameSession : MonoBehaviour
         k_shoppingList_night = GameObject.Find("K_ShoppingList_Night");
         k_sink_day = GameObject.Find("CU_Sink_Day");
         k_sink_night = GameObject.Find("CU_Sink_Night");
+        if(!timeOfDayNight)
+        {
+            if(k_shoppingList_day != null)
+            {
+                k_shoppingList_night.GetComponent<Transform>().Translate(Vector3.forward);
+                k_sink_night.GetComponent<Transform>().Translate(Vector3.forward);
+            }
+            
+        }
+        else
+        {
+            if(k_shoppingList_day != null)
+            {
+                k_shoppingList_day.GetComponent<Transform>().Translate(Vector3.forward);
+                k_sink_day.GetComponent<Transform>().Translate(Vector3.forward);
+            }
+        }
         staticUI = GameObject.Find("StaticUI");
         dynamicUI = GameObject.Find("DynamicUI");
         LOSA = staticUI.transform.Find("LOSAPanel/LOSA").gameObject;
@@ -139,14 +156,14 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    public void ChangeLOSA(int positiveOrNegative)
+    public void ChangeLOSA(int LOSAUpdate)
     {
-        if(positiveOrNegative == 1)
+        if(LOSAUpdate == 1)
         {
             levelOfSelfAwareness += 10f;
             
         }
-        else
+        else if(LOSAUpdate == 2)
         {
             if(levelOfSelfAwareness != 0f)
             {

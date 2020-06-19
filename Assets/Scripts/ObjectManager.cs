@@ -19,6 +19,7 @@ public class ObjectManager : MonoBehaviour
 
     // Cached References
     private Camera mainCamera;
+    private ObjectProperties objectProperties;
     private OptionsManager optionsManager;
     private LevelChanger levelChanger;
     private GameSession gameSession;
@@ -89,23 +90,31 @@ public class ObjectManager : MonoBehaviour
            
             if (hit.collider != null)                                                                       // Test whether ray hits any collider
             {
+                
                 if (!descriptionBox.activeSelf)
                 {
+                    /*
                     if (hit.collider.gameObject.tag == "Object")
                     {
-                        if (hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith == false)   // Prevent player from clicking an object twice
+                        objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
+                        if (objectProperties.interactedWith == false)                                       // Prevent player from clicking an object twice
                         {
-                            hit.collider.gameObject.GetComponent<ObjectProperties>().interactedWith = true;
-                            optionsManager.selectedObject = hit.collider.gameObject;
-                            optionsManager.InitializeResponse();
+                            optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
+                            objectProperties.interactedWith = true;
+                            objectProperties.HandleResponse(true);
                         }
                     }
+                    */
 
-                    if (hit.collider.gameObject.tag == "LOSAResponseObject")
+                    /* To enable the ability to click on an object twice*/
+                    if (hit.collider.gameObject.tag == "Object")
                     {
-                        optionsManager.selectedObject = hit.collider.gameObject;
-                        optionsManager.InitializeResponse();
+                        objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
+                        optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
+                        objectProperties.HandleResponse(true);
                     }
+                    /* */
+
 
                     if (hit.collider.gameObject.tag == "CloseUp")
                     {

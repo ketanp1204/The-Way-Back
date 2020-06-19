@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Ground
   - Object
-  - LOSAResponseObject
   - PrevLevel
   - NextLevel
   - CloseUp
