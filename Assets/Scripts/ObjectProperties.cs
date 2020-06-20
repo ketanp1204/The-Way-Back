@@ -28,6 +28,7 @@ public class ObjectProperties : MonoBehaviour
     private OptionsManager optionsManager;
 
     // Variables that need to be set in inspector
+    public List<string> additionalTags;
     public ObjectType[] objectType;
     public string objectName;
     [TextArea(3, 10)]
@@ -109,6 +110,39 @@ public class ObjectProperties : MonoBehaviour
         }
     }
 
+
+    // Additional tags
+
+    public bool HasTag(string tag)
+    {
+        return additionalTags.Contains(tag);
+    }
+
+    public IEnumerable<string> GetTags()
+    {
+        return additionalTags;
+    }
+
+    public void Rename(int index, string tagName)
+    {
+        additionalTags[index] = tagName;
+    }
+
+    public string GetAtIndex(int index)
+    {
+        return additionalTags[index];
+    }
+
+    public int Count
+    {
+        get { return additionalTags.Count; }
+    }
+
+
+
+
+    // Display object name on hover
+
     void OnMouseEnter()
     {
         DisplayObjectName.ShowName_static(objectName);
@@ -119,6 +153,7 @@ public class ObjectProperties : MonoBehaviour
         DisplayObjectName.HideName_static();
     }
 
+    // Handle option click response
     public void HandleResponse(bool firstCall)
     {
         optionsManager = FindObjectOfType<OptionsManager>();
