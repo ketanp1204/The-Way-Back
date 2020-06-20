@@ -47,6 +47,13 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
+    public void ShowTextOnDescriptionBox(string text)
+    {
+        descriptionBox.SetActive(true);
+        descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        GameSession.FadeIn(descriptionBoxCG, 0f);
+    }
+
     public void SetSelectedObjectReference(GameObject gameObject)
     {
         selectedObject = gameObject;
@@ -139,10 +146,13 @@ public class OptionsManager : MonoBehaviour
         gameSession.GetComponent<GameSession>().ChangeLOSA(reaction);
 
         // Show a response text if any present
-        if (objectProperties.responses[buttonIndex].Length > 0)
+        if (objectProperties.responses[buttonIndex] != null)
         {
-            GameSession.FadeOut(descriptionBoxCG, 0f);
-            ShowNextDescription(buttonIndex);
+            if(objectProperties.responses[buttonIndex].Length > 0)
+            {
+                GameSession.FadeOut(descriptionBoxCG, 0f);
+                ShowNextResponse(buttonIndex);
+            }
         }
         else
         {
@@ -166,7 +176,7 @@ public class OptionsManager : MonoBehaviour
         CloseAndClearOptionsBox();
     }
 
-    private void ShowNextDescription(int buttonIndex)
+    private void ShowNextResponse(int buttonIndex)
     {
         if (descriptionBoxCG.alpha != 0)
         {
@@ -176,7 +186,7 @@ public class OptionsManager : MonoBehaviour
         GameSession.FadeIn(descriptionBoxCG, 0f);
     }
 
-    public void HandleOptionLOSAUpdateOnly()
+    public void HandleOptionLOSAUpdateOnly(bool destroyOnPositive, bool destroyOnNegative)
     {
         if (objectProperties.description != "")
         {
@@ -201,73 +211,7 @@ public class OptionsManager : MonoBehaviour
                 // Handle click behaviour of the button
                 int buttonIndex = i;
                 int reaction = objectProperties.reactions[i];
-                handleClick = () => HandleOptionResponse(buttonIndex, reaction, false, false);
-                option.onClick.AddListener(handleClick);
-            }
-
-            GameSession.FadeIn(optionsBoxCG, 1.5f);
-        }
-    }
-
-    public void HandleOptionDestroyOnPositive()
-    {
-        if (objectProperties.description != "")
-        {
-            descriptionBox.SetActive(true);
-            descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.description;
-            GameSession.FadeIn(descriptionBoxCG, 0f);
-        }
-        numberOfButtons = objectProperties.numberOfResponses;
-        if (numberOfButtons != 0)
-        {
-            optionsBox.SetActive(true);
-
-            for (int i = 0; i < numberOfButtons; i++)
-            {
-                // Instantiate a new option button
-                option = Instantiate(optionPrefab, optionsBox.transform);
-                option.gameObject.SetActive(true);
-
-                // Fill the text field with the option text
-                option.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.optionTexts[i];
-
-                // Handle click behaviour of the button
-                int buttonIndex = i;
-                int reaction = objectProperties.reactions[i];
-                handleClick = () => HandleOptionResponse(buttonIndex, reaction, true, false);
-                option.onClick.AddListener(handleClick);
-            }
-
-            GameSession.FadeIn(optionsBoxCG, 1.5f);
-        }
-    }
-
-    public void HandleOptionDestroyOnNegative()
-    {
-        if (objectProperties.description != "")
-        {
-            descriptionBox.SetActive(true);
-            descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.description;
-            GameSession.FadeIn(descriptionBoxCG, 0f);
-        }
-        numberOfButtons = objectProperties.numberOfResponses;
-        if (numberOfButtons != 0)
-        {
-            optionsBox.SetActive(true);
-
-            for (int i = 0; i < numberOfButtons; i++)
-            {
-                // Instantiate a new option button
-                option = Instantiate(optionPrefab, optionsBox.transform);
-                option.gameObject.SetActive(true);
-
-                // Fill the text field with the option text
-                option.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.optionTexts[i];
-
-                // Handle click behaviour of the button
-                int buttonIndex = i;
-                int reaction = objectProperties.reactions[i];
-                handleClick = () => HandleOptionResponse(buttonIndex, reaction, false, true);
+                handleClick = () => HandleOptionResponse(buttonIndex, reaction, destroyOnPositive, destroyOnNegative);
                 option.onClick.AddListener(handleClick);
             }
 

@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2816335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.27, y: -0.81, z: 0}
+  m_LocalPosition: {x: -1.3, y: -0.57, z: 0}
   m_LocalScale: {x: 0.16951193, y: 0.107768774, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
@@ -169,7 +169,6 @@ MonoBehaviour:
   objectType: 00000000
   objectName: Newspaper
   description: 
-  numberOfResponses: 0
   option1Text: 
   option1responses: []
   option2Text: 
@@ -187,10 +186,10 @@ MonoBehaviour:
     HighLOSA: It all comes down to raising awareness. Awareness about events occuring
       on the earth we live in. It is alarming - alarmingly easy to forget about our
       world's condition, if we distract ourselves too much with inessential triviality.
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!61 &2816338
 BoxCollider2D:
@@ -205,7 +204,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07904053, y: -0.036016464}
+  m_Offset: {x: 0.03101778, y: -0.26262474}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -216,7 +215,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.118456, y: 3.2880425}
+  m_Size: {x: 8.485684, y: 3.741259}
   m_EdgeRadius: 0
 --- !u!212 &2816339
 SpriteRenderer:
@@ -265,7 +264,7 @@ SpriteRenderer:
   m_Size: {x: 10, y: 3.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &172360643
@@ -489,7 +488,7 @@ SpriteRenderer:
   m_SortingLayerID: 1382938419
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fda2f105262c31d488793f931f334b9d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 818ec88ee20a85c408b8c84fcd1f8936, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -561,7 +560,6 @@ MonoBehaviour:
   objectType: 
   objectName: Next Room
   description: 
-  numberOfResponses: 0
   option1Text: 
   option1responses: []
   option2Text: 
@@ -573,10 +571,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!61 &238471699
 BoxCollider2D:
@@ -615,6 +613,7 @@ GameObject:
   - component: {fileID: 653563939}
   - component: {fileID: 653563941}
   - component: {fileID: 653563940}
+  - component: {fileID: 653563942}
   m_Layer: 0
   m_Name: LR_Gramophone
   m_TagString: Object
@@ -648,24 +647,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 
+  objectType: 06000000
   objectName: Gramophone
   description: This is by far my favourite record. The surface is already dusty,
     because I listen to it so much that I don't even put the record back into its
     case.
-  numberOfResponses: 0
-  option1Text: 
+  option1Text: Remove The Record
   option1responses:
-  - 'Remove the record
-
-'
   - I prefer taking it on me to put the record out of the case whenever I want to
     listen to it instead of taking the risk that it breaks.
-  option2Text: 
-  option2responses:
-  - 'Play The Record
-
-'
+  option2Text: Play The Record
+  option2responses: []
   option3Text: 
   option3responses: []
   reactions: 0000000001000000
@@ -673,10 +665,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!61 &653563941
 BoxCollider2D:
@@ -704,6 +696,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.317038, y: 1.5673313}
   m_EdgeRadius: 0
+--- !u!114 &653563942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653563938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &717465863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -820,7 +824,6 @@ MonoBehaviour:
   objectType: 
   objectName: Previous Room
   description: 
-  numberOfResponses: 0
   option1Text: 
   option1responses: []
   option2Text: 
@@ -832,10 +835,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!61 &774306350
 BoxCollider2D:
@@ -933,7 +936,7 @@ SpriteRenderer:
   m_SortingLayerID: 1382938419
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fda2f105262c31d488793f931f334b9d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 818ec88ee20a85c408b8c84fcd1f8936, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -955,6 +958,7 @@ GameObject:
   - component: {fileID: 981751694}
   - component: {fileID: 981751696}
   - component: {fileID: 981751695}
+  - component: {fileID: 981751697}
   m_Layer: 0
   m_Name: LR_Television
   m_TagString: Object
@@ -988,21 +992,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 
+  objectType: 06000000
   objectName: Television
   description: My beloved window to other dimensions! You have been serving well
     and kept me distracted from uncomfortable situations with which I did not want
     to deal with .But I assume your time has come to an end and I need to replace
     you...
-  numberOfResponses: 0
-  option1Text: 
+  option1Text: 'Repair It
+
+'
   option1responses:
-  - Repair It
   - Well, even if I wanted to, except for turning it off and back on again, I have
     no clue about these technical matters. I guess I will just turn it off.
-  option2Text: 
+  option2Text: Turn It Off
   option2responses:
-  - Turn it off
   - To be honest, I actually don't know why I keep on gettng annoyed at this old
     box. Neither the image's nor the sound's quality is pleasent. I think I have
     to seperate myself from the emotional value and throw it away.
@@ -1013,10 +1016,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!61 &981751696
 BoxCollider2D:
@@ -1044,6 +1047,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4724343, y: 1.2530909}
   m_EdgeRadius: 0
+--- !u!114 &981751697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981751693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1479276894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1454,7 +1469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040358467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.023, y: -0.355, z: 0}
+  m_LocalPosition: {x: -0.88, y: -0.92, z: 0}
   m_LocalScale: {x: 0.086282335, y: 0.06357087, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
@@ -1477,7 +1492,6 @@ MonoBehaviour:
   description: It feels weird when I don't have the phone in my pockets. The empty
     feeling of it makes me feel scared, as if I lost an essential organ that I need
     to live.
-  numberOfResponses: 0
   option1Text: Scroll Through Social Media
   option1responses:
   - I see people sharing apparently emotional moments of their life, bright laughters
@@ -1498,10 +1512,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!61 &2040358470
 BoxCollider2D:
@@ -1516,7 +1530,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.11854696, y: 0.046042085}
+  m_Offset: {x: 0.07137346, y: -0.01798004}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1527,7 +1541,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.483037, y: 5.3041916}
+  m_Size: {x: 5.822613, y: 3.127304}
   m_EdgeRadius: 0
 --- !u!212 &2040358471
 SpriteRenderer:
@@ -1576,7 +1590,7 @@ SpriteRenderer:
   m_Size: {x: 7.15, y: 5.39}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &2132095667

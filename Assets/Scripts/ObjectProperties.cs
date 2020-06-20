@@ -27,13 +27,11 @@ public class ObjectProperties : MonoBehaviour
     // Cached References
     private OptionsManager optionsManager;
 
-    // Variables
+    // Variables that need to be set in inspector
     public ObjectType[] objectType;
     public string objectName;
     [TextArea(3, 10)]
     public string description;
-    [HideInInspector]
-    public int numberOfResponses;
     [TextArea(3, 10)]
     public string option1Text;
     [TextArea(3, 10)]
@@ -48,21 +46,19 @@ public class ObjectProperties : MonoBehaviour
     public string[] option3responses;
     public int[] reactions;
     public LOSAResponseTexts losaResponseTexts;
-    /*
-    [TextArea(3, 10)]
-    public string losaResponseLow;
-    [TextArea(3, 10)]
-    public string losaResponseMedium;
-    [TextArea(3, 10)]
-    public string losaResponseHigh;
-    */
+  
+    // Variables that will be calculated in the code
+    [HideInInspector]
+    public int numberOfResponses;
     [HideInInspector]
     public int numberOfLOSAResponses;
+    [HideInInspector]
     public Dictionary<int, string[]> responses = new Dictionary<int, string[]>();
+    [HideInInspector]
     public string[] optionTexts;
     [HideInInspector]
-    public bool interactedWith = false; 
-    public bool destroyOnNegativeResponse;
+    public bool interactedWith = false;
+    [HideInInspector]
     public int LOSAUpdateResponse;
 
 
@@ -150,15 +146,15 @@ public class ObjectProperties : MonoBehaviour
                 break;
 
             case ObjectType.OptionLOSAUpdateOnly:
-                optionsManager.HandleOptionLOSAUpdateOnly();
+                optionsManager.HandleOptionLOSAUpdateOnly(false, false);
                 break;
 
             case ObjectType.OptionDestroyOnPositive:
-                optionsManager.HandleOptionDestroyOnPositive();
+                optionsManager.HandleOptionLOSAUpdateOnly(true, false);
                 break;
 
             case ObjectType.OptionDestroyOnNegative:
-                optionsManager.HandleOptionDestroyOnNegative();
+                optionsManager.HandleOptionLOSAUpdateOnly(false, true);
                 break;
 
             case ObjectType.OptionBehaviorAfterChoice:

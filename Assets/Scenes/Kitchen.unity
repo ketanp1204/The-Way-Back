@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -202,98 +202,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &479686045
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 479686049}
-  - component: {fileID: 479686048}
-  - component: {fileID: 479686046}
-  m_Layer: 0
-  m_Name: K_CoffeeMaker
-  m_TagString: Object
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &479686046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479686045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectType: 
-  objectName: Coffee Maker
-  description: CoffeeMaker
-  numberOfResponses: 0
-  option1Text: 
-  option1responses:
-  - A positive response
-  option2Text: 
-  option2responses:
-  - A negative response
-  option3Text: 
-  option3responses: []
-  reactions: 0100000002000000
-  losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
-  numberOfLOSAResponses: 0
-  optionTexts: []
-  interactedWith: 0
-  destroyOnNegativeResponse: 0
-  LOSAUpdateResponse: 0
---- !u!61 &479686048
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479686045}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.008075237, y: 0.024226189}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8223419, y: 1.3068657}
-  m_EdgeRadius: 0
---- !u!4 &479686049
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479686045}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.2436543, y: 0.93975246, z: 13.686523}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 814084384}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &814084383
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,16 +229,14 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2111159987}
-  - {fileID: 479686049}
   - {fileID: 1835379661}
   - {fileID: 1602774514}
   - {fileID: 1817288546}
   - {fileID: 2135029007}
   - {fileID: 1125504013}
+  - {fileID: 1274709340}
   - {fileID: 1508454488}
   - {fileID: 1850747976}
-  - {fileID: 1274709340}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -481,102 +387,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &951619957
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 951619958}
-  - component: {fileID: 951619960}
-  - component: {fileID: 951619959}
-  m_Layer: 0
-  m_Name: S_Dishes
-  m_TagString: Object
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &951619958
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951619957}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.52, y: -1.82, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1638938631}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &951619959
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951619957}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.43244672, y: 2.411142}
-      - {x: -2.999489, y: -2.4677467}
-      - {x: -2.5964377, y: -2.7177072}
-      - {x: 2.7955394, y: -2.6981263}
-      - {x: 4.2513103, y: 2.2208865}
---- !u!114 &951619960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951619957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectType: 
-  objectName: Dishes
-  description: Dishes
-  numberOfResponses: 0
-  option1Text: 
-  option1responses:
-  - A positive response
-  option2Text: 
-  option2responses:
-  - A negative response
-  option3Text: 
-  option3responses: []
-  reactions: 0100000002000000
-  losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
-  numberOfLOSAResponses: 0
-  optionTexts: []
-  interactedWith: 0
-  destroyOnNegativeResponse: 0
-  LOSAUpdateResponse: 0
 --- !u!1 &1125504012
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +417,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1125504014
 PolygonCollider2D:
@@ -662,7 +472,6 @@ MonoBehaviour:
   objectType: 
   objectName: Sink
   description: 
-  numberOfResponses: 0
   option1Text: 
   option1responses: []
   option2Text: 
@@ -674,10 +483,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!1001 &1173707593
 PrefabInstance:
@@ -891,7 +700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1274709341
 MonoBehaviour:
@@ -910,7 +719,6 @@ MonoBehaviour:
   description: Instead of keeping the fruits decoratively in their basket, I should
     start to consider it as actual food I can also eat. However, this thought might
     have come up too late.
-  numberOfResponses: 0
   option1Text: Throw Away The Rotten Fruits
   option1responses:
   - 'What a shame. But that is the new circle of life I guess: Spending too much
@@ -929,10 +737,10 @@ MonoBehaviour:
       is more a decoration than actual food.
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!61 &1274709342
 BoxCollider2D:
@@ -1027,13 +835,26 @@ GameObject:
   - component: {fileID: 1508454488}
   - component: {fileID: 1508454487}
   - component: {fileID: 1508454489}
+  - component: {fileID: 1508454486}
   m_Layer: 0
-  m_Name: Next Room
-  m_TagString: NextLevel
+  m_Name: K_GardenDoor
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1508454486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508454485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1508454487
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1072,7 +893,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1508454489
 MonoBehaviour:
@@ -1086,10 +907,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 
-  objectName: Next Room
-  description: 
-  numberOfResponses: 0
+  objectType: 06000000
+  objectName: Garden Door
+  description: Why should I do that while it is raining? It's not that there is something
+    important that needs my attention immediately. I guess there will be a more appropriate
+    time than now.
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1101,10 +923,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!1 &1602774513
 GameObject:
@@ -1138,7 +960,7 @@ Transform:
   m_LocalScale: {x: 0.82, y: 0.82, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1602774515
 MonoBehaviour:
@@ -1156,7 +978,6 @@ MonoBehaviour:
   objectName: Shopping List
   description: '"March 13th: Coffee, pasta, batteries, light bulb E14, cereals, dog
     food," Has that list really been hanging there already for such a long time?'
-  numberOfResponses: 0
   option1Text: Tear The Page Off
   option1responses:
   - 'There is something else written on the paper underneath it: "March 11th: 08:08
@@ -1173,10 +994,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!212 &1602774516
 SpriteRenderer:
@@ -1409,14 +1230,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 
+  objectType: 03000000
   objectName: Dishes
   description: Dishes
-  numberOfResponses: 0
-  option1Text: 
+  option1Text: Positive
   option1responses:
   - A positive response
-  option2Text: 
+  option2Text: Negative
   option2responses:
   - A negative response
   option3Text: 
@@ -1426,10 +1246,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!1 &1638938630
 GameObject:
@@ -1458,8 +1278,8 @@ Transform:
   m_LocalPosition: {x: -0.119760476, y: 0, z: 0}
   m_LocalScale: {x: 1.1976048, y: 1.1904762, z: 1}
   m_Children:
-  - {fileID: 951619958}
-  - {fileID: 2065339245}
+  - {fileID: 2006749453}
+  - {fileID: 1909713927}
   m_Father: {fileID: 1815173959}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1639,6 +1459,7 @@ GameObject:
   - component: {fileID: 1817288549}
   - component: {fileID: 1817288548}
   - component: {fileID: 1817288547}
+  - component: {fileID: 1817288550}
   m_Layer: 0
   m_Name: K_ShoppingList_Night
   m_TagString: Object
@@ -1658,7 +1479,7 @@ Transform:
   m_LocalScale: {x: 0.82, y: 0.82, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1817288547
 MonoBehaviour:
@@ -1676,7 +1497,6 @@ MonoBehaviour:
   objectName: Shopping List
   description: '"March 13th: Coffee, pasta, batteries, light bulb E14, cereals, dog
     food," Has that list really been hanging there already for such a long time?'
-  numberOfResponses: 0
   option1Text: Tear The Page Off
   option1responses:
   - 'There is something else written on the paper underneath it: "March 11th: 08:08
@@ -1695,10 +1515,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!61 &1817288548
 BoxCollider2D:
@@ -1776,6 +1596,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1817288550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817288545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1835379657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,7 +1641,6 @@ MonoBehaviour:
   objectType: 03000000
   objectName: Wine Bottle
   description: Wine Bottle
-  numberOfResponses: 0
   option1Text: positive
   option1responses:
   - A positive response
@@ -1823,10 +1654,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!61 &1835379660
 BoxCollider2D:
@@ -1866,7 +1697,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850747973
 GameObject:
@@ -1924,7 +1755,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1850747977
 MonoBehaviour:
@@ -1941,7 +1772,6 @@ MonoBehaviour:
   objectType: 
   objectName: Previous Room
   description: 
-  numberOfResponses: 0
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1953,12 +1783,12 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
---- !u!1 &2065339244
+--- !u!1 &1909713926
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1966,9 +1796,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2065339245}
-  - component: {fileID: 2065339247}
-  - component: {fileID: 2065339246}
+  - component: {fileID: 1909713927}
+  - component: {fileID: 1909713929}
+  - component: {fileID: 1909713928}
   m_Layer: 0
   m_Name: S_Tap
   m_TagString: Object
@@ -1976,27 +1806,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2065339245
+--- !u!4 &1909713927
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065339244}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1909713926}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1638938631}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &2065339246
+--- !u!60 &1909713928
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065339244}
+  m_GameObject: {fileID: 1909713926}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -2021,30 +1851,27 @@ PolygonCollider2D:
       - {x: -0.5711168, y: -1.3924097}
       - {x: 0.071066566, y: -2.425848}
       - {x: 1.7678069, y: -0.34104946}
---- !u!114 &2065339247
+--- !u!114 &1909713929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065339244}
+  m_GameObject: {fileID: 1909713926}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 
-  objectName: Tap
+  objectType: 03000000
+  objectName: Water Tap
   description: It once used to have a shinier glance.
-  numberOfResponses: 0
-  option1Text: 
+  option1Text: Drink Water
   option1responses:
-  - Drink Water
   - Fresh. Apparently nothing special, yet so significant. Importance has the habit
     to hide in the most simplest things.
-  option2Text: 
+  option2Text: Water The Plants
   option2responses:
-  - Water The Plants
   - Well, I am not the only one who is depending on water. And you are depending
     on me as much as I am depending on you, little friend.
   option3Text: 
@@ -2054,10 +1881,105 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
+  LOSAUpdateResponse: 0
+--- !u!1 &2006749452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006749453}
+  - component: {fileID: 2006749455}
+  - component: {fileID: 2006749454}
+  m_Layer: 0
+  m_Name: S_Dishes
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2006749453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006749452}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.5199997, y: -1.8200002, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1638938631}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &2006749454
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006749452}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.43244672, y: 2.411142}
+      - {x: -2.999489, y: -2.4677467}
+      - {x: -2.5964377, y: -2.7177072}
+      - {x: 2.7955394, y: -2.6981263}
+      - {x: 4.2513103, y: 2.2208865}
+--- !u!114 &2006749455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006749452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 03000000
+  objectName: Dishes
+  description: Dishes
+  option1Text: Positive
+  option1responses:
+  - A positive response
+  option2Text: Negative
+  option2responses:
+  - A negative response
+  option3Text: 
+  option3responses: []
+  reactions: 0100000002000000
+  losaResponseTexts:
+    LowLOSA: 
+    MedLOSA: 
+    HighLOSA: 
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
   LOSAUpdateResponse: 0
 --- !u!1 &2099142485
 GameObject:
@@ -2103,18 +2025,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 
-  objectName: Tap
+  objectType: 03000000
+  objectName: Water Tap
   description: It once used to have a shinier glance.
-  numberOfResponses: 0
-  option1Text: 
+  option1Text: Drink Water
   option1responses:
-  - Drink Water
   - Fresh. Apparently nothing special, yet so significant. Importance has the habit
     to hide in the most simplest things.
-  option2Text: 
+  option2Text: Water The Plants
   option2responses:
-  - Water The Plants
   - Well, I am not the only one who is depending on water. And you are depending
     on me as much as I am depending on you, little friend.
   option3Text: 
@@ -2124,10 +2043,10 @@ MonoBehaviour:
     LowLOSA: 
     MedLOSA: 
     HighLOSA: 
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!60 &2099142488
 PolygonCollider2D:
@@ -2160,111 +2079,6 @@ PolygonCollider2D:
       - {x: -0.5711168, y: -1.3924097}
       - {x: 0.071066566, y: -2.425848}
       - {x: 1.7678069, y: -0.34104946}
---- !u!1 &2111159984
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2111159987}
-  - component: {fileID: 2111159988}
-  - component: {fileID: 2111159985}
-  m_Layer: 0
-  m_Name: K_Plant
-  m_TagString: Object
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &2111159985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111159984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectType: 
-  objectName: Plant
-  description: Why did you place me inside a house, seperated from the sun, wind,
-    air and fresh ground? I am a free spirit trapped in a cage, given the minimum
-    just to survive.' Hm? Did... Did this plant just say something to me?
-  numberOfResponses: 0
-  option1Text: 
-  option1responses:
-  - Check the plant's ground
-  - Well, I've heard of people talking to plants, but plants talking to people, that
-    is new to me. However it seems that you are humid enough, still you seem to feel
-    so miserable? I thought I'd do you a favor, I am sorry.
-  option2Text: 
-  option2responses:
-  - Check Own Physical Condition
-  - Well, I've heard of people talking to plants, but plants talking to people, that
-    is new to me. Neither my forehead is too warm nor am I feeling dizzy. So I guess
-    my mind was playing tricks on me. Let's leave it at that.
-  option3Text: 
-  option3responses:
-  - Answer
-  - 'Well, I''ve heard of people talking to plants, but plants talking to people,
-    that is new to me. But I understand you. Your roots should know what it feels
-    like to spread without barriers, I can relate. People should go outside instead
-    of keeping you trapped inside houses wasting their time. '
-  reactions: 010000000000000001000000
-  losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
-  numberOfLOSAResponses: 0
-  optionTexts: []
-  interactedWith: 0
-  destroyOnNegativeResponse: 0
-  LOSAUpdateResponse: 0
---- !u!4 &2111159987
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111159984}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.23, y: 1.52, z: 13.686523}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 814084384}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &2111159988
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111159984}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.059931487, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.8002283, y: 0.8579402}
-  m_EdgeRadius: 0
 --- !u!1 &2135029006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,7 +2109,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 814084384}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2135029008
 MonoBehaviour:
@@ -2309,10 +2123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 
+  objectType: 00000000
   objectName: Window
   description: 
-  numberOfResponses: 0
   option1Text: 
   option1responses: []
   option2Text: 
@@ -2321,13 +2134,20 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: Standing in front of the window and looking outside is dangerous! My
+      overly communicative neighbours might spot me and assume I want to come out
+      and chat.
+    MedLOSA: Funny that everybody envies the birds when they seem to cut the air
+      with their precise wings. But flying for them is as normal as walking is for
+      us. Comparing is dangerous.
+    HighLOSA: These clouds look exactly like a pack of dogs! One of them seems to
+      try to catch his own tail. As a child I was laying in the fields for hours
+      trying to decrypt the hidden stories the clouds wanted to tell. It feels comforable
+      to know that I am still able to understand this language.
+  numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
   interactedWith: 0
-  destroyOnNegativeResponse: 0
   LOSAUpdateResponse: 0
 --- !u!60 &2135029010
 PolygonCollider2D:
