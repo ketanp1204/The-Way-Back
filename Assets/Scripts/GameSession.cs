@@ -38,8 +38,8 @@ public class GameSession : MonoBehaviour
     public bool timeOfDayNight = false;
     [HideInInspector]
     public bool closeUpObjects = false;
-    private bool playerIsAwake = false;
-    private float intervalTime = 30f;
+    // private bool playerIsAwake = false;
+    private float intervalTime = 300f;
     private SpriteRenderer sR;
     
     void Awake()
@@ -55,7 +55,7 @@ public class GameSession : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        playerIsAwake = true;
+        // playerIsAwake = true;
     }
 
     void OnEnable()
@@ -65,47 +65,13 @@ public class GameSession : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
         SetReferences();
         descriptionBox.SetActive(false);
         pauseMenuUI.SetActive(false);
         ShowInstructionsAndLOSA();
-        // StartCoroutine(TimeCycle());
-        StartCoroutine(FadeOutImage(morningImage, 300, false));
-        StartCoroutine(FadeInImage(eveningImage, 300));
+        StartCoroutine(FadeOutImage(morningImage, intervalTime, false));
+        StartCoroutine(FadeInImage(eveningImage, intervalTime));
     }
-
-    private IEnumerator TimeCycle()
-    {
-        while(playerIsAwake)
-        {
-            yield return new WaitForSeconds(intervalTime);
-            IncrementGameTime();
-        }
-    }
-
-    private void IncrementGameTime()
-    {
-        Debug.Log("Game time increment");
-        // Morning image fade out
-        sR = morningImage.GetComponent<SpriteRenderer>();
-        if(sR.color.a != 0f)
-        {
-            Color color = sR.color;
-            color.a -= 0.1f;
-            sR.color = color;
-        }
-
-        // Evening Image fade in
-        sR = eveningImage.GetComponent<SpriteRenderer>();
-        if(sR.color.a != 100f)
-        {
-            Color color = sR.color;
-            color.a += 0.1f;
-            sR.color = color;
-        }
-    }
-
 
     void SetReferences()
     {

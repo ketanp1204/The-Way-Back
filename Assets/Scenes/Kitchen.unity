@@ -2495,6 +2495,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 257
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0083ad5c83fe84399b285767095ea8, type: 3}
 --- !u!1001 &1813312694848042210

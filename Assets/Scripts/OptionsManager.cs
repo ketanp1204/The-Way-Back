@@ -26,7 +26,8 @@ public class OptionsManager : MonoBehaviour
     public GameObject descriptionBox;
     private CanvasGroup optionsBoxCG;
     private CanvasGroup descriptionBoxCG;
-    private GameObject gameSession;
+    private TextMeshProUGUI descriptionText;
+    private GameSession gameSession;
     public ObjectProperties objectProperties;
 
     // Start is called before the first frame update
@@ -35,8 +36,9 @@ public class OptionsManager : MonoBehaviour
         optionsBoxCG = optionsBox.GetComponent<CanvasGroup>();
         optionsBoxCG.alpha = 0f;
         descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
+        descriptionText = descriptionBox.GetComponentInChildren<TextMeshProUGUI>();
         optionsBox.SetActive(false);
-        gameSession = GameObject.Find("GameSession");
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     void Update()
@@ -50,8 +52,28 @@ public class OptionsManager : MonoBehaviour
     public void ShowTextOnDescriptionBox(string text)
     {
         descriptionBox.SetActive(true);
-        descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        descriptionText.text = text;
+        descriptionText.ForceMeshUpdate();
+        StartCoroutine(TypeText());
         GameSession.FadeIn(descriptionBoxCG, 0f);
+    }
+
+    IEnumerator TypeText()
+    {
+        int pageCount = descriptionText.textInfo.pageCount;
+        string text = descriptionText.text;
+        for (int i = 0; i < pageCount; i++)
+        {
+            int firstCharIndex = descriptionText.textInfo.pageInfo[i].firstCharacterIndex;
+            int lastCharIndex = descriptionText.textInfo.pageInfo[i].lastCharacterIndex;
+            string pageText = text.Substring(firstCharIndex, lastCharIndex - firstCharIndex + 1);
+            descriptionText.text = "";
+            foreach (char letter in pageText.ToCharArray())
+            {
+                descriptionText.text += letter;
+                yield return new WaitForSeconds(0.035f);
+            }
+        }
     }
 
     public void SetSelectedObjectReference(GameObject gameObject)
@@ -68,7 +90,6 @@ public class OptionsManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         GameSession.FadeOut(optionsBoxCG, 0f);
-        // optionsBox.SetActive(false);
         StartCoroutine(GameSession.DisableGameObjectAfterDelay(optionsBox));
     }
 
@@ -81,7 +102,7 @@ public class OptionsManager : MonoBehaviour
     public void HandleLOSAResponseOnly()
     {
         descriptionBox.SetActive(true);
-        float LOSA = gameSession.GetComponent<GameSession>().GetLOSA();
+        float LOSA = gameSession.GetLOSA();
         string responseText = "";
         if (LOSA < 30)
         {
@@ -95,20 +116,18 @@ public class OptionsManager : MonoBehaviour
         {
             responseText = objectProperties.losaResponseTexts.HighLOSA;
         }
-        descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responseText;
-        GameSession.FadeIn(descriptionBoxCG, 0f);
+        ShowTextOnDescriptionBox(responseText);
     }
 
     public void HandleLOSAMediumThenOptions()
     {
         descriptionBox.SetActive(true);
-        float LOSA = gameSession.GetComponent<GameSession>().GetLOSA();
+        float LOSA = gameSession.GetLOSA();
         string responseText = "";
         if (LOSA < 30)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
-            descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responseText;
-            GameSession.FadeIn(descriptionBoxCG, 0f);
+            ShowTextOnDescriptionBox(responseText);
         }
         else
         {
@@ -119,19 +138,17 @@ public class OptionsManager : MonoBehaviour
     public void HandleLOSAHighThenOptions()
     {
         descriptionBox.SetActive(true);
-        float LOSA = gameSession.GetComponent<GameSession>().GetLOSA();
+        float LOSA = gameSession.GetLOSA();
         string responseText = "";
         if (LOSA < 30)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
-            descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responseText;
-            GameSession.FadeIn(descriptionBoxCG, 0f);
+            ShowTextOnDescriptionBox(responseText);
         }
         else if(LOSA >= 30 && LOSA < 70)
         {
             responseText = objectProperties.losaResponseTexts.MedLOSA;
-            descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = responseText;
-            GameSession.FadeIn(descriptionBoxCG, 0f);
+            ShowTextOnDescriptionBox(responseText);
         }
         else
         {
@@ -143,7 +160,7 @@ public class OptionsManager : MonoBehaviour
     {
         selectedObject.GetComponent<ObjectProperties>().LOSAUpdateResponse = reaction;
         // Check whether response is positive or negative
-        gameSession.GetComponent<GameSession>().ChangeLOSA(reaction);
+        gameSession.ChangeLOSA(reaction);
 
         // Show a response text if any present
         if (objectProperties.responses[buttonIndex] != null)
@@ -182,8 +199,7 @@ public class OptionsManager : MonoBehaviour
         {
             descriptionBox.SetActive(true);
         }
-        descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.responses[buttonIndex][0];
-        GameSession.FadeIn(descriptionBoxCG, 0f);
+        ShowTextOnDescriptionBox(objectProperties.responses[buttonIndex][0]);
     }
 
     public void HandleOptionLOSAUpdateOnly(bool destroyOnPositive, bool destroyOnNegative)
@@ -191,8 +207,7 @@ public class OptionsManager : MonoBehaviour
         if (objectProperties.description != "")
         {
             descriptionBox.SetActive(true);
-            descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = objectProperties.description;
-            GameSession.FadeIn(descriptionBoxCG, 0f);
+            ShowTextOnDescriptionBox(objectProperties.description);
         }
         numberOfButtons = objectProperties.numberOfResponses;
         if (numberOfButtons != 0)

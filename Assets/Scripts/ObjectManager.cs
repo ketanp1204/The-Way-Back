@@ -90,7 +90,6 @@ public class ObjectManager : MonoBehaviour
            
             if (hit.collider != null)                                                                       // Test whether ray hits any collider
             {
-                
                 if (!descriptionBox.activeSelf)
                 {
                     /*
