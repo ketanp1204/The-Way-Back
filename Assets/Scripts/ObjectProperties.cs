@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ObjectProperties : MonoBehaviour
 {
@@ -13,7 +15,8 @@ public class ObjectProperties : MonoBehaviour
         OptionLOSAUpdateOnly,
         OptionDestroyOnNegative,
         OptionDestroyOnPositive,
-        OptionBehaviorAfterChoice
+        OptionBehaviorAfterChoice,
+        BehaviorOnly
     }
 
     [System.Serializable]
@@ -61,6 +64,18 @@ public class ObjectProperties : MonoBehaviour
     public bool interactedWith = false;
     [HideInInspector]
     public int LOSAUpdateResponse;
+    [HideInInspector]
+    public bool destroyOnPositive = false;
+    [HideInInspector]
+    public bool destroyOnNegative = false;
+    [HideInInspector]
+    public bool hasBehavior = false;
+    [HideInInspector]
+    public bool responseSelected = false;
+    [HideInInspector]
+    public int callIndex;
+    [HideInInspector]
+    public bool showOptions = false;
 
 
     // Start is called before the first frame update
@@ -108,6 +123,20 @@ public class ObjectProperties : MonoBehaviour
         {
             responses.Add(0, option1responses);
         }
+
+        if (objectType.Contains(ObjectType.OptionDestroyOnNegative))
+        {
+            destroyOnNegative = true;
+        }
+        else if(objectType.Contains(ObjectType.OptionDestroyOnPositive))
+        {
+            destroyOnPositive = true;
+        }
+        
+        if(objectType.Contains(ObjectType.OptionBehaviorAfterChoice))
+        {
+            hasBehavior = true;
+        }
     }
 
 
@@ -138,14 +167,21 @@ public class ObjectProperties : MonoBehaviour
         get { return additionalTags.Count; }
     }
 
-
-
-
     // Display object name on hover
 
     void OnMouseEnter()
     {
-        DisplayObjectName.ShowName_static(objectName);
+        if (EventSystem.current.IsPointerOverGameObject())                                              // Prevent player from clicking through UI elements
+            return;
+
+        if (gameObject.tag == "CloseUp")
+        {
+            DisplayObjectName.ShowName_static(objectName + " (Zoom In)");
+        }
+        else
+        {
+            DisplayObjectName.ShowName_static(objectName);
+        }
     }
 
     void OnMouseExit()
@@ -154,18 +190,11 @@ public class ObjectProperties : MonoBehaviour
     }
 
     // Handle option click response
-    public void HandleResponse(bool firstCall)
+    public void HandleResponse(int callIndex)
     {
         optionsManager = FindObjectOfType<OptionsManager>();
         ObjectType temp;
-        if (firstCall)
-        {
-            temp = objectType[0];
-        }
-        else
-        {
-            temp = objectType[1];
-        }
+        temp = objectType[callIndex];
         switch(temp)
         {
             case ObjectType.LOSAResponseOnly:
@@ -181,19 +210,22 @@ public class ObjectProperties : MonoBehaviour
                 break;
 
             case ObjectType.OptionLOSAUpdateOnly:
-                optionsManager.HandleOptionLOSAUpdateOnly(false, false);
+                optionsManager.HandleOptionLOSAUpdateOnly();
                 break;
 
             case ObjectType.OptionDestroyOnPositive:
-                optionsManager.HandleOptionLOSAUpdateOnly(true, false);
+                optionsManager.HandleOptionLOSAUpdateOnly();
                 break;
 
             case ObjectType.OptionDestroyOnNegative:
-                optionsManager.HandleOptionLOSAUpdateOnly(false, true);
+                optionsManager.HandleOptionLOSAUpdateOnly();
                 break;
 
             case ObjectType.OptionBehaviorAfterChoice:
-                optionsManager.HandleOptionBehaviorAfterChoice();
+                optionsManager.HandleOptionLOSAUpdateOnly();
+                break;
+            case ObjectType.BehaviorOnly:
+                optionsManager.HandleBehaviorOnly();
                 break;
 
             default:

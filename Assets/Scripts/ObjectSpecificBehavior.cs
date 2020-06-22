@@ -27,10 +27,29 @@ public class ObjectSpecificBehavior : MonoBehaviour
     /// Behaviors for objects in the kitchen
     /// </summary>
 
+    private void K_ShoppingList_Day_Behavior()
+    {
+        Debug.Log(objectProperties.LOSAUpdateResponse);
+        if(objectProperties.LOSAUpdateResponse == 2)
+        {
+            Destroy(gameObject);
+            GameObject shoppingListNight = GameObject.Find("K_ShoppingList_Night");
+            Destroy(shoppingListNight);
+        }
+    }
+
+    private void K_ShoppingList_Night_Behavior()
+    {
+        if (objectProperties.LOSAUpdateResponse == 2)
+        {
+            Destroy(gameObject);
+            GameObject shoppingListNight = GameObject.Find("K_ShoppingList_Day");
+            Destroy(shoppingListNight);
+        }
+    }
+
     private void K_FruitBasket_Behavior()
     {
-        optionsManager.HandleOptionLOSAUpdateOnly(false, false);
-
         if(objectProperties.LOSAUpdateResponse == 1)    // Option 'Eat The Edible Fruits' selected
         {
             // TODO: Replace the image of the fruit basket with one with lesser fruits
@@ -49,8 +68,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void LR_Television_Behavior()
     {
-        optionsManager.HandleOptionLOSAUpdateOnly(false, false);
-
         // TODO: Turn off animation and sound of the television after interaction
 
 
@@ -58,8 +75,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void LR_Gramophone_Behavior()
     {
-        optionsManager.HandleOptionLOSAUpdateOnly(false, false);
-
         if(objectProperties.LOSAUpdateResponse == 0)    // Option 'Remove The Record' is selected
         {
             // TODO: Replace gramophone image with one without record in it
@@ -69,6 +84,10 @@ public class ObjectSpecificBehavior : MonoBehaviour
         {
             // TODO: Play record playing animation
         }
+    }
 
+    private void LR_Plants_Behavior()
+    {
+        // TODO: Store a bool whether 'Check the plant's ground' or 'Answer' is selected for future reference for the object 'Shovel' in the Garden
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - PrevLevel
   - NextLevel
   - CloseUp
+  - MultipleObjectChild
   layers:
   - Default
   - TransparentFX

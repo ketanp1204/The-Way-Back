@@ -71,6 +71,11 @@ public class GameSession : MonoBehaviour
         ShowInstructionsAndLOSA();
         StartCoroutine(FadeOutImage(morningImage, intervalTime, false));
         StartCoroutine(FadeInImage(eveningImage, intervalTime));
+        if(k_shoppingList_day != null)
+        {
+            StartCoroutine(FadeOutImage(k_shoppingList_day, intervalTime, false));
+            StartCoroutine(FadeInImage(k_shoppingList_night, intervalTime));
+        }
     }
 
     void SetReferences()
@@ -81,7 +86,7 @@ public class GameSession : MonoBehaviour
             morningImage = uiReferences.morningImage;
             noonImage = uiReferences.noonImage;
             eveningImage = uiReferences.eveningImage;
-            LOSA = uiReferences.LOSAText;
+            // LOSA = uiReferences.LOSAText;
             descriptionBox = uiReferences.descriptionBox;
             if (descriptionBox != null)
             {
@@ -90,13 +95,14 @@ public class GameSession : MonoBehaviour
             pauseMenuUI = uiReferences.pauseMenuUI;
             objectManager = FindObjectOfType<ObjectManager>();
         }
-        
+        LOSA = GameObject.Find("LOSA");
         
         k_shoppingList_day = GameObject.Find("K_ShoppingList_Day");
         k_shoppingList_night = GameObject.Find("K_ShoppingList_Night");
         k_sink_day = GameObject.Find("CU_Sink_Day");
         k_sink_night = GameObject.Find("CU_Sink_Night");
 
+        /*
         if(!timeOfDayNight)
         {
             if(k_shoppingList_day != null)
@@ -114,6 +120,7 @@ public class GameSession : MonoBehaviour
                 k_sink_day.GetComponent<Transform>().Translate(Vector3.forward);
             }
         }
+        */
     }
 
     void ShowInstructionsAndLOSA()
@@ -351,11 +358,11 @@ public class GameSession : MonoBehaviour
         if (dSR)
         {
             disableSpriteRenderer(sR);
-            if(g.name == "CU_Sink_Day")
+            if (g.name == "CU_Sink_Day")
             {
                 objectManager.zoomedInObject = k_sink_night;
             }
-            else if(g.name == "CU_Sink_Night")
+            else if (g.name == "CU_Sink_Night")
             {
                 objectManager.zoomedInObject = k_sink_day;
             }

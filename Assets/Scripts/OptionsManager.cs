@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
@@ -15,8 +16,10 @@ public class OptionsManager : MonoBehaviour
     [HideInInspector]
     public int numberOfButtons;
     Button option;
+    Button nextButton;
     UnityAction handleClick;
     Dictionary<int, string[]> responses = new Dictionary<int, string[]>();
+    private int numberOfLetters = 0;
 
     // Cached references
     [HideInInspector]
@@ -29,6 +32,7 @@ public class OptionsManager : MonoBehaviour
     private TextMeshProUGUI descriptionText;
     private GameSession gameSession;
     public ObjectProperties objectProperties;
+    public Button nextButtonPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -54,24 +58,61 @@ public class OptionsManager : MonoBehaviour
         descriptionBox.SetActive(true);
         descriptionText.text = text;
         descriptionText.ForceMeshUpdate();
-        StartCoroutine(TypeText());
+        int pageIndex = 1;
+        StartCoroutine(TypeText(text, pageIndex));
         GameSession.FadeIn(descriptionBoxCG, 0f);
     }
 
-    IEnumerator TypeText()
+    IEnumerator TypeText(string text, int pageIndex)
     {
-        int pageCount = descriptionText.textInfo.pageCount;
-        string text = descriptionText.text;
-        for (int i = 0; i < pageCount; i++)
+        if (nextButton != null)
         {
-            int firstCharIndex = descriptionText.textInfo.pageInfo[i].firstCharacterIndex;
-            int lastCharIndex = descriptionText.textInfo.pageInfo[i].lastCharacterIndex;
-            string pageText = text.Substring(firstCharIndex, lastCharIndex - firstCharIndex + 1);
-            descriptionText.text = "";
-            foreach (char letter in pageText.ToCharArray())
+            Destroy(nextButton.gameObject);
+        }
+
+        descriptionText.text = text;
+        descriptionText.overflowMode = TextOverflowModes.Page;
+        descriptionText.maxVisibleCharacters = 0;
+
+        descriptionText.ForceMeshUpdate();
+
+        if(pageIndex < descriptionText.textInfo.pageCount)
+        {
+            descriptionText.pageToDisplay = pageIndex;
+
+            int firstCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].firstCharacterIndex;
+            int lastCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].lastCharacterIndex;
+
+            for(int j = firstCharIndex; j <= lastCharIndex; j++)
             {
-                descriptionText.text += letter;
+                descriptionText.maxVisibleCharacters = j + 1;
                 yield return new WaitForSeconds(0.035f);
+            }
+
+            pageIndex += 1;
+
+            nextButton = Instantiate(nextButtonPrefab, GameObject.Find("DynamicUI").transform);
+            nextButton.gameObject.SetActive(true);
+            nextButton.onClick.AddListener(() => StartCoroutine(TypeText(text, pageIndex)));
+        }
+        else if(pageIndex == descriptionText.textInfo.pageCount)
+        {
+            descriptionText.pageToDisplay = pageIndex;
+
+            int firstCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].firstCharacterIndex;
+            int lastCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].lastCharacterIndex;
+
+            for (int j = firstCharIndex; j <= lastCharIndex; j++)
+            {
+                descriptionText.maxVisibleCharacters = j + 1;
+                yield return new WaitForSeconds(0.035f);
+            }
+
+            if (objectProperties.numberOfResponses > 0
+                && !objectProperties.responseSelected
+                && objectProperties.showOptions)
+            {
+                ShowOptions();
             }
         }
     }
@@ -131,7 +172,8 @@ public class OptionsManager : MonoBehaviour
         }
         else
         {
-            objectProperties.HandleResponse(false);
+            objectProperties.showOptions = true;
+            objectProperties.HandleResponse(1);
         }
     }
 
@@ -152,13 +194,15 @@ public class OptionsManager : MonoBehaviour
         }
         else
         {
-            objectProperties.HandleResponse(false);
+            objectProperties.showOptions = true;
+            objectProperties.HandleResponse(1);
         }
     }
 
-    private void HandleOptionResponse(int buttonIndex, int reaction, bool destroyOnPositive, bool destroyOnNegative)
+    private void HandleOptionResponse(int buttonIndex, int reaction, bool destroyOnPositive, bool destroyOnNegative, bool behaviorAfterChoice)
     {
-        selectedObject.GetComponent<ObjectProperties>().LOSAUpdateResponse = reaction;
+        objectProperties.LOSAUpdateResponse = reaction;
+        objectProperties.responseSelected = true;
         // Check whether response is positive or negative
         gameSession.ChangeLOSA(reaction);
 
@@ -189,6 +233,12 @@ public class OptionsManager : MonoBehaviour
             Destroy(selectedObject);
         }
 
+        // Run specific object behavior if present
+        if (behaviorAfterChoice)
+        {
+            selectedObject.GetComponent<ObjectSpecificBehavior>().HandleBehavior(selectedObject);
+        }
+
         // Clear the options and descriptions
         CloseAndClearOptionsBox();
     }
@@ -202,13 +252,18 @@ public class OptionsManager : MonoBehaviour
         ShowTextOnDescriptionBox(objectProperties.responses[buttonIndex][0]);
     }
 
-    public void HandleOptionLOSAUpdateOnly(bool destroyOnPositive, bool destroyOnNegative)
+    public void HandleOptionLOSAUpdateOnly()
     {
+        objectProperties.showOptions = true;
         if (objectProperties.description != "")
         {
             descriptionBox.SetActive(true);
             ShowTextOnDescriptionBox(objectProperties.description);
         }
+    }
+
+    private void ShowOptions()
+    {
         numberOfButtons = objectProperties.numberOfResponses;
         if (numberOfButtons != 0)
         {
@@ -226,15 +281,19 @@ public class OptionsManager : MonoBehaviour
                 // Handle click behaviour of the button
                 int buttonIndex = i;
                 int reaction = objectProperties.reactions[i];
-                handleClick = () => HandleOptionResponse(buttonIndex, reaction, destroyOnPositive, destroyOnNegative);
+                handleClick = () => HandleOptionResponse(buttonIndex, 
+                                                         reaction, 
+                                                         objectProperties.destroyOnPositive, 
+                                                         objectProperties.destroyOnNegative, 
+                                                         objectProperties.hasBehavior);
                 option.onClick.AddListener(handleClick);
             }
 
-            GameSession.FadeIn(optionsBoxCG, 1.5f);
+            GameSession.FadeIn(optionsBoxCG, 0.5f);
         }
     }
 
-    public void HandleOptionBehaviorAfterChoice()
+    public void HandleBehaviorOnly()
     {
         selectedObject.GetComponent<ObjectSpecificBehavior>().HandleBehavior(selectedObject);
     }

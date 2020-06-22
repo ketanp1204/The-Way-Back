@@ -16,6 +16,7 @@ public class ObjectManager : MonoBehaviour
     [HideInInspector]
     public Vector2 mousePositionWorld2D;
     private RaycastHit2D hit;
+    Button backButton;
 
     // Cached References
     private Camera mainCamera;
@@ -29,7 +30,7 @@ public class ObjectManager : MonoBehaviour
     private GameObject optionsBox;
     public GameObject zoomedInObject;
     private GameObject staticUI;
-    private GameObject backButton;
+    public Button backButtonPrefab;
 
 
     void Awake()
@@ -71,8 +72,6 @@ public class ObjectManager : MonoBehaviour
         interactableObjects = GameObject.Find("Interactable Objects");
         closeUpObjects = GameObject.Find("CloseUpObjects");
         staticUI = GameObject.Find("StaticUI");
-        backButton = staticUI.transform.Find("BackButton").gameObject;
-        backButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -110,10 +109,17 @@ public class ObjectManager : MonoBehaviour
                     {
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
-                        objectProperties.HandleResponse(true);
+                        objectProperties.HandleResponse(0);
                     }
                     /* */
 
+                    if(hit.collider.gameObject.tag == "MultipleObjectChild")
+                    {
+                        GameObject selectedObject = hit.collider.gameObject.transform.parent.gameObject;
+                        objectProperties = selectedObject.GetComponent<ObjectProperties>();
+                        optionsManager.SetSelectedObjectReference(selectedObject);
+                        objectProperties.HandleResponse(0);
+                    }
 
                     if (hit.collider.gameObject.tag == "CloseUp")
                     {
@@ -155,7 +161,7 @@ public class ObjectManager : MonoBehaviour
         optionsManager.CloseAndClearOptionsBox();
     }
 
-    public void ExitCloseUpView()
+    public void ExitCloseUpView(GameSession gameSession)
     {
         gameSession.closeUpObjects = false;
         StartCoroutine(LevelChanger.CrossFadeStart(true));          // Fade In and Out Animation
@@ -166,8 +172,11 @@ public class ObjectManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         interactableObjects.SetActive(false);
-        backButton.SetActive(true);
-        if(!gameSession.timeOfDayNight)
+        // backButton.SetActive(true);
+        backButton = Instantiate(backButtonPrefab, GameObject.Find("StaticUI").transform);
+        backButton.gameObject.SetActive(true);
+        backButton.onClick.AddListener(() => HandleBackButton(gameSession));
+        if (!gameSession.timeOfDayNight)
         {
             string objectName = "CU_" + hit.collider.gameObject.GetComponent<ObjectProperties>().objectName + "_Day";
             zoomedInObject = closeUpObjects.transform.Find(objectName).gameObject;
@@ -184,12 +193,17 @@ public class ObjectManager : MonoBehaviour
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(true);
     }
 
+    private void HandleBackButton(GameSession gameSession)
+    {
+        ExitCloseUpView(gameSession);
+    }
+
     public IEnumerator ExitCloseUp()
     {
         yield return new WaitForSeconds(1f);
 
         interactableObjects.SetActive(true);
-        backButton.SetActive(false);
+        Destroy(backButton.gameObject);
         if (zoomedInObject.GetComponent<SpriteRenderer>().enabled == true)
         {
             zoomedInObject.GetComponent<SpriteRenderer>().enabled = false;
