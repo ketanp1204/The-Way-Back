@@ -11,9 +11,9 @@ public class GameSession : MonoBehaviour
 
     // Configuration parameters
     private float levelOfSelfAwareness = 0;
-    private string instructions = "Click on objects in the scene to get options to choose from which modifies your LOSA score. " +
+    private string instructions = "Click on objects in the scene to get options to choose from, which modifies your LOSA score. " +
                                   "Certain objects will have only reaction texts when you click on them based on your current LOSA Score. " +
-                                  "You can move between levels and see the effect of your choices affecting your previously interacted objects.";
+                                  "You can move between levels and see the effect of your choices on your previously interacted objects.";
 
     // Cached References
     private UIReferences uiReferences;

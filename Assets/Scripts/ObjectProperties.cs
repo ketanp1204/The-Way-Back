@@ -168,22 +168,25 @@ public class ObjectProperties : MonoBehaviour
     }
 
     // Display object name on hover
-
+    
     void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())                                              // Prevent player from clicking through UI elements
             return;
-
-        if (gameObject.tag == "CloseUp")
+        
+        if(!GameSession.GameIsPaused)
         {
-            DisplayObjectName.ShowName_static(objectName + " (Zoom In)");
-        }
-        else
-        {
-            DisplayObjectName.ShowName_static(objectName);
+            if (gameObject.tag == "CloseUp")
+            {
+                DisplayObjectName.ShowName_static(objectName + " (Zoom In)");
+            }
+            else
+            {
+                DisplayObjectName.ShowName_static(objectName);
+            }
         }
     }
-
+    
     void OnMouseExit()
     {
         DisplayObjectName.HideName_static();

@@ -8,6 +8,8 @@ public class LevelChanger : MonoBehaviour
     public float transitionTime = 1f;
     public Animator transition;
     public static LevelChanger instance;
+    [HideInInspector]
+    public bool fadeAnimationRunning = false;
 
     void Start()
     {
@@ -49,12 +51,14 @@ public class LevelChanger : MonoBehaviour
 
     public static IEnumerator CrossFadeStart(bool endAfter)
     {
+        instance.fadeAnimationRunning = true;
         // Play fade animation
         instance.transition.SetTrigger("CrossfadeStart");
 
         // Wait for fade animation to end
         yield return new WaitForSeconds(instance.transitionTime);
 
+        instance.fadeAnimationRunning = false;
         if(endAfter)
         {
             instance.transition.SetTrigger("CrossfadeEnd");

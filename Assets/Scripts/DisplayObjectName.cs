@@ -13,11 +13,13 @@ public class DisplayObjectName : MonoBehaviour
     private TextMeshProUGUI objectNameText;
     private RectTransform backgroundRectTransform;
     private CanvasGroup canvasGroup;
+    private LevelChanger levelChanger;
 
     private void OnEnable()
     {
         instance = this;
         uiReferences = FindObjectOfType<UIReferences>();
+        levelChanger = FindObjectOfType<LevelChanger>();
         backgroundRectTransform = uiReferences.objectNameBackground.GetComponent<RectTransform>();
         objectNameText = uiReferences.objectNameText.GetComponent<TextMeshProUGUI>();
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
@@ -26,6 +28,10 @@ public class DisplayObjectName : MonoBehaviour
 
     private void Update()
     {
+        if (levelChanger.fadeAnimationRunning)
+        {
+            HideName();
+        }
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), Input.mousePosition, null, out localPoint);
         transform.localPosition = localPoint;
@@ -42,7 +48,10 @@ public class DisplayObjectName : MonoBehaviour
 
     private void HideName()
     {
-        GameSession.FadeOut(canvasGroup, 0f);
+        if(canvasGroup.alpha != 0)
+        {
+            GameSession.FadeOut(canvasGroup, 0f);
+        }
     }
 
     public static void ShowName_static(string name)

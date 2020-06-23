@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
@@ -31,6 +32,7 @@ public class OptionsManager : MonoBehaviour
     public Button nextButtonPrefab;
     [HideInInspector]
     public bool IsWriting = false;
+    private GameObject dynamicUI;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -44,6 +46,7 @@ public class OptionsManager : MonoBehaviour
         descriptionText = descriptionBox.GetComponentInChildren<TextMeshProUGUI>();
         optionsBox.SetActive(false);
         gameSession = FindObjectOfType<GameSession>();
+        dynamicUI = GameObject.Find("DynamicUI");
     }
 
     void Update()
@@ -87,8 +90,33 @@ public class OptionsManager : MonoBehaviour
 
             for(int j = firstCharIndex; j <= lastCharIndex; j++)
             {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    bool flag = false;
+                    PointerEventData pointer = new PointerEventData(EventSystem.current);
+                    pointer.position = Input.mousePosition;
+
+                    List<RaycastResult> raycastResults = new List<RaycastResult>();
+                    dynamicUI.GetComponent<GraphicRaycaster>().Raycast(pointer, raycastResults);
+                    // EventSystem.current.RaycastAll(pointer, raycastResults);
+                    
+                    if (!(raycastResults.Count == 0))
+                    {
+                        if(raycastResults[0].gameObject.name == descriptionBox.name || raycastResults[0].gameObject.name == descriptionText.name)
+                        {
+                            flag = true;
+                        }
+                        if (flag == true)
+                        {
+                            descriptionText.maxVisibleCharacters = lastCharIndex;
+                            break;
+                        }
+                    }
+                }
+
                 descriptionText.maxVisibleCharacters = j + 1;
-                yield return new WaitForSeconds(0.035f);
+                yield return new WaitForSeconds(0.015f);
+                
             }
 
             pageIndex += 1;
@@ -106,8 +134,32 @@ public class OptionsManager : MonoBehaviour
 
             for (int j = firstCharIndex; j <= lastCharIndex; j++)
             {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    bool flag = false;
+                    PointerEventData pointer = new PointerEventData(EventSystem.current);
+                    pointer.position = Input.mousePosition;
+
+                    List<RaycastResult> raycastResults = new List<RaycastResult>();
+                    dynamicUI.GetComponent<GraphicRaycaster>().Raycast(pointer, raycastResults);
+                    //EventSystem.current.RaycastAll(pointer, raycastResults);
+                    
+                    if (!(raycastResults.Count == 0))
+                    {
+                        if (raycastResults[0].gameObject.name == descriptionBox.name || raycastResults[0].gameObject.name == descriptionText.name)
+                        {
+                            flag = true;
+                        }
+                        if (flag == true)
+                        {
+                            descriptionText.maxVisibleCharacters = lastCharIndex;
+                            break;
+                        }
+                    }
+                }
+
                 descriptionText.maxVisibleCharacters = j + 1;
-                yield return new WaitForSeconds(0.035f);
+                yield return new WaitForSeconds(0.015f);
             }
 
             if(objectProperties != null)
