@@ -11,9 +11,9 @@ public class GameSession : MonoBehaviour
 
     // Configuration parameters
     private float levelOfSelfAwareness = 0;
-    private string instructions = "Click on objects to get options to choose from which modifies your LOSA score. " +
-                                  "The LOSA score shown is just for visualization and will not be included in the final game. " +
-                                  "Certain objects like the window will have only reactions when you click on them based on your current LOSA Score";
+    private string instructions = "Click on objects in the scene to get options to choose from which modifies your LOSA score. " +
+                                  "Certain objects will have only reaction texts when you click on them based on your current LOSA Score. " +
+                                  "You can move between levels and see the effect of your choices affecting your previously interacted objects.";
 
     // Cached References
     private UIReferences uiReferences;
@@ -24,21 +24,24 @@ public class GameSession : MonoBehaviour
     private GameObject k_shoppingList_night;
     private GameObject k_sink_day;
     private GameObject k_sink_night;
-    private GameObject LOSA;
+    public GameObject LOSA;
     private GameObject descriptionBox;
     private GameObject pauseMenuUI;
     private CanvasGroup descriptionBoxCG;
     private ObjectManager objectManager;
+    private OptionsManager optionsManager;
+    private GameObject nextTextButton;
 
     // State variables
     [HideInInspector]
     public static bool GameIsPaused = false;
     public bool instructionsEnabled;
     [HideInInspector]
+    public bool instructionsSeen = false;
+    [HideInInspector]
     public bool timeOfDayNight = false;
     [HideInInspector]
     public bool closeUpObjects = false;
-    // private bool playerIsAwake = false;
     private float intervalTime = 300f;
     private SpriteRenderer sR;
     
@@ -55,7 +58,6 @@ public class GameSession : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        // playerIsAwake = true;
     }
 
     void OnEnable()
@@ -86,41 +88,22 @@ public class GameSession : MonoBehaviour
             morningImage = uiReferences.morningImage;
             noonImage = uiReferences.noonImage;
             eveningImage = uiReferences.eveningImage;
-            // LOSA = uiReferences.LOSAText;
             descriptionBox = uiReferences.descriptionBox;
             if (descriptionBox != null)
             {
                 descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
             }
             pauseMenuUI = uiReferences.pauseMenuUI;
-            objectManager = FindObjectOfType<ObjectManager>();
+            
         }
         LOSA = GameObject.Find("LOSA");
+        objectManager = FindObjectOfType<ObjectManager>();
+        optionsManager = FindObjectOfType<OptionsManager>();
         
         k_shoppingList_day = GameObject.Find("K_ShoppingList_Day");
         k_shoppingList_night = GameObject.Find("K_ShoppingList_Night");
         k_sink_day = GameObject.Find("CU_Sink_Day");
         k_sink_night = GameObject.Find("CU_Sink_Night");
-
-        /*
-        if(!timeOfDayNight)
-        {
-            if(k_shoppingList_day != null)
-            {
-                k_shoppingList_night.GetComponent<Transform>().Translate(Vector3.forward);
-                k_sink_night.GetComponent<Transform>().Translate(Vector3.forward);
-            }
-            
-        }
-        else
-        {
-            if(k_shoppingList_day != null)
-            {
-                k_shoppingList_day.GetComponent<Transform>().Translate(Vector3.forward);
-                k_sink_day.GetComponent<Transform>().Translate(Vector3.forward);
-            }
-        }
-        */
     }
 
     void ShowInstructionsAndLOSA()
@@ -131,25 +114,18 @@ public class GameSession : MonoBehaviour
         }
         if(descriptionBox != null)
         {
-            if (instructionsEnabled)
+            if (instructionsEnabled && !instructionsSeen)
             {
-                StartCoroutine(showInstructions());
+                instructionsSeen = true;
+                optionsManager.ShowTextOnDescriptionBox(instructions);
             }
         }
-    }
-
-    private IEnumerator showInstructions()
-    {
-        yield return new WaitForSeconds(1.0f);
-        descriptionBox.SetActive(true);
-        descriptionBox.GetComponentInChildren<TextMeshProUGUI>().text = instructions;
-        FadeIn(descriptionBoxCG, 0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (descriptionBox != null && descriptionBox.activeSelf)
+        if (descriptionBox != null && descriptionBox.activeSelf && !optionsManager.IsWriting)
         {
             if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
             {
@@ -179,6 +155,10 @@ public class GameSession : MonoBehaviour
 
     public void ChangeLOSA(int LOSAUpdate)
     {
+        if(LOSA == null)
+        {
+            LOSA = GameObject.Find("LOSA");
+        }
         if(LOSAUpdate == 1)
         {
             levelOfSelfAwareness += 10f;

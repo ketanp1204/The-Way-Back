@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
 {
-
     // Configuration parameters
     [HideInInspector]
     public int numberOfButtons;
@@ -19,26 +14,32 @@ public class OptionsManager : MonoBehaviour
     Button nextButton;
     UnityAction handleClick;
     Dictionary<int, string[]> responses = new Dictionary<int, string[]>();
-    private int numberOfLetters = 0;
 
     // Cached references
     [HideInInspector]
     public GameObject selectedObject;
+    private UIReferences uiReferences;
     public Button optionPrefab;
-    public GameObject optionsBox;
-    public GameObject descriptionBox;
+    private GameObject optionsBox;
+    private GameObject descriptionBox;
     private CanvasGroup optionsBoxCG;
     private CanvasGroup descriptionBoxCG;
     private TextMeshProUGUI descriptionText;
     private GameSession gameSession;
+    [HideInInspector]
     public ObjectProperties objectProperties;
     public Button nextButtonPrefab;
+    [HideInInspector]
+    public bool IsWriting = false;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        uiReferences = FindObjectOfType<UIReferences>();
+        optionsBox = uiReferences.optionsBox;
         optionsBoxCG = optionsBox.GetComponent<CanvasGroup>();
         optionsBoxCG.alpha = 0f;
+        descriptionBox = uiReferences.descriptionBox;
         descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
         descriptionText = descriptionBox.GetComponentInChildren<TextMeshProUGUI>();
         optionsBox.SetActive(false);
@@ -65,6 +66,7 @@ public class OptionsManager : MonoBehaviour
 
     IEnumerator TypeText(string text, int pageIndex)
     {
+        IsWriting = true;
         if (nextButton != null)
         {
             Destroy(nextButton.gameObject);
@@ -108,12 +110,17 @@ public class OptionsManager : MonoBehaviour
                 yield return new WaitForSeconds(0.035f);
             }
 
-            if (objectProperties.numberOfResponses > 0
+            if(objectProperties != null)
+            {
+                if (objectProperties.numberOfResponses > 0
                 && !objectProperties.responseSelected
                 && objectProperties.showOptions)
-            {
-                ShowOptions();
+                {
+                    ShowOptions();
+                }
             }
+
+            IsWriting = false;
         }
     }
 

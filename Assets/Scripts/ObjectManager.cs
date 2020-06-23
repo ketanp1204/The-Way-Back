@@ -140,12 +140,14 @@ public class ObjectManager : MonoBehaviour
                 }
                 else
                 {
-                    CloseTextBoxes();
+                    if(!optionsManager.IsWriting)
+                        CloseTextBoxes();
                 }
             }
             else
             {
-                CloseTextBoxes();
+                if(!optionsManager.IsWriting)
+                    CloseTextBoxes();
             }
         }
     }

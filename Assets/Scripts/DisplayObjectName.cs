@@ -9,15 +9,17 @@ public class DisplayObjectName : MonoBehaviour
 
     // Cached References
     private static DisplayObjectName instance;
+    private UIReferences uiReferences;
     private TextMeshProUGUI objectNameText;
     private RectTransform backgroundRectTransform;
     private CanvasGroup canvasGroup;
 
-    private void Awake()
+    private void OnEnable()
     {
         instance = this;
-        backgroundRectTransform = transform.Find("Background").GetComponent<RectTransform>();
-        objectNameText = transform.Find("ObjectName").GetComponent<TextMeshProUGUI>();
+        uiReferences = FindObjectOfType<UIReferences>();
+        backgroundRectTransform = uiReferences.objectNameBackground.GetComponent<RectTransform>();
+        objectNameText = uiReferences.objectNameText.GetComponent<TextMeshProUGUI>();
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f;
     }
