@@ -90,7 +90,7 @@ public class OptionsManager : MonoBehaviour
 
             for(int j = firstCharIndex; j <= lastCharIndex; j++)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (j > 5 && Input.GetMouseButtonDown(0))
                 {
                     bool flag = false;
                     PointerEventData pointer = new PointerEventData(EventSystem.current);
@@ -134,7 +134,7 @@ public class OptionsManager : MonoBehaviour
 
             for (int j = firstCharIndex; j <= lastCharIndex; j++)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (j > 5 && Input.GetMouseButtonDown(0))
                 {
                     bool flag = false;
                     PointerEventData pointer = new PointerEventData(EventSystem.current);
@@ -201,7 +201,6 @@ public class OptionsManager : MonoBehaviour
 
     public void HandleLOSAResponseOnly()
     {
-        descriptionBox.SetActive(true);
         float LOSA = gameSession.GetLOSA();
         string responseText = "";
         if (LOSA < 30)
@@ -221,7 +220,6 @@ public class OptionsManager : MonoBehaviour
 
     public void HandleLOSAMediumThenOptions()
     {
-        descriptionBox.SetActive(true);
         float LOSA = gameSession.GetLOSA();
         string responseText = "";
         if (LOSA < 30)
@@ -238,7 +236,6 @@ public class OptionsManager : MonoBehaviour
 
     public void HandleLOSAHighThenOptions()
     {
-        descriptionBox.SetActive(true);
         float LOSA = gameSession.GetLOSA();
         string responseText = "";
         if (LOSA < 30)
@@ -266,7 +263,7 @@ public class OptionsManager : MonoBehaviour
         gameSession.ChangeLOSA(reaction);
 
         // Show a response text if any present
-        if (objectProperties.responses[buttonIndex] != null)
+        if (objectProperties.responses[buttonIndex].Length != 0)
         {
             if(objectProperties.responses[buttonIndex].Length > 0)
             {
@@ -316,7 +313,6 @@ public class OptionsManager : MonoBehaviour
         objectProperties.showOptions = true;
         if (objectProperties.description != "")
         {
-            descriptionBox.SetActive(true);
             ShowTextOnDescriptionBox(objectProperties.description);
         }
     }

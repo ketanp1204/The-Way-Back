@@ -1713,7 +1713,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Brochure
-  description: Brochure of an Animal Shelter
+  description: 
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1722,9 +1722,15 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: Brochure of an Animal Shelter
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: It's funny that you can be upset about something specific and how this
+      can change all of a sudden. Now I miss the hairs on everything. On the furniture,
+      the bed and on my clothes and I would love to vacuum again every couple of
+      days.
+    MedLOSA: 'I remember seeing this piece of paper. I remember how it changed not
+      only one, but two lifes. '
+    HighLOSA: I've never believed in so-called love at first sight - until the day.
+      The moment I saw him I realized that we belonged together and even though he
+      was slightly cautious at the beginning, I knew he shared the same view.
   numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
@@ -2124,51 +2130,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_text
-      value: description
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0083ad5c83fe84399b285767095ea8, type: 3}

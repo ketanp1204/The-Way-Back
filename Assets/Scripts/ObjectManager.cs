@@ -79,8 +79,8 @@ public class ObjectManager : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            // if (EventSystem.current.IsPointerOverGameObject())                                              // Prevent player from clicking through UI elements
-                // return;
+            if (EventSystem.current.IsPointerOverGameObject())                                              // Prevent player from clicking through UI elements
+                return;
 
             mousePositionWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);                        // Convert mouse position to 3D World Coordinates
             mousePositionWorld2D = new Vector2(mousePositionWorld.x, mousePositionWorld.y);                 // Convert mouse position to 2D world coordinates

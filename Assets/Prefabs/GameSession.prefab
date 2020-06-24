@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60fbb0e55f237447898eb85b5339a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LOSA: {fileID: 0}
   instructionsEnabled: 1
   instructionsSeen: 0
   timeOfDayNight: 0

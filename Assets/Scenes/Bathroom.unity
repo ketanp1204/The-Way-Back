@@ -279,10 +279,15 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: Ugh... Who are you?', 'To whom do these foreign eyes that are staring
-      at me belong?
-    MedLOSA: Huh? I've never noticed this mole on my cheek
-    HighLOSA: Now I see why they say I have my mother's eyes
+    LowLOSA: 'Against all the odds, the face in the mirror becomes even stranger
+      the longer we look at each other. Who are you actually? '
+    MedLOSA: To be honest, I have always been a fan of my body. However during a
+      very slow process, I lost the connection to it and therefore the connection
+      to myself. I've always seen more than a shell in a body and I would wish to
+      spent more time with it and myself.
+    HighLOSA: 'Somehow I can understand why people always tell me I''d look exactly
+      like my mother. I have her eyes. Her eyes and one of the most warming characteristics:
+      Her laughter lines.  '
   numberOfResponses: 0
   numberOfLOSAResponses: 0
   optionTexts: []
@@ -342,20 +347,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &576619014
-Transform:
+--- !u!224 &576619014
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576619013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.14, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 132383492}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 7.14, y: 0}
+  m_SizeDelta: {x: 9.2, y: 8.12}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &576619015
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -801,6 +811,16 @@ PrefabInstance:
     - target: {fileID: 8270928537860394852, guid: 8dbe908dba0e1f640908a1a33ec8f345,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270928539639532668, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270928539639532668, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+        type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
