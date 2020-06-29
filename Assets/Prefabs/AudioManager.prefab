@@ -51,3 +51,10 @@ MonoBehaviour:
     spatialBlend: 0.8
     loop: 1
     source: {fileID: 0}
+  - name: Gramophone Record
+    audioClip: {fileID: 8300000, guid: 73a4469a1c8b90f4ca86c15f56b6166d, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.869
+    loop: 0
+    source: {fileID: 0}

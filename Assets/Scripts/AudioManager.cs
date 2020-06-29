@@ -5,7 +5,6 @@ using System.Security.Cryptography;
 
 public class AudioManager : MonoBehaviour
 {
-
     public Sound[] sounds;
 
     public static AudioManager instance;
@@ -51,5 +50,11 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public Sound GetSound(string soundName)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
+        return s;
     }
 }

@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class ObjectSpecificBehavior : MonoBehaviour
 {
+
     private OptionsManager optionsManager;
     private ObjectProperties objectProperties;
+    private AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
         optionsManager = FindObjectOfType<OptionsManager>();
         objectProperties = gameObject.GetComponent<ObjectProperties>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     public void HandleBehavior(GameObject gO)
@@ -82,8 +85,37 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
         if(objectProperties.LOSAUpdateResponse == 1)    // Option 'Play The Record' is selected
         {
-            // TODO: Play record playing animation
+            audioManager.Play("Gramophone Record");
+            Sound s = audioManager.GetSound("Gramophone Record");
+
+            Animator recordAnim = transform.Find("Record_Sprites").GetComponent<Animator>();
+            Animator playerAnim = transform.Find("Player_Sprites").GetComponent<Animator>();
+
+            StartCoroutine(LR_G_PlayerAnimation(s, playerAnim));
+            StartCoroutine(LR_G_RecordAnimation(s, recordAnim));
         }
+    }
+
+    IEnumerator LR_G_PlayerAnimation(Sound s, Animator anim)
+    {
+        anim.enabled = true;
+        anim.Play("Base Layer.LR_G_Player");
+        while (s.source.isPlaying)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
+        anim.enabled = false;
+    }
+
+    IEnumerator LR_G_RecordAnimation(Sound s, Animator anim)
+    {
+        anim.enabled = true;
+        anim.Play("Base Layer.LR_G_Record");
+        while(s.source.isPlaying)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
+        anim.enabled = false;
     }
 
     private void LR_Plants_Behavior()
