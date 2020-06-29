@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using System.Security.Cryptography;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -33,6 +34,23 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
             s.source.spatialBlend = s.spatialBlend;
+        }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == "Gramophone Record");
+        if (s.source.isPlaying)
+        {
+            if (scene.name != "LivingRoom")
+            {
+                s.source.volume = 0.5f;
+            }
         }
     }
 

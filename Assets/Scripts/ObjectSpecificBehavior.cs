@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectSpecificBehavior : MonoBehaviour
 {
@@ -85,9 +86,10 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
         if(objectProperties.LOSAUpdateResponse == 1)    // Option 'Play The Record' is selected
         {
-            audioManager.Play("Gramophone Record");
             Sound s = audioManager.GetSound("Gramophone Record");
-
+            
+            audioManager.Play("Gramophone Record");
+            
             Animator recordAnim = transform.Find("Record_Sprites").GetComponent<Animator>();
             Animator playerAnim = transform.Find("Player_Sprites").GetComponent<Animator>();
 

@@ -57,7 +57,6 @@ public class GameSession : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
-
     }
 
     void OnEnable()
