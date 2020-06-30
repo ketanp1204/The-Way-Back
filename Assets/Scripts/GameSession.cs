@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -293,7 +292,7 @@ public class GameSession : MonoBehaviour
     public static IEnumerator DisableGameObjectAfterDelay(GameObject gO)
     {
         yield return new WaitForSeconds(0.5f);
-        
+
         gO.SetActive(false);
     }
 

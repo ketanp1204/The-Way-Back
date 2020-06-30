@@ -132,12 +132,12 @@ public class ObjectManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "PrevLevel")
                     {
-                        levelChanger.LoadPreviousLevel();
+                        LevelChanger.LoadPreviousLevel();
                     }
 
                     if (hit.collider.gameObject.tag == "NextLevel")
                     {
-                        levelChanger.LoadNextLevel();
+                        LevelChanger.LoadNextLevel();
                     }
                 }
                 else

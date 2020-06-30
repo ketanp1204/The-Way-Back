@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class GameEventsTracker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public static GameEventsTracker instance;
+
+    public static bool LR_Plant_Interacted = false;
+    
+    void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

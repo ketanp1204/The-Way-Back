@@ -16,7 +16,7 @@ public class LevelChanger : MonoBehaviour
         instance = this;
     }
 
-    public void LoadNextLevel()
+    public static void LoadNextLevel()
     {
         // Start fade animation co-routine
         instance.StartCoroutine(CrossFadeStart(false));
@@ -25,7 +25,7 @@ public class LevelChanger : MonoBehaviour
         int sceneIndexToLoad = SceneManager.GetActiveScene().buildIndex + 1;
         if(sceneIndexToLoad != SceneManager.sceneCountInBuildSettings)
         {
-            StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+            instance.StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
         }
         else
         {
@@ -33,16 +33,16 @@ public class LevelChanger : MonoBehaviour
         }
     }
 
-    public void LoadPreviousLevel()
+    public static void LoadPreviousLevel()
     {
         // Start fade animation co-routine
         instance.StartCoroutine(CrossFadeStart(false));
 
         // Load Previous Scene
-        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex - 1));
+        instance.StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex - 1));
     }
 
-    IEnumerator LoadScene(int buildIndex)
+    private static IEnumerator LoadScene(int buildIndex)
     {
         yield return new WaitForSeconds(1f);
 

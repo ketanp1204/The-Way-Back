@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
 
     /// <summary>
-    /// Behaviors for objects in the living room
+    /// Behaviors for objects in the Living Room
     /// </summary>
 
     private void LR_Television_Behavior()
@@ -84,33 +85,40 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void LR_Plants_Behavior()
     {
-        // TODO: Store a bool whether 'Check the plant's ground' or 'Answer' is selected for future reference for the object 'Shovel' in the Garden
+        // Storing a bool whether 'Check the plant's ground' or 'Answer' is selected for future reference for the object 'Shovel' in the Garden
+        if (objectProperties.LOSAUpdateResponse == 1)
+        {
+            GameEventsTracker.LR_Plant_Interacted = true; 
+        }
     }
 
 
     /// <summary>
-    /// Behaviors for objects in the kitchen
+    /// Behaviors for objects in the Kitchen
     /// </summary>
 
-    private void K_ShoppingList_Day_Behavior()
+    private void K_ShoppingList_Behavior()
     {
-        Debug.Log(objectProperties.LOSAUpdateResponse);
         if (objectProperties.LOSAUpdateResponse == 2)
         {
-            Destroy(gameObject);
-            GameObject shoppingListNight = GameObject.Find("K_ShoppingList_Night");
-            Destroy(shoppingListNight);
+            StartCoroutine(DestroyShoppingListAfterDelay(gameObject));
         }
     }
 
-    private void K_ShoppingList_Night_Behavior()
+    private IEnumerator DestroyShoppingListAfterDelay(GameObject shoppingList)
     {
-        if (objectProperties.LOSAUpdateResponse == 2)
+        SpriteRenderer[] sRs = shoppingList.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer sR = Array.Find(sRs, s => s.enabled == true);
+        float start = Time.time;
+
+        while (Time.time <= start + 0.3f)
         {
-            Destroy(gameObject);
-            GameObject shoppingListNight = GameObject.Find("K_ShoppingList_Day");
-            Destroy(shoppingListNight);
+            Color color = sR.color;
+            color.a = 1f - Mathf.Clamp01((Time.time - start) / 0.3f);
+            sR.color = color;
+            yield return new WaitForEndOfFrame();
         }
+        Destroy(shoppingList);
     }
 
     private void K_FruitBasket_Behavior()
@@ -123,20 +131,70 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void K_GardenDoor_Behavior()
     {
-        optionsManager.ShowTextOnDescriptionBox(objectProperties.description);
-        // TODO: Check if the time of day is morning, then display a text if it is, otherwise proceed to the Garden level.
+        if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+        {
+            optionsManager.ShowTextOnDescriptionBox(objectProperties.description);      // Can't proceed to the garden level because of the rain
+        }
+        else
+        {
+            LevelChanger.LoadNextLevel();       // Proceed to the Garden level
+        }
+    }
+
+    private void K_WineBottle_Behavior()
+    {
+        if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
+        {
+            objectProperties.HandleResponse(1);
+        }
+        else
+        {
+            objectProperties.HandleResponse(2);
+        }
     }
 
 
     /// <summary>
-    /// Behaviors for objects in the bathroom
+    /// Behaviors for objects in the Bathroom
     /// </summary>
 
-    private void B_Bathtub_Behavior()
+    private void B_BathtubTap_Behavior()
     {
-        // 
+        // TODO: stop water dripping animation and sound
     }
 
+    private void B_SleepingPills_Behavior()
+    {
+        if (GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
+        {
+            objectProperties.HandleResponse(1);
+        }
+        else
+        {
+            objectProperties.HandleResponse(2);
 
+            // Pills must disappear if 'Wash Them Down' option is selected
+            if(objectProperties.LOSAUpdateResponse == 0)
+            {
+                // TODO: remove pills from scene
+            }
+        }
+    }
 
+    /// <summary>
+    /// Behaviors for objects in the Garden
+    /// </summary>
+    
+    private void G_Shovel_Behavior()
+    {
+        // If player has interacted with the plant in the living room and chosen a positive response, then show the options and handle the behavior
+        if(GameEventsTracker.LR_Plant_Interacted)
+        {
+            // TODO: show options
+        }
+
+        // TODO: Add hole digging animation/photo
+
+        // TODO: Add plant image to the scene after digging
+    }
 }
