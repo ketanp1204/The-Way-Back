@@ -5,41 +5,72 @@ using UnityEngine.UI;
 
 public class TimeOfDayManager : MonoBehaviour
 {
-    // State variables
-    private float fadeTime = 10f;
+    // To be set in the inspector
+    public GameObject morningImage;
+    public GameObject noonImage;
+    public GameObject eveningImage;
 
-    // Cached references
-    public Sprite morningImage;
-    public Sprite nightImage;
-    private SpriteRenderer spriteRenderer;
+    // To be updated in script
+    private SpriteRenderer morningSR;
+    private SpriteRenderer noonSR;
+    private SpriteRenderer eveningSR;
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-    }
+        morningSR = morningImage.GetComponent<SpriteRenderer>();
+        // noonSR = noonImage.GetComponent<SpriteRenderer>();
+        eveningSR = eveningImage.GetComponent<SpriteRenderer>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void TransitionIntoNight()
-    {
-
-    }
-
-    IEnumerator FadeOut()
-    {
-        float elapsedTime = 0.0f;
-        Color c = spriteRenderer.color;
-        while (elapsedTime < fadeTime)
+        if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
-            yield return new WaitForSeconds(10f);
-            elapsedTime += Time.deltaTime;
-            c.a = 1.0f - Mathf.Clamp01(elapsedTime / fadeTime);
-            spriteRenderer.color = c;
+            morningSR.enabled = true;
+            StartCoroutine(FadeOutImage(morningSR, GameSession.timeOfDayInterval));
+            // StartCoroutine(FadeInImage(noonSR, GameSession.timeOfDayInterval)); // TODO uncomment when noon image is available
+            StartCoroutine(FadeInImage(eveningSR, GameSession.timeOfDayInterval));
+
+        }
+        else if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+        {
+            noonSR.enabled = true;
+            StartCoroutine(FadeOutImage(noonSR, GameSession.timeOfDayInterval));
+            StartCoroutine(FadeInImage(eveningSR, GameSession.timeOfDayInterval));
+        }
+        else
+        {
+            eveningSR.enabled = true;
+        }
+    }
+
+    private IEnumerator FadeOutImage(SpriteRenderer sR, float duration)
+    {
+        if(sR.enabled)
+        {
+            float start = Time.time;
+            while (Time.time <= start + duration)
+            {
+                Color color = sR.color;
+                color.a = 1f - Mathf.Clamp01((Time.time - start) / duration);
+                sR.color = color;
+                yield return new WaitForEndOfFrame();
+            }
+            sR.enabled = false;
+        }
+    }
+
+    private IEnumerator FadeInImage(SpriteRenderer sR, float duration)
+    {
+        if(!sR.enabled)
+        {
+            sR.enabled = true;
+        }
+        float start = Time.time;
+        while (Time.time <= start + duration)
+        {
+            Color color = sR.color;
+            color.a = 0f + Mathf.Clamp01((Time.time - start) / duration);
+            sR.color = color;
+            yield return new WaitForEndOfFrame();
         }
     }
 }

@@ -10,7 +10,5 @@ public class UIReferences : MonoBehaviour
     public GameObject descriptionBox;
     public GameObject objectNameBackground;
     public GameObject objectNameText;
-    public GameObject morningImage;
-    public GameObject noonImage;
-    public GameObject eveningImage;
+    public GameObject backgroundImage;
 }

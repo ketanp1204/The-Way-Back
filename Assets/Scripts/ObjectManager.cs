@@ -123,7 +123,9 @@ public class ObjectManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "CloseUp")
                     {
+                        objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         gameSession.closeUpObjects = true;
+                        gameSession.disableBackgroundImage();
                         StartCoroutine(LevelChanger.CrossFadeStart(true));               // Fade In and Out Animation
                         StartCoroutine(LoadCloseUp());                                   // Load close up view
                     }
@@ -166,6 +168,7 @@ public class ObjectManager : MonoBehaviour
     public void ExitCloseUpView(GameSession gameSession)
     {
         gameSession.closeUpObjects = false;
+        gameSession.enableBackgroundImage();
         StartCoroutine(LevelChanger.CrossFadeStart(true));          // Fade In and Out Animation
         StartCoroutine(ExitCloseUp());                              // Go back from Close Up View
     }
@@ -178,7 +181,7 @@ public class ObjectManager : MonoBehaviour
         backButton = Instantiate(backButtonPrefab, GameObject.Find("StaticUI").transform);
         backButton.gameObject.SetActive(true);
         backButton.onClick.AddListener(() => HandleBackButton(gameSession));
-        if (!gameSession.timeOfDayNight)
+        /* if (!gameSession.timeOfDayNight)
         {
             string objectName = "CU_" + hit.collider.gameObject.GetComponent<ObjectProperties>().objectName + "_Day";
             zoomedInObject = closeUpObjects.transform.Find(objectName).gameObject;
@@ -188,10 +191,19 @@ public class ObjectManager : MonoBehaviour
             string objectName = "CU_" + hit.collider.gameObject.GetComponent<ObjectProperties>().objectName + "_Night";
             zoomedInObject = closeUpObjects.transform.Find(objectName).gameObject;
         }
-        if(zoomedInObject.GetComponent<SpriteRenderer>().enabled == false)
+        */
+        zoomedInObject = objectProperties.closeUpObject;
+        zoomedInObject.SetActive(true);
+        /*
+        if(zoomedInObject.GetComponent<SpriteRenderer>() != null)       // No time of day based image change
         {
             zoomedInObject.GetComponent<SpriteRenderer>().enabled = true;
         }
+        else                                                            // Time of day based image change
+        {
+
+        }
+        */
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(true);
     }
 
@@ -206,10 +218,13 @@ public class ObjectManager : MonoBehaviour
 
         interactableObjects.SetActive(true);
         Destroy(backButton.gameObject);
+        /*
         if (zoomedInObject.GetComponent<SpriteRenderer>().enabled == true)
         {
             zoomedInObject.GetComponent<SpriteRenderer>().enabled = false;
         }
+        */
+        zoomedInObject.SetActive(false);
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(false);
         zoomedInObject = null;
     }

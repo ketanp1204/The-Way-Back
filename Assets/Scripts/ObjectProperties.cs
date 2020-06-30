@@ -50,6 +50,7 @@ public class ObjectProperties : MonoBehaviour
     public string[] option3responses;
     public int[] reactions;
     public LOSAResponseTexts losaResponseTexts;
+    public GameObject closeUpObject;
   
     // Variables that will be calculated in the code
     [HideInInspector]
@@ -176,14 +177,7 @@ public class ObjectProperties : MonoBehaviour
         
         if(!GameSession.GameIsPaused)
         {
-            if (gameObject.tag == "CloseUp")
-            {
-                DisplayObjectName.ShowName_static(objectName + " (Zoom In)");
-            }
-            else
-            {
-                DisplayObjectName.ShowName_static(objectName);
-            }
+            DisplayObjectName.ShowName_static(objectName);
         }
     }
     

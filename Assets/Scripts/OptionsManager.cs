@@ -193,8 +193,6 @@ public class OptionsManager : MonoBehaviour
         StartCoroutine(GameSession.DisableGameObjectAfterDelay(optionsBox));
     }
 
-    
-
     /// <summary>
     /// Section for handling the responses to various types of object behavior
     /// </summary>
