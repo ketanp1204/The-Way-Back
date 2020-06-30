@@ -44,17 +44,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Rain Window
+  - name: Rain_Window
     audioClip: {fileID: 8300000, guid: 0da5f4c950d624b4292358b2a3e1bd17, type: 3}
-    volume: 0.792
-    pitch: 1
-    spatialBlend: 0.8
-    loop: 1
-    source: {fileID: 0}
-  - name: Gramophone Record
-    audioClip: {fileID: 8300000, guid: 73a4469a1c8b90f4ca86c15f56b6166d, type: 3}
     volume: 1
     pitch: 1
-    spatialBlend: 0.869
+    spatialBlend: 0.5
+    loop: 1
+    source: {fileID: 0}
+  - name: LR_Gramophone_Record
+    audioClip: {fileID: 8300000, guid: d514ab29a0f903e4286ce4d7c682d73f, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: B_Water_Dripping
+    audioClip: {fileID: 8300000, guid: 90665a809b95d8b4487823fb4f6477d6, type: 3}
+    volume: 0.914
+    pitch: 1
+    spatialBlend: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: BathRoom_Morning
+    audioClip: {fileID: 8300000, guid: db9e96e05749631438adc30a302f7b10, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: LivingRoom_Morning
+    audioClip: {fileID: 8300000, guid: 35a50430578b45a47a1f6a7fa8bde946, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Kitchen_Morning
+    audioClip: {fileID: 8300000, guid: c77baf6097a745d4da8f938c5b7b1c6d, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.5
     loop: 0
     source: {fileID: 0}

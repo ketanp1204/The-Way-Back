@@ -145,6 +145,7 @@ public class GameSession : MonoBehaviour
             }
             else if (Time.time >= timeOfDayInterval && Time.time < timeOfDayInterval * 2)
             {
+                Destroy(GameObject.Find("Rain Generator"));
                 currentTimeOfDay = TimeOfDay.NOON;
                 changes++;
             }
@@ -180,13 +181,6 @@ public class GameSession : MonoBehaviour
                 Pause();
             }
         }
-        /*
-        if (closeUpObjects)
-        {
-            morningImage.GetComponent<SpriteRenderer>().enabled = true;
-            eveningImage.GetComponent<SpriteRenderer>().enabled = true;
-        }
-        */
     }
 
     public void disableBackgroundImage()
@@ -303,81 +297,6 @@ public class GameSession : MonoBehaviour
         gO.SetActive(false);
     }
 
-    public void transitionIntoNight()
-    {
-        if (closeUpObjects)
-        {
-            morningImage.GetComponent<SpriteRenderer>().enabled = false;
-            eveningImage.GetComponent<SpriteRenderer>().enabled = false;
-        }
-        /*
-        if (!timeOfDayNight)
-        {
-            timeOfDayNight = true;
-            if (morningImage != null)
-            {
-                StartCoroutine(FadeOutImage(morningImage, 5f, false));
-            }
-            if (eveningImage != null)
-            {
-                StartCoroutine(FadeInImage(eveningImage, 5f));
-            }
-            if (k_shoppingList_day != null)
-            {
-                StartCoroutine(FadeOutImage(k_shoppingList_day, 5f, false));
-            }
-            if (k_shoppingList_night != null)
-            {
-                StartCoroutine(FadeInImage(k_shoppingList_night, 5f));
-            }
-            if (k_sink_day != null && closeUpObjects == true)
-            {
-                StartCoroutine(FadeOutImage(k_sink_day, 5f, true));
-            }
-            if (k_sink_night != null && closeUpObjects == true)
-            {
-                if (k_sink_night.GetComponent<SpriteRenderer>().enabled == false)
-                {
-                    k_sink_night.GetComponent<SpriteRenderer>().enabled = true;
-                }
-                StartCoroutine(FadeInImage(k_sink_night, 5f));
-            }
-        }
-        else
-        {
-            timeOfDayNight = false;
-            if (morningImage != null)
-            {
-                StartCoroutine(FadeInImage(morningImage, 5f));
-            }
-            if (eveningImage != null)
-            {
-                StartCoroutine(FadeOutImage(eveningImage, 5f, false));
-            }
-            if (k_shoppingList_day != null)
-            {
-                StartCoroutine(FadeInImage(k_shoppingList_day, 5f));
-            }
-            if (k_shoppingList_night != null)
-            {
-                StartCoroutine(FadeOutImage(k_shoppingList_night, 5f, false));
-            }
-            if (k_sink_day != null && closeUpObjects == true)
-            {
-                if (k_sink_day.GetComponent<SpriteRenderer>().enabled == false)
-                {
-                    k_sink_day.GetComponent<SpriteRenderer>().enabled = true;
-                }
-                StartCoroutine(FadeInImage(k_sink_day, 5f));
-            }
-            if (k_sink_night != null && closeUpObjects == true)
-            {
-                StartCoroutine(FadeOutImage(k_sink_night, 5f, true));
-            }
-        }
-        */
-    }
-
     private IEnumerator FadeOutImage(GameObject g, float duration, bool dSR)
     {
         float start = Time.time;
@@ -392,15 +311,6 @@ public class GameSession : MonoBehaviour
         if (dSR)
         {
             sR.enabled = false;
-            /* if (g.name == "CU_Sink_Day")
-            {
-                objectManager.zoomedInObject = k_sink_night;
-            }
-            else if (g.name == "CU_Sink_Night")
-            {
-                objectManager.zoomedInObject = k_sink_day;
-            }
-            */
         }
     }
 

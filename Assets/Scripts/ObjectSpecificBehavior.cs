@@ -48,9 +48,9 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
         if(objectProperties.LOSAUpdateResponse == 1)    // Option 'Play The Record' is selected
         {
-            Sound s = audioManager.GetSound("Gramophone Record");
+            Sound s = audioManager.GetSound("LR_Gramophone_Record");
             
-            audioManager.Play("Gramophone Record");
+            audioManager.Play("LR_Gramophone_Record");
             
             Animator recordAnim = transform.Find("Record_Sprites").GetComponent<Animator>();
             Animator playerAnim = transform.Find("Player_Sprites").GetComponent<Animator>();

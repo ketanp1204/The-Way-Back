@@ -1866,9 +1866,6 @@ MonoBehaviour:
   objectNameBackground: {fileID: 573337900}
   objectNameText: {fileID: 573337899}
   backgroundImage: {fileID: 1230959269}
-  morningImage: {fileID: 0}
-  noonImage: {fileID: 0}
-  eveningImage: {fileID: 0}
 --- !u!4 &1665680747
 Transform:
   m_ObjectHideFlags: 0
@@ -2738,16 +2735,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 1813312694806174478, guid: 2fc73e09649fade4396e2c2c875ae8e9,
-        type: 3}
-      propertyPath: sounds.Array.data[0].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1813312694806174478, guid: 2fc73e09649fade4396e2c2c875ae8e9,
-        type: 3}
-      propertyPath: sounds.Array.data[0].spatialBlend
-      value: 0.201
-      objectReference: {fileID: 0}
     - target: {fileID: 1813312694806174479, guid: 2fc73e09649fade4396e2c2c875ae8e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3135,7 +3122,7 @@ ParticleSystem:
   m_GameObject: {fileID: 8037793847596503012}
   serializedVersion: 6
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 5
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -3761,7 +3748,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 500, y: 1.05, z: 1}
+    m_Scale: {x: 240, y: 1.05, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -3959,7 +3946,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 900
+      scalar: 1200
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -7793,7 +7780,7 @@ Transform:
   m_GameObject: {fileID: 8037793847596503012}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.17375337, y: 6.7, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.02, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 8037793847459745288}
   m_RootOrder: 0

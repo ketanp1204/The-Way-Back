@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == "Gramophone Record");
+        Sound s = Array.Find(sounds, sound => sound.name == "LR_Gramophone_Record");
         if (s.source.isPlaying)
         {
             if (scene.name != "LivingRoom")
@@ -52,11 +52,48 @@ public class AudioManager : MonoBehaviour
                 s.source.volume = 0.5f;
             }
         }
+
+        if(scene.name == "LivingRoom")
+        {
+            s = Array.Find(sounds, sound => sound.name == "BathRoom_Morning");
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
+            Play("LivingRoom_Morning");
+        }
+
+        if(scene.name == "Bathroom")
+        {
+            s = Array.Find(sounds, sound => sound.name == "LivingRoom_Morning");
+            if(s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
+            s = Array.Find(sounds, sound => sound.name == "Kitchen_Morning");
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
+            Play("BathRoom_Morning");
+            Play("B_Water_Dripping");
+        }
+
+        if (scene.name == "Kitchen")
+        {
+            s = Array.Find(sounds, sound => sound.name == "BathRoom_Morning");
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
+            
+            Play("Kitchen_Morning");
+        }
     }
 
     void Start()
     {
-        Play("Rain Window");
+        // Play("Rain_Window");
     }
 
     public void Play(string name)
