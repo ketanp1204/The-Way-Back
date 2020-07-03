@@ -64,7 +64,15 @@ public class ObjectSpecificBehavior : MonoBehaviour
     IEnumerator LR_G_PlayerAnimation(Sound s, Animator anim)
     {
         anim.enabled = true;
-        anim.Play("Base Layer.LR_G_Player");
+        if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+        {
+            anim.Play("Base Layer.LR_G_Player_Day");
+        }
+        else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.EVENING)
+        {
+            anim.Play("Base Layer.LR_G_Player_Night");
+        }
+        
         while (s.source.isPlaying)
         {
             yield return new WaitForSeconds(0.01f);
@@ -160,7 +168,14 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void B_BathtubTap_Behavior()
     {
-        // TODO: stop water dripping animation and sound
+        // Stop water dripping sound
+        Sound s = audioManager.GetSound("B_Water_Dripping");
+        if(s.source.isPlaying)
+        {
+            s.source.Stop();
+        }
+
+        // TODO Stop water animation 
     }
 
     private void B_SleepingPills_Behavior()

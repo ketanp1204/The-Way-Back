@@ -16,6 +16,16 @@ public class LevelChanger : MonoBehaviour
         instance = this;
     }
 
+    public void LoadNext()
+    {
+        LoadNextLevel();
+    }
+
+    public void LoadPrevious()
+    {
+        LoadPreviousLevel();
+    }
+
     public static void LoadNextLevel()
     {
         // Start fade animation co-routine

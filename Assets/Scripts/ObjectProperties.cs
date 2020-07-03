@@ -78,10 +78,15 @@ public class ObjectProperties : MonoBehaviour
     [HideInInspector]
     public bool showOptions = false;
 
+    // Cached References
+    private GameObject descriptionBox;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        descriptionBox = FindObjectOfType<UIReferences>().descriptionBox;
+
         if (option3Text != "" & option2Text != "" && option1Text != "")
         {
             numberOfResponses = 3;
@@ -175,7 +180,7 @@ public class ObjectProperties : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())                                              // Prevent player from clicking through UI elements
             return;
         
-        if(!GameSession.GameIsPaused)
+        if(!GameSession.GameIsPaused && !descriptionBox.activeSelf)
         {
             DisplayObjectName.ShowName_static(objectName);
         }
