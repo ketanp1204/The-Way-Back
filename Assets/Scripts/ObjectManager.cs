@@ -20,6 +20,7 @@ public class ObjectManager : MonoBehaviour
 
     // Cached References
     private Camera mainCamera;
+    private UIReferences uiReferences;
     private ObjectProperties objectProperties;
     private OptionsManager optionsManager;
     private LevelChanger levelChanger;
@@ -28,9 +29,10 @@ public class ObjectManager : MonoBehaviour
     private GameObject closeUpObjects;
     private GameObject descriptionBox;
     private GameObject optionsBox;
-    public GameObject zoomedInObject;
     private GameObject staticUI;
+    private GameObject rainSystem;
     public Button backButtonPrefab;
+    public GameObject zoomedInObject;
 
 
     void Awake()
@@ -61,16 +63,15 @@ public class ObjectManager : MonoBehaviour
     private void SetReferences()
     {
         mainCamera = Camera.main;
+        uiReferences = FindObjectOfType<UIReferences>();
         optionsManager = FindObjectOfType<OptionsManager>();
-        if (optionsManager != null)
-        {
-            descriptionBox = optionsManager.transform.Find("Description Box").gameObject;
-            optionsBox = optionsManager.transform.Find("Options Box").gameObject;
-        }
+        descriptionBox = uiReferences.descriptionBox;
+        optionsBox = uiReferences.optionsBox;
+        rainSystem = uiReferences.rainSystem;
         levelChanger = FindObjectOfType<LevelChanger>();
         gameSession = FindObjectOfType<GameSession>();
-        interactableObjects = GameObject.Find("Interactable Objects");
-        closeUpObjects = GameObject.Find("CloseUpObjects");
+        interactableObjects = uiReferences.interactableObjects;
+        closeUpObjects = uiReferences.closeUpObjects;
         staticUI = GameObject.Find("StaticUI");
     }
 
@@ -123,8 +124,9 @@ public class ObjectManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "CloseUp")
                     {
+                        StartCoroutine(GameSession.DisableGameObjectAfterDelay(rainSystem));     // TODO: Refactor into a rain manager script
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
-                        gameSession.closeUpObjects = true;
+                        GameSession.closeUpObjects = true;
                         gameSession.disableBackgroundImage();
                         StartCoroutine(LevelChanger.CrossFadeStart(true));               // Fade In and Out Animation
                         StartCoroutine(LoadCloseUp());                                   // Load close up view
@@ -167,8 +169,12 @@ public class ObjectManager : MonoBehaviour
 
     public void ExitCloseUpView(GameSession gameSession)
     {
-        gameSession.closeUpObjects = false;
+        GameSession.closeUpObjects = false;
         gameSession.enableBackgroundImage();
+        if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+        {
+            StartCoroutine(GameSession.EnableGameObjectAfterDelay(rainSystem));      // TODO: Refactor into a rain manager script
+        }
         StartCoroutine(LevelChanger.CrossFadeStart(true));          // Fade In and Out Animation
         StartCoroutine(ExitCloseUp());                              // Go back from Close Up View
     }
@@ -177,33 +183,13 @@ public class ObjectManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         interactableObjects.SetActive(false);
-        // backButton.SetActive(true);
+
         backButton = Instantiate(backButtonPrefab, GameObject.Find("StaticUI").transform);
         backButton.gameObject.SetActive(true);
         backButton.onClick.AddListener(() => HandleBackButton(gameSession));
-        /* if (!gameSession.timeOfDayNight)
-        {
-            string objectName = "CU_" + hit.collider.gameObject.GetComponent<ObjectProperties>().objectName + "_Day";
-            zoomedInObject = closeUpObjects.transform.Find(objectName).gameObject;
-        }
-        else
-        {
-            string objectName = "CU_" + hit.collider.gameObject.GetComponent<ObjectProperties>().objectName + "_Night";
-            zoomedInObject = closeUpObjects.transform.Find(objectName).gameObject;
-        }
-        */
+
         zoomedInObject = objectProperties.closeUpObject;
         zoomedInObject.SetActive(true);
-        /*
-        if(zoomedInObject.GetComponent<SpriteRenderer>() != null)       // No time of day based image change
-        {
-            zoomedInObject.GetComponent<SpriteRenderer>().enabled = true;
-        }
-        else                                                            // Time of day based image change
-        {
-
-        }
-        */
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(true);
     }
 
@@ -218,12 +204,7 @@ public class ObjectManager : MonoBehaviour
 
         interactableObjects.SetActive(true);
         Destroy(backButton.gameObject);
-        /*
-        if (zoomedInObject.GetComponent<SpriteRenderer>().enabled == true)
-        {
-            zoomedInObject.GetComponent<SpriteRenderer>().enabled = false;
-        }
-        */
+
         zoomedInObject.SetActive(false);
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(false);
         zoomedInObject = null;

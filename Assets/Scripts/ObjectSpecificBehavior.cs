@@ -12,6 +12,8 @@ public class ObjectSpecificBehavior : MonoBehaviour
     private ObjectProperties objectProperties;
     private AudioManager audioManager;
 
+    private int behaviorIndex = 1;      // To allow for multiple behaviors
+
     // Start is called before the first frame update
     void Start()
     {
@@ -141,7 +143,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
-            optionsManager.ShowTextOnDescriptionBox(objectProperties.description);      // Can't proceed to the garden level because of the rain
+            // TODO: Uncomment for actual game
+            // optionsManager.ShowTextOnDescriptionBox(objectProperties.description);      // Can't proceed to the garden level because of the rain
+
+            // Only for preview 
+            LevelChanger.LoadNextLevel();       // Proceed to the Garden level
         }
         else
         {
@@ -166,6 +172,14 @@ public class ObjectSpecificBehavior : MonoBehaviour
     /// Behaviors for objects in the Bathroom
     /// </summary>
 
+    private void B_Buckets_Behavior()
+    {
+        if(objectProperties.LOSAUpdateResponse == 1)
+        {
+            GameEventsTracker.B_Buckets_Kept = true;
+        }
+    }
+    
     private void B_BathtubTap_Behavior()
     {
         // Stop water dripping sound
@@ -211,5 +225,29 @@ public class ObjectSpecificBehavior : MonoBehaviour
         // TODO: Add hole digging animation/photo
 
         // TODO: Add plant image to the scene after digging
+    }
+
+    private void G_Pond_Behavior()
+    {
+        if(GameEventsTracker.B_Buckets_Kept == true)
+        {
+            if(behaviorIndex == 1)          // First interaction behavior
+            {
+                behaviorIndex += 1;
+                objectProperties.HandleResponse(2);     // Show response choices
+            }
+            else if(behaviorIndex == 2)     // Second interaction behavior
+            {
+                if(objectProperties.LOSAUpdateResponse == 1)        // Option 'Fill the Pond' is selected
+                {
+                    // TODO: Replace the image of the pond
+                }
+            }
+        }
+        else
+        {
+            // Show LOSA Responses
+            objectProperties.HandleResponse(1);
+        }
     }
 }

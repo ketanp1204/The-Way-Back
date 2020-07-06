@@ -19,7 +19,7 @@ public class TimeOfDayManager : MonoBehaviour
     void Start()
     {
         morningSR = morningImage.GetComponent<SpriteRenderer>();
-        // noonSR = noonImage.GetComponent<SpriteRenderer>();
+        // noonSR = noonImage.GetComponent<SpriteRenderer>();       // TODO: uncomment when noon image is available
         eveningSR = eveningImage.GetComponent<SpriteRenderer>();
 
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1865,6 +1865,9 @@ MonoBehaviour:
   objectNameBackground: {fileID: 573337900}
   objectNameText: {fileID: 573337899}
   backgroundImage: {fileID: 1230959269}
+  rainSystem: {fileID: 8037793847596503012}
+  interactableObjects: {fileID: 814084383}
+  closeUpObjects: {fileID: 1265611015}
 --- !u!4 &1665680747
 Transform:
   m_ObjectHideFlags: 0

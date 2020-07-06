@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,20 +37,22 @@ public class GameSession : MonoBehaviour
     private ObjectManager objectManager;
     private OptionsManager optionsManager;
     private GameObject nextTextButton;
+    private GameObject rainSystem;
 
-    // State variables
+    // Static variables
     [HideInInspector]
     public static bool GameIsPaused = false;
-    public bool instructionsEnabled;
-    [HideInInspector]
-    public bool instructionsSeen = false;
     [HideInInspector]
     public static TimeOfDay currentTimeOfDay;
     [HideInInspector]
-    public bool closeUpObjects = false;
+    public static bool closeUpObjects = false;
     [HideInInspector]
     public static float timeOfDayInterval = 300f;
-    private SpriteRenderer sR;
+
+    // Non-static variables
+    public bool instructionsEnabled;
+    [HideInInspector]
+    public bool instructionsSeen = false;
     
     void Awake()
     {
@@ -81,15 +81,6 @@ public class GameSession : MonoBehaviour
         descriptionBox.SetActive(false);
         pauseMenuUI.SetActive(false);
         ShowInstructionsAndLOSA();
-        /*
-        StartCoroutine(FadeOutImage(morningImage, timeOfDayInterval, false));
-        StartCoroutine(FadeInImage(eveningImage, timeOfDayInterval));
-        if(k_shoppingList_day != null)
-        {
-            StartCoroutine(FadeOutImage(k_shoppingList_day, timeOfDayInterval, false));
-            StartCoroutine(FadeInImage(k_shoppingList_night, timeOfDayInterval));
-        }
-        */
     }
 
     void SetReferences()
@@ -104,16 +95,11 @@ public class GameSession : MonoBehaviour
                 descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
             }
             pauseMenuUI = uiReferences.pauseMenuUI;
-            
+            rainSystem = uiReferences.rainSystem;
         }
         LOSA = GameObject.Find("LOSA");
         objectManager = FindObjectOfType<ObjectManager>();
         optionsManager = FindObjectOfType<OptionsManager>();
-        
-        k_shoppingList_day = GameObject.Find("K_ShoppingList_Day");
-        k_shoppingList_night = GameObject.Find("K_ShoppingList_Night");
-        k_sink_day = GameObject.Find("CU_Sink_Day");
-        k_sink_night = GameObject.Find("CU_Sink_Night");
     }
 
     void ShowInstructionsAndLOSA()
@@ -296,6 +282,13 @@ public class GameSession : MonoBehaviour
         gO.SetActive(false);
     }
 
+    public static IEnumerator EnableGameObjectAfterDelay(GameObject gO)
+    {
+        yield return new WaitForSeconds(1f);
+
+        gO.SetActive(true);
+    }
+
     private IEnumerator FadeOutImage(GameObject g, float duration, bool dSR)
     {
         float start = Time.time;
@@ -311,11 +304,6 @@ public class GameSession : MonoBehaviour
         {
             sR.enabled = false;
         }
-    }
-
-    private void disableSpriteRenderer(SpriteRenderer sR)
-    {
-        
     }
 
     private IEnumerator FadeInImage(GameObject g, float duration)

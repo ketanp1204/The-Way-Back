@@ -7,7 +7,12 @@ public class GameEventsTracker : MonoBehaviour
 
     public static GameEventsTracker instance;
 
+    // Living Room Events
     public static bool LR_Plant_Interacted = false;
+
+    // Bathroom Events
+    public static bool B_Buckets_Kept = false;
+    
     
     void Awake()
     {
