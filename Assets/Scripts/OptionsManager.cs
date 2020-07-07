@@ -58,22 +58,23 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
-    public void ShowTextOnDescriptionBox(string text)
+    public void ShowTextOnDescriptionBox(string text, float delay)
     {
-        descriptionBox.SetActive(true);
-        StartCoroutine(TypeText(new string[] {text}));
+        StartCoroutine(TypeText(new string[] {text}, delay));
         GameSession.FadeIn(descriptionBoxCG, 0f);
     }
 
-    public void ShowTextOnDescriptionBox(string[] texts)
+    public void ShowTextOnDescriptionBox(string[] texts, float delay)
     {
-        descriptionBox.SetActive(true);
-        StartCoroutine(TypeText(texts));
+        StartCoroutine(TypeText(texts, delay));
         GameSession.FadeIn(descriptionBoxCG, 0f);
     }
 
-    IEnumerator TypeText(string[] texts)
+    IEnumerator TypeText(string[] texts, float delay)
     {
+        yield return new WaitForSeconds(delay);
+
+        descriptionBox.SetActive(true);
         IsWriting = true;
         for(int i = 0; i < texts.Length; i++)
         {
@@ -233,7 +234,7 @@ public class OptionsManager : MonoBehaviour
         {
             responseText = objectProperties.losaResponseTexts.HighLOSA;
         }
-        ShowTextOnDescriptionBox(responseText);
+        ShowTextOnDescriptionBox(responseText, 0f);
     }
 
     public void HandleLOSAMediumThenOptions()
@@ -243,7 +244,7 @@ public class OptionsManager : MonoBehaviour
         if (LOSA < 30)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
-            ShowTextOnDescriptionBox(responseText);
+            ShowTextOnDescriptionBox(responseText, 0f);
         }
         else
         {
@@ -259,12 +260,12 @@ public class OptionsManager : MonoBehaviour
         if (LOSA < 30)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
-            ShowTextOnDescriptionBox(responseText);
+            ShowTextOnDescriptionBox(responseText, 0f);
         }
         else if(LOSA >= 30 && LOSA < 70)
         {
             responseText = objectProperties.losaResponseTexts.MedLOSA;
-            ShowTextOnDescriptionBox(responseText);
+            ShowTextOnDescriptionBox(responseText, 0f);
         }
         else
         {
@@ -323,7 +324,7 @@ public class OptionsManager : MonoBehaviour
         {
             descriptionBox.SetActive(true);
         }
-        ShowTextOnDescriptionBox(objectProperties.responses[buttonIndex][0]);
+        ShowTextOnDescriptionBox(objectProperties.responses[buttonIndex][0], 0f);
     }
 
     public void HandleOptionLOSAUpdateOnly()
@@ -331,7 +332,7 @@ public class OptionsManager : MonoBehaviour
         objectProperties.showOptions = true;
         if (objectProperties.description != "")
         {
-            ShowTextOnDescriptionBox(objectProperties.description);
+            ShowTextOnDescriptionBox(objectProperties.description, 0f);
         }
     }
 

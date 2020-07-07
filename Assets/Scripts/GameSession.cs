@@ -117,7 +117,7 @@ public class GameSession : MonoBehaviour
             if (instructionsEnabled && !instructionsSeen)
             {
                 instructionsSeen = true;
-                optionsManager.ShowTextOnDescriptionBox(instructions);
+                optionsManager.ShowTextOnDescriptionBox(instructions, 1f);
             }
         }
     }

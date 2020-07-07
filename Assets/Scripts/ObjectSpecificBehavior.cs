@@ -175,7 +175,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
         else
         {
-            optionsManager.ShowTextOnDescriptionBox(new string[] { objectProperties.description });
+            optionsManager.ShowTextOnDescriptionBox(new string[] { objectProperties.description }, 0f);
         }
     }
 

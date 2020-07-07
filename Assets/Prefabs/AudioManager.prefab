@@ -60,7 +60,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: B_Water_Dripping
     audioClip: {fileID: 8300000, guid: 90665a809b95d8b4487823fb4f6477d6, type: 3}
-    volume: 0.6
+    volume: 1
     pitch: 1
     spatialBlend: 0.5
     loop: 0

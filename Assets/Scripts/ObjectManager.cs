@@ -124,7 +124,10 @@ public class ObjectManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "CloseUp")
                     {
-                        StartCoroutine(GameSession.DisableGameObjectAfterDelay(rainSystem));     // TODO: Refactor into a rain manager script
+                        if(rainSystem != null)
+                        {
+                            StartCoroutine(GameSession.DisableGameObjectAfterDelay(rainSystem));     // TODO: Refactor into a rain manager script
+                        }
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         GameSession.closeUpObjects = true;
                         gameSession.disableBackgroundImage();

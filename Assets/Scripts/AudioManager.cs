@@ -60,6 +60,11 @@ public class AudioManager : MonoBehaviour
             {
                 s.source.Stop();
             }
+            s = Array.Find(sounds, sound => sound.name == "B_Water_Dripping");
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
             Play("LivingRoom_Morning");
         }
 
@@ -86,7 +91,12 @@ public class AudioManager : MonoBehaviour
             {
                 s.source.Stop();
             }
-            
+            s = Array.Find(sounds, sound => sound.name == "B_Water_Dripping");
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
+
             Play("Kitchen_Morning");
         }
     }
