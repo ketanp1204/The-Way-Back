@@ -167,6 +167,18 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
     }
 
+    private void K_Window_Behavior()
+    {
+        if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
+        {
+            objectProperties.HandleResponse(1);
+        }
+        else
+        {
+            optionsManager.ShowTextOnDescriptionBox(new string[] { objectProperties.description });
+        }
+    }
+
 
     /// <summary>
     /// Behaviors for objects in the Bathroom
@@ -248,6 +260,29 @@ public class ObjectSpecificBehavior : MonoBehaviour
         {
             // Show LOSA Responses
             objectProperties.HandleResponse(1);
+        }
+    }
+
+    private void G_Brazier_Behavior()
+    {
+        if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
+        {
+            objectProperties.HandleResponse(1);
+        }
+        else
+        {
+            if(behaviorIndex == 1)          // First Interaction Behavior
+            {
+                behaviorIndex += 1;
+                objectProperties.HandleResponse(2);     // Show response choices
+            }
+            else if(behaviorIndex == 2)     // Second interaction behavior
+            {
+                if(objectProperties.LOSAUpdateResponse == 1)       // Option 'Light the Fire' is selected
+                {
+                    // TODO: Start fire animation + sound
+                }
+            }
         }
     }
 }

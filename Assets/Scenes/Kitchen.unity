@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2329,6 +2329,7 @@ GameObject:
   - component: {fileID: 2135029007}
   - component: {fileID: 2135029010}
   - component: {fileID: 2135029008}
+  - component: {fileID: 2135029009}
   m_Layer: 0
   m_Name: K_Window
   m_TagString: Object
@@ -2363,9 +2364,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 00000000
+  objectType: 0700000000000000
   objectName: Window
-  description: 
+  description: Funny that windows change their perspective. During they day, they
+    seem to spend freedom by keeping away curious eyes from the outside. Whereas
+    during the evening, they hold us captive by transforming into mirrors and inviting
+    those stares from the outside.
   option1Text: 
   option1responses: []
   option2Text: 
@@ -2396,6 +2400,18 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+--- !u!114 &2135029009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135029006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &2135029010
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class TimeOfDayManager : MonoBehaviour
 
     // To be updated in script
     private SpriteRenderer morningSR;
-    private SpriteRenderer noonSR;
+    //private SpriteRenderer noonSR;
     private SpriteRenderer eveningSR;
 
     // Start is called before the first frame update
@@ -32,8 +32,8 @@ public class TimeOfDayManager : MonoBehaviour
         }
         else if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
         {
-            noonSR.enabled = true;
-            StartCoroutine(FadeOutImage(noonSR, GameSession.timeOfDayInterval));
+            //noonSR.enabled = true;
+            // StartCoroutine(FadeOutImage(noonSR, GameSession.timeOfDayInterval));
             StartCoroutine(FadeInImage(eveningSR, GameSession.timeOfDayInterval));
         }
         else

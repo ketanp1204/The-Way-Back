@@ -16,9 +16,13 @@ public class GameSession : MonoBehaviour
 
     // Configuration parameters
     private float levelOfSelfAwareness = 0;
-    private string instructions = "Click on objects in the scene to get options to choose from, which modifies your LOSA score. " +
-                                  "Certain objects will have only reaction texts when you click on them based on your current LOSA Score. " +
-                                  "You can move between levels and see the effect of your choices on your previously interacted objects.";
+    private string[] instructions = {"During the last years, you have changed a lot. Above that, the outside world as well. Due to that, you have lost count on the days you’ve spent in a row in your house. Alone.",
+                                     "Like clay, your days have been shaped by tiredness and you lost sight of the things that once fulfilled your life. Now the clay hardened. Seemingly unalterable.",
+                                     "Today is one of these days. However, something is different. A nearly imperceptible sense of self-awareness is spreading through your body. " +
+                                                "And it wants to unfurl, as it once used to.",
+                                     "On this day, you have the chance to raise your self-awareness, by interacting with certain objects around the house. " + 
+                                                "The interactions have a different impact on you and depending on your achieved self-awareness, you’ll get the chance to unlock new ones. " + 
+                                                "But be wary, you can only act once."};
 
     // Cached References
     private UIReferences uiReferences;

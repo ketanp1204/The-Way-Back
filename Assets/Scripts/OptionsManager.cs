@@ -15,6 +15,7 @@ public class OptionsManager : MonoBehaviour
     Button nextButton;
     UnityAction handleClick;
     Dictionary<int, string[]> responses = new Dictionary<int, string[]>();
+    private WaitForUIButtons nextButtonWait;
 
     // Cached references
     [HideInInspector]
@@ -60,109 +61,117 @@ public class OptionsManager : MonoBehaviour
     public void ShowTextOnDescriptionBox(string text)
     {
         descriptionBox.SetActive(true);
-        descriptionText.text = text;
-        descriptionText.ForceMeshUpdate();
-        int pageIndex = 1;
-        StartCoroutine(TypeText(text, pageIndex));
+        StartCoroutine(TypeText(new string[] {text}));
         GameSession.FadeIn(descriptionBoxCG, 0f);
     }
 
-    IEnumerator TypeText(string text, int pageIndex)
+    public void ShowTextOnDescriptionBox(string[] texts)
+    {
+        descriptionBox.SetActive(true);
+        StartCoroutine(TypeText(texts));
+        GameSession.FadeIn(descriptionBoxCG, 0f);
+    }
+
+    IEnumerator TypeText(string[] texts)
     {
         IsWriting = true;
-        if (nextButton != null)
+        for(int i = 0; i < texts.Length; i++)
         {
-            Destroy(nextButton.gameObject);
-        }
+            string text = texts[i];
+            descriptionText.text = text;
+            descriptionText.overflowMode = TextOverflowModes.Page;
+            descriptionText.maxVisibleCharacters = 0;
 
-        descriptionText.text = text;
-        descriptionText.overflowMode = TextOverflowModes.Page;
-        descriptionText.maxVisibleCharacters = 0;
+            descriptionText.ForceMeshUpdate();
+            int pageIndex = 1;
 
-        descriptionText.ForceMeshUpdate();
-
-        if(pageIndex < descriptionText.textInfo.pageCount)
-        {
-            descriptionText.pageToDisplay = pageIndex;
-
-            int firstCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].firstCharacterIndex;
-            int lastCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].lastCharacterIndex;
-
-            for(int j = firstCharIndex; j <= lastCharIndex; j++)
+            while (pageIndex < descriptionText.textInfo.pageCount)
             {
-                if (j > 5 && Input.GetMouseButtonDown(0))
-                {
-                    bool flag = false;
-                    PointerEventData pointer = new PointerEventData(EventSystem.current);
-                    pointer.position = Input.mousePosition;
+                descriptionText.pageToDisplay = pageIndex;
 
-                    List<RaycastResult> raycastResults = new List<RaycastResult>();
-                    dynamicUI.GetComponent<GraphicRaycaster>().Raycast(pointer, raycastResults);
-                    // EventSystem.current.RaycastAll(pointer, raycastResults);
-                    
-                    if (!(raycastResults.Count == 0))
+                int firstCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].firstCharacterIndex;
+                int lastCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].lastCharacterIndex;
+
+                for (int j = firstCharIndex; j <= lastCharIndex; j++)
+                {
+                    if (j > 5 && Input.GetMouseButtonDown(0))
                     {
-                        if(raycastResults[0].gameObject.name == descriptionBox.name || raycastResults[0].gameObject.name == descriptionText.name)
+                        bool flag = false;
+                        PointerEventData pointer = new PointerEventData(EventSystem.current);
+                        pointer.position = Input.mousePosition;
+
+                        List<RaycastResult> raycastResults = new List<RaycastResult>();
+                        dynamicUI.GetComponent<GraphicRaycaster>().Raycast(pointer, raycastResults);
+                        // EventSystem.current.RaycastAll(pointer, raycastResults);
+
+                        if (!(raycastResults.Count == 0))
                         {
-                            flag = true;
-                        }
-                        if (flag == true)
-                        {
-                            descriptionText.maxVisibleCharacters = lastCharIndex;
-                            break;
+                            if (raycastResults[0].gameObject.name == descriptionBox.name || raycastResults[0].gameObject.name == descriptionText.name)
+                            {
+                                flag = true;
+                            }
+                            if (flag == true)
+                            {
+                                descriptionText.maxVisibleCharacters = lastCharIndex;
+                                break;
+                            }
                         }
                     }
+
+                    descriptionText.maxVisibleCharacters = j + 1;
+                    yield return new WaitForSeconds(0.015f);
+
                 }
 
-                descriptionText.maxVisibleCharacters = j + 1;
-                yield return new WaitForSeconds(0.015f);
-                
+                pageIndex += 1;
+
+                nextButton = Instantiate(nextButtonPrefab, GameObject.Find("DynamicUI").transform);
+                nextButton.gameObject.SetActive(true);
+
+                nextButtonWait = new WaitForUIButtons(nextButton);
+                yield return nextButtonWait;
+
+                Destroy(nextButton.gameObject);
             }
-
-            pageIndex += 1;
-
-            nextButton = Instantiate(nextButtonPrefab, GameObject.Find("DynamicUI").transform);
-            nextButton.gameObject.SetActive(true);
-            nextButton.onClick.AddListener(() => StartCoroutine(TypeText(text, pageIndex)));
-        }
-        else if(pageIndex == descriptionText.textInfo.pageCount)
-        {
-            descriptionText.pageToDisplay = pageIndex;
-
-            int firstCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].firstCharacterIndex;
-            int lastCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].lastCharacterIndex;
-
-            for (int j = firstCharIndex; j <= lastCharIndex; j++)
+            if (pageIndex == descriptionText.textInfo.pageCount)
             {
-                if (j > 5 && Input.GetMouseButtonDown(0))
-                {
-                    bool flag = false;
-                    PointerEventData pointer = new PointerEventData(EventSystem.current);
-                    pointer.position = Input.mousePosition;
+                descriptionText.pageToDisplay = pageIndex;
 
-                    List<RaycastResult> raycastResults = new List<RaycastResult>();
-                    dynamicUI.GetComponent<GraphicRaycaster>().Raycast(pointer, raycastResults);
-                    //EventSystem.current.RaycastAll(pointer, raycastResults);
-                    
-                    if (!(raycastResults.Count == 0))
+                int firstCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].firstCharacterIndex;
+                int lastCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].lastCharacterIndex;
+
+                for (int j = firstCharIndex; j <= lastCharIndex; j++)
+                {
+                    if (j > 5 && Input.GetMouseButtonDown(0))
                     {
-                        if (raycastResults[0].gameObject.name == descriptionBox.name || raycastResults[0].gameObject.name == descriptionText.name)
+                        bool flag = false;
+                        PointerEventData pointer = new PointerEventData(EventSystem.current);
+                        pointer.position = Input.mousePosition;
+
+                        List<RaycastResult> raycastResults = new List<RaycastResult>();
+                        dynamicUI.GetComponent<GraphicRaycaster>().Raycast(pointer, raycastResults);
+                        //EventSystem.current.RaycastAll(pointer, raycastResults);
+
+                        if (!(raycastResults.Count == 0))
                         {
-                            flag = true;
-                        }
-                        if (flag == true)
-                        {
-                            descriptionText.maxVisibleCharacters = lastCharIndex;
-                            break;
+                            if (raycastResults[0].gameObject.name == descriptionBox.name || raycastResults[0].gameObject.name == descriptionText.name)
+                            {
+                                flag = true;
+                            }
+                            if (flag == true)
+                            {
+                                descriptionText.maxVisibleCharacters = lastCharIndex;
+                                break;
+                            }
                         }
                     }
-                }
 
-                descriptionText.maxVisibleCharacters = j + 1;
-                yield return new WaitForSeconds(0.015f);
+                    descriptionText.maxVisibleCharacters = j + 1;
+                    yield return new WaitForSeconds(0.015f);
+                }
             }
 
-            if(objectProperties != null)
+            if (objectProperties != null)
             {
                 if (objectProperties.numberOfResponses > 0
                 && !objectProperties.responseSelected
@@ -172,8 +181,19 @@ public class OptionsManager : MonoBehaviour
                 }
             }
 
-            IsWriting = false;
+            if(i < texts.Length - 1)
+            {
+                nextButton = Instantiate(nextButtonPrefab, GameObject.Find("DynamicUI").transform);
+                nextButton.gameObject.SetActive(true);
+
+                nextButtonWait = new WaitForUIButtons(nextButton);
+                yield return nextButtonWait;
+
+                Destroy(nextButton.gameObject);
+            }
         }
+
+        IsWriting = false;
     }
 
     public void SetSelectedObjectReference(GameObject gameObject)

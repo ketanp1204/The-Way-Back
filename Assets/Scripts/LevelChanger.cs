@@ -72,10 +72,16 @@ public class LevelChanger : MonoBehaviour
         if(endAfter)
         {
             instance.transition.SetTrigger("CrossfadeEnd");
-            endAfter = false;
         }
     }
-
+    /*
+    public static IEnumerator CrossFadeEnd()
+    {
+        instance.fadeAnimationRunning = true;
+        instance.transition.SetTrigger("CrossfadeEnd");
+        yield return new WaitForSeconds(instance.transitionTime);
+    }
+    */
     public void QuitGame()
     {
         Debug.Log("Application Quit");
