@@ -12,6 +12,7 @@ public class GameEventsTracker : MonoBehaviour
 
     // Bathroom Events
     public static bool B_Buckets_Kept = false;
+    public static bool B_Tap_Water_Dripping = true;
     
     
     void Awake()

@@ -49,7 +49,14 @@ public class AudioManager : MonoBehaviour
         {
             if (scene.name != "LivingRoom")
             {
-                s.source.volume = 0.5f;
+                if(scene.name == "Garden")
+                {
+                    s.source.Stop();
+                }
+                else
+                {
+                    s.source.volume = 0.5f;
+                }
             }
         }
 
@@ -81,7 +88,10 @@ public class AudioManager : MonoBehaviour
                 s.source.Stop();
             }
             Play("BathRoom_Morning");
-            Play("B_Water_Dripping");
+            if(GameEventsTracker.B_Tap_Water_Dripping)
+            {
+                Play("B_Water_Dripping");
+            }
         }
 
         if (scene.name == "Kitchen")
@@ -98,6 +108,14 @@ public class AudioManager : MonoBehaviour
             }
 
             Play("Kitchen_Morning");
+        }
+        if (scene.name == "Garden")
+        {
+            s = Array.Find(sounds, sound => sound.name == "Kitchen_Morning");
+            if (s.source.isPlaying)
+            {
+                s.source.Stop();
+            }
         }
     }
 
@@ -117,9 +135,9 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
-    public Sound GetSound(string soundName)
+    public static Sound GetSound(string soundName)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == soundName);
-        return s;
+        Sound s = Array.Find(instance.sounds, sound => sound.name == soundName);
+        return Array.Find(instance.sounds, sound => sound.name == soundName);
     }
 }
