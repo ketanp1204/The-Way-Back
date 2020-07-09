@@ -51,13 +51,12 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
         if(objectProperties.LOSAUpdateResponse == 1)    // Option 'Play The Record' is selected
         {
-            Sound s = AudioManager.GetSound("LR_Gramophone_Record");
-            
-            audioManager.Play("LR_Gramophone_Record");
+            AudioManager.Play("LR_Gramophone_Record");
             
             Animator recordAnim = transform.Find("Record_Sprites").GetComponent<Animator>();
             Animator playerAnim = transform.Find("Player_Sprites").GetComponent<Animator>();
 
+            Sound s = AudioManager.GetSound("LR_Gramophone_Record");
             StartCoroutine(LR_G_PlayerAnimation(s, playerAnim));
             StartCoroutine(LR_G_RecordAnimation(s, recordAnim));
         }
@@ -195,11 +194,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
     private void B_BathtubTap_Behavior()
     {
         // Stop water dripping sound
-        Sound s = AudioManager.GetSound("B_Water_Dripping");
-        if(s.source.isPlaying)
-        {
-            s.source.Stop();
-        }
+        AudioManager.Stop("B_Water_Dripping");
         GameEventsTracker.B_Tap_Water_Dripping = false;
         // TODO Stop water animation 
     }

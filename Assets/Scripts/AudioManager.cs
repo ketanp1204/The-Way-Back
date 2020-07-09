@@ -1,7 +1,6 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
-using System.Security.Cryptography;
 using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
@@ -10,7 +9,6 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    // Start is called before the first frame update
     void Awake()
     {
         if(instance == null)
@@ -29,7 +27,6 @@ public class AudioManager : MonoBehaviour
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.audioClip;
-
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
@@ -44,51 +41,37 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == "LR_Gramophone_Record");
-        if (s.source.isPlaying)
+        if(scene.name != "LivingRoom")
         {
-            if (scene.name != "LivingRoom")
+            if (scene.name == "Garden")
             {
-                if(scene.name == "Garden")
-                {
-                    s.source.Stop();
-                }
-                else
-                {
-                    s.source.volume = 0.5f;
-                }
+                Stop("LR_Gramophone_Record");
+            }
+            else
+            {
+                ChangeVolume("LR_Gramophone_Record", 0.5f);
             }
         }
 
         if(scene.name == "LivingRoom")
         {
-            s = Array.Find(sounds, sound => sound.name == "BathRoom_Morning");
-            if (s.source.isPlaying)
-            {
-                s.source.Stop();
-            }
-            s = Array.Find(sounds, sound => sound.name == "B_Water_Dripping");
-            if (s.source.isPlaying)
-            {
-                s.source.Stop();
-            }
+            // If coming from the bathroom scene, stop its sounds
+            Stop("BathRoom_Morning");   
+            Stop("B_Water_Dripping");
+
+            // Play living room sounds
             Play("LivingRoom_Morning");
         }
 
         if(scene.name == "Bathroom")
         {
-            s = Array.Find(sounds, sound => sound.name == "LivingRoom_Morning");
-            if(s.source.isPlaying)
-            {
-                s.source.Stop();
-            }
-            s = Array.Find(sounds, sound => sound.name == "Kitchen_Morning");
-            if (s.source.isPlaying)
-            {
-                s.source.Stop();
-            }
+            // If coming from the living room or kitchen scene, stop their sounds
+            Stop("LivingRoom_Morning");
+            Stop("Kitchen_Morning");
+
+            // Play bathroom sounds
             Play("BathRoom_Morning");
-            if(GameEventsTracker.B_Tap_Water_Dripping)
+            if(GameEventsTracker.B_Tap_Water_Dripping)      // If the water tap hasn't been shut, play the water dripping sound
             {
                 Play("B_Water_Dripping");
             }
@@ -96,26 +79,17 @@ public class AudioManager : MonoBehaviour
 
         if (scene.name == "Kitchen")
         {
-            s = Array.Find(sounds, sound => sound.name == "BathRoom_Morning");
-            if (s.source.isPlaying)
-            {
-                s.source.Stop();
-            }
-            s = Array.Find(sounds, sound => sound.name == "B_Water_Dripping");
-            if (s.source.isPlaying)
-            {
-                s.source.Stop();
-            }
-
+            // If coming from the bathroom or garden scene, stop their sounds
+            Stop("BathRoom_Morning");
+            Stop("B_Water_Dripping");
+            
+            // Play kitchen sounds
             Play("Kitchen_Morning");
         }
         if (scene.name == "Garden")
         {
-            s = Array.Find(sounds, sound => sound.name == "Kitchen_Morning");
-            if (s.source.isPlaying)
-            {
-                s.source.Stop();
-            }
+            // If coming from the bathroom or garden scene, stop their sounds
+            Stop("Kitchen_Morning");
         }
     }
 
@@ -124,15 +98,43 @@ public class AudioManager : MonoBehaviour
         // Play("Rain_Window");
     }
 
-    public void Play(string name)
+    public static void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(instance.sounds, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogError("Sound " + name + " not found.");
             return;
         }
         s.source.Play();
+    }
+
+    public static void Stop(string name)
+    {
+        Sound s = Array.Find(instance.sounds, sound => sound.name == name);
+        if(s == null)
+        {
+            Debug.LogError("Sound " + name + " not found.");
+            return;
+        }
+        if(s.source.isPlaying)
+        {
+            s.source.Stop();
+        }
+    }
+
+    public static void ChangeVolume(string name, float newVolume)
+    {
+        Sound s = Array.Find(instance.sounds, sound => sound.name == name);
+        if(s == null)
+        {
+            Debug.LogError("Sound " + name + " not found.");
+            return;
+        }
+        if(s.source.isPlaying)
+        {
+            s.volume = newVolume;
+        }
     }
 
     public static Sound GetSound(string soundName)
