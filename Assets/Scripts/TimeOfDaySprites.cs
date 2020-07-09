@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class TimeOfDayManager : MonoBehaviour
+public class TimeOfDaySprites : MonoBehaviour
 {
     // To be set in the inspector
     public GameObject morningImage;

@@ -93,11 +93,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        // Play("Rain_Window");
-    }
-
     public static void Play(string name)
     {
         Sound s = Array.Find(instance.sounds, sound => sound.name == name);
