@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
+    // Singleton
     public static GameSession instance;
 
     public enum TimeOfDay
@@ -27,20 +28,11 @@ public class GameSession : MonoBehaviour
     // Cached References
     private UIReferences uiReferences;
     private GameObject backgroundImage;
-    private GameObject morningImage;
-    private GameObject noonImage;
-    private GameObject eveningImage;
-    private GameObject k_shoppingList_day;
-    private GameObject k_shoppingList_night;
-    private GameObject k_sink_day;
-    private GameObject k_sink_night;
     public GameObject LOSA;
     private GameObject descriptionBox;
     private GameObject pauseMenuUI;
     private CanvasGroup descriptionBoxCG;
-    private ObjectManager objectManager;
     private OptionsManager optionsManager;
-    private GameObject nextTextButton;
     private GameObject rainSystem;
 
     // Static variables
@@ -102,7 +94,6 @@ public class GameSession : MonoBehaviour
             rainSystem = uiReferences.rainSystem;
         }
         LOSA = GameObject.Find("LOSA");
-        objectManager = FindObjectOfType<ObjectManager>();
         optionsManager = FindObjectOfType<OptionsManager>();
     }
 
@@ -134,7 +125,9 @@ public class GameSession : MonoBehaviour
             }
             else if (Time.time >= timeOfDayInterval && Time.time < timeOfDayInterval * 2)
             {
-                Destroy(GameObject.Find("Rain Generator"));
+                if(rainSystem != null)          // Stop rain when noon starts
+                    Destroy(rainSystem);
+
                 currentTimeOfDay = TimeOfDay.NOON;
                 changes++;
             }
@@ -155,7 +148,7 @@ public class GameSession : MonoBehaviour
             if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
             {
                 FadeOut(descriptionBoxCG, 0f);
-                StartCoroutine(DisableGameObjectAfterDelay(descriptionBox));
+                StartCoroutine(DisableGameObjectAfterDelay(descriptionBox, 0.5f));
             }
         }
 
@@ -172,47 +165,40 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    public void disableBackgroundImage()
+    public void disableBackgroundImage()            // To disable the background image GameObject after a certain delay
     {
-        StartCoroutine(backgroundImageChange(false));
+        StartCoroutine(DisableGameObjectAfterDelay(backgroundImage, 1f));
     }
 
-    public void enableBackgroundImage()
+    public void enableBackgroundImage()             // To enable the background image GameObject after a certain delay
     {
-        StartCoroutine(backgroundImageChange(true));
+        StartCoroutine(EnableGameObjectAfterDelay(backgroundImage, 1f));
     }
 
-    private IEnumerator backgroundImageChange(bool enableOrDisable)
-    {
-        yield return new WaitForSeconds(1f);
-
-        backgroundImage.SetActive(enableOrDisable);
-    }
-
-    public void ChangeLOSA(int LOSAUpdate)
+    public void ChangeLOSA(int LOSAUpdate)          // Change the level of self awareness score
     {
         if(LOSA == null)
         {
             LOSA = GameObject.Find("LOSA");
         }
-        if(LOSAUpdate == 1)
+        if(LOSAUpdate == 1)     // Positive response
         {
             levelOfSelfAwareness += 10f;
             
         }
-        else if(LOSAUpdate == 2)
+        else if(LOSAUpdate == 2)     // Negative response
         {
             if(levelOfSelfAwareness != 0f)
             {
                 levelOfSelfAwareness -= 10f;
             }
         }
-        LOSA.GetComponent<TextMeshProUGUI>().text = "LOSA: " + levelOfSelfAwareness;
+        LOSA.GetComponent<TextMeshProUGUI>().text = "LOSA: " + levelOfSelfAwareness;        // Update the display of the LOSA score
     }
 
-    public float GetLOSA()
+    public static float GetLOSA()
     {
-        return levelOfSelfAwareness;
+        return instance.levelOfSelfAwareness;
     }
 
     public void Resume()
@@ -240,17 +226,17 @@ public class GameSession : MonoBehaviour
         Application.Quit();
     }
 
-    public static void FadeIn(CanvasGroup canvasGroup, float delay)
+    public static void FadeIn(CanvasGroup canvasGroup, float delay)     // Fade in canvas group after delay
     {
         instance.StartCoroutine(FadeCanvasGroup(canvasGroup, 0f, 1f, delay));
     }
 
-    public static void FadeOut(CanvasGroup canvasGroup, float delay)
+    public static void FadeOut(CanvasGroup canvasGroup, float delay)    // Fade out canvas group after delay
     {
         instance.StartCoroutine(FadeCanvasGroup(canvasGroup, 1f, 0f, delay));
     }
 
-    public static IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float delay, float lerpTime = 0.5f)
+    public static IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float delay, float lerpTime = 0.5f)  // Coroutine to fade canvas group
     {
         yield return new WaitForSeconds(delay);
 
@@ -279,47 +265,17 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    public static IEnumerator DisableGameObjectAfterDelay(GameObject gO)
+    public static IEnumerator DisableGameObjectAfterDelay(GameObject gO, float delay)    // Coroutine to disable a GameObject after delay
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delay);
 
         gO.SetActive(false);
     }
 
-    public static IEnumerator EnableGameObjectAfterDelay(GameObject gO)
+    public static IEnumerator EnableGameObjectAfterDelay(GameObject gO, float delay)     // Coroutine to enable a GameObject after delay
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(delay);
 
         gO.SetActive(true);
-    }
-
-    private IEnumerator FadeOutImage(GameObject g, float duration, bool dSR)
-    {
-        float start = Time.time;
-        SpriteRenderer sR = g.GetComponent<SpriteRenderer>();
-        while(Time.time <= start + duration)
-        {
-            Color color = sR.color;
-            color.a = 1f - Mathf.Clamp01((Time.time - start) / duration);
-            sR.color = color;
-            yield return new WaitForEndOfFrame();
-        }
-        if (dSR)
-        {
-            sR.enabled = false;
-        }
-    }
-
-    private IEnumerator FadeInImage(GameObject g, float duration)
-    {
-        float start = Time.time;
-        SpriteRenderer sR = g.GetComponent<SpriteRenderer>();
-        while (Time.time <= start + duration)
-        {
-            Color color = sR.color;
-            color.a = 0f + Mathf.Clamp01((Time.time - start) / duration);
-            sR.color = color;
-            yield return new WaitForEndOfFrame();
-        }
     }
 }

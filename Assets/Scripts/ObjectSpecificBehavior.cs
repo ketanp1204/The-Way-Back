@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ObjectSpecificBehavior : MonoBehaviour
 {
 
-    private OptionsManager optionsManager;
-    private ObjectProperties objectProperties;
-    private AudioManager audioManager;
+    private OptionsManager optionsManager;          // Reference to the options manager gameobject
+    private ObjectProperties objectProperties;      // Reference to the selected object's properties
 
     private int behaviorIndex = 1;      // To allow for multiple behaviors
 
@@ -19,7 +15,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         optionsManager = FindObjectOfType<OptionsManager>();
         objectProperties = gameObject.GetComponent<ObjectProperties>();
-        audioManager = FindObjectOfType<AudioManager>();
     }
 
     public void HandleBehavior(GameObject gO)
@@ -38,7 +33,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
     private void LR_Television_Behavior()
     {
         // TODO: Turn off animation and sound of the television after interaction
-
 
     }
 

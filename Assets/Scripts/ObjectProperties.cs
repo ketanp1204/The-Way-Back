@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class ObjectProperties : MonoBehaviour
 {
-    public enum ObjectType
+    public enum ObjectType              // The types of behaviors possible when clicking on an object
     {
         LOSAResponseOnly,
         LOSAMediumThenOptions,
@@ -20,7 +20,7 @@ public class ObjectProperties : MonoBehaviour
     }
 
     [System.Serializable]
-    public class LOSAResponseTexts
+    public class LOSAResponseTexts      
     {
         public string LowLOSA;
         public string MedLOSA;
@@ -28,14 +28,14 @@ public class ObjectProperties : MonoBehaviour
     }
 
     // Cached References
-    private OptionsManager optionsManager;
+    private OptionsManager optionsManager;      // Reference to the options manager gameobject
 
     // Variables that need to be set in inspector
-    public List<string> additionalTags;
-    public ObjectType[] objectType;
-    public string objectName;
+    public List<string> additionalTags;         // Additional tags for an object if required
+    public ObjectType[] objectType;             // To store the response type for the current object
+    public string objectName;                   // Name of the object
     [TextArea(3, 10)]
-    public string description;
+    public string description;                  
     [TextArea(3, 10)]
     public string option1Text;
     [TextArea(3, 10)]
@@ -48,45 +48,45 @@ public class ObjectProperties : MonoBehaviour
     public string option3Text;
     [TextArea(3, 10)]
     public string[] option3responses;
-    public int[] reactions;
+    public int[] reactions;                     // Positive, negative or neutral response
     public LOSAResponseTexts losaResponseTexts;
-    public GameObject closeUpObject;
+    public GameObject closeUpObject;            // To store the close up object reference, if any
   
     // Variables that will be calculated in the code
     [HideInInspector]
-    public int numberOfResponses;
+    public int numberOfResponses;               // Number of options an object has to choose from
     [HideInInspector]
     public int numberOfLOSAResponses;
     [HideInInspector]
     public Dictionary<int, string[]> responses = new Dictionary<int, string[]>();
     [HideInInspector]
-    public string[] optionTexts;
+    public string[] optionTexts;                // Texts for the options
     [HideInInspector]
-    public bool interactedWith = false;
+    public bool interactedWith = false;         // Stores whether an object has been already clicked on
     [HideInInspector]
-    public int LOSAUpdateResponse;
+    public int LOSAUpdateResponse;              // The response that the player chooses for the object
     [HideInInspector]
-    public bool destroyOnPositive = false;
+    public bool destroyOnPositive = false;      // Stores whether an object has to be destroyed on a positive response
     [HideInInspector]
-    public bool destroyOnNegative = false;
+    public bool destroyOnNegative = false;      // Stores whether an object has to be destroyed on a negative response
     [HideInInspector]
-    public bool hasBehavior = false;
+    public bool hasBehavior = false;            // Stores whether an object has custom behavior
     [HideInInspector]
-    public bool responseSelected = false;
+    public bool responseSelected = false;       // Stores whether an option has been chosen 
     [HideInInspector]
-    public int callIndex;
+    public int callIndex;                       // Indicates which behavior of an object to call (for objects that have multiple behaviors specified)
     [HideInInspector]
-    public bool showOptions = false;
+    public bool showOptions = false;            // Bool to store whether to display the options
 
     // Cached References
-    private GameObject descriptionBox;
-
+    private GameObject descriptionBox;          // Reference to the description box gameobject
 
     // Start is called before the first frame update
     void Start()
     {
         descriptionBox = FindObjectOfType<UIReferences>().descriptionBox;
 
+        // Storing the number and the texts of the options 
         if (option3Text != "" & option2Text != "" && option1Text != "")
         {
             numberOfResponses = 3;
@@ -114,6 +114,7 @@ public class ObjectProperties : MonoBehaviour
             optionTexts = null;
         }
 
+        // Storing the responses to each option, if present
         if (numberOfResponses == 3)
         {
             responses.Add(0, option1responses);
@@ -177,10 +178,10 @@ public class ObjectProperties : MonoBehaviour
     
     void OnMouseEnter()
     {
-        if (EventSystem.current.IsPointerOverGameObject())                                              // Prevent player from clicking through UI elements
+        if (EventSystem.current.IsPointerOverGameObject())                      // Prevent player from clicking through UI elements
             return;
         
-        if(!GameSession.GameIsPaused && !descriptionBox.activeSelf)
+        if(!GameSession.GameIsPaused && !descriptionBox.activeSelf)             // Prevent displaying object name when the game is paused         
         {
             DisplayObjectName.ShowName_static(objectName);
         }

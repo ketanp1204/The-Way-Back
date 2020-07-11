@@ -6,14 +6,13 @@ using UnityEngine;
 
 public class DisplayObjectName : MonoBehaviour
 {
-
     // Cached References
     private static DisplayObjectName instance;
-    private UIReferences uiReferences;
-    private TextMeshProUGUI objectNameText;
-    private RectTransform backgroundRectTransform;
-    private CanvasGroup canvasGroup;
-    private LevelChanger levelChanger;
+    private UIReferences uiReferences;                  // Stores the references to the UI elements in the current scene
+    private TextMeshProUGUI objectNameText;             // Reference to the Text field which displays the name
+    private RectTransform backgroundRectTransform;      // To create the background for the name text
+    private CanvasGroup canvasGroup;                    // Reference to the canvas group of the object name gameobject
+    private LevelChanger levelChanger;                  // Reference to the level changer gameobject
 
     private void OnEnable()
     {
@@ -28,7 +27,7 @@ public class DisplayObjectName : MonoBehaviour
 
     private void Update()
     {
-        if (levelChanger.fadeAnimationRunning)
+        if (levelChanger.fadeAnimationRunning)      // Prevent displaying object names when screen fade animation is running
         {
             HideName();
         }

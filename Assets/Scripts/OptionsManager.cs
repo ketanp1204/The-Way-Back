@@ -10,30 +10,30 @@ public class OptionsManager : MonoBehaviour
 {
     // Configuration parameters
     [HideInInspector]
-    public int numberOfButtons;
-    Button option;
-    Button nextButton;
-    UnityAction handleClick;
-    Dictionary<int, string[]> responses = new Dictionary<int, string[]>();
-    private WaitForUIButtons nextButtonWait;
+    public int numberOfButtons;     // Number of response options for an object calculated at runtime
+    private Button option;          // Local variable to instantiate option prefab
+    private Button nextButton;      // Local variable to instantiate next button prefab
+    UnityAction handleClick;        // Custom action for option response
+    Dictionary<int, string[]> responses = new Dictionary<int, string[]>();      // Stores response texts for option choices
+    private WaitForUIButtons nextButtonWait;        // Custom yield instruction class to wait for button press inside a coroutine
 
     // Cached references
     [HideInInspector]
-    public GameObject selectedObject;
-    private UIReferences uiReferences;
-    public Button optionPrefab;
-    private GameObject optionsBox;
-    private GameObject descriptionBox;
-    private CanvasGroup optionsBoxCG;
-    private CanvasGroup descriptionBoxCG;
-    private TextMeshProUGUI descriptionText;
-    private GameSession gameSession;
+    public GameObject selectedObject;               // The object which is selected in the scene
+    private UIReferences uiReferences;              // Stores references to UI objects in the current scene
+    public Button optionPrefab;                     // Stores a reference to the Option prefab
+    public Button nextButtonPrefab;                 // Stores a reference to the nextButton prefab
+    private GameObject optionsBox;                  // Stores a reference to the options box
+    private GameObject descriptionBox;              // Stores a reference to the description box
+    private CanvasGroup optionsBoxCG;               // Stores a reference to the options box canvas group
+    private CanvasGroup descriptionBoxCG;           // Stores a reference to the description box canvas group
+    private TextMeshProUGUI descriptionText;        // Stores a reference to the description text
+    private GameSession gameSession;                // Stores a reference to the current GameSession instance
     [HideInInspector]
-    public ObjectProperties objectProperties;
-    public Button nextButtonPrefab;
+    public ObjectProperties objectProperties;       // Stores a reference to the selected object's properties
     [HideInInspector]
-    public bool IsWriting = false;
-    private GameObject dynamicUI;
+    public bool IsWriting = false;                  // Boolean to store whether text is being automatically typed on the description box or not
+    private GameObject dynamicUI;                   // Stores a reference to the DynamicUI canvas
 
     // Start is called before the first frame update
     void OnEnable()
@@ -52,30 +52,30 @@ public class OptionsManager : MonoBehaviour
 
     void Update()
     {
-        if(optionsBox.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        if(optionsBox.activeSelf && Input.GetKeyDown(KeyCode.Space))        // Close options box if space is pressed
         {
             CloseAndClearOptionsBox();
         }
     }
 
-    public void ShowTextOnDescriptionBox(string text, float delay)
+    public void ShowTextOnDescriptionBox(string text, float delay)          // Method to type a single text automatically on the description box
     {
         StartCoroutine(TypeText(new string[] {text}, delay));
         GameSession.FadeIn(descriptionBoxCG, 0f);
     }
 
-    public void ShowTextOnDescriptionBox(string[] texts, float delay)
+    public void ShowTextOnDescriptionBox(string[] texts, float delay)       // Method to type multiple texts automatically on the description box
     {
         StartCoroutine(TypeText(texts, delay));
         GameSession.FadeIn(descriptionBoxCG, 0f);
     }
 
-    IEnumerator TypeText(string[] texts, float delay)
+    IEnumerator TypeText(string[] texts, float delay)   // Coroutine that types text letter by letter in the description box and shows options after finishing
     {
         yield return new WaitForSeconds(delay);
 
         descriptionBox.SetActive(true);
-        IsWriting = true;
+        IsWriting = true;                                // Writing to the description box starts
         for(int i = 0; i < texts.Length; i++)
         {
             string text = texts[i];
@@ -134,7 +134,7 @@ public class OptionsManager : MonoBehaviour
 
                 Destroy(nextButton.gameObject);
             }
-            if (pageIndex == descriptionText.textInfo.pageCount)
+            if (pageIndex == descriptionText.textInfo.pageCount)            // Last page of the text
             {
                 descriptionText.pageToDisplay = pageIndex;
 
@@ -176,34 +176,34 @@ public class OptionsManager : MonoBehaviour
             {
                 if (objectProperties.numberOfResponses > 0
                 && !objectProperties.responseSelected
-                && objectProperties.showOptions)
+                && objectProperties.showOptions)            // If object has options to choose from, then displays them
                 {
                     ShowOptions();
                 }
             }
 
-            if(i < texts.Length - 1)
+            if(i < texts.Length - 1)                        // Creates a 'Next' button to move to the next page in the text
             {
                 nextButton = Instantiate(nextButtonPrefab, GameObject.Find("DynamicUI").transform);
                 nextButton.gameObject.SetActive(true);
 
                 nextButtonWait = new WaitForUIButtons(nextButton);
-                yield return nextButtonWait;
+                yield return nextButtonWait;                // Wait for next button to be clicked before typing the next page of text
 
                 Destroy(nextButton.gameObject);
             }
         }
 
-        IsWriting = false;
+        IsWriting = false;                                  // Writing to the description box is finished
     }
 
-    public void SetSelectedObjectReference(GameObject gameObject)
+    public void SetSelectedObjectReference(GameObject gameObject)       // Sets the references to an object when it is selected in the scene
     {
         selectedObject = gameObject;
         objectProperties = selectedObject.GetComponent<ObjectProperties>();
     }
 
-    public void CloseAndClearOptionsBox()
+    public void CloseAndClearOptionsBox()           // Clear option texts and hide the options box
     {
         responses.Clear();
         foreach (Transform child in optionsBox.transform)
@@ -211,16 +211,18 @@ public class OptionsManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         GameSession.FadeOut(optionsBoxCG, 0f);
-        StartCoroutine(GameSession.DisableGameObjectAfterDelay(optionsBox));
+        StartCoroutine(GameSession.DisableGameObjectAfterDelay(optionsBox, 0.5f));
     }
 
     /// <summary>
     /// Section for handling the responses to various types of object behavior
+    /// Abbreviations:
+    /// LOSA: Level of self-awareness score
     /// </summary>
 
-    public void HandleLOSAResponseOnly()
+    public void HandleLOSAResponseOnly()    // Object will only have a text response based on the current LOSA score
     {
-        float LOSA = gameSession.GetLOSA();
+        float LOSA =GameSession.GetLOSA();
         string responseText = "";
         if (LOSA < 30)
         {
@@ -237,9 +239,9 @@ public class OptionsManager : MonoBehaviour
         ShowTextOnDescriptionBox(responseText, 0f);
     }
 
-    public void HandleLOSAMediumThenOptions()
+    public void HandleLOSAMediumThenOptions()       // If LOSA is medium, then object has options to choose from, otherwise has a low LOSA response
     {
-        float LOSA = gameSession.GetLOSA();
+        float LOSA = GameSession.GetLOSA();
         string responseText = "";
         if (LOSA < 30)
         {
@@ -253,9 +255,9 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
-    public void HandleLOSAHighThenOptions()
+    public void HandleLOSAHighThenOptions()         // If LOSA is high, then object has options to choose from, otherwise has a low and a medium LOSA response
     {
-        float LOSA = gameSession.GetLOSA();
+        float LOSA = GameSession.GetLOSA();
         string responseText = "";
         if (LOSA < 30)
         {
@@ -274,12 +276,13 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
+    // Handles the events that take place when an option is selected
     private void HandleOptionResponse(int buttonIndex, int reaction, bool destroyOnPositive, bool destroyOnNegative, bool behaviorAfterChoice)
     {
-        objectProperties.LOSAUpdateResponse = reaction;
+        objectProperties.LOSAUpdateResponse = reaction;     // Stores the type of response selected in the object's properties
         objectProperties.responseSelected = true;
         // Check whether response is positive or negative
-        gameSession.ChangeLOSA(reaction);
+        gameSession.ChangeLOSA(reaction);                   // Update the LOSA score
 
         // Show a response text if any present
         if (objectProperties.responses[buttonIndex].Length != 0)
@@ -292,8 +295,9 @@ public class OptionsManager : MonoBehaviour
         }
         else
         {
+            // Close the description box
             GameSession.FadeOut(descriptionBoxCG, 0f);
-            StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
+            StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox, 0.5f));
         }
 
         // Destroy an object after positive response
@@ -314,11 +318,11 @@ public class OptionsManager : MonoBehaviour
             selectedObject.GetComponent<ObjectSpecificBehavior>().HandleBehavior(selectedObject);
         }
 
-        // Clear the options and descriptions
+        // Clear and hide the options box
         CloseAndClearOptionsBox();
     }
 
-    private void ShowNextResponse(int buttonIndex)
+    private void ShowNextResponse(int buttonIndex)      // Shows the response if present when an option is selected
     {
         if (descriptionBoxCG.alpha != 0)
         {
@@ -327,7 +331,7 @@ public class OptionsManager : MonoBehaviour
         ShowTextOnDescriptionBox(objectProperties.responses[buttonIndex][0], 0f);
     }
 
-    public void HandleOptionLOSAUpdateOnly()
+    public void HandleOptionLOSAUpdateOnly()       // Option has only options to choose from
     {
         objectProperties.showOptions = true;
         if (objectProperties.description != "")
@@ -336,7 +340,7 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
-    private void ShowOptions()
+    private void ShowOptions()          // Display the option texts when an object is clicked on
     {
         numberOfButtons = objectProperties.numberOfResponses;
         if (numberOfButtons != 0)
@@ -367,7 +371,7 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
-    public void HandleBehaviorOnly()
+    public void HandleBehaviorOnly()        // For objects that only have specific behavior on option response
     {
         selectedObject.GetComponent<ObjectSpecificBehavior>().HandleBehavior(selectedObject);
     }

@@ -20,6 +20,7 @@ public class TimeOfDaySprites : MonoBehaviour
         // noonSR = noonImage.GetComponent<SpriteRenderer>();       // TODO: uncomment when noon image is available
         eveningSR = eveningImage.GetComponent<SpriteRenderer>();
 
+        // TODO: Change this to reflect the sprite alphas at the current time of the game
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
             morningSR.enabled = true;
@@ -40,7 +41,7 @@ public class TimeOfDaySprites : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeOutImage(SpriteRenderer sR, float duration)
+    private IEnumerator FadeOutImage(SpriteRenderer sR, float duration)     // Coroutine to fade out a sprite over a specified duration
     {
         if(sR.enabled)
         {
@@ -56,7 +57,7 @@ public class TimeOfDaySprites : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeInImage(SpriteRenderer sR, float duration)
+    private IEnumerator FadeInImage(SpriteRenderer sR, float duration)      // Coroutine to fade in a sprite over a specified duration
     {
         if(!sR.enabled)
         {

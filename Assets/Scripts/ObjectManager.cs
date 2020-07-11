@@ -126,7 +126,7 @@ public class ObjectManager : MonoBehaviour
                     {
                         if(rainSystem != null)
                         {
-                            StartCoroutine(GameSession.DisableGameObjectAfterDelay(rainSystem));     // TODO: Refactor into a rain manager script
+                            StartCoroutine(GameSession.DisableGameObjectAfterDelay(rainSystem, 1f));     // TODO: Refactor into a rain manager script
                         }
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         GameSession.closeUpObjects = true;
@@ -166,7 +166,7 @@ public class ObjectManager : MonoBehaviour
         {
             GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>(), 0f);
         }
-        StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox));
+        StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox, 0.5f));
         optionsManager.CloseAndClearOptionsBox();
     }
 
@@ -176,7 +176,7 @@ public class ObjectManager : MonoBehaviour
         gameSession.enableBackgroundImage();
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
-            StartCoroutine(GameSession.EnableGameObjectAfterDelay(rainSystem));      // TODO: Refactor into a rain manager script
+            StartCoroutine(GameSession.EnableGameObjectAfterDelay(rainSystem, 1f));      // TODO: Refactor into a rain manager script
         }
         StartCoroutine(LevelChanger.CrossFadeStart(true));          // Fade In and Out Animation
         StartCoroutine(ExitCloseUp());                              // Go back from Close Up View
@@ -185,12 +185,14 @@ public class ObjectManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        interactableObjects.SetActive(false);
+        interactableObjects.SetActive(false);                       // Hide and disable main scene objects
 
+        // Spawn a back button to go back to the main scene
         backButton = Instantiate(backButtonPrefab, GameObject.Find("StaticUI").transform);
         backButton.gameObject.SetActive(true);
         backButton.onClick.AddListener(() => HandleBackButton(gameSession));
 
+        // Load the zoomed in object and its interactable objects
         zoomedInObject = objectProperties.closeUpObject;
         zoomedInObject.SetActive(true);
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(true);
