@@ -130,7 +130,7 @@ public class ObjectManager : MonoBehaviour
                         }
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         GameSession.closeUpObjects = true;
-                        gameSession.disableBackgroundImage();
+                        GameSession.instance.disableBackgroundImage();
                         StartCoroutine(LevelChanger.CrossFadeStart(true));               // Fade In and Out Animation
                         StartCoroutine(LoadCloseUp());                                   // Load close up view
                     }
@@ -170,10 +170,10 @@ public class ObjectManager : MonoBehaviour
         optionsManager.CloseAndClearOptionsBox();
     }
 
-    public void ExitCloseUpView(GameSession gameSession)
+    public void ExitCloseUpView()
     {
         GameSession.closeUpObjects = false;
-        gameSession.enableBackgroundImage();
+        GameSession.instance.enableBackgroundImage();
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
             StartCoroutine(GameSession.EnableGameObjectAfterDelay(rainSystem, 1f));      // TODO: Refactor into a rain manager script
@@ -190,7 +190,7 @@ public class ObjectManager : MonoBehaviour
         // Spawn a back button to go back to the main scene
         backButton = Instantiate(backButtonPrefab, GameObject.Find("StaticUI").transform);
         backButton.gameObject.SetActive(true);
-        backButton.onClick.AddListener(() => HandleBackButton(gameSession));
+        backButton.onClick.AddListener(() => HandleBackButton());
 
         // Load the zoomed in object and its interactable objects
         zoomedInObject = objectProperties.closeUpObject;
@@ -198,9 +198,9 @@ public class ObjectManager : MonoBehaviour
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(true);
     }
 
-    private void HandleBackButton(GameSession gameSession)
+    private void HandleBackButton()
     {
-        ExitCloseUpView(gameSession);
+        ExitCloseUpView();
     }
 
     public IEnumerator ExitCloseUp()

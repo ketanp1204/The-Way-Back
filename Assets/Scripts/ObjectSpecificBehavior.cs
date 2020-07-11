@@ -10,6 +10,10 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private int behaviorIndex = 1;      // To allow for multiple behaviors
 
+    // Specific Game Assets
+    private Sprite B_MirrorShelfCabinetOpen;
+    private Sprite B_MirrorShelfCabinetClosed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -208,6 +212,42 @@ public class ObjectSpecificBehavior : MonoBehaviour
             {
                 // TODO: remove pills from scene
             }
+        }
+    }
+
+    private void B_ShelfInteract_Behavior()
+    {
+        GameObject CU_MirrorShelf = transform.parent.parent.gameObject;     // Get the parent zoomed in object
+
+        if (behaviorIndex % 2 == 1)
+        {
+            behaviorIndex += 1;
+
+            objectProperties.objectName = "Close Shelf";      // Change the text to be displayed on hover to "Close Shelf"
+
+            B_MirrorShelfCabinetOpen = transform.parent.transform.Find("B_MirrorShelfOpenSprite").GetComponent<SpriteRenderer>().sprite;    // Get the cabinet open sprite from the gameobject present that holds it
+            CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = B_MirrorShelfCabinetOpen;            // Set the sprite of the close up object CU_MirrorShelf to the cabinet open sprite
+
+            transform.parent.transform.Find("B_Mirror").gameObject.SetActive(false);        // Disable the mirror since its no longer in view
+
+            transform.parent.transform.Find("B_SleepingPills").gameObject.SetActive(true);  // Enable the sleeping pills object which is now in view
+
+            transform.parent.transform.Find("B_MouthMask").gameObject.SetActive(true);      // Enable the mouth mask object which is now in view
+        }
+        else
+        {
+            behaviorIndex += 1;
+
+            objectProperties.objectName = "Open Shelf";       // Change the text to be displayed on hover to "Open Shelf"
+
+            B_MirrorShelfCabinetClosed = transform.parent.transform.Find("B_MirrorShelfClosedSprite").GetComponent<SpriteRenderer>().sprite;    // Get the cabinet closed sprite from the gameobject present that holds it
+            CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = B_MirrorShelfCabinetClosed;      // Set the sprite of the close up object CU_MirrorShelf to the cabinet closed sprite
+
+            transform.parent.transform.Find("B_Mirror").gameObject.SetActive(true);        // Enable the mirror object which is now in view
+
+            transform.parent.transform.Find("B_SleepingPills").gameObject.SetActive(false);  // Disable the sleeping pills object since its no longer in view
+
+            transform.parent.transform.Find("B_MouthMask").gameObject.SetActive(false);      // Disable the mouth mask object since its no longer in view
         }
     }
 

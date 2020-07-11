@@ -186,7 +186,12 @@ public class ObjectProperties : MonoBehaviour
             DisplayObjectName.ShowName_static(objectName);
         }
     }
-    
+
+    void OnMouseDown()
+    {
+        DisplayObjectName.HideName_static();
+    }
+
     void OnMouseExit()
     {
         DisplayObjectName.HideName_static();

@@ -3143,7 +3143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LOSA: {fileID: 0}
-  instructionsEnabled: 1
+  instructionsEnabled: 0
   instructionsSeen: 0
 --- !u!1 &4418161944180157721
 GameObject:
