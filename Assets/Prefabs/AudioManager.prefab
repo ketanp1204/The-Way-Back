@@ -63,7 +63,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: BathRoom_Morning
     audioClip: {fileID: 8300000, guid: db9e96e05749631438adc30a302f7b10, type: 3}

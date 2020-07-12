@@ -1974,7 +1974,7 @@ GameObject:
   - component: {fileID: 1851281123}
   - component: {fileID: 1851281125}
   m_Layer: 0
-  m_Name: B_OpenShelf
+  m_Name: B_ShelfInteract
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

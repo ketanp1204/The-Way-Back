@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 public class TimeOfDaySprites : MonoBehaviour
@@ -16,40 +17,40 @@ public class TimeOfDaySprites : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         morningSR = morningImage.GetComponent<SpriteRenderer>();
         // noonSR = noonImage.GetComponent<SpriteRenderer>();       // TODO: uncomment when noon image is available
         eveningSR = eveningImage.GetComponent<SpriteRenderer>();
-
-        // TODO: Change this to reflect the sprite alphas at the current time of the game
+        
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
             morningSR.enabled = true;
-            StartCoroutine(FadeOutImage(morningSR, GameSession.timeOfDayInterval));
-            // StartCoroutine(FadeInImage(noonSR, GameSession.timeOfDayInterval)); // TODO uncomment when noon image is available
-            StartCoroutine(FadeInImage(eveningSR, GameSession.timeOfDayInterval));
-
+            float timeElapsed = Time.time;
+            StartCoroutine(FadeOutImage(morningSR, timeElapsed, 0));
+            // StartCoroutine(FadeInImage(noonSR, timeElapsed, 0));     // TODO: uncomment when noon image is available
+            StartCoroutine(FadeInImage(eveningSR, timeElapsed, 0));
         }
-        else if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+        else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
         {
             //noonSR.enabled = true;
             // StartCoroutine(FadeOutImage(noonSR, GameSession.timeOfDayInterval));
-            StartCoroutine(FadeInImage(eveningSR, GameSession.timeOfDayInterval));
+            float timeElapsed = Time.time;
+            StartCoroutine(FadeInImage(eveningSR, timeElapsed, 1));
         }
         else
         {
             eveningSR.enabled = true;
         }
     }
-
-    private IEnumerator FadeOutImage(SpriteRenderer sR, float duration)     // Coroutine to fade out a sprite over a specified duration
+    
+    private IEnumerator FadeOutImage(SpriteRenderer sR, float timeElapsed, int timeOfDayIndex)     // Coroutine to fade out a sprite over a specified duration
     {
-        if(sR.enabled)
+        if (sR.enabled)
         {
-            float start = Time.time;
-            while (Time.time <= start + duration)
+            while (Time.time <= timeElapsed + GameSession.timeOfDayInterval)
             {
                 Color color = sR.color;
-                color.a = 1f - Mathf.Clamp01((Time.time - start) / duration);
+                color.a = 1f - Mathf.Clamp01((Time.time - GameSession.timeOfDayInterval * timeOfDayIndex) / GameSession.timeOfDayInterval);
                 sR.color = color;
                 yield return new WaitForEndOfFrame();
             }
@@ -57,17 +58,18 @@ public class TimeOfDaySprites : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeInImage(SpriteRenderer sR, float duration)      // Coroutine to fade in a sprite over a specified duration
+    private IEnumerator FadeInImage(SpriteRenderer sR, float timeElapsed, int timeOfDayIndex)      // Coroutine to fade in a sprite over a specified duration
     {
-        if(!sR.enabled)
+        if (!sR.enabled)
         {
             sR.enabled = true;
         }
         float start = Time.time;
-        while (Time.time <= start + duration)
+        while (Time.time <= timeElapsed + GameSession.timeOfDayInterval)
         {
             Color color = sR.color;
-            color.a = 0f + Mathf.Clamp01((Time.time - start) / duration);
+            color.a = 0f + Mathf.Clamp01((Time.time - GameSession.timeOfDayInterval * timeOfDayIndex) / GameSession.timeOfDayInterval);
+            Debug.Log(color.a);
             sR.color = color;
             yield return new WaitForEndOfFrame();
         }
