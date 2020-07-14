@@ -44,6 +44,8 @@ public class GameSession : MonoBehaviour
     public static bool closeUpObjects = false;
     [HideInInspector]
     public static float timeOfDayInterval = 300f;
+    [HideInInspector]
+    public static float gameTime = 0f;
 
     // Non-static variables
     public bool instructionsEnabled;
@@ -63,6 +65,7 @@ public class GameSession : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
+        StartCoroutine(GameTimer());
         StartCoroutine(TimeOfDayChanger());
     }
 
@@ -113,6 +116,15 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    private IEnumerator GameTimer()
+    {
+        while(gameTime < timeOfDayInterval * 3)
+        {
+            gameTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
     private IEnumerator TimeOfDayChanger()
     {
         int changes = 0;
@@ -143,6 +155,7 @@ public class GameSession : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (descriptionBox != null && descriptionBox.activeSelf && !optionsManager.IsWriting)
         {
             if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
@@ -241,8 +254,8 @@ public class GameSession : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         float _timeStartedLerping = Time.time;
-        float timeSinceStarted = Time.time - _timeStartedLerping;
-        float percentageComplete = timeSinceStarted / lerpTime;
+        float timeSinceStarted;
+        float percentageComplete;
 
         while (true)
         {

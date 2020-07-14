@@ -17,7 +17,6 @@ public class TimeOfDaySprites : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         morningSR = morningImage.GetComponent<SpriteRenderer>();
         // noonSR = noonImage.GetComponent<SpriteRenderer>();       // TODO: uncomment when noon image is available
         eveningSR = eveningImage.GetComponent<SpriteRenderer>();
@@ -25,7 +24,7 @@ public class TimeOfDaySprites : MonoBehaviour
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
             morningSR.enabled = true;
-            float timeElapsed = Time.time;
+            float timeElapsed = GameSession.gameTime;
             StartCoroutine(FadeOutImage(morningSR, timeElapsed, 0));
             // StartCoroutine(FadeInImage(noonSR, timeElapsed, 0));     // TODO: uncomment when noon image is available
             StartCoroutine(FadeInImage(eveningSR, timeElapsed, 0));
@@ -34,7 +33,7 @@ public class TimeOfDaySprites : MonoBehaviour
         {
             //noonSR.enabled = true;
             // StartCoroutine(FadeOutImage(noonSR, GameSession.timeOfDayInterval));
-            float timeElapsed = Time.time;
+            float timeElapsed = GameSession.gameTime;
             StartCoroutine(FadeInImage(eveningSR, timeElapsed, 1));
         }
         else
@@ -50,7 +49,7 @@ public class TimeOfDaySprites : MonoBehaviour
             while (Time.time <= timeElapsed + GameSession.timeOfDayInterval)
             {
                 Color color = sR.color;
-                color.a = 1f - Mathf.Clamp01((Time.time - GameSession.timeOfDayInterval * timeOfDayIndex) / GameSession.timeOfDayInterval);
+                color.a = 1f - Mathf.Clamp01((GameSession.gameTime - GameSession.timeOfDayInterval * timeOfDayIndex) / GameSession.timeOfDayInterval);
                 sR.color = color;
                 yield return new WaitForEndOfFrame();
             }
@@ -64,12 +63,10 @@ public class TimeOfDaySprites : MonoBehaviour
         {
             sR.enabled = true;
         }
-        float start = Time.time;
         while (Time.time <= timeElapsed + GameSession.timeOfDayInterval)
         {
             Color color = sR.color;
-            color.a = 0f + Mathf.Clamp01((Time.time - GameSession.timeOfDayInterval * timeOfDayIndex) / GameSession.timeOfDayInterval);
-            Debug.Log(color.a);
+            color.a = 0f + Mathf.Clamp01((GameSession.gameTime - GameSession.timeOfDayInterval * timeOfDayIndex) / GameSession.timeOfDayInterval);
             sR.color = color;
             yield return new WaitForEndOfFrame();
         }

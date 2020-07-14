@@ -86,3 +86,10 @@ MonoBehaviour:
     spatialBlend: 0.5
     loop: 0
     source: {fileID: 0}
+  - name: Intro_Sounds
+    audioClip: {fileID: 8300000, guid: 160ecf1cd6f70c94ab015834ecae23b9, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.5
+    loop: 0
+    source: {fileID: 0}
