@@ -5,23 +5,25 @@ using UnityEngine;
 
 public class StartMenuBehavior : MonoBehaviour
 {
-    public CanvasGroup topTextCanvasCG;
-    public CanvasGroup bottomTextCanvasCG;
-    public CanvasGroup startMenuUICanvasCG;
-    public TextMeshProUGUI topText;
-    public TextMeshProUGUI bottomText;
+    // To be set in the inspector
+    public CanvasGroup topTextCanvasCG;             // Reference to the top text box canvas group
+    public CanvasGroup bottomTextCanvasCG;          // Reference to the bottom text box canvas group
+    public CanvasGroup startMenuUICanvasCG;         // Reference to the startMenuUI canvas group
+    public TextMeshProUGUI topText;                 // Reference to the top text box text
+    public TextMeshProUGUI bottomText;              // Reference to the bottom text box text
 
+    // To be set in the inspector
     [TextArea(3, 10)]
-    public string[] topTexts;
+    public string[] topTexts;                       // Stores the texts for the top text box
     [TextArea(3, 10)]
-    public string[] bottomTexts;
+    public string[] bottomTexts;                    // Stores the texts for the bottom text box
 
-    public void StartStory()
+    public void StartStory()                        // Method to start the texts coroutine
     {
         StartCoroutine(ShowIntroTexts());
     }
 
-    private IEnumerator ShowIntroTexts()
+    private IEnumerator ShowIntroTexts()            // Coroutine that displays the texts with delays and loads the next level at the end
     {
         StartCoroutine(FadeCanvasGroup(startMenuUICanvasCG, 1f, 0f, 0f, 0.6f));
 

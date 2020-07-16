@@ -36,7 +36,7 @@ public class DisplayObjectName : MonoBehaviour
         transform.localPosition = localPoint;
     }
 
-    private void ShowName(string name)
+    private void ShowName(string name)              // Display the name on hovering over the gameObject
     {
         objectNameText.text = name;
         float textPaddingSize = 8f;
@@ -45,7 +45,7 @@ public class DisplayObjectName : MonoBehaviour
         GameSession.FadeIn(canvasGroup, 0f);
     }
 
-    private void HideName()
+    private void HideName()                         // Hide the name after clicking or moving away from the gameObject
     {
         if(canvasGroup.alpha != 0)
         {
@@ -53,12 +53,12 @@ public class DisplayObjectName : MonoBehaviour
         }
     }
 
-    public static void ShowName_static(string name)
+    public static void ShowName_static(string name)         // Static method to call ShowName()
     {
         instance.ShowName(name);
     }
 
-    public static void HideName_static()
+    public static void HideName_static()                    // Static method to call HideName()
     {
         instance.HideName();
     }

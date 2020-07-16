@@ -35,19 +35,19 @@ public class ObjectProperties : MonoBehaviour
     public ObjectType[] objectType;             // To store the response type for the current object
     public string objectName;                   // Name of the object
     [TextArea(3, 10)]
-    public string description;                  
+    public string description;                  // Description of the object
     [TextArea(3, 10)]
-    public string option1Text;
+    public string option1Text;                  // Text for the first option 
     [TextArea(3, 10)]
-    public string[] option1responses;
+    public string[] option1responses;           // Responses for the first option
     [TextArea(3, 10)]
-    public string option2Text;
+    public string option2Text;                  // Text for the second option
     [TextArea(3, 10)]
-    public string[] option2responses;
+    public string[] option2responses;           // Responses for the second option
     [TextArea(3, 10)]
-    public string option3Text;
+    public string option3Text;                  // Text for the thrid option
     [TextArea(3, 10)]
-    public string[] option3responses;
+    public string[] option3responses;           // Responses for the third option
     public int[] reactions;                     // Positive, negative or neutral response
     public LOSAResponseTexts losaResponseTexts;
     public GameObject closeUpObject;            // To store the close up object reference, if any
@@ -86,8 +86,8 @@ public class ObjectProperties : MonoBehaviour
     {
         descriptionBox = FindObjectOfType<UIReferences>().descriptionBox;
 
-        // Storing the number and the texts of the options 
-        if (option3Text != "" & option2Text != "" && option1Text != "")
+    
+        if (option3Text != "" & option2Text != "" && option1Text != "")           // Storing the number and the texts of the options 
         {
             numberOfResponses = 3;
             optionTexts = new string[3];
@@ -114,8 +114,9 @@ public class ObjectProperties : MonoBehaviour
             optionTexts = null;
         }
 
-        // Storing the responses to each option, if present
-        if (numberOfResponses == 3)
+
+        
+        if (numberOfResponses == 3)                                              // Storing the responses to each option, if present
         {
             responses.Add(0, option1responses);
             responses.Add(1, option2responses);
@@ -147,9 +148,8 @@ public class ObjectProperties : MonoBehaviour
     }
 
 
-    // Additional tags
 
-    public bool HasTag(string tag)
+    public bool HasTag(string tag)                                               // Additional tags
     {
         return additionalTags.Contains(tag);
     }
@@ -174,9 +174,8 @@ public class ObjectProperties : MonoBehaviour
         get { return additionalTags.Count; }
     }
 
-    // Display object name on hover
     
-    void OnMouseEnter()
+    void OnMouseEnter()                                                         // Display object name on hover
     {
         if (EventSystem.current.IsPointerOverGameObject())                      // Prevent player from clicking through UI elements
             return;
@@ -187,18 +186,18 @@ public class ObjectProperties : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
+    void OnMouseDown()                                                          // Hide object name on clicking on the object
     {
         DisplayObjectName.HideName_static();
     }
 
-    void OnMouseExit()
+    void OnMouseExit()                                                          // Hide object name on moving the mouse away from the object
     {
         DisplayObjectName.HideName_static();
     }
 
-    // Handle option click response
-    public void HandleResponse(int callIndex)
+
+    public void HandleResponse(int callIndex)                                   // Handle option click response
     {
         optionsManager = FindObjectOfType<OptionsManager>();
         ObjectType temp;

@@ -5,28 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour
 {
-    public float transitionTime = 1f;
-    public Animator transition;
+    public float transitionTime = 1f;               // Time for which the transition fade animation runs
+    public Animator transition;                     // Reference to the Animator
     public static LevelChanger instance;
     [HideInInspector]
-    public bool fadeAnimationRunning = false;
+    public bool fadeAnimationRunning = false;       // Status of the transition animation
 
     void Start()
     {
         instance = this;
     }
 
-    public void LoadNext()
+    public void LoadNext()                          // Loads next level
     {
         LoadNextLevel();
     }
 
-    public void LoadPrevious()
+    public void LoadPrevious()                      // Loads previous level
     {
         LoadPreviousLevel();
     }
 
-    public static void LoadNextLevel()
+    public static void LoadNextLevel()              // Static method to load next level
     {
         // Start fade animation co-routine
         instance.StartCoroutine(CrossFadeStart(false));
@@ -43,7 +43,7 @@ public class LevelChanger : MonoBehaviour
         }
     }
 
-    public static void LoadPreviousLevel()
+    public static void LoadPreviousLevel()          // Static method to load next level
     {
         // Start fade animation co-routine
         instance.StartCoroutine(CrossFadeStart(false));
@@ -52,14 +52,14 @@ public class LevelChanger : MonoBehaviour
         instance.StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex - 1));
     }
 
-    private static IEnumerator LoadScene(int buildIndex)
+    private static IEnumerator LoadScene(int buildIndex)        // Loads the scene with the given index number
     {
         yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(buildIndex);
     }
 
-    public static IEnumerator CrossFadeStart(bool endAfter)
+    public static IEnumerator CrossFadeStart(bool endAfter)     // Coroutine to start fade animation
     {
         instance.fadeAnimationRunning = true;
         // Play fade animation
@@ -82,7 +82,7 @@ public class LevelChanger : MonoBehaviour
         yield return new WaitForSeconds(instance.transitionTime);
     }
     */
-    public void QuitGame()
+    public void QuitGame()                                      // Quits the game
     {
         Debug.Log("Application Quit");
         Application.Quit();

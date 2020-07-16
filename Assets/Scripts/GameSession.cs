@@ -8,7 +8,7 @@ public class GameSession : MonoBehaviour
     // Singleton
     public static GameSession instance;
 
-    public enum TimeOfDay
+    public enum TimeOfDay                                   // The different times of day 
     {
         MORNING,
         NOON,
@@ -26,31 +26,31 @@ public class GameSession : MonoBehaviour
                                                 "But be wary, you can only act once."};
 
     // Cached References
-    private UIReferences uiReferences;
-    private GameObject backgroundImage;
-    public GameObject LOSA;
-    private GameObject descriptionBox;
-    private GameObject pauseMenuUI;
-    private CanvasGroup descriptionBoxCG;
-    private OptionsManager optionsManager;
-    private GameObject rainSystem;
+    private UIReferences uiReferences;                      // Stores the references to the UI objects in the scene
+    private GameObject backgroundImage;                     // Stores the reference to the background image gameObject
+    public GameObject LOSA;                                 // Stores the reference to the LOSA text gameObject
+    private GameObject descriptionBox;                      // Stores the reference to the description box
+    private GameObject pauseMenuUI;                         // Stores the reference to the Pause Menu UI gameObject
+    private CanvasGroup descriptionBoxCG;                   // Stores the reference to the description box canvas group
+    private OptionsManager optionsManager;                  // Stores the reference to the options manager
+    private GameObject rainSystem;                          // Stores the reference to the rain particle system
 
     // Static variables
     [HideInInspector]
-    public static bool GameIsPaused = false;
+    public static bool GameIsPaused = false;                // Is true when the game is paused
     [HideInInspector]
-    public static TimeOfDay currentTimeOfDay;
+    public static TimeOfDay currentTimeOfDay;               // Static reference to the current time of day (Morning, Noon or Evening)
     [HideInInspector]
-    public static bool closeUpObjects = false;
+    public static bool closeUpObjects = false;              // Is true when an object is in close up view
     [HideInInspector]
-    public static float timeOfDayInterval = 300f;
-    [HideInInspector]
-    public static float gameTime = 0f;
+    public static float timeOfDayInterval = 300f;           // The interval between consecutive time of day changes (currently set to 5 minutes)
+    [HideInInspector]   
+    public static float gameTime = 0f;                      // The custom game timer
 
     // Non-static variables
-    public bool instructionsEnabled;
+    public bool instructionsEnabled;                        // Stores whether to display the instructions of the game
     [HideInInspector]
-    public bool instructionsSeen = false;
+    public bool instructionsSeen = false;                   // Stores whether the user has seen the instructions
     
     void Awake()
     {
@@ -100,7 +100,7 @@ public class GameSession : MonoBehaviour
         optionsManager = FindObjectOfType<OptionsManager>();
     }
 
-    void ShowInstructionsAndLOSA()
+    void ShowInstructionsAndLOSA()                      // Displays the instructions and the LOSA score
     {
         if(LOSA != null)
         {
@@ -116,7 +116,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    private IEnumerator GameTimer()
+    private IEnumerator GameTimer()                     // Coroutine that increments the custom game time counter every frame
     {
         while(gameTime < timeOfDayInterval * 3)
         {
@@ -125,7 +125,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    private IEnumerator TimeOfDayChanger()
+    private IEnumerator TimeOfDayChanger()              // Coroutine that manages the time of day changes
     {
         int changes = 0;
         while(changes < 3)
@@ -156,7 +156,7 @@ public class GameSession : MonoBehaviour
     void Update()
     {
 
-        if (descriptionBox != null && descriptionBox.activeSelf && !optionsManager.IsWriting)
+        if (descriptionBox != null && descriptionBox.activeSelf && !optionsManager.IsWriting)       // Close the description box if space is pressed and there is no text being typed
         {
             if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
             {
@@ -165,7 +165,7 @@ public class GameSession : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))                   // Pauses the game on pressing 'Escape'
         {
             if (GameIsPaused)
             {
@@ -209,12 +209,12 @@ public class GameSession : MonoBehaviour
         LOSA.GetComponent<TextMeshProUGUI>().text = "LOSA: " + levelOfSelfAwareness;        // Update the display of the LOSA score
     }
 
-    public static float GetLOSA()
+    public static float GetLOSA()       // Retreive the current LOSA score
     {
         return instance.levelOfSelfAwareness;
     }
 
-    public void Resume()
+    public void Resume()                // Resume game from the pause menu
     {
         if(pauseMenuUI != null)
         {
@@ -224,7 +224,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    void Pause()
+    void Pause()                        // Pauses the game when 'Escape' is pressed
     {
         if(pauseMenuUI)
         {
@@ -234,7 +234,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    public void QuitGame()
+    public void QuitGame()              // Quits the game from the Pause Menu
     {
         Application.Quit();
     }

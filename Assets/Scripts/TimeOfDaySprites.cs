@@ -5,22 +5,24 @@ using UnityEngine;
 public class TimeOfDaySprites : MonoBehaviour
 {
     // To be set in the inspector
-    public GameObject morningImage;
-    public GameObject noonImage;
-    public GameObject eveningImage;
+    public GameObject morningImage;                 // Reference to the morning image gameObject
+    public GameObject noonImage;                    // Reference to the noon image gameObject
+    public GameObject eveningImage;                 // Reference to the evening image gameObject
 
     // To be updated in script
-    private SpriteRenderer morningSR;
-    //private SpriteRenderer noonSR;
-    private SpriteRenderer eveningSR;
+    private SpriteRenderer morningSR;               // Reference to the morning image sprite renderer
+    //private SpriteRenderer noonSR;                  // Reference to the noon image sprite renderer
+    private SpriteRenderer eveningSR;               // Reference to the evening image sprite renderer
 
     // Start is called before the first frame update
     void Start()
     {
+        // Get the references to the sprite renderers
         morningSR = morningImage.GetComponent<SpriteRenderer>();
         // noonSR = noonImage.GetComponent<SpriteRenderer>();       // TODO: uncomment when noon image is available
         eveningSR = eveningImage.GetComponent<SpriteRenderer>();
         
+        // Load sprites based on the current time of day
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
             morningSR.enabled = true;
@@ -38,7 +40,8 @@ public class TimeOfDaySprites : MonoBehaviour
         }
         else
         {
-            eveningSR.enabled = true;
+            if(!eveningSR.enabled)
+                eveningSR.enabled = true;
         }
     }
     

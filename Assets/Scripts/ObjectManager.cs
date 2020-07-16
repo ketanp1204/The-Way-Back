@@ -12,27 +12,23 @@ public class ObjectManager : MonoBehaviour
 
     // Configuration parameters
     [HideInInspector]
-    public Vector3 mousePositionWorld;
+    public Vector3 mousePositionWorld;              // Stores the current mouse position in 3D
     [HideInInspector]
-    public Vector2 mousePositionWorld2D;
-    private RaycastHit2D hit;
+    public Vector2 mousePositionWorld2D;            // Stores the current mouse position in 2D
+    private RaycastHit2D hit;                       // Stores the raycast hit result
     Button backButton;
 
     // Cached References
     private Camera mainCamera;
     private UIReferences uiReferences;
-    private ObjectProperties objectProperties;
-    private OptionsManager optionsManager;
-    private LevelChanger levelChanger;
-    private GameSession gameSession;
-    private GameObject interactableObjects;
-    private GameObject closeUpObjects;
-    private GameObject descriptionBox;
-    private GameObject optionsBox;
-    private GameObject staticUI;
-    private GameObject rainSystem;
-    public Button backButtonPrefab;
-    public GameObject zoomedInObject;
+    private ObjectProperties objectProperties;      // Reference to the selected object properties
+    private OptionsManager optionsManager;          // Reference to the options manager
+    private GameObject interactableObjects;         // Reference to the interactable objects
+    private GameObject descriptionBox;              // Reference to the description box
+    private GameObject optionsBox;                  // Reference to the option box
+    private GameObject rainSystem;                  // Reference to the rain particle system
+    public Button backButtonPrefab;                 // Reference to the back button prefab
+    public GameObject zoomedInObject;               // Reference to the zoomed in object 
 
 
     void Awake()
@@ -68,17 +64,13 @@ public class ObjectManager : MonoBehaviour
         descriptionBox = uiReferences.descriptionBox;
         optionsBox = uiReferences.optionsBox;
         rainSystem = uiReferences.rainSystem;
-        levelChanger = FindObjectOfType<LevelChanger>();
-        gameSession = FindObjectOfType<GameSession>();
         interactableObjects = uiReferences.interactableObjects;
-        closeUpObjects = uiReferences.closeUpObjects;
-        staticUI = GameObject.Find("StaticUI");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0))                                                                     // Handle mouse click in game
         {
             if (EventSystem.current.IsPointerOverGameObject())                                              // Prevent player from clicking through UI elements
                 return;
@@ -105,8 +97,8 @@ public class ObjectManager : MonoBehaviour
                     }
                     */
 
-                    /* To enable the ability to click on an object twice*/
-                    if (hit.collider.gameObject.tag == "Object")
+                    /* To enable the ability to click on an object twice */
+                    if (hit.collider.gameObject.tag == "Object")                                            // Player clicks on an object
                     {
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
@@ -114,7 +106,7 @@ public class ObjectManager : MonoBehaviour
                     }
                     /* */
 
-                    if(hit.collider.gameObject.tag == "MultipleObjectChild")
+                    if(hit.collider.gameObject.tag == "MultipleObjectChild")                                // Player clicks on an object with multiple collision boxes
                     {
                         GameObject selectedObject = hit.collider.gameObject.transform.parent.gameObject;
                         objectProperties = selectedObject.GetComponent<ObjectProperties>();
@@ -122,44 +114,44 @@ public class ObjectManager : MonoBehaviour
                         objectProperties.HandleResponse(0);
                     }
 
-                    if (hit.collider.gameObject.tag == "CloseUp")
+                    if (hit.collider.gameObject.tag == "CloseUp")                                           // Player clicks on an object which has a close up view
                     {
                         if(rainSystem != null)
                         {
-                            StartCoroutine(GameSession.DisableGameObjectAfterDelay(rainSystem, 1f));     // TODO: Refactor into a rain manager script
+                            StartCoroutine(GameSession.DisableGameObjectAfterDelay(rainSystem, 1f));        // TODO: Refactor into a rain manager script
                         }
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         GameSession.closeUpObjects = true;
                         GameSession.instance.disableBackgroundImage();
-                        StartCoroutine(LevelChanger.CrossFadeStart(true));               // Fade In and Out Animation
-                        StartCoroutine(LoadCloseUp());                                   // Load close up view
+                        StartCoroutine(LevelChanger.CrossFadeStart(true));                                  // Fade In and Out Animation
+                        StartCoroutine(LoadCloseUp());                                                      // Load close up view
                     }
 
-                    if (hit.collider.gameObject.tag == "PrevLevel")
+                    if (hit.collider.gameObject.tag == "PrevLevel")                                         // Player clicks on the next level object/button
                     {
                         LevelChanger.LoadPreviousLevel();
                     }
-
-                    if (hit.collider.gameObject.tag == "NextLevel")
+                        
+                    if (hit.collider.gameObject.tag == "NextLevel")                                         // Player clicks on the previous level object/button
                     {
                         LevelChanger.LoadNextLevel();
                     }
                 }
                 else
                 {
-                    if(!optionsManager.IsWriting)
+                    if(!optionsManager.IsWriting)                                                           // Close the description and option boxes when clicking outside of them if no text is being typed currently
                         CloseTextBoxes();
                 }
             }
             else
             {
-                if(!optionsManager.IsWriting)
+                if(!optionsManager.IsWriting)                                                               // Close the description and option boxes when clicking outside of them if no text is being typed currently
                     CloseTextBoxes();
             }
         }
     }
 
-    private void CloseTextBoxes()
+    private void CloseTextBoxes()                                                                           // Method that closes the description and option boxes
     {
         GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>(), 0f);
         if (optionsBox.activeSelf)
@@ -170,22 +162,22 @@ public class ObjectManager : MonoBehaviour
         optionsManager.CloseAndClearOptionsBox();
     }
 
-    public void ExitCloseUpView()
+    public void ExitCloseUpView()                                                                           // Return to the main scene from a close up view
     {
         GameSession.closeUpObjects = false;
         GameSession.instance.enableBackgroundImage();
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
-            StartCoroutine(GameSession.EnableGameObjectAfterDelay(rainSystem, 1f));      // TODO: Refactor into a rain manager script
+            StartCoroutine(GameSession.EnableGameObjectAfterDelay(rainSystem, 1f));                         // TODO: Refactor into a rain manager script
         }
-        StartCoroutine(LevelChanger.CrossFadeStart(true));          // Fade In and Out Animation
-        StartCoroutine(ExitCloseUp());                              // Go back from Close Up View
+        StartCoroutine(LevelChanger.CrossFadeStart(true));                                                  // Fade In and Out Animation
+        StartCoroutine(ExitCloseUp());                                                                      // Go back from Close Up View
     }
-    public IEnumerator LoadCloseUp()
+    public IEnumerator LoadCloseUp()                                                                        // Load the close up view of an object
     {
         yield return new WaitForSeconds(1f);
 
-        interactableObjects.SetActive(false);                       // Hide and disable main scene objects
+        interactableObjects.SetActive(false);                                                               // Hide and disable main scene objects
 
         // Spawn a back button to go back to the main scene
         backButton = Instantiate(backButtonPrefab, GameObject.Find("StaticUI").transform);
@@ -198,12 +190,12 @@ public class ObjectManager : MonoBehaviour
         zoomedInObject.transform.Find("InteractableObjects").gameObject.SetActive(true);
     }
 
-    private void HandleBackButton()
+    private void HandleBackButton()                                                                         // Return to the main scene on clicking the back button
     {
         ExitCloseUpView();
     }
 
-    public IEnumerator ExitCloseUp()
+    public IEnumerator ExitCloseUp()                                                                        // Coroutine that closes the close up view and loads the main scene objects
     {
         yield return new WaitForSeconds(1f);
 

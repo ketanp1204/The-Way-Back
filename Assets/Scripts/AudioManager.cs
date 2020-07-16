@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] sounds;
+    public Sound[] sounds;      // Array that holds all the sounds in the game
 
     public static AudioManager instance;
 
@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        // For each sound, add the settings and create a new audiosource;
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -41,6 +42,7 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Different sounds for when scenes load
         if(scene.name != "LivingRoom")
         {
             if (scene.name == "Garden")
@@ -93,6 +95,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // Plays the sound with the given name
     public static void Play(string name)
     {
         Sound s = Array.Find(instance.sounds, sound => sound.name == name);
@@ -104,6 +107,7 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    // Stops the sound with the given name
     public static void Stop(string name)
     {
         Sound s = Array.Find(instance.sounds, sound => sound.name == name);
@@ -118,6 +122,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // Changes the volume of the sound with the given name 
     public static void ChangeVolume(string name, float newVolume)
     {
         Sound s = Array.Find(instance.sounds, sound => sound.name == name);
@@ -132,6 +137,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // Gets the reference to the sound with the given name
     public static Sound GetSound(string soundName)
     {
         Sound s = Array.Find(instance.sounds, sound => sound.name == soundName);
