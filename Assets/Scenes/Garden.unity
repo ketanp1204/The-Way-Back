@@ -1392,8 +1392,10 @@ GameObject:
   - component: {fileID: 1223611497}
   - component: {fileID: 1223611499}
   - component: {fileID: 1223611498}
+  - component: {fileID: 1223611501}
+  - component: {fileID: 1223611500}
   m_Layer: 0
-  m_Name: PrevRoom
+  m_Name: G_KitchenDoor
   m_TagString: PrevLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1489,6 +1491,57 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 11.108432, y: 10.722402}
   m_EdgeRadius: 0
+--- !u!114 &1223611500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223611496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1223611501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223611496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 07000000
+  objectName: Kitchen
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
+  option3Text: 
+  option3responses: []
+  reactions: 
+  losaResponseTexts:
+    LowLOSA: 
+    MedLOSA: 
+    HighLOSA: 
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: 0
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
 --- !u!1 &1362500374
 GameObject:
   m_ObjectHideFlags: 0

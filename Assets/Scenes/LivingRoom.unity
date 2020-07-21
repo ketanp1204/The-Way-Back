@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &238471697
 Transform:
   m_ObjectHideFlags: 0
@@ -1246,15 +1246,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 774306348}
-  - component: {fileID: 774306350}
+  - component: {fileID: 774306351}
   - component: {fileID: 774306349}
+  - component: {fileID: 774306350}
   m_Layer: 0
-  m_Name: Previous Room
-  m_TagString: PrevLevel
+  m_Name: LR_HallwayDoor
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &774306348
 Transform:
   m_ObjectHideFlags: 0
@@ -1282,8 +1283,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 
-  objectName: Previous Room
+  objectType: 07000000
+  objectName: Hallway
   description: 
   option1Text: 
   option1responses: []
@@ -1308,8 +1309,20 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
---- !u!61 &774306350
-BoxCollider2D:
+--- !u!114 &774306350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774306347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &774306351
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1321,7 +1334,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04218149, y: 0.10967255}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1331,9 +1344,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.4555616, y: 1.2193451}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.3431902, y: 2.6553838}
+      - {x: -0.14045572, y: 3.2285385}
+      - {x: -1.6182704, y: 3.225483}
+      - {x: -1.4238043, y: -3.9776058}
+      - {x: -0.35230017, y: -3.124447}
+      - {x: -1.0533786, y: -0.784453}
+      - {x: -0.75253296, y: -0.5564046}
+      - {x: -0.11513662, y: -0.4136234}
+      - {x: 0.4458313, y: -0.558652}
 --- !u!1 &864324170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,6 +1481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240cec3ab6a6f8446824e030a4941b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSprites: []
   daySprites:
   - {fileID: 21300000, guid: a011ea4347d444f4aaaa221cf523a48f, type: 3}
   - {fileID: 21300000, guid: a036033be5ee63c448a659caa28fb1c9, type: 3}
@@ -2070,6 +2092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240cec3ab6a6f8446824e030a4941b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSprites: []
   daySprites: []
   nightSprites: []
 --- !u!212 &1067651312

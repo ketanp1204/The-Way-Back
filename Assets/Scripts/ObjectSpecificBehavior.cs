@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectSpecificBehavior : MonoBehaviour
 {
@@ -99,6 +100,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
     }
 
+    private void LR_HallwayDoor_Behavior()
+    {
+        LevelChanger.LoadLevel("Hallway");
+    }
+
 
     /// <summary>
     /// Behaviors for objects in the Kitchen
@@ -140,11 +146,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
         {
-            // TODO: Uncomment for actual game
-            // optionsManager.ShowTextOnDescriptionBox(objectProperties.description);      // Can't proceed to the garden level because of the rain
-
-            // Only for preview 
-            LevelChanger.LoadNextLevel();       // Proceed to the Garden level
+            optionsManager.ShowTextOnDescriptionBox(objectProperties.description, 0f);      // Can't proceed to the garden level because of the rain
         }
         else
         {
@@ -174,6 +176,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
         {
             optionsManager.ShowTextOnDescriptionBox(new string[] { objectProperties.description }, 0f);
         }
+    }
+
+    private void K_HallwayDoor_Behavior()
+    {
+        LevelChanger.LoadLevel("Hallway");
     }
 
 
@@ -251,6 +258,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
     }
 
+    private void B_HallwayDoor_Behavior()
+    {
+        LevelChanger.LoadLevel("Hallway");
+    }
+
     /// <summary>
     /// Behaviors for objects in the Garden
     /// </summary>
@@ -313,5 +325,49 @@ public class ObjectSpecificBehavior : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void G_KitchenDoor_Behavior()
+    {
+        LevelChanger.LoadLevel("Kitchen");
+    }
+
+    /// <summary>
+    /// Behaviors for objects in the Bedroom
+    /// </summary>
+
+    private void Bedroom_HallwayDoor_Behavior()
+    {
+        LevelChanger.LoadLevel("Hallway");
+    }
+
+    /// <summary>
+    /// Behaviors for objects in the Hallway
+    /// </summary>
+
+    private void H_LivingRoomDoor_Behavior()
+    { 
+        LevelChanger.LoadLevel("LivingRoom");
+    }
+
+    private void H_BathroomDoor_Behavior()
+    {
+        LevelChanger.LoadLevel("Bathroom");
+    }
+
+    private void H_KitchenDoor_Behavior()
+    {
+        LevelChanger.LoadLevel("Kitchen");
+    }
+
+    private void H_BedroomDoor_Behavior()
+    {
+        LevelChanger.LoadLevel("Bedroom");
+    }
+
+    private void H_AtticStairs_Behavior()
+    {
+        // TODO: only load this when maximum LOSA is achieved
+        LevelChanger.LoadLevel("Attic");
     }
 }

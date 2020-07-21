@@ -16,6 +16,14 @@ public class LevelChanger : MonoBehaviour
         instance = this;
     }
 
+    public static void LoadLevel(string sceneName)
+    {
+        // Start fade animation co-routine
+        instance.StartCoroutine(CrossFadeStart(false));
+
+        instance.StartCoroutine(LoadScene(sceneName));
+    }
+
     public void LoadNext()                          // Loads next level
     {
         LoadNextLevel();
@@ -57,6 +65,13 @@ public class LevelChanger : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(buildIndex);
+    }
+
+    private static IEnumerator LoadScene(string sceneName)      // Loads the scene with the given name
+    {
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(sceneName);
     }
 
     public static IEnumerator CrossFadeStart(bool endAfter)     // Coroutine to start fade animation

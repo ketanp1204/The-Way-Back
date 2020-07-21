@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AnimationSprites : MonoBehaviour
 {
+    public Sprite[] defaultSprites;
     public Sprite[] daySprites;
     public Sprite[] nightSprites;
 }

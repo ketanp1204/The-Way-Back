@@ -215,9 +215,9 @@ public class OptionsManager : MonoBehaviour
 
     private IEnumerator OptionsFadeOut(CanvasGroup canvasGroup, float delay)    // Fade out canvas group after delay
     {
-        GameSession.FadeOut(canvasGroup, delay);
+        GameSession.instance.StartCoroutine(GameSession.FadeCanvasGroup(canvasGroup, 1f, 0f, delay, 0.3f));
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
 
         responses.Clear();
         foreach (Transform child in optionsBox.transform)

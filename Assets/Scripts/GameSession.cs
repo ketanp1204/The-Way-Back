@@ -28,7 +28,6 @@ public class GameSession : MonoBehaviour
     // Cached References
     private UIReferences uiReferences;                      // Stores the references to the UI objects in the scene
     private GameObject backgroundImage;                     // Stores the reference to the background image gameObject
-    public GameObject LOSA;                                 // Stores the reference to the LOSA text gameObject
     private GameObject descriptionBox;                      // Stores the reference to the description box
     private GameObject pauseMenuUI;                         // Stores the reference to the Pause Menu UI gameObject
     private CanvasGroup descriptionBoxCG;                   // Stores the reference to the description box canvas group
@@ -79,7 +78,7 @@ public class GameSession : MonoBehaviour
         SetReferences();
         descriptionBox.SetActive(false);
         pauseMenuUI.SetActive(false);
-        ShowInstructionsAndLOSA();
+        ShowInstructions();
     }
 
     void SetReferences()
@@ -96,16 +95,11 @@ public class GameSession : MonoBehaviour
             pauseMenuUI = uiReferences.pauseMenuUI;
             rainSystem = uiReferences.rainSystem;
         }
-        LOSA = GameObject.Find("LOSA");
         optionsManager = FindObjectOfType<OptionsManager>();
     }
 
-    void ShowInstructionsAndLOSA()                      // Displays the instructions and the LOSA score
+    void ShowInstructions()                      // Displays the instructions
     {
-        if(LOSA != null)
-        {
-            LOSA.GetComponent<TextMeshProUGUI>().text = "LOSA: " + levelOfSelfAwareness;
-        }
         if(descriptionBox != null)
         {
             if (instructionsEnabled && !instructionsSeen)
@@ -190,10 +184,6 @@ public class GameSession : MonoBehaviour
 
     public void ChangeLOSA(int LOSAUpdate)          // Change the level of self awareness score
     {
-        if(LOSA == null)
-        {
-            LOSA = GameObject.Find("LOSA");
-        }
         if(LOSAUpdate == 1)     // Positive response
         {
             levelOfSelfAwareness += 10f;
@@ -206,7 +196,6 @@ public class GameSession : MonoBehaviour
                 levelOfSelfAwareness -= 10f;
             }
         }
-        LOSA.GetComponent<TextMeshProUGUI>().text = "LOSA: " + levelOfSelfAwareness;        // Update the display of the LOSA score
     }
 
     public static float GetLOSA()       // Retreive the current LOSA score
