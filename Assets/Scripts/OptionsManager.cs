@@ -34,6 +34,10 @@ public class OptionsManager : MonoBehaviour
     [HideInInspector]
     public bool IsWriting = false;                  // Boolean to store whether text is being automatically typed on the description box or not
     private GameObject dynamicUI;                   // Stores a reference to the DynamicUI canvas
+    [SerializeField]
+    private Sprite redSelectedOptionSprite;         // Stores the selected red sprite for the option button
+    [SerializeField]
+    private Sprite greenSelectedOptionSprite;         // Stores the selected green sprite for the option button
 
     // Start is called before the first frame update
     void OnEnable()
@@ -205,13 +209,21 @@ public class OptionsManager : MonoBehaviour
 
     public void CloseAndClearOptionsBox()           // Clear option texts and hide the options box
     {
+        StartCoroutine(OptionsFadeOut(optionsBoxCG, 0f));
+        StartCoroutine(GameSession.DisableGameObjectAfterDelay(optionsBox, 1f));
+    }
+
+    private IEnumerator OptionsFadeOut(CanvasGroup canvasGroup, float delay)    // Fade out canvas group after delay
+    {
+        GameSession.FadeOut(canvasGroup, delay);
+
+        yield return new WaitForSeconds(0.5f);
+
         responses.Clear();
         foreach (Transform child in optionsBox.transform)
         {
             Destroy(child.gameObject);
         }
-        GameSession.FadeOut(optionsBoxCG, 0f);
-        StartCoroutine(GameSession.DisableGameObjectAfterDelay(optionsBox, 0.5f));
     }
 
     /// <summary>
@@ -359,6 +371,18 @@ public class OptionsManager : MonoBehaviour
                 // Handle click behaviour of the button
                 int buttonIndex = i;
                 int reaction = objectProperties.reactions[i];
+                if(reaction == 1)
+                {
+                    SpriteState selectedSprite = option.spriteState;
+                    selectedSprite.selectedSprite = greenSelectedOptionSprite;
+                    option.spriteState = selectedSprite;
+                }
+                else if(reaction == 2)
+                {
+                    SpriteState selectedSprite = option.spriteState;
+                    selectedSprite.selectedSprite = redSelectedOptionSprite;
+                    option.spriteState = selectedSprite;
+                }
                 handleClick = () => HandleOptionResponse(buttonIndex, 
                                                          reaction, 
                                                          objectProperties.destroyOnPositive, 

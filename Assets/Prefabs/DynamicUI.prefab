@@ -540,10 +540,14 @@ MonoBehaviour:
   selectedObject: {fileID: 0}
   optionPrefab: {fileID: 6776971145883545758, guid: e027cfc479ed82348a853c18a3ead407,
     type: 3}
-  objectProperties: {fileID: 0}
   nextButtonPrefab: {fileID: 5694721719423461920, guid: 809ab8a639a15b742891fac98a296d1f,
     type: 3}
+  objectProperties: {fileID: 0}
   IsWriting: 0
+  redSelectedOptionSprite: {fileID: 21300000, guid: 7dbcb852ad7b37e45ac3e8fb8a0cae6f,
+    type: 3}
+  greenSelectedOptionSprite: {fileID: 21300000, guid: b9d83c52584088e4c8e547fc02d8dd2f,
+    type: 3}
 --- !u!1 &7782372718576665794
 GameObject:
   m_ObjectHideFlags: 0

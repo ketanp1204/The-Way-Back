@@ -2879,7 +2879,7 @@ GameObject:
   - component: {fileID: 2040358469}
   - component: {fileID: 2040358471}
   m_Layer: 0
-  m_Name: LR_Mobile Phone
+  m_Name: LR_MobilePhone
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
