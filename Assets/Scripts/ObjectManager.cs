@@ -84,27 +84,23 @@ public class ObjectManager : MonoBehaviour
             {
                 if (!descriptionBox.activeSelf)
                 {
-                    /*
-                    if (hit.collider.gameObject.tag == "Object")
+                    if (hit.collider.gameObject.tag == "Object")                                            // Player clicks on an object which can be only clicked once
                     {
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         if (objectProperties.interactedWith == false)                                       // Prevent player from clicking an object twice
                         {
                             optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
                             objectProperties.interactedWith = true;
-                            objectProperties.HandleResponse(true);
+                            objectProperties.HandleResponse(0);
                         }
                     }
-                    */
 
-                    /* To enable the ability to click on an object twice */
-                    if (hit.collider.gameObject.tag == "Object")                                            // Player clicks on an object
+                    if (hit.collider.gameObject.tag == "ObjectMultipleClick")                               // Player clicks on an object which can be clicked on multiple times
                     {
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
                         objectProperties.HandleResponse(0);
                     }
-                    /* */
 
                     if(hit.collider.gameObject.tag == "MultipleObjectChild")                                // Player clicks on an object with multiple collision boxes
                     {

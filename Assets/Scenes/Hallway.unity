@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5508,6 +5508,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 259665906}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &259665911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 862184524, guid: ba0083ad5c83fe84399b285767095ea8,
+    type: 3}
+  m_PrefabInstance: {fileID: 259665906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &359324214
 GameObject:
   m_ObjectHideFlags: 0
@@ -5654,7 +5660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007817228735a144c865b955fd1d8c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LOSAText: {fileID: 925918046}
+  clockText: {fileID: 259665911}
   pauseMenuUI: {fileID: 925918045}
   optionsBox: {fileID: 259665910}
   descriptionBox: {fileID: 259665909}
@@ -5676,7 +5682,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &455946843
 PrefabInstance:
@@ -5952,9 +5958,10 @@ GameObject:
   - component: {fileID: 753502240}
   - component: {fileID: 753502241}
   - component: {fileID: 753502242}
+  - component: {fileID: 753502243}
   m_Layer: 0
   m_Name: H_Chair
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5986,16 +5993,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 00000000
+  objectType: 0700000006000000
   objectName: Chair
-  description: 
-  option1Text: 
+  description: This chair is so comfortable and relaxing. Sometimes when I don't
+    know what to do, I just sit here, enjoy the calm and let the day pass without
+    me.
+  option1Text: Sit Down
   option1responses: []
-  option2Text: 
-  option2responses: []
+  option2Text: Don't Sit Down
+  option2responses:
+  - ' I have the feeling there is still so much left to do.'
   option3Text: 
   option3responses: []
-  reactions: 
+  reactions: 0100000000000000
   losaResponseTexts:
     LowLOSA: 
     MedLOSA: 
@@ -6045,6 +6055,18 @@ PolygonCollider2D:
       - {x: 0.8683138, y: -0.012106538}
       - {x: 0.13823366, y: 0.10747975}
       - {x: 0.005629301, y: 0.64180744}
+--- !u!114 &753502243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753502239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &797834507
 GameObject:
   m_ObjectHideFlags: 0
@@ -6280,12 +6302,6 @@ PrefabInstance:
 --- !u!1 &925918045 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8270928538301302327, guid: 8dbe908dba0e1f640908a1a33ec8f345,
-    type: 3}
-  m_PrefabInstance: {fileID: 925918044}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &925918046 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8270928538246293310, guid: 8dbe908dba0e1f640908a1a33ec8f345,
     type: 3}
   m_PrefabInstance: {fileID: 925918044}
   m_PrefabAsset: {fileID: 0}
@@ -7125,5 +7141,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

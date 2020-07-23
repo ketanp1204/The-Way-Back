@@ -42,38 +42,115 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        HandleAudioChanges(scene);
+    }
+
+    private void HandleAudioChanges(Scene scene)
+    {
         // Different sounds for when scenes load
-        if(scene.name != "LivingRoom")
+
+        if (scene.name != "LivingRoom")
         {
             if (scene.name == "Garden")
             {
-                Stop("LR_Gramophone_Record");
+                Stop("LR_Gramophone");
             }
             else
             {
-                ChangeVolume("LR_Gramophone_Record", 0.5f);
+                ChangeVolume("LR_Gramophone", 0.2f);
             }
         }
 
-        if(scene.name == "LivingRoom")
+        if (scene.name == "LivingRoom")
         {
-            // If coming from the bathroom scene, stop its sounds
-            Stop("BathRoom_Morning");   
-            Stop("B_Water_Dripping");
+            // Stop hallway sounds
+            Stop("Morning_Rain_Inside");
+            Stop("H_Noon");
+            Stop("H_Clock_Ticking");
+            Stop("Evening_Inside");
 
             // Play living room sounds
-            Play("LivingRoom_Morning");
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                if (GameEventsTracker.LR_Window_Open)      // If the Living Room window is open, play its sound, otherwise play the closed one
+                {
+                    PlaySoundAtCurrentGameTime("LR_Morning_Window_Open");
+                }
+                else
+                {
+                    PlaySoundAtCurrentGameTime("LR_Morning_Window_Closed");
+                }
+                // PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
+            }
+            else if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                PlaySoundAtCurrentGameTime("LR_Noon");
+            }
+            else
+            {
+                PlaySoundAtCurrentGameTime("Evening_Inside");
+            }
         }
 
-        if(scene.name == "Bathroom")
+        if(scene.name == "Hallway")
         {
-            // If coming from the living room or kitchen scene, stop their sounds
-            Stop("LivingRoom_Morning");
-            Stop("Kitchen_Morning");
+            // Stop sounds from other scenes
+            if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                Stop("Morning_Rain_Inside");
+            }
+            else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                Stop("LR_Noon");
+                Stop("K_Noon");
+                Stop("B_Noon");
+                Stop("Bed_Noon");
+            }
+            else
+            {
+                Stop("Evening_Inside");
+            }
+            Stop("B_Water_Dripping");
+
+            // Play hallway sounds
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
+            }
+            else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                PlaySoundAtCurrentGameTime("H_Noon");
+            }
+            else
+            {
+                PlaySoundAtCurrentGameTime("Evening_Inside");
+            }
+            Play("H_Clock_Ticking");
+        }
+
+        if (scene.name == "Bathroom")
+        {
+            // Stop hallway sounds
+            Stop("Morning_Rain_Inside");
+            Stop("H_Noon");
+            Stop("H_Clock_Ticking");
+            Stop("Evening_Inside");
 
             // Play bathroom sounds
-            Play("BathRoom_Morning");
-            if(GameEventsTracker.B_Tap_Water_Dripping)      // If the water tap hasn't been shut, play the water dripping sound
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
+            }
+            else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                PlaySoundAtCurrentGameTime("B_Noon");
+            }
+            else
+            {
+                PlaySoundAtCurrentGameTime("Evening_Inside");
+            }
+
+            if (GameEventsTracker.B_Tap_Water_Dripping)      // If the water tap hasn't been shut, play the water dripping sound
             {
                 Play("B_Water_Dripping");
             }
@@ -81,17 +158,87 @@ public class AudioManager : MonoBehaviour
 
         if (scene.name == "Kitchen")
         {
-            // If coming from the bathroom or garden scene, stop their sounds
-            Stop("BathRoom_Morning");
-            Stop("B_Water_Dripping");
-            
+            // Stop hallway sounds
+            Stop("Morning_Rain_Inside");
+            Stop("H_Noon");
+            Stop("H_Clock_Ticking");
+            Stop("Evening_Inside");
+
             // Play kitchen sounds
-            Play("Kitchen_Morning");
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
+            }
+            else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                PlaySoundAtCurrentGameTime("K_Noon");
+            }
+            else
+            {
+                PlaySoundAtCurrentGameTime("Evening_Inside");
+            }
         }
+
         if (scene.name == "Garden")
         {
-            // If coming from the bathroom or garden scene, stop their sounds
+            // Stop kitchen sounds
             Stop("Kitchen_Morning");
+
+            // Play garden sounds
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                PlaySoundAtCurrentGameTime("G_Noon");
+            }
+            else
+            {
+                PlaySoundAtCurrentGameTime("G_Evening");
+            }
+        }
+
+        if (scene.name == "Bedroom")
+        {
+            // Stop hallway sounds
+            Stop("Morning_Rain_Inside");
+            Stop("H_Noon");
+            Stop("H_Clock_Ticking");
+            Stop("Evening_Inside");
+
+            // Play bedroom sounds
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
+            }
+            else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                PlaySoundAtCurrentGameTime("Bed_Noon");
+            }
+            else
+            {
+                PlaySoundAtCurrentGameTime("Evening_Inside");
+            }
+        }
+
+        if (scene.name == "Attic")
+        {
+            // Stop hallway sounds
+            Stop("Morning_Rain_Inside");
+            Stop("H_Noon");
+            Stop("H_Clock_Ticking");
+            Stop("Evening_Inside");
+
+            // Play attic sounds
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
+            }
+            else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                PlaySoundAtCurrentGameTime("A_Noon");
+            }
+            else
+            {
+                PlaySoundAtCurrentGameTime("Evening_Inside");
+            }
         }
     }
 
@@ -105,6 +252,18 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public static void PlaySoundAtCurrentGameTime(string name)
+    {
+        Sound s = Array.Find(instance.sounds, sound => sound.name == name);
+        if(s == null)
+        {
+            Debug.LogError("Sound " + name + " not found.");
+            return;
+        }
+        s.source.Play();
+        s.source.time = GameSession.gameTime - GameSession.GetTimeOfDayIndex() * GameSession.timeOfDayInterval;
     }
 
     // Stops the sound with the given name
@@ -133,7 +292,7 @@ public class AudioManager : MonoBehaviour
         }
         if(s.source.isPlaying)
         {
-            s.volume = newVolume;
+            s.source.volume = newVolume;
         }
     }
 

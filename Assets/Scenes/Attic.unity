@@ -471,7 +471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &764155218
 GameObject:
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007817228735a144c865b955fd1d8c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LOSAText: {fileID: 1637329911}
+  clockText: {fileID: 1081329399}
   pauseMenuUI: {fileID: 1637329910}
   optionsBox: {fileID: 1081329398}
   descriptionBox: {fileID: 1081329397}
@@ -524,7 +524,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &913518387
 PrefabInstance:
@@ -810,6 +810,12 @@ GameObject:
 --- !u!1 &1081329398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 777840248069059266, guid: ba0083ad5c83fe84399b285767095ea8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1081329394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1081329399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 862184524, guid: ba0083ad5c83fe84399b285767095ea8,
     type: 3}
   m_PrefabInstance: {fileID: 1081329394}
   m_PrefabAsset: {fileID: 0}
@@ -5831,12 +5837,6 @@ PrefabInstance:
 --- !u!1 &1637329910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8270928538301302327, guid: 8dbe908dba0e1f640908a1a33ec8f345,
-    type: 3}
-  m_PrefabInstance: {fileID: 1637329909}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1637329911 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8270928538246293310, guid: 8dbe908dba0e1f640908a1a33ec8f345,
     type: 3}
   m_PrefabInstance: {fileID: 1637329909}
   m_PrefabAsset: {fileID: 0}

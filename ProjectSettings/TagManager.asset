@@ -10,6 +10,7 @@ TagManager:
   - NextLevel
   - CloseUp
   - MultipleObjectChild
+  - ObjectMultipleClick
   layers:
   - Default
   - TransparentFX

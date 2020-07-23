@@ -182,7 +182,8 @@ public class ObjectProperties : MonoBehaviour
         
         if(!GameSession.GameIsPaused && !descriptionBox.activeSelf)             // Prevent displaying object name when the game is paused         
         {
-            DisplayObjectName.ShowName_static(objectName);
+            if(!interactedWith)
+                DisplayObjectName.ShowName_static(objectName);
         }
     }
 

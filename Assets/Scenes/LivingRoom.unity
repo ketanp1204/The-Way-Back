@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 2816339}
   m_Layer: 0
   m_Name: LR_Newspaper
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -763,6 +763,128 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &258561007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 258561008}
+  - component: {fileID: 258561011}
+  - component: {fileID: 258561010}
+  - component: {fileID: 258561009}
+  m_Layer: 0
+  m_Name: LR_Window
+  m_TagString: ObjectMultipleClick
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &258561008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258561007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.6, y: 2.73, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1479276895}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &258561009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258561007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &258561010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258561007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 06000000
+  objectName: Windows
+  description: Windows. An existing contrast itself. A hole in strong walls, that
+    are protecting what we call home. But, it's not a weak point, because they allow
+    essential things. Sometimes we need to take the risk to destroy things, to see
+    that changes can be positive.
+  option1Text: Keep It Closed
+  option1responses:
+  - I don't feel like being surrounded by all the outside noises inside the house.
+    Above that, it's mosquito season and I am really not looking forward being covered
+    by their bites.
+  option2Text: Open It
+  option2responses:
+  - I appreciate windows not only because they allow the sun inside, but also because
+    they invite the outside sounds if you want listen to them.
+  option3Text: 
+  option3responses: []
+  reactions: 0200000001000000
+  losaResponseTexts:
+    LowLOSA: 
+    MedLOSA: 
+    HighLOSA: 
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: 0
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!60 &258561011
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258561007}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.55858374, y: 1.5649285}
+      - {x: -0.7784147, y: -1.8967264}
+      - {x: 0.06352234, y: -2.071546}
+      - {x: 0.3523016, y: -1.874299}
+      - {x: 0.625865, y: 1.7555585}
 --- !u!4 &282564067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7548475323849299870, guid: 0e440c85d168b944282aab161194123d,
@@ -1355,6 +1477,12 @@ PolygonCollider2D:
       - {x: -0.75253296, y: -0.5564046}
       - {x: -0.11513662, y: -0.4136234}
       - {x: 0.4458313, y: -0.558652}
+--- !u!1 &862184524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 862184524, guid: ba0083ad5c83fe84399b285767095ea8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1604934802}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &864324170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,7 +2262,7 @@ SpriteRenderer:
   m_SortingLayerID: -676469529
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 80c59b9b27cbb454fad0a88a1b449fa1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2142,7 +2270,7 @@ SpriteRenderer:
   m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1067651313
@@ -2406,9 +2534,113 @@ Transform:
   - {fileID: 1775035475}
   - {fileID: 394499788}
   - {fileID: 931498655}
+  - {fileID: 258561008}
+  - {fileID: 1496597115}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1496597114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1496597115}
+  - component: {fileID: 1496597117}
+  - component: {fileID: 1496597116}
+  m_Layer: 0
+  m_Name: LR_Book
+  m_TagString: ObjectMultipleClick
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1496597115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496597114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1479276895}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496597116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496597114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 00000000
+  objectName: 'Book: Into The Wild'
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
+  option3Text: 
+  option3responses: []
+  reactions: 
+  losaResponseTexts:
+    LowLOSA: I borrowed it from a friend already a while ago. A long while ago. Not
+      only, he forgot about about the book, he also forgot me.
+    MedLOSA: I haven't touched it in a while now, but I guess I feel better having
+      a book around me and pretending that I want to read it.
+    HighLOSA: It's called 'Into The WIld' by Jon Krakauer. Even though I've already
+      seen the movie, I want to read the book. You just can't compare the different
+      sensations while receiving a story through given images and sounds, and creating
+      everything in your mind on your own.
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: 0
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!61 &1496597117
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496597114}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000008940697, y: 0.016271383}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5444024, y: 0.39470577}
+  m_EdgeRadius: 0
 --- !u!1001 &1604934802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3165,7 +3397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60fbb0e55f237447898eb85b5339a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LOSA: {fileID: 0}
   instructionsEnabled: 0
   instructionsSeen: 0
 --- !u!1 &4418161944180157721
@@ -3197,7 +3428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007817228735a144c865b955fd1d8c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LOSAText: {fileID: 6523759834433771509}
+  clockText: {fileID: 862184524}
   pauseMenuUI: {fileID: 6523759834433771507}
   optionsBox: {fileID: 37554932}
   descriptionBox: {fileID: 1604934803}
@@ -3343,12 +3574,6 @@ PrefabInstance:
 --- !u!1 &6523759834433771507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8270928538301302327, guid: 8dbe908dba0e1f640908a1a33ec8f345,
-    type: 3}
-  m_PrefabInstance: {fileID: 6523759834433771506}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6523759834433771509 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8270928538246293310, guid: 8dbe908dba0e1f640908a1a33ec8f345,
     type: 3}
   m_PrefabInstance: {fileID: 6523759834433771506}
   m_PrefabAsset: {fileID: 0}

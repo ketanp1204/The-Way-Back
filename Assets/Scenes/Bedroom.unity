@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1082,6 +1082,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1403249562}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1403249567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 862184524, guid: ba0083ad5c83fe84399b285767095ea8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1403249562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1503325679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1207,12 +1213,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1503325679}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1503325681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8270928538246293310, guid: 8dbe908dba0e1f640908a1a33ec8f345,
-    type: 3}
-  m_PrefabInstance: {fileID: 1503325679}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909781102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007817228735a144c865b955fd1d8c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LOSAText: {fileID: 1503325681}
+  clockText: {fileID: 1403249567}
   pauseMenuUI: {fileID: 1503325680}
   optionsBox: {fileID: 1403249566}
   descriptionBox: {fileID: 1403249565}

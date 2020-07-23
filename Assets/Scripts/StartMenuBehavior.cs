@@ -21,6 +21,8 @@ public class StartMenuBehavior : MonoBehaviour
     public void StartStory()                        // Method to start the texts coroutine
     {
         StartCoroutine(ShowIntroTexts());
+        
+        Cursor.visible = false;
     }
 
     private IEnumerator ShowIntroTexts()            // Coroutine that displays the texts with delays and loads the next level at the end
@@ -61,7 +63,7 @@ public class StartMenuBehavior : MonoBehaviour
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 1f, 0f, 0f, 0.7f));
         StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 1f, 0f, 1.5f, 0.7f));
 
-        yield return new WaitForSeconds(37f);
+        yield return new WaitForSeconds(29f);
 
         topText.text = "Extra Time";
         topText.fontSize = 150;
@@ -71,7 +73,9 @@ public class StartMenuBehavior : MonoBehaviour
 
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 1f, 0f, 0f, 0.7f));
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+
+        Cursor.visible = true;
 
         LevelChanger.LoadNextLevel();
     }

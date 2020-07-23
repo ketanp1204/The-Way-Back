@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +29,7 @@ public class GameSession : MonoBehaviour
 
     // Cached References
     private UIReferences uiReferences;                      // Stores the references to the UI objects in the scene
+    private TextMeshProUGUI clockText;                      // Stores the reference to the clock text display text field
     private GameObject backgroundImage;                     // Stores the reference to the background image gameObject
     private GameObject descriptionBox;                      // Stores the reference to the description box
     private GameObject pauseMenuUI;                         // Stores the reference to the Pause Menu UI gameObject
@@ -45,6 +48,10 @@ public class GameSession : MonoBehaviour
     public static float timeOfDayInterval = 300f;           // The interval between consecutive time of day changes (currently set to 5 minutes)
     [HideInInspector]   
     public static float gameTime = 0f;                      // The custom game timer
+    //[HideInInspector]
+    //public static float clockTime = 0f;                     // The clock time to display which shows the current time of the day
+    [HideInInspector]
+    public static TimeSpan clockTime = new TimeSpan(6, 00, 00);
 
     // Non-static variables
     public bool instructionsEnabled;                        // Stores whether to display the instructions of the game
@@ -65,6 +72,11 @@ public class GameSession : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         StartCoroutine(GameTimer());
+        if(clockText == null)
+        {
+            clockText = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
+        }
+        StartCoroutine(ClockDisplay());
         StartCoroutine(TimeOfDayChanger());
     }
 
@@ -79,6 +91,7 @@ public class GameSession : MonoBehaviour
         descriptionBox.SetActive(false);
         pauseMenuUI.SetActive(false);
         ShowInstructions();
+        StartCoroutine(ClockTimer());
     }
 
     void SetReferences()
@@ -86,6 +99,7 @@ public class GameSession : MonoBehaviour
         uiReferences = FindObjectOfType<UIReferences>();
         if(uiReferences != null)
         {
+            clockText = uiReferences.clockText.GetComponent<TextMeshProUGUI>();
             backgroundImage = uiReferences.backgroundImage;
             descriptionBox = uiReferences.descriptionBox;
             if (descriptionBox != null)
@@ -116,6 +130,30 @@ public class GameSession : MonoBehaviour
         {
             gameTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private IEnumerator ClockTimer()                    // Coroutine that increments the clock time every 1 second
+    {
+        while(true)
+        {
+            clockTime = clockTime.Add(TimeSpan.FromMinutes(1.2f));
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private IEnumerator ClockDisplay()
+    {
+        while(true)
+        {
+            if(clockText == null)
+            {
+                clockText = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
+            }
+            clockText.text = clockTime.ToString(@"hh\:mm");
+
+            yield return new WaitForSeconds(8.33f);
         }
     }
 
@@ -279,5 +317,37 @@ public class GameSession : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         gO.SetActive(true);
+    }
+
+    public static string GetTimeOfDayString()                                           // Helper method to retreive a capitalized string for the current time of day
+    {
+        if(currentTimeOfDay == TimeOfDay.MORNING)
+        {
+            return "Morning";
+        }
+        else if(currentTimeOfDay == TimeOfDay.NOON)
+        {
+            return "Noon";
+        }
+        else
+        {
+            return "Evening";
+        }
+    }
+
+    public static int GetTimeOfDayIndex()
+    {
+        if(currentTimeOfDay == TimeOfDay.MORNING)
+        {
+            return 0;
+        }
+        else if (currentTimeOfDay == TimeOfDay.NOON)
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
     }
 }

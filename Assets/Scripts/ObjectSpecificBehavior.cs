@@ -50,12 +50,12 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
         if(objectProperties.LOSAUpdateResponse == 1)    // Option 'Play The Record' is selected
         {
-            AudioManager.Play("LR_Gramophone_Record");
+            AudioManager.Play("LR_Gramophone");
             
             Animator recordAnim = transform.Find("Record_Sprites").GetComponent<Animator>();
             Animator playerAnim = transform.Find("Player_Sprites").GetComponent<Animator>();
 
-            Sound s = AudioManager.GetSound("LR_Gramophone_Record");
+            Sound s = AudioManager.GetSound("LR_Gramophone");
             StartCoroutine(LR_G_PlayerAnimation(s, playerAnim));
             StartCoroutine(LR_G_RecordAnimation(s, recordAnim));
         }
@@ -97,6 +97,34 @@ public class ObjectSpecificBehavior : MonoBehaviour
         if (objectProperties.LOSAUpdateResponse == 1)
         {
             GameEventsTracker.LR_Plant_Interacted = true; 
+        }
+    }
+
+    private void LR_Window_Behavior()
+    {
+        if (behaviorIndex % 2 == 1)
+        {
+            behaviorIndex += 1;
+            GameEventsTracker.LR_Window_Open = true;
+
+            // TODO: play curtain animation 
+
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                // TODO: change morning rain sound
+            }
+        }
+        else
+        {
+            behaviorIndex += 1;
+            GameEventsTracker.LR_Window_Open = false;
+
+            // TODO: stop curtain animation 
+
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                // TODO: change morning rain sound
+            }
         }
     }
 
@@ -344,6 +372,34 @@ public class ObjectSpecificBehavior : MonoBehaviour
     /// <summary>
     /// Behaviors for objects in the Hallway
     /// </summary>
+
+    private void H_Chair_Behavior()
+    {
+        if (behaviorIndex == 1)
+        {
+            behaviorIndex += 1;
+            objectProperties.HandleResponse(1);
+
+        }
+        else if (behaviorIndex == 2)
+        {
+            behaviorIndex += 1;
+            if (GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
+            {
+                if (objectProperties.LOSAUpdateResponse == 1)
+                {
+                    GameSession.instance.ChangeLOSA(2);     // Reset the LOSA score to what it was before interacting with the chair
+
+                    // TODO: advance game time
+                }
+            }
+        }
+        else
+        { 
+            optionsManager.ShowOptions();
+            // TODO: replace it with a version where description text is not shown again
+        }
+    }
 
     private void H_LivingRoomDoor_Behavior()
     { 

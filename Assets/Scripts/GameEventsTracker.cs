@@ -9,6 +9,7 @@ public class GameEventsTracker : MonoBehaviour
 
     // Living Room Events
     public static bool LR_Plant_Interacted = false;
+    public static bool LR_Window_Open = false;
 
     // Bathroom Events
     public static bool B_Buckets_Kept = false;

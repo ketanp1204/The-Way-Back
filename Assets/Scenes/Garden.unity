@@ -1029,6 +1029,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 533291525}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &533291530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 862184524, guid: ba0083ad5c83fe84399b285767095ea8,
+    type: 3}
+  m_PrefabInstance: {fileID: 533291525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &577760819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1852,7 +1858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007817228735a144c865b955fd1d8c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LOSAText: {fileID: 2075721090}
+  clockText: {fileID: 533291530}
   pauseMenuUI: {fileID: 2075721089}
   optionsBox: {fileID: 533291529}
   descriptionBox: {fileID: 533291528}

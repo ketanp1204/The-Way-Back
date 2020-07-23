@@ -352,7 +352,7 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
-    private void ShowOptions()          // Display the option texts when an object is clicked on
+    public void ShowOptions()          // Display the option texts when an object is clicked on
     {
         numberOfButtons = objectProperties.numberOfResponses;
         if (numberOfButtons != 0)

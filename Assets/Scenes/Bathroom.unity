@@ -1919,12 +1919,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1328001986}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1328001989 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8270928538246293310, guid: 8dbe908dba0e1f640908a1a33ec8f345,
-    type: 3}
-  m_PrefabInstance: {fileID: 1328001986}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1755796177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,6 +2455,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1946522974}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1946522979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 862184524, guid: ba0083ad5c83fe84399b285767095ea8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1946522974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1972701460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2637,7 +2637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007817228735a144c865b955fd1d8c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LOSAText: {fileID: 1328001989}
+  clockText: {fileID: 1946522979}
   pauseMenuUI: {fileID: 1328001987}
   optionsBox: {fileID: 1946522978}
   descriptionBox: {fileID: 1946522975}

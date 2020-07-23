@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIReferences : MonoBehaviour
 {
-    public GameObject LOSAText;
+    public GameObject clockText;
     public GameObject pauseMenuUI;
     public GameObject optionsBox;
     public GameObject descriptionBox;
