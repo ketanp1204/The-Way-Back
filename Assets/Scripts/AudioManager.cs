@@ -69,6 +69,9 @@ public class AudioManager : MonoBehaviour
             Stop("H_Clock_Ticking");
             Stop("Evening_Inside");
 
+            // Stop intro sound
+            Stop("Intro_Sounds");
+
             // Play living room sounds
             if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
             {

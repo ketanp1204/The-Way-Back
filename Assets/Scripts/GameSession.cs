@@ -28,35 +28,35 @@ public class GameSession : MonoBehaviour
                                                 "But be wary, you can only act once."};
 
     // Cached References
-    private UIReferences uiReferences;                      // Stores the references to the UI objects in the scene
-    private TextMeshProUGUI clockText;                      // Stores the reference to the clock text display text field
-    private GameObject backgroundImage;                     // Stores the reference to the background image gameObject
-    private GameObject descriptionBox;                      // Stores the reference to the description box
-    private GameObject pauseMenuUI;                         // Stores the reference to the Pause Menu UI gameObject
-    private CanvasGroup descriptionBoxCG;                   // Stores the reference to the description box canvas group
-    private OptionsManager optionsManager;                  // Stores the reference to the options manager
-    private GameObject rainSystem;                          // Stores the reference to the rain particle system
+    private UIReferences uiReferences;                              // Stores the references to the UI objects in the scene
+    private TextMeshProUGUI clockText;                              // Stores the reference to the clock text display text field
+    private GameObject backgroundImage;                             // Stores the reference to the background image gameObject
+    private GameObject descriptionBox;                              // Stores the reference to the description box
+    private GameObject pauseMenuUI;                                 // Stores the reference to the Pause Menu UI gameObject
+    private CanvasGroup descriptionBoxCG;                           // Stores the reference to the description box canvas group
+    private OptionsManager optionsManager;                          // Stores the reference to the options manager
+    private GameObject rainSystem;                                  // Stores the reference to the rain particle system
 
     // Static variables
     [HideInInspector]
-    public static bool GameIsPaused = false;                // Is true when the game is paused
+    public static bool GameIsPaused = false;                        // Is true when the game is paused
     [HideInInspector]
-    public static TimeOfDay currentTimeOfDay;               // Static reference to the current time of day (Morning, Noon or Evening)
+    public static TimeOfDay currentTimeOfDay;                       // Static reference to the current time of day (Morning, Noon or Evening)
     [HideInInspector]
-    public static bool closeUpObjects = false;              // Is true when an object is in close up view
+    public static bool closeUpObjects = false;                      // Is true when an object is in close up view
     [HideInInspector]
-    public static float timeOfDayInterval = 300f;           // The interval between consecutive time of day changes (currently set to 5 minutes)
+    public static float timeOfDayInterval = 300f;                   // The interval between consecutive time of day changes (currently set to 5 minutes)
     [HideInInspector]   
-    public static float gameTime = 0f;                      // The custom game timer
+    public static float gameTime = 0f;                              // The custom game timer
     //[HideInInspector]
-    //public static float clockTime = 0f;                     // The clock time to display which shows the current time of the day
+    //public static float clockTime = 0f;                           // The clock time to display which shows the current time of the day
     [HideInInspector]
-    public static TimeSpan clockTime = new TimeSpan(6, 00, 00);
-
-    // Non-static variables
-    public bool instructionsEnabled;                        // Stores whether to display the instructions of the game
+    public static TimeSpan clockTime = new TimeSpan(6, 00, 00);     // Sets the starting clock time to 06:00
     [HideInInspector]
-    public bool instructionsSeen = false;                   // Stores whether the user has seen the instructions
+    public static bool instructionsSeen = false;                    // Stores whether the user has seen the instructions
+    [SerializeField]
+    public bool instructionsEnabled;                         // Stores whether to display the instructions of the game
+    
     
     void Awake()
     {
@@ -71,13 +71,11 @@ public class GameSession : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        StartCoroutine(GameTimer());
         if(clockText == null)
         {
             clockText = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
         }
-        StartCoroutine(ClockDisplay());
-        StartCoroutine(TimeOfDayChanger());
+        StartCoroutine(WaitForInstructionsSeen());
     }
 
     void OnEnable()
@@ -91,7 +89,6 @@ public class GameSession : MonoBehaviour
         descriptionBox.SetActive(false);
         pauseMenuUI.SetActive(false);
         ShowInstructions();
-        StartCoroutine(ClockTimer());
     }
 
     void SetReferences()
@@ -118,10 +115,20 @@ public class GameSession : MonoBehaviour
         {
             if (instructionsEnabled && !instructionsSeen)
             {
-                instructionsSeen = true;
                 optionsManager.ShowTextOnDescriptionBox(instructions, 1f);
             }
         }
+    }
+
+    private IEnumerator WaitForInstructionsSeen()
+    {
+        while(!instructionsSeen)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        StartCoroutine(GameTimer());
+        StartCoroutine(ClockTimer());
+        StartCoroutine(TimeOfDayChanger());
     }
 
     private IEnumerator GameTimer()                     // Coroutine that increments the custom game time counter every frame
@@ -137,23 +144,8 @@ public class GameSession : MonoBehaviour
     {
         while(true)
         {
-            clockTime = clockTime.Add(TimeSpan.FromMinutes(1.2f));
-
-            yield return new WaitForSeconds(1f);
-        }
-    }
-
-    private IEnumerator ClockDisplay()
-    {
-        while(true)
-        {
-            if(clockText == null)
-            {
-                clockText = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
-            }
-            clockText.text = clockTime.ToString(@"hh\:mm");
-
             yield return new WaitForSeconds(8.33f);
+            clockTime = clockTime.Add(TimeSpan.FromMinutes(10f));
         }
     }
 
@@ -187,6 +179,7 @@ public class GameSession : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        clockText.text = clockTime.ToString(@"hh\:mm");             // Update the clock display
 
         if (descriptionBox != null && descriptionBox.activeSelf && !optionsManager.IsWriting)       // Close the description box if space is pressed and there is no text being typed
         {

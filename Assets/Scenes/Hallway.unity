@@ -5082,7 +5082,7 @@ GameObject:
   - component: {fileID: 108617722}
   m_Layer: 0
   m_Name: H_Dog_Picture
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5125,9 +5125,10 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: I prefer seeing him running towards me, than as a picture on the wall.
+    MedLOSA: I prefer seeing him running towards me, than as a picture on the wall.
+    HighLOSA: His name was Cosmo and he had been part of the family for 11 years.
+      I miss him.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -5992,7 +5993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalTags: []
+  additionalTags:
+  - OptionsWithoutDescription
+  - OptionsMultipleTimes
   objectType: 0700000006000000
   objectName: Chair
   description: This chair is so comfortable and relaxing. Sometimes when I don't
@@ -6420,9 +6423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 07000000
+  objectType: 0700000000000000
   objectName: Attic
-  description: 
+  description: I haven't entered this room for years, but I feel like today's different.
+    Neither do I want to hide anymore, nor do I want to hide what's in that room.
   option1Text: 
   option1responses: []
   option2Text: 
@@ -6431,9 +6435,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: I haven't entered this room for years and I won't enter this room now.
+    MedLOSA: I haven't entered this room for years and I won't enter this room now.
+    HighLOSA: I haven't entered this room for years and I won't enter this room now.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -7054,9 +7058,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1817165761}
+  - component: {fileID: 1817165763}
+  - component: {fileID: 1817165762}
   m_Layer: 0
   m_Name: H_Clock
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7069,7 +7075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817165760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.78, y: 2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 143851374}
@@ -7077,6 +7083,83 @@ Transform:
   m_Father: {fileID: 1152099212}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1817165762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817165760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 00000000
+  objectName: 
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
+  option3Text: 
+  option3responses: []
+  reactions: 
+  losaResponseTexts:
+    LowLOSA: 'Sometimes, the rythm of this clock seems to follow me everywhere. Then,
+      I constantly think I''d hear the noise and it starts to make me feel sick '
+    MedLOSA: 'This clock has been part of the inventory for so many years, I don''t
+      even remember the number. But the former person didn''t want to take it with
+      him, much to my astonishment. '
+    HighLOSA: It's amazing how detailed this clock is. I find it a pity, that I have
+      the feeling, that you barely can't find anything comparable to this nowadays.
+      Everything is so short-lived, there doesn't seem to be the time for creating
+      something really extraordinary.
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: 0
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!60 &1817165763
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817165760}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.03477, y: 1.5691237}
+      - {x: -1.0293384, y: -6.525318}
+      - {x: 0.3659582, y: -6.6163974}
+      - {x: 1.1617703, y: -5.9820757}
+      - {x: 0.85900545, y: -4.790291}
+      - {x: 0.91016245, y: 0.6094451}
+      - {x: 0.4567442, y: 1.5770361}
 --- !u!1 &1886105573
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class ObjectSpecificBehavior : MonoBehaviour
     private OptionsManager optionsManager;          // Reference to the options manager gameobject
     private ObjectProperties objectProperties;      // Reference to the selected object's properties
 
+    private string H_Chair_Description;
+
     private int behaviorIndex = 1;      // To allow for multiple behaviors
 
     // Specific Game Assets
@@ -194,18 +196,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
     }
 
-    private void K_Window_Behavior()
-    {
-        if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
-        {
-            objectProperties.HandleResponse(1);
-        }
-        else
-        {
-            optionsManager.ShowTextOnDescriptionBox(new string[] { objectProperties.description }, 0f);
-        }
-    }
-
     private void K_HallwayDoor_Behavior()
     {
         LevelChanger.LoadLevel("Hallway");
@@ -364,6 +354,18 @@ public class ObjectSpecificBehavior : MonoBehaviour
     /// Behaviors for objects in the Bedroom
     /// </summary>
 
+    private void Bed_Window_Behavior()
+    {
+        if (GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
+        {
+            objectProperties.HandleResponse(1);
+        }
+        else
+        {
+            optionsManager.ShowTextOnDescriptionBox(new string[] { objectProperties.description }, 0f);
+        }
+    }
+
     private void Bedroom_HallwayDoor_Behavior()
     {
         LevelChanger.LoadLevel("Hallway");
@@ -377,28 +379,122 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         if (behaviorIndex == 1)
         {
-            behaviorIndex += 1;
-            objectProperties.HandleResponse(1);
+            H_Chair_Description = objectProperties.description;
 
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.EVENING)
+            {
+                optionsManager.ShowTextOnDescriptionBox(objectProperties.description, 0f);
+            }
+            else
+            {
+                behaviorIndex += 1;
+                objectProperties.HandleResponse(1);
+            }
         }
         else if (behaviorIndex == 2)
         {
             behaviorIndex += 1;
-            if (GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
-            {
-                if (objectProperties.LOSAUpdateResponse == 1)
-                {
-                    GameSession.instance.ChangeLOSA(2);     // Reset the LOSA score to what it was before interacting with the chair
 
-                    // TODO: advance game time
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                if(objectProperties.LOSAUpdateResponse != -1)
+                {
+                    objectProperties.description = "";
+                    if (objectProperties.LOSAUpdateResponse == 1)
+                    {
+                        
+                        // TODO: advance game time
+                    }
+                    objectProperties.LOSAUpdateResponse = -1;       // Reset response
                 }
+                else
+                {
+                    objectProperties.HandleResponse(1);
+                }
+            }
+            else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                if(objectProperties.LOSAUpdateResponse != -1)
+                {
+                    objectProperties.description = "";
+                    if(objectProperties.LOSAUpdateResponse == 1)
+                    {
+                        // TODO: advance game time
+                    }
+                    objectProperties.LOSAUpdateResponse = -1;
+                }
+                else
+                {
+                    objectProperties.HandleResponse(1);
+                }
+            }
+            else
+            {
+                objectProperties.description = H_Chair_Description;
+                optionsManager.ShowTextOnDescriptionBox(objectProperties.description, 0f);
             }
         }
         else
-        { 
-            optionsManager.ShowOptions();
-            // TODO: replace it with a version where description text is not shown again
+        {
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                if (objectProperties.LOSAUpdateResponse != -1)
+                {
+                    if (objectProperties.LOSAUpdateResponse == 1)
+                    {
+                        // TODO: advance game time
+                    }
+                    objectProperties.LOSAUpdateResponse = -1;       // Reset response
+                }
+                else
+                {
+                    objectProperties.HandleResponse(1);
+                }
+            }
+            else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
+            {
+                Debug.Log(objectProperties.LOSAUpdateResponse);
+                if (objectProperties.LOSAUpdateResponse != -1)
+                {
+                    if (objectProperties.LOSAUpdateResponse == 1)
+                    {
+                        // TODO: advance game time
+                    }
+                    objectProperties.LOSAUpdateResponse = -1;       // Reset response
+                }
+                else
+                {
+                    objectProperties.HandleResponse(1);
+                }
+            }
+            else
+            {
+                objectProperties.description = H_Chair_Description;
+                optionsManager.ShowTextOnDescriptionBox(objectProperties.description, 0f);
+            }
         }
+    }
+
+    private void H_AtticStairs_Behavior()
+    {
+        if (GameSession.GetLOSA() < 90)      // TODO: change LOSA calculation
+        {
+            objectProperties.HandleResponse(1);
+        }
+        else
+        {
+            optionsManager.ShowTextOnDescriptionBox(objectProperties.description, 0f);  
+            StartCoroutine(GoToAttic());
+        }
+    }
+    
+    private IEnumerator GoToAttic()
+    {
+        yield return new WaitForSeconds(8f);
+
+        GameSession.FadeOut(GameObject.Find("Description Box").GetComponent<CanvasGroup>(), 0f);
+
+        LevelChanger.LoadLevel("Attic");
     }
 
     private void H_LivingRoomDoor_Behavior()
@@ -419,11 +515,5 @@ public class ObjectSpecificBehavior : MonoBehaviour
     private void H_BedroomDoor_Behavior()
     {
         LevelChanger.LoadLevel("Bedroom");
-    }
-
-    private void H_AtticStairs_Behavior()
-    {
-        // TODO: only load this when maximum LOSA is achieved
-        LevelChanger.LoadLevel("Attic");
     }
 }

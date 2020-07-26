@@ -90,7 +90,7 @@ public class ObjectManager : MonoBehaviour
                         if (objectProperties.interactedWith == false)                                       // Prevent player from clicking an object twice
                         {
                             optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
-                            objectProperties.interactedWith = true;
+                            // objectProperties.interactedWith = true;
                             objectProperties.HandleResponse(0);
                         }
                     }

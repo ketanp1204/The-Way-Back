@@ -180,9 +180,10 @@ public class OptionsManager : MonoBehaviour
             {
                 if (objectProperties.numberOfResponses > 0
                 && !objectProperties.responseSelected
-                && objectProperties.showOptions)            // If object has options to choose from, then displays them
+                && objectProperties.showOptions)            // If object has options to choose from, then display them
                 {
                     ShowOptions();
+                    objectProperties.showOptions = false;
                 }
             }
 
@@ -195,6 +196,14 @@ public class OptionsManager : MonoBehaviour
                 yield return nextButtonWait;                // Wait for next button to be clicked before typing the next page of text
 
                 Destroy(nextButton.gameObject);
+            }
+        }
+
+        if(GameSession.instance.instructionsEnabled)
+        {
+            if(!GameSession.instructionsSeen)
+            {
+                GameSession.instructionsSeen = true;
             }
         }
 
@@ -292,7 +301,7 @@ public class OptionsManager : MonoBehaviour
     private void HandleOptionResponse(int buttonIndex, int reaction, bool destroyOnPositive, bool destroyOnNegative, bool behaviorAfterChoice)
     {
         objectProperties.LOSAUpdateResponse = reaction;     // Stores the type of response selected in the object's properties
-        objectProperties.responseSelected = true;
+        
         // Check whether response is positive or negative
         gameSession.ChangeLOSA(reaction);                   // Update the LOSA score
 
@@ -330,6 +339,13 @@ public class OptionsManager : MonoBehaviour
             selectedObject.GetComponent<ObjectSpecificBehavior>().HandleBehavior(selectedObject);
         }
 
+        // Set the interactedWith boolean of the object so that it can't be clicked on again
+        if(!objectProperties.additionalTags.Contains("OptionsMultipleTimes"))
+        {
+            objectProperties.interactedWith = true;
+            objectProperties.responseSelected = true;
+        }
+
         // Clear and hide the options box
         CloseAndClearOptionsBox();
     }
@@ -349,6 +365,13 @@ public class OptionsManager : MonoBehaviour
         if (objectProperties.description != "")
         {
             ShowTextOnDescriptionBox(objectProperties.description, 0f);
+        }
+        else
+        {
+            if(objectProperties.additionalTags.Contains("OptionsWithoutDescription"))
+            {
+                ShowOptions();
+            }
         }
     }
 

@@ -64,7 +64,7 @@ public class ObjectProperties : MonoBehaviour
     [HideInInspector]
     public bool interactedWith = false;         // Stores whether an object has been already clicked on
     [HideInInspector]
-    public int LOSAUpdateResponse;              // The response that the player chooses for the object
+    public int LOSAUpdateResponse = -1;              // The response that the player chooses for the object
     [HideInInspector]
     public bool destroyOnPositive = false;      // Stores whether an object has to be destroyed on a positive response
     [HideInInspector]

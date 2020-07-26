@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 070000000000000000000000
+  objectType: 070000000000000006000000
   objectName: Shovel
   description: If tools could speak, this shovel would scream at me begging  to be
     used. I know it's been a while, but I didn't have a cause.
@@ -1561,7 +1561,7 @@ GameObject:
   - component: {fileID: 1362500376}
   m_Layer: 0
   m_Name: G_WindChime
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2133,7 +2133,7 @@ GameObject:
   - component: {fileID: 2114840454}
   m_Layer: 0
   m_Name: G_Tombstone
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

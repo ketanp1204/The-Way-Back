@@ -820,7 +820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalTags: []
+  additionalTags:
+  - OptionsMultipleTimes
   objectType: 06000000
   objectName: Windows
   description: Windows. An existing contrast itself. A hole in strong walls, that
@@ -891,6 +892,109 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7548475324103737981}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &373224096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 373224097}
+  - component: {fileID: 373224098}
+  - component: {fileID: 373224099}
+  m_Layer: 0
+  m_Name: LR_Movies
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &373224097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373224096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.72, y: -0.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1479276895}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &373224098
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373224096}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.056047797, y: -0.025221348}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5404084, y: 0.38907957}
+  m_EdgeRadius: 0
+--- !u!114 &373224099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373224096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 00000000
+  objectName: Movies
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
+  option3Text: 
+  option3responses: []
+  reactions: 
+  losaResponseTexts:
+    LowLOSA: Gosh, how I loved all these old Disney Movies - and I still do. I wonder
+      if this generation's children also connect nostalgic feelings to movies or
+      song. In this fast-paced world, everything has lost its value somehow.
+    MedLOSA: Gosh, how I loved all these old Disney Movies - and I still do. I wonder
+      if this generation's children also connect nostalgic feelings to movies or
+      song. In this fast-paced world, everything has lost its value somehow.
+    HighLOSA: Gosh, how I loved all these old Disney Movies - and I still do. I wonder
+      if this generation's children also connect nostalgic feelings to movies or
+      song. In this fast-paced world, everything has lost its value somehow.
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
 --- !u!1 &394499787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,6 +2640,7 @@ Transform:
   - {fileID: 931498655}
   - {fileID: 258561008}
   - {fileID: 1496597115}
+  - {fileID: 373224097}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3397,8 +3502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60fbb0e55f237447898eb85b5339a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsEnabled: 0
-  instructionsSeen: 0
+  instructionsEnabled: 1
 --- !u!1 &4418161944180157721
 GameObject:
   m_ObjectHideFlags: 0

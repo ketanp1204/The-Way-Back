@@ -49,14 +49,14 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: LR_Morning_Window_Open
     audioClip: {fileID: 8300000, guid: 81cffada0d54ec14e9548c98f33f20c1, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: LR_Gramophone
     audioClip: {fileID: 8300000, guid: d514ab29a0f903e4286ce4d7c682d73f, type: 3}

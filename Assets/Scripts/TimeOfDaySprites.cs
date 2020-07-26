@@ -27,16 +27,17 @@ public class TimeOfDaySprites : MonoBehaviour
         {
             morningSR.enabled = true;
             float timeElapsed = GameSession.gameTime;
-            StartCoroutine(FadeOutImage(morningSR, timeElapsed, 0));
-            // StartCoroutine(FadeInImage(noonSR, timeElapsed, 0));     // TODO: uncomment when noon image is available
-            StartCoroutine(FadeInImage(eveningSR, timeElapsed, 0));
+            StartCoroutine(FadeOutImage(morningSR, timeElapsed, GameSession.GetTimeOfDayIndex()));
+            // StartCoroutine(FadeInImage(noonSR, timeElapsed, GameSession.GetTimeOfDayIndex()));     // TODO: uncomment when noon image is available
+            StartCoroutine(FadeInImage(eveningSR, timeElapsed, GameSession.GetTimeOfDayIndex()));
         }
         else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
         {
             //noonSR.enabled = true;
             // StartCoroutine(FadeOutImage(noonSR, GameSession.timeOfDayInterval));
+            eveningSR.enabled = true;
             float timeElapsed = GameSession.gameTime;
-            StartCoroutine(FadeInImage(eveningSR, timeElapsed, 1));
+            StartCoroutine(FadeInImage(eveningSR, timeElapsed, GameSession.GetTimeOfDayIndex()));
         }
         else
         {
