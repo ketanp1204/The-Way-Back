@@ -35,9 +35,9 @@ public class OptionsManager : MonoBehaviour
     public bool IsWriting = false;                  // Boolean to store whether text is being automatically typed on the description box or not
     private GameObject dynamicUI;                   // Stores a reference to the DynamicUI canvas
     [SerializeField]
-    private Sprite redSelectedOptionSprite;         // Stores the selected red sprite for the option button
+    public Sprite redSelectedOptionSprite;         // Stores the selected red sprite for the option button
     [SerializeField]
-    private Sprite greenSelectedOptionSprite;         // Stores the selected green sprite for the option button
+    public Sprite greenSelectedOptionSprite;         // Stores the selected green sprite for the option button
 
     // Start is called before the first frame update
     void OnEnable()

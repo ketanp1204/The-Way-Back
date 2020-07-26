@@ -185,7 +185,7 @@ public class AudioManager : MonoBehaviour
         if (scene.name == "Garden")
         {
             // Stop kitchen sounds
-            Stop("Kitchen_Morning");
+            Stop("Morning_Rain_Inside");
 
             // Play garden sounds
             if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
