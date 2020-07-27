@@ -104,29 +104,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void LR_Window_Behavior()
     {
-        if (behaviorIndex % 2 == 1)
+        if(objectProperties.LOSAUpdateResponse == 1)
         {
-            behaviorIndex += 1;
-            GameEventsTracker.LR_Window_Open = true;
-
-            // TODO: play curtain animation 
-
-            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
-            {
-                // TODO: change morning rain sound
-            }
-        }
-        else
-        {
-            behaviorIndex += 1;
-            GameEventsTracker.LR_Window_Open = false;
-
-            // TODO: stop curtain animation 
-
-            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
-            {
-                // TODO: change morning rain sound
-            }
+            AudioManager.Stop("LR_Morning_Window_Closed");
+            AudioManager.PlaySoundAtCurrentGameTime("LR_Morning_Window_Open");
+            // TODO: change LR image to window open and play curtain animation
         }
     }
 
@@ -214,14 +196,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
     }
     
-    private void B_BathtubTap_Behavior()
-    {
-        // Stop water dripping sound
-        AudioManager.Stop("B_Water_Dripping");
-        GameEventsTracker.B_Tap_Water_Dripping = false;
-        // TODO Stop water animation 
-    }
-
     private void B_SleepingPills_Behavior()
     {
         if (GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
@@ -240,6 +214,44 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
     }
 
+    private void B_Light_Behavior()
+    {
+        if(behaviorIndex % 2 == 1)
+        {
+            behaviorIndex += 1;
+
+            if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.EVENING)
+            {
+                objectProperties.objectName = "Turn Off";       // Change the text on the light to 'Turn Off'
+
+                GameObject.Find("BackgroundImage").transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_Light_On;
+
+                GameEventsTracker.B_Light_On = true;
+            }
+            else
+            {
+                objectProperties.HandleResponse(1);
+            }
+        }
+        else
+        {
+            behaviorIndex += 1;
+
+            if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.EVENING)
+            {
+                objectProperties.objectName = "Turn On";       // Change the text on the light to 'Turn On'
+
+                GameObject.Find("BackgroundImage").transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_Light_Off;
+
+                GameEventsTracker.B_Light_On = false;
+            }
+            else
+            {
+                objectProperties.HandleResponse(1);
+            }
+        }
+    }
+
     private void B_ShelfInteract_Behavior()
     {
         GameObject CU_MirrorShelf = transform.parent.parent.gameObject;     // Get the parent zoomed in object
@@ -250,8 +262,22 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
             objectProperties.objectName = "Close Shelf";      // Change the text to be displayed on hover to "Close Shelf"
 
-            B_MirrorShelfCabinetOpen = transform.parent.transform.Find("B_MirrorShelfOpenSprite").GetComponent<SpriteRenderer>().sprite;    // Get the cabinet open sprite from the gameobject present that holds it
-            CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = B_MirrorShelfCabinetOpen;            // Set the sprite of the close up object CU_MirrorShelf to the cabinet open sprite
+            // Set the sprite of the close up object CU_MirrorShelf to the cabinet open sprite
+            if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
+            {
+                CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Day_ShelfOpen;
+            }
+            else
+            {
+                if(GameEventsTracker.B_Light_On)
+                {
+                    CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfOpenLightOn;
+                }
+                else
+                {
+                    CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfOpenLightOff;
+                }
+            }
 
             transform.parent.transform.Find("B_Mirror").gameObject.SetActive(false);        // Disable the mirror since its no longer in view
 
@@ -265,8 +291,22 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
             objectProperties.objectName = "Open Shelf";       // Change the text to be displayed on hover to "Open Shelf"
 
-            B_MirrorShelfCabinetClosed = transform.parent.transform.Find("B_MirrorShelfClosedSprite").GetComponent<SpriteRenderer>().sprite;    // Get the cabinet closed sprite from the gameobject present that holds it
-            CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = B_MirrorShelfCabinetClosed;      // Set the sprite of the close up object CU_MirrorShelf to the cabinet closed sprite
+            // Set the sprite of the close up object CU_MirrorShelf to the cabinet closed sprite
+            if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
+            {
+                CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Day_ShelfClosed;
+            }
+            else
+            {
+                if (GameEventsTracker.B_Light_On)
+                {
+                    CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfClosedLightOn;
+                }
+                else
+                {
+                    CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfClosedLightOff;
+                }
+            }
 
             transform.parent.transform.Find("B_Mirror").gameObject.SetActive(true);        // Enable the mirror object which is now in view
 
@@ -366,7 +406,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
     }
 
-    private void Bedroom_HallwayDoor_Behavior()
+    private void Bed_HallwayDoor_Behavior()
     {
         LevelChanger.LoadLevel("Hallway");
     }

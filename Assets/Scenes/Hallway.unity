@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -788,11 +788,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3166219227722357157, guid: 97814b1da46628f4c8e79f8cb85d102a,
-        type: 3}
-      propertyPath: instructionsEnabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3166219227722357158, guid: 97814b1da46628f4c8e79f8cb85d102a,
         type: 3}
       propertyPath: m_Name
@@ -1173,7 +1168,7 @@ MonoBehaviour:
   option1responses: []
   option2Text: Don't Sit Down
   option2responses:
-  - ' I have the feeling there is still so much left to do.'
+  - I have the feeling there is still so much left to do.
   option3Text: 
   option3responses: []
   reactions: 0100000000000000
@@ -1603,9 +1598,12 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: I haven't entered this room for years and I won't enter this room now.
-    MedLOSA: I haven't entered this room for years and I won't enter this room now.
-    HighLOSA: I haven't entered this room for years and I won't enter this room now.
+    LowLOSA: ' I haven''t entered this room for years and I won''t enter this room
+      now.'
+    MedLOSA: ' I haven''t entered this room for years and I won''t enter this room
+      now.'
+    HighLOSA: ' I haven''t entered this room for years and I won''t enter this room
+      now.'
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1769,7 +1767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152099212}
   m_Layer: 0
-  m_Name: Interactable Objects
+  m_Name: Hallway_Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

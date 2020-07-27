@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 120706138}
   m_Layer: 0
   m_Name: G_Pond
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,26 +187,26 @@ MonoBehaviour:
   option1Text: Fill The Pond
   option1responses:
   - I hope this was not a waste of time! If there really is a leak, I'll better find
-    it out now. I am not planning to carry these buckets through the house every
+    out. I am not planning to carry these buckets through the house every single
     day.
   option2Text: Save The Water For Plants
   option2responses:
-  - Carrying around those heavy buckets is something I'd rather avoid. Sooner or
+  - 'Carrying around those heavy buckets is something I''d rather avoid. Sooner or
     later it is going to rain and the pond will be full of water again. If only there
-    is no leak.
+    is no leak. '
   option3Text: 
   option3responses: []
   reactions: 0100000000000000
   losaResponseTexts:
-    LowLOSA: Even though it was raining, the pond seems to be still quiet empty.
-      I know that the sun has an effect on that, but I suspect a leak. I should fill
-      it again.
-    MedLOSA: Even though it was raining, the pond seems to be still quiet empty.
-      I know that the sun has an effect on that, but I suspect a leak. I should fill
-      it again.
-    HighLOSA: Even though it was raining, the pond seems to be still quiet empty.
-      I know that the sun has an effect on that, but I suspect a leak. I should fill
-      it again.
+    LowLOSA: Even though it was raining, the pond seems to be still very empty. I
+      know that the sun has an effect on that, but I suspect a leak, actually. I
+      should fill it again.
+    MedLOSA: Even though it was raining, the pond seems to be still very empty. I
+      know that the sun has an effect on that, but I suspect a leak, actually. I
+      should fill it again.
+    HighLOSA: Even though it was raining, the pond seems to be still very empty.
+      I know that the sun has an effect on that, but I suspect a leak, actually.
+      I should fill it again.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 186620487}
   m_Layer: 0
   m_Name: G_Brazier
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,29 +331,29 @@ MonoBehaviour:
   objectType: 070000000000000006000000
   objectName: Brazier
   description: After a day of spending the time on the attic, I really enjoyed to
-    come out and feel the cool air on my skin. Especially in the summer when it got
-    so hot up there. I went out for a walk, looked for branches on the forest path
-    and come back to make a fire. Now that I am thinking about it, I would really
+    come out and feel the cool air on my skin. Especially in the summer, when it
+    got so hot up there. I went out for a walk, looked for branches on the forest
+    path and came back to make a fire. Now that I am thinking about it, I would really
     like to know, how many hours I've spent staring into the fire.
   option1Text: 'Light The Fire
 
 '
   option1responses:
-  - 'It''s almost indescribable how the flames engulf the darkness as gently as a
-    piece of paper absorps a drop of ink. So hungry and never satisfied. How can
-    something like fire, that is known for raging and dealing out destruction, have
-    such a calming effect and evoke almost inner piece? This contrast can''t be bigger
-    in my eyes. But I assume that everything, that contains a terrifying and cruel
+  - It's almost indescribable how the flames engulf the darkness as gently as a piece
+    of paper absorps a drop of ink. So hungry and never satisfied. How can something
+    like fire, that is known for raging and dealing out destruction, have such a
+    calming effect and evoke almost inner piece? This contrast can't be bigger in
+    my opinion. But I assume that everything, that contains a terrifying and cruel
     characteristic, is fascinating, as long as it is under control and can be observered
-    safely. Therefore, fire outside of this bowl in my garden, would have a different
-    effect on me. '
+    safely. Therefore, fire outside of this bowl in my garden, would have a totally
+    different effect on me.
   option2Text: Look Inside The Brazier
   option2responses:
   - I can't even tell when the last time was I made a fire. But according to these
     remains, it's been a while. A long while. The ashes have been fully blown away
-    and revealed the wood that hasn't fully burnt. Beside tree branches, there is
-    other kind ofwood as well. I remember that night. I was in despair, however I
-    can not recall why exactly anymore. Then doubts and fears that overwhelmed me,
+    and revealed the wood that hasn't fully burnt. Besides tree branches, there is
+    other kind of stuff and wood as well. I remember that night. I was in despair,
+    however, I can not recall why exactly anymore. Doubts and fear overwhelmed me,
     I guess. And in that moment, I lit the fire and threw some frames into it, as
     well. I deeply regret it.
   option3Text: 
@@ -468,13 +468,13 @@ MonoBehaviour:
   objectName: Trunk
   description: This tree was the first thing that caught my attention when I visited
     the house for the first time. Back then it was already huge and I could not imagine
-    it could even get bigger. I also decided to never let i cropped, because it should
-    have the freedom to unfold its beauty limitless as it wants to.
+    it could even get bigger. I also decided to never let it cropped, because it
+    should have the freedom to unfold its beauty limitlessly as it wants to.
   option1Text: Look At The Front
   option1responses:
   - I almost haven't noticed them! I've been looking at this part of the trunk already
     for a while, however it requires the sweeping view. Then suddenly a whole new
-    world is revealed. The world of the tiny ants, that created a street starting
+    world is revealed. The world of the tiny ants that created a street, starting
     from somewhere in the grass and going to the upper part of the tree. What's in
     the tree that could be so important for them? I better leave before they also
     find interest on something that is on my head.
@@ -482,16 +482,16 @@ MonoBehaviour:
   option2responses:
   - You really have to know that there is something and even then if you knew, you
     had to focus and look really closely. But even though you may not see it clearly
-    anymore, we carved our initial letters into the tree bark. "J + L + C" We did
+    anymore, we carved our initial letters into the tree bark. 'J + L + C'. We did
     not forget Cosmo. It's magical to leave your marks in the world. But it can be
     as hurtful as magical at the same time.
   option3Text: Look At The Crown
   option3responses:
-  - I remember that day, when I invited a few of my friends at that time. It was
-    at midsummer's night and it was so warm, that we were taking breaks from working
-    on the attic and we've been laying in the tree's shadow the whole time. Until
-    we suddenly came up with the idea to climb the tree. Scpetical in the beginning,
-    I really made it in the end. I had a bloddy knee, but I made it!
+  - 'I remember that day, when I invited a few of my friends at that time. It was
+    at midsummer''s night and it was so warm, that we were taking breaks from working
+    on the attic and we''ve been laying in the tree''s shadow the whole time. Until
+    we suddenly came up with the idea to climb the tree. Scepetical in the beginning,
+    I really made it in the end. I had a bloddy knee, but I made it! '
   reactions: 000000000100000001000000
   losaResponseTexts:
     LowLOSA: 
@@ -806,9 +806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3908ffec8aade4947a6091bf006ede9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  morningImage: {fileID: 0}
-  noonImage: {fileID: 2121611152}
-  eveningImage: {fileID: 947706765}
 --- !u!224 &441745033 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1800678397315498874, guid: ba0083ad5c83fe84399b285767095ea8,
@@ -1119,7 +1116,7 @@ GameObject:
   - component: {fileID: 651157942}
   m_Layer: 0
   m_Name: G_Shovel
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1192,18 +1189,20 @@ MonoBehaviour:
   additionalTags: []
   objectType: 070000000000000006000000
   objectName: Shovel
-  description: If tools could speak, this shovel would scream at me begging  to be
+  description: If tools could speak, this shovel would scream at me begging to be
     used. I know it's been a while, but I didn't have a cause.
   option1Text: Dig A Deep Hole
   option1responses:
   - Almost Finished...
-  - Now you can be outside, boundless without limitation. You do not need to live
-    and suffer so that I feel more comfortable inside. I prefer paying you a visit.
+  - 'Now you can be outside, boundless without limitations. You do not need to live
+    and suffer so that I feel more comfortable inside. I prefer paying you a visit
+    outside. '
   option2Text: Dig A Small Hole
   option2responses:
   - Almost Finished...
-  - Now you can be outside, boundless without limitation. You do not need to live
-    and suffer so that I feel more comfortable inside. I prefer paying you a visit.
+  - 'Now you can be outside, boundless without limitation. You do not need to live
+    and suffer so that I feel more comfortable inside. I prefer paying you a visit
+    outside. '
   option3Text: 
   option3responses: []
   reactions: 
@@ -1388,6 +1387,119 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4a678f67aaf59440997ab9f81ecc5ed, type: 3}
+--- !u!1 &1142779094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1142779095}
+  - component: {fileID: 1142779097}
+  - component: {fileID: 1142779096}
+  m_Layer: 0
+  m_Name: G_LooseBrick
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1142779095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142779094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.08, y: 1.82, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2014207712}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1142779096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142779094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 03000000
+  objectName: Loose Brick
+  description: This wall is full of loose bricks, ovbiously. And this one especially
+    attracted my attention back in the days when I moved here. It is very easy to
+    hide something behind it, because it it so loose. But now it is about to fall
+    out.
+  option1Text: Put It Back In The Hole
+  option1responses:
+  - I know that I am far from being a patient person, but the greatest pleasure lies
+    in the anticipation! And the longer I wait, the nicer the effect. So I guess
+    this hole is going to be sealed again.
+  option2Text: Put It Out Of The Whole
+  option2responses:
+  - 'In that small wet hole lays a box, that is protecting a sheet of paper. I placed
+    it in there when I moved here, it''s my time capsule. I don''t even remember
+    what I wrote down. Let''s find out: Monday. ''9th September. 2013. I am sitting
+    under the tree and I can smell the drizzling rain evaporating on the hot tiles.
+    I am happy I moved here and I am fully convinced about this decision. I feel
+    totally free - spiritually and phisically. I have room to move and to create
+    and I feel more inspired than ever. My hands seem to move by themselves and I
+    can not express the anticipation I feel when I think about the future. Speaking
+    of. To my future-me: I am delighted and when you read this, I want you to remember
+    that feeling.'' Now I do, again. I had forgotten it. To my past-me: Thank you. '
+  option3Text: 
+  option3responses: []
+  reactions: 0000000001000000
+  losaResponseTexts:
+    LowLOSA: 
+    MedLOSA: 
+    HighLOSA: 
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!61 &1142779097
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142779094}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06804347, y: -0.01701063}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.57813025, y: 0.5441085}
+  m_EdgeRadius: 0
 --- !u!1 &1223611496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,19 +1717,20 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 'We both enjoy love-hate relationship. During the day I hear these sticks
-      swinging in the wind and creating sounds and it has something calming. I give
-      it that. But during the night, those sounds don''t want to blend into the silence.
-      They want to get all the attention and it''s horrible. But I love it. '
+    LowLOSA: 'We both enjoy a love-hate relationship. During the day, I hear these
+      sticks swinging in the wind creating sounds, which has something calming. I
+      give it that. But during the night, those sounds don''t want to blend into
+      the silence. They want to get all the attention and it''s horrible. But I love
+      it. '
     MedLOSA: The day I received this wind chime was great. It was the same day I
       crafted it together with my goddaughter. We've been spending hours on that,
       but they passed within a blink, I have the feeling. When we were finished,
-      she took it, and gave it to me with the biggest smile I've ever witnessed.
+      she took it and gave it to me with the biggest smile I've ever witnessed.
     HighLOSA: WIth the help of this "tool", I am kind of able to see my mental state.
-      If I go outside and spent a good amonut of time here without noticing its melody,
+      If I go outside and spend a good amount of time here without noticing its melody,
       I know that I am not feeling well and that I am completely somewhere else with
       my head, which is not often a good sign. But if I go here and I am aware of
-      the melody that the wind conrols, I know that my mind is clear.
+      the melody that the wind controls, I know that my mind is clear.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1712,10 +1825,10 @@ MonoBehaviour:
     because every plant is still wet. So why should I use it now?
   option2Text: Do Not Use It
   option2responses:
-  - Today's rain already watered the plants, there is no need in using the pump.
+  - 'Today''s rain already watered the plants, there is no need in using the pump.
     Even though I really enjoy the act. It feels so good to use it. There is way
     more action behind it, compared to just using the water tap. Even though it is
-    more effort, I really do enjoy it.
+    more effort, I really do enjoy it. '
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
@@ -2043,7 +2156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2014207712}
   m_Layer: 0
-  m_Name: Interactable Objects
+  m_Name: Garden_Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2068,6 +2181,7 @@ Transform:
   - {fileID: 241248124}
   - {fileID: 186620485}
   - {fileID: 1223611497}
+  - {fileID: 1142779095}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2258,11 +2372,11 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: Sometimes, when I enter the house, I still believe hearing his steps
-      on the floor followed by the barking. To be honest, this was the most beautiful
-      sound to me.
+    LowLOSA: Sometimes, when I enter the house, I still believe I would hear his
+      steps on the floor followed by the barking. To be honest, this was the most
+      beautiful sound to me.
     MedLOSA: I always have to convince myself, that it was the right decision. But
-      how can anybody decide about someone's live? It's a position in which I don't
+      how can anybody decide about someone's life? It's a position in which I don't
       want to find myself ever again.
     HighLOSA: The day it happenend back then was the same as today. It was raining
       constantly, without any signs of change. Then suddenly, as soon as the veterinary

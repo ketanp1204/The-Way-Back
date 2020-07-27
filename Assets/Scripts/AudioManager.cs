@@ -75,15 +75,7 @@ public class AudioManager : MonoBehaviour
             // Play living room sounds
             if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
             {
-                if (GameEventsTracker.LR_Window_Open)      // If the Living Room window is open, play its sound, otherwise play the closed one
-                {
-                    PlaySoundAtCurrentGameTime("LR_Morning_Window_Open");
-                }
-                else
-                {
-                    PlaySoundAtCurrentGameTime("LR_Morning_Window_Closed");
-                }
-                // PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
+                PlaySoundAtCurrentGameTime("LR_Morning_Window_Closed");
             }
             else if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
             {
@@ -153,10 +145,7 @@ public class AudioManager : MonoBehaviour
                 PlaySoundAtCurrentGameTime("Evening_Inside");
             }
 
-            if (GameEventsTracker.B_Tap_Water_Dripping)      // If the water tap hasn't been shut, play the water dripping sound
-            {
-                Play("B_Water_Dripping");
-            }
+            Play("B_Water_Dripping");
         }
 
         if (scene.name == "Kitchen")
@@ -166,6 +155,13 @@ public class AudioManager : MonoBehaviour
             Stop("H_Noon");
             Stop("H_Clock_Ticking");
             Stop("Evening_Inside");
+            
+            // Stop Garden Sounds
+            Stop("G_Wind_Chime");
+            Stop("G_Fire_Burning");
+            Stop("G_Water_Fountain");
+            Stop("G_Noon");
+            Stop("G_Evening");
 
             // Play kitchen sounds
             if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
@@ -196,6 +192,8 @@ public class AudioManager : MonoBehaviour
             {
                 PlaySoundAtCurrentGameTime("G_Evening");
             }
+            Play("G_Wind_Chime");
+            Play("G_Fire_Burning");
         }
 
         if (scene.name == "Bedroom")

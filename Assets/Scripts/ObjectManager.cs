@@ -29,7 +29,7 @@ public class ObjectManager : MonoBehaviour
     private GameObject rainSystem;                  // Reference to the rain particle system
     public Button backButtonPrefab;                 // Reference to the back button prefab
     public GameObject zoomedInObject;               // Reference to the zoomed in object 
-
+    private PersistentObjectData objectData;        // Reference to the singleton object data instance
 
     void Awake()
     {
@@ -65,6 +65,7 @@ public class ObjectManager : MonoBehaviour
         optionsBox = uiReferences.optionsBox;
         rainSystem = uiReferences.rainSystem;
         interactableObjects = uiReferences.interactableObjects;
+        objectData = FindObjectOfType<PersistentObjectData>();
     }
 
     // Update is called once per frame
@@ -86,12 +87,15 @@ public class ObjectManager : MonoBehaviour
                 {
                     if (hit.collider.gameObject.tag == "Object")                                            // Player clicks on an object which can be only clicked once
                     {
-                        objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
-                        if (objectProperties.interactedWith == false)                                       // Prevent player from clicking an object twice
+                        if(!objectData.interactedObjects.Contains(hit.collider.gameObject.name))
                         {
-                            optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
-                            // objectProperties.interactedWith = true;
-                            objectProperties.HandleResponse(0);
+                            objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
+                            if (objectProperties.interactedWith == false)                                       // Prevent player from clicking an object twice
+                            {
+                                optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
+                                // objectProperties.interactedWith = true;
+                                objectProperties.HandleResponse(0);
+                            }
                         }
                     }
 

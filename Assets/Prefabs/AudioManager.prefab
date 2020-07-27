@@ -168,7 +168,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: G_Water_Fountain
     audioClip: {fileID: 8300000, guid: 590647ed37dad5b4f8fef1afacbaf4a3, type: 3}
@@ -182,7 +182,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: B_Morning
     audioClip: {fileID: 8300000, guid: e02572a6146b0d745b33e3423b87d43f, type: 3}

@@ -659,7 +659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 814084384}
   m_Layer: 0
-  m_Name: Interactable Objects
+  m_Name: Kitchen_Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -683,6 +683,7 @@ Transform:
   - {fileID: 1274709340}
   - {fileID: 1508454488}
   - {fileID: 1850747976}
+  - {fileID: 1543082546}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1153,7 +1154,7 @@ GameObject:
   - component: {fileID: 1274709344}
   m_Layer: 0
   m_Name: K_FruitBasket
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1193,12 +1194,12 @@ MonoBehaviour:
   option1Text: Throw Away The Rotten Fruits
   option1responses:
   - 'What a shame. But that is the new circle of life I guess: Spending too much
-    money on too many things that we don''t even use at the end.'
+    money on too many things that we don''t even use at the end. '
   option2Text: Eat The Edible Fruits
   option2responses:
-  - Even though I am not really hungry, it would be a shame to throw these fruits
-    away. Above that I don't want to think about the recources and time it took them
-    to grow. Therefore it would be a horrible end for their journey.
+  - ' Even though I am not really hungry, it would be a shame to throw these fruits
+    away. Above that, I don''t want to think about the recources and time it has
+    taken them to grow. Therefore, it would be a horrible end for their journey.'
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
@@ -1515,7 +1516,7 @@ GameObject:
   - component: {fileID: 1508454487}
   m_Layer: 0
   m_Name: K_GardenDoor
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1694,6 +1695,117 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1543082545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1543082546}
+  - component: {fileID: 1543082547}
+  - component: {fileID: 1543082548}
+  m_Layer: 0
+  m_Name: K_TeaPot
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1543082546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543082545}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.43, y: 1.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 814084384}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &1543082547
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543082545}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.31197548, y: 0.40243888}
+      - {x: 0.17937016, y: 0.45471382}
+      - {x: -0.032965183, y: 0.41501117}
+      - {x: -0.36303186, y: 0.27386832}
+      - {x: -0.500334, y: 0.38533998}
+      - {x: -0.6640637, y: 0.37359023}
+      - {x: -0.5083606, y: 0.21384108}
+      - {x: -0.37971568, y: -0.5076746}
+      - {x: 0.24339414, y: -0.55072355}
+      - {x: 0.25518203, y: -0.002116561}
+      - {x: 0.33746004, y: 0.10740435}
+      - {x: 0.37707138, y: 0.32336664}
+--- !u!114 &1543082548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543082545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 00000000
+  objectName: Tea Pot
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
+  option3Text: 
+  option3responses: []
+  reactions: 
+  losaResponseTexts:
+    LowLOSA: Tea is supposed to make you healthy. I drank it by the litre last winter
+      and I was still feeling sick.
+    MedLOSA: 'Depening on the season, I drink tea differently. During winter, I almost
+      drink it too much, whereas in the summertimes, I barely have it on my radar. '
+    HighLOSA: One day, I would really like to have different kinds of plants in my
+      garden. Then I will dry them and use them as tea leaves. That would be amazing.
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
 --- !u!1 &1602774513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,17 +1859,19 @@ MonoBehaviour:
   - TimeOfDayChange
   objectType: 06000000
   objectName: Shopping List
-  description: '"March 13th: Coffee, pasta, batteries, light bulb E14, cereals, dog
-    food," Has that list really been hanging there already for such a long time?'
+  description: '''March 13th: Coffee, pasta, batteries, light bulb E14, cereals,
+    dog food,''. Has that list really been hanging there already for such a long
+    time? '
   option1Text: Tear The Page Off
   option1responses:
-  - 'There is something else written on the paper underneath it: "March 11th: 08:08
+  - 'There is something else written on the paper underneath it: ''March 11th: 08:08
     am. I am thinking of you. Had to leave sooner than expected and didn''t want
-    to interrupt your sweet sleep. See you soon xxxx" ... I''ve never seen that note.'
+    to interrupt your sweet sleep. See you soon xxxx'' ... I''ve never seen that
+    note.'
   option2Text: Throw Away The List
   option2responses:
-  - Who still needs that if you have a phone? Shed the importless ballast from the
-    past
+  - 'Who does that still need if you have a phone? Shed the unimportant ballast from
+    the past '
   option3Text: 
   option3responses: []
   reactions: 0100000002000000
@@ -1947,7 +2061,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1694345987
 GameObject:
@@ -1979,7 +2093,7 @@ Transform:
   - {fileID: 8037793847459745288}
   - {fileID: 139458090}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1752475983
 GameObject:
@@ -2048,7 +2162,7 @@ GameObject:
   - component: {fileID: 1835379659}
   m_Layer: 0
   m_Name: K_WineBottle
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2073,9 +2187,9 @@ MonoBehaviour:
     the right moment, if you didn't dare to find it out.
   option1Text: Drink It
   option1responses:
-  - I bought this bottle for a special occasion. But lately, these special occasion
+  - 'I bought this bottle for a special occasion. But lately, these special occasions
     seems to happen rather rarely and it would be a pitty to not drink it if I want
-    to.
+    to. '
   option2Text: Save It
   option2responses:
   - I am really not in a rush to open that bottle. And actually, I bought it to cook
@@ -2134,7 +2248,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.007998109, y: 0.037989855}
+  m_Offset: {x: -0.1462605, y: 0.037989855}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2145,7 +2259,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.82404685, y: 1.2999196}
+  m_Size: {x: 0.51552963, y: 1.2999196}
   m_EdgeRadius: 0
 --- !u!4 &1835379661
 Transform:

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 32874252}
   m_Layer: 0
   m_Name: B_SleepingPills
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,32 +308,32 @@ MonoBehaviour:
 
 '
   option1responses:
-  - It is already getting late and I just thought this morning, that I want to sleep
+  - It is already getting late and I just thought this morning that I want to sleep
     early today. And what's so bad about... Who am I talking to. There is no need
-    to whitewash It is a thin line between using and abusing. Anyway, cheers! To
+    to whitewash. It is a thin line between using and abusing. Anyway, cheers! To
     my health.
   option2Text: 'Wash Them Down
 
 '
   option2responses:
-  - 'Pity for them! The jar was almost full and I have bought them quite recently.
+  - Pity for them! The jar was almost full and I have bought them quite recently.
     Guess I have to deal with my sleeping problems without their help. By the way,
-    isn''t it super bad for the environment to wash pills down? Anyway, now it is
-    too late. '
+    isn't it super bad for the environment to wash pills down? Anyway, now it is
+    too late.
   option3Text: Keep Them
   option3responses:
-  - 'Hey you never know when you need them, right? And why should I throw them away?
-    I remember my mother: She had drawers filled with all kind of medical things.
+  - 'Hey, you never know when you need them, right? And why should I throw them away?
+    I remember my mother: She had drawers filled with all kinds of medical things.
     They were full to the bursting point. When I was litte, she always had a solution
-    to any problem or injury, I''ve felt so safe.'
+    to any problem or injury, I felt so safe.'
   reactions: 020000000000000001000000
   losaResponseTexts:
-    LowLOSA: Not that I wouldn't have the wish sometimes to sleep during the day
-      to get it over, but I guess it is too early to take it now
-    MedLOSA: Not that I wouldn't have the wish sometimes to sleep during the day
-      to get it over, but I guess it is too early to take it now
-    HighLOSA: Not that I wouldn't have the wish sometimes to sleep during the day
-      to get it over, but I guess it is too early to take it now
+    LowLOSA: Not that I don't have the wish sometimes to sleep during the day to
+      get it over, but I guess it is too early to take it now.
+    MedLOSA: Not that I don't have the wish sometimes to sleep during the day to
+      get it over, but I guess it is too early to take it now.
+    HighLOSA: Not that I don't have the wish sometimes to sleep during the day to
+      get it over, but I guess it is too early to take it now.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -463,7 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 132383492}
   m_Layer: 0
-  m_Name: Interactable Objects
+  m_Name: Bathroom_Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,11 +481,16 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 576619014}
-  - {fileID: 945378569}
   - {fileID: 632702529}
   - {fileID: 875963575}
+  - {fileID: 506602353}
+  - {fileID: 2056686123}
+  - {fileID: 2027701215}
+  - {fileID: 1985674176}
+  - {fileID: 1703416900}
+  - {fileID: 958265971}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &146014735
 PrefabInstance:
@@ -617,6 +622,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357157, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: instructionsEnabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3166219227722357158, guid: 97814b1da46628f4c8e79f8cb85d102a,
         type: 3}
@@ -774,6 +784,113 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &506602352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 506602353}
+  - component: {fileID: 506602355}
+  - component: {fileID: 506602354}
+  m_Layer: 0
+  m_Name: B_Towel
+  m_TagString: ObjectMultipleClick
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &506602353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506602352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.77, y: 1.81, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132383492}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &506602354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506602352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 00000000
+  objectName: Towel
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
+  option3Text: 
+  option3responses: []
+  reactions: 
+  losaResponseTexts:
+    LowLOSA: Well, I don't have so many towels. So this is actually the only reason,
+      I should start the waching machine.
+    MedLOSA: Well, I don't have so many towels. So this is actually the only reason,
+      I should start the waching machine.
+    HighLOSA: Well, I don't have so many towels. So this is actually the only reason,
+      I should start the waching machine.
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!60 &506602355
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506602352}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.05839348, y: 1.4087553}
+      - {x: -0.2211361, y: 0.99514174}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: -0.19110227, y: -1.6214458}
+      - {x: 0.07398009, y: -1.7634313}
+      - {x: 0.616982, y: -0.79441833}
+      - {x: 0.36446142, y: -0.04709208}
+      - {x: 0.32332468, y: 1.0681343}
 --- !u!1 &533140516
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +949,7 @@ MonoBehaviour:
   losaResponseTexts:
     LowLOSA: 'Against all the odds, the face in the mirror becomes even stranger
       the longer we look at each other. Who are you actually? '
-    MedLOSA: To be honest, I have always been a fan of my body. However during a
+    MedLOSA: To be honest, I have always been a fan of my body. However, during a
       very slow process, I lost the connection to it and therefore the connection
       to myself. I've always seen more than a shell in a body and I would wish to
       spent more time with it and myself.
@@ -1073,7 +1190,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 132383492}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &632702530
 MonoBehaviour:
@@ -1204,7 +1321,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &659095487
 GameObject:
@@ -1219,7 +1336,7 @@ GameObject:
   - component: {fileID: 659095489}
   m_Layer: 0
   m_Name: B_MouthMask
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1262,9 +1379,12 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: I remember a time, when people would haven been stared at strangely,
+      if the were wearing these masks. Now it is the other way around.
+    MedLOSA: I remember a time, when people would haven been stared at strangely,
+      if the were wearing these masks. Now it is the other way around.
+    HighLOSA: I remember a time, when people would haven been stared at strangely,
+      if the were wearing these masks. Now it is the other way around.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1381,11 +1501,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 875963575}
-  - component: {fileID: 875963577}
-  - component: {fileID: 875963576}
   - component: {fileID: 875963578}
+  - component: {fileID: 875963577}
   m_Layer: 0
-  m_Name: B_BathtubTap
+  m_Name: B_Bathtub
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1399,24 +1518,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875963574}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0.29, z: 0}
+  m_LocalPosition: {x: -0.44, y: -0.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 132383492}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &875963576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875963574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &875963577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,20 +1537,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 06000000
-  objectName: Bath Tub Tap
-  description: 'This noise, gosh! I am about to lose my patience, really. But I just
-    cannot find the letter that I once received with the phone number of the technicians
-    anymore, I guess I dumped it. '
+  objectType: 03000000
+  objectName: Bathtub
+  description: 'This noise, gosh! I am about to loose my patience, really. But I
+    just can not find the letter that I once received with the phone number of the
+    technicians anymore, I guess I dumped it. '
   option1Text: Turn The Tap Off Patiently
   option1responses:
   - It's already turned off and it just won't stop dripping. I finally have to do
     something about it. The buckets in front of the bath tub are a symbol of my procrastination.
   option2Text: Turn The Tap Off Aggressively
   option2responses:
-  - It just doesn't want to stop dripping! I really have to do something about it.
-    These buckets in front of the bath tub are embarassing me. They are a symbol
-    of my procrastination.
+  - 'It just doesn''t want to stop dripping! I really have to do something about
+    it. These buckets in front of the bath tub are embarassing me. They are a symbol
+    of my procrastination. '
   option3Text: 
   option3responses: []
   reactions: 0100000002000000
@@ -1463,110 +1570,13 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
---- !u!61 &875963578
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875963574}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.020914972, y: -0.11725867}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.64862907, y: 0.48994565}
-  m_EdgeRadius: 0
---- !u!1 &945378568
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 945378569}
-  - component: {fileID: 945378571}
-  - component: {fileID: 945378570}
-  m_Layer: 0
-  m_Name: B_Bathtub
-  m_TagString: CloseUp
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &945378569
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945378568}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 132383492}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &945378570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945378568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalTags: []
-  objectType: 
-  objectName: Bathtub
-  description: 
-  option1Text: 
-  option1responses: []
-  option2Text: 
-  option2responses: []
-  option3Text: 
-  option3responses: []
-  reactions: 
-  losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
-  closeUpObject: {fileID: 1021554342}
-  numberOfResponses: 0
-  numberOfLOSAResponses: 0
-  optionTexts: []
-  interactedWith: 0
-  LOSAUpdateResponse: 0
-  destroyOnPositive: 0
-  destroyOnNegative: 0
-  hasBehavior: 0
-  responseSelected: 0
-  callIndex: 0
-  showOptions: 0
---- !u!60 &945378571
+--- !u!60 &875963578
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945378568}
+  m_GameObject: {fileID: 875963574}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -1585,10 +1595,123 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -2.731822, y: -0.57318807}
-      - {x: -3.3143928, y: -1.0579681}
-      - {x: 2.0103626, y: -1.3899031}
-      - {x: 1.6149263, y: -0.82904536}
+    - - {x: -2.2799919, y: 0.328951}
+      - {x: -2.86691, y: -0.13790452}
+      - {x: 2.448295, y: -0.4900725}
+      - {x: 2.0407834, y: 0.08309817}
+--- !u!1 &958265970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 958265971}
+  - component: {fileID: 958265974}
+  - component: {fileID: 958265973}
+  - component: {fileID: 958265972}
+  m_Layer: 0
+  m_Name: B_Light
+  m_TagString: ObjectMultipleClick
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &958265971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958265970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.47, y: 3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132383492}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &958265972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958265970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &958265973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958265970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 0700000000000000
+  objectName: Turn On
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
+  option3Text: 
+  option3responses: []
+  reactions: 
+  losaResponseTexts:
+    LowLOSA: I don't see the point in turning on the light in the middle of the day,
+      I can see pretty clearly. Let's save some energy.
+    MedLOSA: I don't see the point in turning on the light in the middle of the day,
+      I can see pretty clearly. Let's save some energy.
+    HighLOSA: I don't see the point in turning on the light in the middle of the
+      day, I can see pretty clearly. Let's save some energy.
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!61 &958265974
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958265970}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1021554342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1864,7 @@ SpriteRenderer:
   m_SortingLayerID: 1382938419
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 71febb03faf5da248a6b5d0723105064, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3bd7145082bc21d40845b685b7a585b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1782,7 +1905,7 @@ Transform:
   - {fileID: 1021554343}
   - {fileID: 455589422}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1328001986
 PrefabInstance:
@@ -1919,6 +2042,116 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1328001986}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1703416899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1703416900}
+  - component: {fileID: 1703416902}
+  - component: {fileID: 1703416901}
+  m_Layer: 0
+  m_Name: B_Buckets
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1703416900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703416899}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.66, y: -2.98, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132383492}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1703416901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703416899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 03000000
+  objectName: Buckets
+  description: I've been saving these full buckets now already for days and it is
+    getting kind of annoying. I can barely walk here anymore.
+  option1Text: Pour Away
+  option1responses:
+  - My plan was to give it to the plants. But I can also just fill up a bucket in
+    a moment and the plants outside don't need to worry, because it's likely going
+    to rain.
+  option2Text: Keep Them
+  option2responses:
+  - Sometimes you just can't have everything. And thanks to my father, I've been
+    raised to think in a economical and sustainable way. That's why this water belongs
+    to the plants, exactly as planned. Above that, letting water rest, makes it more
+    fit for the plants.
+  option3Text: 
+  option3responses: []
+  reactions: 0200000001000000
+  losaResponseTexts:
+    LowLOSA: 
+    MedLOSA: 
+    HighLOSA: 
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!60 &1703416902
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703416899}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.122181416, y: 0.6792741}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.6830994, y: -0.18911171}
+      - {x: 0.2674842, y: -0.29738283}
+      - {x: 0.7252394, y: -0.2439282}
+      - {x: 0.8899659, y: 0.65265226}
 --- !u!1 &1755796177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,7 +2184,7 @@ Transform:
   - {fileID: 2139554930}
   - {fileID: 1166739512}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1755796179
 MonoBehaviour:
@@ -1965,9 +2198,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3908ffec8aade4947a6091bf006ede9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  morningImage: {fileID: 1877081451}
-  noonImage: {fileID: 0}
-  eveningImage: {fileID: 1166739511}
+--- !u!1 &1839491646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1839491647}
+  - component: {fileID: 1839491648}
+  m_Layer: 0
+  m_Name: ObjectData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1839491647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839491646}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2986139, y: 0.36356944, z: -14.388672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1839491648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839491646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322fe369b3aa7b846981a500a85cdce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactedObjects: []
 --- !u!1 &1851281121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,6 +2805,111 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ffc3628a07658d468050b0205d47838, type: 3}
+--- !u!1 &1985674175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1985674176}
+  - component: {fileID: 1985674178}
+  - component: {fileID: 1985674177}
+  m_Layer: 0
+  m_Name: B_FaceCream
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1985674176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985674175}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.76, y: -0.89, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132383492}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1985674177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985674175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 03000000
+  objectName: Face Cream
+  description: 'A face cream that was perscribed by the doctor. It has to be applied
+    every day. However, I don''t enjoy putting things on my skin, that I don''t even
+    know. All these ingredients sound dangerous to me. '
+  option1Text: Apply It
+  option1responses:
+  - But some things just have to happen, even if you don't agree. And if I change
+    my mind, I just stop using it.
+  option2Text: Read The Ingredients
+  option2responses:
+  - Wow. There are more numbers than letters. That's scary and confirms my concerns.
+  option3Text: 
+  option3responses: []
+  reactions: 0100000000000000
+  losaResponseTexts:
+    LowLOSA: 
+    MedLOSA: 
+    HighLOSA: 
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!60 &1985674178
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985674175}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.25498962, y: 0.4581477}
+      - {x: -0.18139601, y: -0.57793283}
+      - {x: 0.16545868, y: -0.55402756}
+      - {x: 0.18608856, y: 0.5082275}
 --- !u!1 &1996963183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,6 +2991,226 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2027701214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2027701215}
+  - component: {fileID: 2027701217}
+  - component: {fileID: 2027701216}
+  m_Layer: 0
+  m_Name: B_WashingMachine
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2027701215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027701214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.69, y: -3.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132383492}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2027701216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027701214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 03000000
+  objectName: Washing Machine
+  description: I have the feeling everything in this house is either falling apart
+    or breaks. So please, if you have any compassion for me, don't leave me as well.
+  option1Text: Put The Laundry Inside
+  option1responses:
+  - Doing that implies drying, folding and ironing. And since I still have a few
+    fresh clothes left, I don't have to address myself to that task.
+  option2Text: Leave The Laundry In Front
+  option2responses:
+  - I am being realistic here. I've never said that it is a good habitat to stockpile
+    clothes like that. On the downside, nobody gets hurt and as long as I have clothes
+    to wear, everything is good.
+  option3Text: 
+  option3responses: []
+  reactions: 0200000000000000
+  losaResponseTexts:
+    LowLOSA: 
+    MedLOSA: 
+    HighLOSA: 
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!60 &2027701217
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027701214}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0739975, y: 0.96745205}
+      - {x: -0.60948277, y: 0.5185344}
+      - {x: -0.7619529, y: -0.014296055}
+      - {x: -1.5823817, y: -0.11845732}
+      - {x: -1.5952997, y: -0.95935225}
+      - {x: 1.300024, y: -1.0003068}
+      - {x: 1.2998109, y: 0.6017537}
+      - {x: 0.47336817, y: 0.8474829}
+--- !u!1 &2056686122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2056686123}
+  - component: {fileID: 2056686125}
+  - component: {fileID: 2056686124}
+  m_Layer: 0
+  m_Name: B_DirtyLaundry
+  m_TagString: ObjectMultipleClick
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2056686123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056686122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.69, y: -3.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 132383492}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2056686124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056686122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 00000000
+  objectName: Dirty Laundry
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
+  option3Text: 
+  option3responses: []
+  reactions: 
+  losaResponseTexts:
+    LowLOSA: My mood immediately drops when I take a look at this pile. I don't see
+      clothes anymore, I just see work. Work that can be postponed, because I have
+      still fresh clothes left.
+    MedLOSA: My mood immediately drops when I take a look at this pile. I don't see
+      clothes anymore, I just see work. Work that can be postponed, because I have
+      still fresh clothes left.
+    HighLOSA: My mood immediately drops when I take a look at this pile. I don't
+      see clothes anymore, I just see work. Work that can be postponed, because I
+      have still fresh clothes left.
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+--- !u!60 &2056686125
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056686122}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0739975, y: 0.96745205}
+      - {x: -0.60948277, y: 0.5185344}
+      - {x: -0.7619529, y: -0.014296055}
+      - {x: -1.5823817, y: -0.11845732}
+      - {x: -1.5952997, y: -0.95935225}
+      - {x: 1.300024, y: -1.0003068}
+      - {x: 1.2998109, y: 0.6017537}
+      - {x: 0.47336817, y: 0.8474829}
 --- !u!1 &2139554929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,7 +3304,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4418161945060002893
 MonoBehaviour:
@@ -2746,3 +3345,72 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &8284918491580260223
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838723, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284918493229838725, guid: 02addd0f72857374686087d9d21ff4de,
+        type: 3}
+      propertyPath: m_Name
+      value: GameAssets
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 02addd0f72857374686087d9d21ff4de, type: 3}

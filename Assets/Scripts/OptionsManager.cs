@@ -29,6 +29,8 @@ public class OptionsManager : MonoBehaviour
     private CanvasGroup descriptionBoxCG;           // Stores a reference to the description box canvas group
     private TextMeshProUGUI descriptionText;        // Stores a reference to the description text
     private GameSession gameSession;                // Stores a reference to the current GameSession instance
+    private PersistentObjectData objectData;         // Stores a reference to the singleton object data instance
+
     [HideInInspector]
     public ObjectProperties objectProperties;       // Stores a reference to the selected object's properties
     [HideInInspector]
@@ -52,6 +54,7 @@ public class OptionsManager : MonoBehaviour
         optionsBox.SetActive(false);
         gameSession = FindObjectOfType<GameSession>();
         dynamicUI = GameObject.Find("DynamicUI");
+        objectData = FindObjectOfType<PersistentObjectData>();
     }
 
     void Update()
@@ -345,6 +348,9 @@ public class OptionsManager : MonoBehaviour
             objectProperties.interactedWith = true;
             objectProperties.responseSelected = true;
         }
+
+        // Store the interacted object in the singleton data instance
+        objectData.interactedObjects.Add(selectedObject.name);
 
         // Clear and hide the options box
         CloseAndClearOptionsBox();

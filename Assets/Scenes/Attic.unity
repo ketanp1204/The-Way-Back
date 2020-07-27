@@ -829,7 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1140880311}
   m_Layer: 0
-  m_Name: Interactable Objects
+  m_Name: Attic_Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5869,9 +5869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3908ffec8aade4947a6091bf006ede9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  morningImage: {fileID: 1822201382}
-  noonImage: {fileID: 0}
-  eveningImage: {fileID: 2030192869}
 --- !u!4 &1709816109
 Transform:
   m_ObjectHideFlags: 0

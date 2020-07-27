@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -152,7 +152,7 @@ Transform:
   m_LocalScale: {x: 0.16951193, y: 0.107768774, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2816337
 MonoBehaviour:
@@ -178,9 +178,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: I don't need to read it to be reminded that our world is falling apart.
+    LowLOSA: I don't need to read it to be reminded, that our world is falling apart.
       But still they do it every single day. As if we all would forget it.
-    MedLOSA: '"1000th baby born in Green Road Hospital"... At least something exhilarant.
+    MedLOSA: '''1000th baby born in Green Road Hospital''... At least something exhilarant.
       But are all those parents aware of the world''s condition, in which they are
       giving birth to an innocent child? At the end it''s the children who have to
       deal with it. Quite irresponsible.'
@@ -199,8 +199,8 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
---- !u!61 &2816338
-BoxCollider2D:
+--- !u!60 &2816338
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -212,19 +212,24 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03101778, y: -0.26262474}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 3.17}
-    newSize: {x: 10, y: 3.17}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 8.485684, y: 3.741259}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.17468171, y: 1.4428169}
+      - {x: -3.5193992, y: 0.50426143}
+      - {x: -3.9990163, y: 0.15169795}
+      - {x: -3.9977012, y: -0.68245906}
+      - {x: 0.009973493, y: -2.130985}
+      - {x: 4.1202674, y: 0.39163965}
 --- !u!212 &2816339
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -696,154 +701,6 @@ Transform:
   m_Father: {fileID: 612642451}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &238471696
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 238471697}
-  - component: {fileID: 238471698}
-  - component: {fileID: 238471700}
-  - component: {fileID: 238471699}
-  m_Layer: 0
-  m_Name: Next Room
-  m_TagString: NextLevel
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &238471697
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238471696}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.4, y: 1.68, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1479276895}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &238471698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238471696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  additionalTags: []
-  objectType: 
-  objectName: Next Room
-  description: 
-  option1Text: 
-  option1responses: []
-  option2Text: 
-  option2responses: []
-  option3Text: 
-  option3responses: []
-  reactions: 
-  losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
-  closeUpObject: {fileID: 0}
-  numberOfResponses: 0
-  numberOfLOSAResponses: 0
-  optionTexts: []
-  interactedWith: 0
-  LOSAUpdateResponse: 0
-  destroyOnPositive: 0
-  destroyOnNegative: 0
-  hasBehavior: 0
-  responseSelected: 0
-  callIndex: 0
-  showOptions: 0
---- !u!61 &238471699
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238471696}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.2, y: 8.12}
-    newSize: {x: 9.2, y: 8.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.2, y: 8.12}
-  m_EdgeRadius: 0
---- !u!212 &238471700
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238471696}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -676469529
-  m_SortingLayer: 3
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7c238e0ebc5e36a4081876a208137857, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.46666667}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 9.2, y: 8.12}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &258561007
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,7 +715,7 @@ GameObject:
   - component: {fileID: 258561009}
   m_Layer: 0
   m_Name: LR_Window
-  m_TagString: ObjectMultipleClick
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -875,7 +732,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &258561009
 MonoBehaviour:
@@ -901,12 +758,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalTags:
-  - OptionsMultipleTimes
+  additionalTags: []
   objectType: 06000000
   objectName: Windows
-  description: Windows. An existing contrast itself. A hole in strong walls, that
-    are protecting what we call home. But, it's not a weak point, because they allow
+  description: Windows. An existing contrast itself. Holes in strong walls, that
+    are protecting what we call home. But it's not a weak point, because they allow
     essential things. Sometimes we need to take the risk to destroy things, to see
     that changes can be positive.
   option1Text: Keep It Closed
@@ -1059,7 +915,7 @@ ParticleSystem:
   m_GameObject: {fileID: 282564064}
   serializedVersion: 6
   lengthInSec: 5
-  simulationSpeed: 5
+  simulationSpeed: 3
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -5764,7 +5620,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &373224098
 BoxCollider2D:
@@ -5818,13 +5674,13 @@ MonoBehaviour:
   losaResponseTexts:
     LowLOSA: Gosh, how I loved all these old Disney Movies - and I still do. I wonder
       if this generation's children also connect nostalgic feelings to movies or
-      song. In this fast-paced world, everything has lost its value somehow.
+      songs. In this fast-paced world, everything has lost its value somehow.
     MedLOSA: Gosh, how I loved all these old Disney Movies - and I still do. I wonder
       if this generation's children also connect nostalgic feelings to movies or
-      song. In this fast-paced world, everything has lost its value somehow.
+      songs. In this fast-paced world, everything has lost its value somehow.
     HighLOSA: Gosh, how I loved all these old Disney Movies - and I still do. I wonder
       if this generation's children also connect nostalgic feelings to movies or
-      song. In this fast-paced world, everything has lost its value somehow.
+      songs. In this fast-paced world, everything has lost its value somehow.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -5854,7 +5710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &394499788
 Transform:
   m_ObjectHideFlags: 0
@@ -5869,7 +5725,7 @@ Transform:
   - {fileID: 1907226476}
   - {fileID: 1073816565}
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &394499789
 PolygonCollider2D:
@@ -5945,17 +5801,17 @@ MonoBehaviour:
     doesn't stay long because you have to do it over and over again.
   option2Text: Rearrange Furniture
   option2responses:
-  - Every man is the architect of his own fortune
+  - Every man is the architect of his own fortune.
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
   losaResponseTexts:
     LowLOSA: This living room has never looked different. It is nicely arranged,
-      but after a while it just bores me. However I am neither feeling inspired nor
-      motivated enough to rearrange the furniture.
+      but after a while it just bores me. However, I am neither feeling inspired
+      nor motivated enough to rearrange the furniture.
     MedLOSA: This living room has never looked different. It is nicely arranged,
-      but after a while it just bores me. However I am neither feeling inspired nor
-      motivated enough to rearrange the furniture.
+      but after a while it just bores me. However, I am neither feeling inspired
+      nor motivated enough to rearrange the furniture.
     HighLOSA: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
@@ -5999,7 +5855,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &428234569
 MonoBehaviour:
@@ -6151,7 +6007,7 @@ Transform:
   - {fileID: 1067651310}
   - {fileID: 876236486}
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &653563940
 MonoBehaviour:
@@ -6169,7 +6025,7 @@ MonoBehaviour:
   objectType: 06000000
   objectName: Gramophone
   description: This is by far my favourite record. The surface is already dusty,
-    because I listen to it so much that I don't even put the record back into its
+    because I listen to it so much, that I don't even put the record back into its
     case.
   option1Text: Remove The Record
   option1responses:
@@ -6922,7 +6778,7 @@ Transform:
   m_LocalScale: {x: 0.4197615, y: 0.40768832, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &931498656
 SpriteMask:
@@ -7004,7 +6860,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &981751695
 MonoBehaviour:
@@ -7033,9 +6889,9 @@ MonoBehaviour:
     no clue about these technical matters. I guess I will just turn it off.
   option2Text: Turn It Off
   option2responses:
-  - To be honest, I actually don't know why I keep on getting annoyed at this old
-    box. Neither the image's nor the sound's quality is pleasant. I think I have
-    to seperate myself from the emotional value and throw it away.
+  - 'To be honest, I actually don''t know why I keep on getting annoyed at this old
+    box. Neither the image''s nor the sound''s quality is pleasent. I think I have
+    to seperate myself from the emotional value and throw it away. '
   option3Text: 
   option3responses: []
   reactions: 0100000002000000
@@ -7185,9 +7041,9 @@ MonoBehaviour:
       days.
     MedLOSA: 'I remember seeing this piece of paper. I remember how it changed not
       only one, but two lifes. '
-    HighLOSA: I've never believed in so-called love at first sight - until the day.
-      The moment I saw him I realized that we belonged together and even though he
-      was slightly cautious at the beginning, I knew he shared the same view.
+    HighLOSA: I've never believed in so-called love at first sight - until that day.
+      The moment I saw him, I realized that we belonged together and even though
+      he was slightly cautious at the beginning, I knew he shared the same view.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -7558,7 +7414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479276895}
   m_Layer: 0
-  m_Name: Interactable Objects
+  m_Name: LR_Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7576,7 +7432,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 774306348}
-  - {fileID: 238471697}
   - {fileID: 981751694}
   - {fileID: 2040358468}
   - {fileID: 2816336}
@@ -7621,7 +7476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1496597116
 MonoBehaviour:
@@ -7648,10 +7503,10 @@ MonoBehaviour:
   reactions: 
   losaResponseTexts:
     LowLOSA: I borrowed it from a friend already a while ago. A long while ago. Not
-      only, he forgot about about the book, he also forgot me.
+      only he forgot about about the book, he also forgot me.
     MedLOSA: I haven't touched it in a while now, but I guess I feel better having
       a book around me and pretending that I want to read it.
-    HighLOSA: It's called 'Into The WIld' by Jon Krakauer. Even though I've already
+    HighLOSA: It's called 'Into The Wild' by Jon Krakauer. Even though I've already
       seen the movie, I want to read the book. You just can't compare the different
       sensations while receiving a story through given images and sounds, and creating
       everything in your mind on your own.
@@ -7884,7 +7739,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1775035476
 MonoBehaviour:
@@ -7916,18 +7771,18 @@ MonoBehaviour:
     my mind was playing tricks on me. Let's leave it at that.
   option3Text: Answer
   option3responses:
-  - 'Well, I''ve heard of people talking to plants, but plants talking to people,
-    that is new to me. But I understand you. Your roots should know what it feels
-    like to spread without barriers, I can relate. People should go outside instead
-    of keeping you trapped inside houses wasting their time. '
+  - Well, I've heard of people talking to plants, but plants talking to people, that
+    is new to me. But I understand you. Your roots should know what it feels like
+    to spread without barriers, I can relate. People should go outside instead of
+    keeping you trapped inside houses and wasting their time.
   reactions: 010000000000000001000000
   losaResponseTexts:
     LowLOSA: I have the feeling the plant is staring at me, as if it wants to tell
-      me something. I am certain that you do not have eyes so how is that possible?
+      me something. I am certain that you do not have eyes, so how is that possible?
       I am kind of feeling guilty.
-    MedLOSA: I once read that a room doesn't feel homely not until there are plants.
+    MedLOSA: I once read, that a room doesn't feel homely not until there are plants.
       Magical thought that humans still have this instinctively desire for freedom
-      and distance that is buried deep underneath our heavy deflecting burdens
+      and distance, that is buried deep underneath our heavy deflecting burdens.
     HighLOSA: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
@@ -8204,7 +8059,7 @@ Transform:
   m_LocalScale: {x: 0.086282335, y: 0.06357087, z: 1}
   m_Children: []
   m_Father: {fileID: 1479276895}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2040358469
 MonoBehaviour:
@@ -8221,9 +8076,9 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Mobile Phone
-  description: It feels weird when I don't have the phone in my pockets. The empty
-    feeling of it makes me feel scared, as if I lost an essential organ that I need
-    to live.
+  description: 'It feels weird when I don''t have the phone in my pockets. The empty
+    feeling of it scares me, as if I might lose an essential organ that somebody
+    put inside and made me feel dependent on it. '
   option1Text: Scroll Through Social Media
   option1responses:
   - I see people sharing apparently emotional moments of their life, bright laughters
@@ -8232,13 +8087,13 @@ MonoBehaviour:
   option2Text: Check The Weather
   option2responses:
   - Checking the weather would only make sense, if I planned on going outside to
-    do something. However this might be a good idea. Let me see... Ah it it is going
+    do something. However this might be a good idea. Let me see... Ah it is going
     to rain the next days. Well, what a pity.
   option3Text: Charge It
   option3responses:
-  - 'Well, if I only knew where my charging cable is hidden. Today is the second
-    day I am looking for it. Perhaps I just need to buy a new one, even though I
-    would feel relieved if the battery just died. '
+  - Well, if I only knew where my charging cable is hidden. Today is the second day
+    I am looking for it. Perhaps, I just need to buy a new one, even though I would
+    feel relieved if the battery just died.
   reactions: 020000000000000000000000
   losaResponseTexts:
     LowLOSA: 
@@ -8269,7 +8124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07137346, y: -0.01798004}
+  m_Offset: {x: 0.22617078, y: 0.09874064}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8280,7 +8135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.822613, y: 3.127304}
+  m_Size: {x: 4.687432, y: 2.426969}
   m_EdgeRadius: 0
 --- !u!212 &2040358471
 SpriteRenderer:
@@ -8415,7 +8270,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1520186777988378114}
   serializedVersion: 6
   lengthInSec: 5
-  simulationSpeed: 5
+  simulationSpeed: 3
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0

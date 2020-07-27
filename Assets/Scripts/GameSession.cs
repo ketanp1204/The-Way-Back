@@ -18,7 +18,7 @@ public class GameSession : MonoBehaviour
     }
 
     // Configuration parameters
-    private float levelOfSelfAwareness = 0;
+    private int levelOfSelfAwareness = 0;
     private string[] instructions = {"During the last years, you have changed a lot. Above that, the outside world as well. Due to that, you have lost count on the days you’ve spent in a row in your house. Alone.",
                                      "Like clay, your days have been shaped by tiredness and you lost sight of the things that once fulfilled your life. Now the clay hardened. Seemingly unalterable.",
                                      "Today is one of these days. However, something is different. A nearly imperceptible sense of self-awareness is spreading through your body. " +
@@ -35,7 +35,6 @@ public class GameSession : MonoBehaviour
     private GameObject pauseMenuUI;                                 // Stores the reference to the Pause Menu UI gameObject
     private CanvasGroup descriptionBoxCG;                           // Stores the reference to the description box canvas group
     private OptionsManager optionsManager;                          // Stores the reference to the options manager
-    private GameObject rainSystem;                                  // Stores the reference to the rain particle system
 
     // Static variables
     [HideInInspector]
@@ -104,7 +103,6 @@ public class GameSession : MonoBehaviour
                 descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
             }
             pauseMenuUI = uiReferences.pauseMenuUI;
-            rainSystem = uiReferences.rainSystem;
         }
         optionsManager = FindObjectOfType<OptionsManager>();
     }
@@ -133,7 +131,7 @@ public class GameSession : MonoBehaviour
 
     private IEnumerator GameTimer()                     // Coroutine that increments the custom game time counter every frame
     {
-        while(gameTime < timeOfDayInterval * 3)
+        while(gameTime < timeOfDayInterval * 3 + 10f)
         {
             gameTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
@@ -152,25 +150,32 @@ public class GameSession : MonoBehaviour
     private IEnumerator TimeOfDayChanger()              // Coroutine that manages the time of day changes
     {
         int changes = 0;
-        while(changes < 3)
+        while(changes < 4)
         {
-            if (Time.time < timeOfDayInterval)
+            if (GameSession.gameTime < timeOfDayInterval)
             {
                 currentTimeOfDay = TimeOfDay.MORNING;
                 changes++;
             }
-            else if (Time.time >= timeOfDayInterval && Time.time < timeOfDayInterval * 2)
+            else if (GameSession.gameTime >= timeOfDayInterval && Time.time < timeOfDayInterval * 2)
             {
-                if(rainSystem != null)          // Stop rain when noon starts
-                    Destroy(rainSystem);
-
+                AudioManager.Play("H_Clock_Strike_Noon");
                 currentTimeOfDay = TimeOfDay.NOON;
                 changes++;
             }
-            else if (Time.time >= timeOfDayInterval * 2 && Time.time < timeOfDayInterval * 3)
+            else if (GameSession.gameTime >= timeOfDayInterval * 2 && Time.time < timeOfDayInterval * 3)
             {
-                currentTimeOfDay = TimeOfDay.EVENING;
-                changes++;
+                if(!(SceneManager.GetActiveScene().name != "GameEnding"))
+                {
+                    AudioManager.Play("H_Clock_Strike_Evening_6");
+                    currentTimeOfDay = TimeOfDay.EVENING;
+                    changes++;
+                }
+            }
+            else if (GameSession.gameTime >= timeOfDayInterval * 3)
+            {
+                AudioManager.Play("H_Clock_Strike_Midnight");
+                LevelChanger.LoadLevel("GameEnding");
             }
             yield return new WaitForSeconds(timeOfDayInterval);
         }
@@ -217,19 +222,19 @@ public class GameSession : MonoBehaviour
     {
         if(LOSAUpdate == 1)     // Positive response
         {
-            levelOfSelfAwareness += 10f;
+            levelOfSelfAwareness += 1;
             
         }
         else if(LOSAUpdate == 2)     // Negative response
         {
-            if(levelOfSelfAwareness != 0f)
+            if(levelOfSelfAwareness != 0)
             {
-                levelOfSelfAwareness -= 10f;
+                levelOfSelfAwareness -= 1;
             }
         }
     }
 
-    public static float GetLOSA()       // Retreive the current LOSA score
+    public static int GetLOSA()       // Retreive the current LOSA score
     {
         return instance.levelOfSelfAwareness;
     }
