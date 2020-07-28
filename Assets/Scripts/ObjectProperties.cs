@@ -77,6 +77,8 @@ public class ObjectProperties : MonoBehaviour
     public int callIndex;                       // Indicates which behavior of an object to call (for objects that have multiple behaviors specified)
     [HideInInspector]
     public bool showOptions = false;            // Bool to store whether to display the options
+    [HideInInspector]
+    public int responseIndex;                   // Index of the option that was selected
 
     // Cached References
     private GameObject descriptionBox;          // Reference to the description box gameobject

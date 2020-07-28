@@ -640,6 +640,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5230995b9f867b4cab83fdf881f6c56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topTextCanvasCG: {fileID: 1397199634}
+  bottomTextCanvasCG: {fileID: 1795720728}
+  topText: {fileID: 476003949}
+  bottomText: {fileID: 1848788651}
+  endingTexts:
+  - "One day feels like the other. However, particularly this day has been so trivial,
+    it kind of feels wasted. I feel tired and it\u2019s late. I should go to bed."
+  - "Before I had opened my eyes, I already lost my believe that this day might once
+    turn out well. However, I proved myself wrong. I kind of enjoyed the time and
+    I think it\u2019s smart to make a plan of things I\u2019d like to do in the next
+    days. But nothing too complex. Babysteps!"
+  - "I should make a big red cross in today\u2019s agenda! I feel surprisingly good
+    and even though I\u2019ve been living here for already quite a while now, it
+    was super nice to explore my surrounding. It\u2019s strange to live in a place
+    which feels foreign and therefore I am glad, that I got to know it better, even
+    though there are areas that I\u2019d like to avoid. Disconnection is reasoned."
+  - "It\u2019s frightenin, to not know who you are today, even though you know who
+    you\u2019ve been your entire life. To forget \u2013 or even worse: to suppress
+    \u2013 your true self, is the worst a person can do to itself. I am glad I\u2019ve
+    experienced all these things today. I feel bound and free at the same time. I
+    feel disconnected and connected at the same time. I feel like a secret and the
+    truth at the same time. I feel like I\u2019ve finally met a long lost friend
+    in myself. Nonetheless, after all this time, I recognized this person immediately."
 --- !u!1 &1795720727
 GameObject:
   m_ObjectHideFlags: 0

@@ -85,6 +85,10 @@ public class AudioManager : MonoBehaviour
             {
                 PlaySoundAtCurrentGameTime("Evening_Inside");
             }
+            if(GameEventsTracker.LR_TV_On)
+            {
+                Play("LR_TV_Static");
+            }
         }
 
         if(scene.name == "Hallway")
@@ -106,6 +110,7 @@ public class AudioManager : MonoBehaviour
                 Stop("Evening_Inside");
             }
             Stop("B_Water_Dripping");
+            Stop("LR_TV_Static");
 
             // Play hallway sounds
             if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
@@ -193,7 +198,6 @@ public class AudioManager : MonoBehaviour
                 PlaySoundAtCurrentGameTime("G_Evening");
             }
             Play("G_Wind_Chime");
-            Play("G_Fire_Burning");
         }
 
         if (scene.name == "Bedroom")

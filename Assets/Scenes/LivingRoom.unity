@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5706,11 +5706,11 @@ GameObject:
   - component: {fileID: 394499790}
   m_Layer: 0
   m_Name: LR_Chairs
-  m_TagString: Object
+  m_TagString: ObjectMultipleClick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &394499788
 Transform:
   m_ObjectHideFlags: 0
@@ -5790,18 +5790,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 0200000003000000
+  objectType: 00000000
   objectName: Chairs
-  description: This living room has never looked different. It is nicely arranged,
-    but after a while it just bores me. But instead of complaining, I should take
-    action!
-  option1Text: Leave It At That
-  option1responses:
-  - It is as pointless as making the bed. Once you do it, the satisfying feeling
-    doesn't stay long because you have to do it over and over again.
-  option2Text: Rearrange Furniture
-  option2responses:
-  - Every man is the architect of his own fortune.
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
@@ -5812,7 +5807,9 @@ MonoBehaviour:
     MedLOSA: This living room has never looked different. It is nicely arranged,
       but after a while it just bores me. However, I am neither feeling inspired
       nor motivated enough to rearrange the furniture.
-    HighLOSA: 
+    HighLOSA: This living room has never looked different. It is nicely arranged,
+      but after a while it just bores me. However, I am neither feeling inspired
+      nor motivated enough to rearrange the furniture.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8028,6 +8025,50 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+--- !u!1 &2017675903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2017675905}
+  - component: {fileID: 2017675904}
+  m_Layer: 0
+  m_Name: ObjectData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2017675904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017675903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322fe369b3aa7b846981a500a85cdce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactedObjects: []
+--- !u!4 &2017675905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017675903}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2040358467
 GameObject:
   m_ObjectHideFlags: 0
@@ -13071,7 +13112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f60fbb0e55f237447898eb85b5339a76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsEnabled: 0
+  instructionsEnabled: 1
 --- !u!1 &4418161944180157721
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,15 +47,24 @@ public class GameSession : MonoBehaviour
     public static float timeOfDayInterval = 300f;                   // The interval between consecutive time of day changes (currently set to 5 minutes)
     [HideInInspector]   
     public static float gameTime = 0f;                              // The custom game timer
-    //[HideInInspector]
-    //public static float clockTime = 0f;                           // The clock time to display which shows the current time of the day
     [HideInInspector]
     public static TimeSpan clockTime = new TimeSpan(6, 00, 00);     // Sets the starting clock time to 06:00
     [HideInInspector]
     public static bool instructionsSeen = false;                    // Stores whether the user has seen the instructions
     [SerializeField]
     public bool instructionsEnabled;                         // Stores whether to display the instructions of the game
-    
+
+    // LOSA calculations
+    public static int maxScore = 30;
+    public static int minScore = 3;
+
+    public enum LOSAStatus
+    {
+        LOW,
+        MEDIUM,
+        HIGH,
+        MAX
+    }
     
     void Awake()
     {
@@ -222,21 +231,45 @@ public class GameSession : MonoBehaviour
     {
         if(LOSAUpdate == 1)     // Positive response
         {
-            levelOfSelfAwareness += 1;
+            instance.levelOfSelfAwareness += 1;
             
         }
         else if(LOSAUpdate == 2)     // Negative response
         {
             if(levelOfSelfAwareness != 0)
             {
-                levelOfSelfAwareness -= 1;
+                instance.levelOfSelfAwareness -= 1;
             }
         }
     }
 
-    public static int GetLOSA()       // Retreive the current LOSA score
+    public static int GetLOSA()                      // Retreive the current LOSA score
     {
         return instance.levelOfSelfAwareness;
+    }
+
+    public static LOSAStatus GetLOSAStatus()         // Retreive the current LOSA Status
+    {
+        float currentScore = (float)(instance.levelOfSelfAwareness - minScore) / (float)(maxScore - minScore) * 100;
+
+        float currentScoreAsPercentage = Mathf.Floor(currentScore);
+
+        if(currentScoreAsPercentage < 30f)
+        {
+            return LOSAStatus.LOW;
+        }
+        else if(currentScoreAsPercentage >= 30f && currentScoreAsPercentage < 60f)
+        {
+            return LOSAStatus.MEDIUM;
+        }
+        else if(currentScoreAsPercentage >= 60f && currentScoreAsPercentage < 80f)
+        {
+            return LOSAStatus.HIGH;
+        }
+        else
+        {
+            return LOSAStatus.MAX;
+        }
     }
 
     public void Resume()                // Resume game from the pause menu

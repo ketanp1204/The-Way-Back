@@ -16,6 +16,21 @@ public class GameAssets : MonoBehaviour
     public Sprite B_Eve_Light_On;
     public Sprite B_Eve_Light_Off;
 
+    // Bedroom
+    public Sprite Bed_Done_Day;
+    public Sprite Bed_Done_Noon;
+    public Sprite Bed_Done_Eve;
+
+    // Living Room
+    public GameObject LR_Diary;
+
+    // Garden
+    public GameObject G_Plant;
+    public GameObject G_SmallHole;
+    public GameObject G_BigHole;
+    public GameObject G_LooseBrickOut;
+    public GameObject G_PluggedInSocket;
+
     void Awake()
     {
         instance = this;

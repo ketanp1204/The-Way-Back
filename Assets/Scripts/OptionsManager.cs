@@ -29,17 +29,17 @@ public class OptionsManager : MonoBehaviour
     private CanvasGroup descriptionBoxCG;           // Stores a reference to the description box canvas group
     private TextMeshProUGUI descriptionText;        // Stores a reference to the description text
     private GameSession gameSession;                // Stores a reference to the current GameSession instance
-    private PersistentObjectData objectData;         // Stores a reference to the singleton object data instance
+    private PersistentObjectData objectData;        // Stores a reference to the singleton object data instance
 
     [HideInInspector]
     public ObjectProperties objectProperties;       // Stores a reference to the selected object's properties
     [HideInInspector]
-    public bool IsWriting = false;                  // Boolean to store whether text is being automatically typed on the description box or not
+    public bool IsWriting = false;                  // Boolean to store whether text is being automatically typed on the description box
     private GameObject dynamicUI;                   // Stores a reference to the DynamicUI canvas
     [SerializeField]
-    public Sprite redSelectedOptionSprite;         // Stores the selected red sprite for the option button
+    public Sprite redSelectedOptionSprite;          // Stores the selected red sprite for the option button
     [SerializeField]
-    public Sprite greenSelectedOptionSprite;         // Stores the selected green sprite for the option button
+    public Sprite greenSelectedOptionSprite;        // Stores the selected green sprite for the option button
 
     // Start is called before the first frame update
     void OnEnable()
@@ -83,6 +83,7 @@ public class OptionsManager : MonoBehaviour
 
         descriptionBox.SetActive(true);
         IsWriting = true;                                // Writing to the description box starts
+
         for(int i = 0; i < texts.Length; i++)
         {
             string text = texts[i];
@@ -104,7 +105,6 @@ public class OptionsManager : MonoBehaviour
                 {
                     if (j > 5 && Input.GetMouseButtonDown(0))
                     {
-                        bool flag = false;
                         PointerEventData pointer = new PointerEventData(EventSystem.current);
                         pointer.position = Input.mousePosition;
 
@@ -116,10 +116,6 @@ public class OptionsManager : MonoBehaviour
                         {
                             if (raycastResults[0].gameObject.name == descriptionBox.name || raycastResults[0].gameObject.name == descriptionText.name)
                             {
-                                flag = true;
-                            }
-                            if (flag == true)
-                            {
                                 descriptionText.maxVisibleCharacters = lastCharIndex;
                                 break;
                             }
@@ -128,7 +124,6 @@ public class OptionsManager : MonoBehaviour
 
                     descriptionText.maxVisibleCharacters = j + 1;
                     yield return new WaitForSeconds(0.015f);
-
                 }
 
                 pageIndex += 1;
@@ -246,13 +241,12 @@ public class OptionsManager : MonoBehaviour
 
     public void HandleLOSAResponseOnly()    // Object will only have a text response based on the current LOSA score
     {
-        float LOSA =GameSession.GetLOSA();
         string responseText = "";
-        if (LOSA < 30)
+        if (GameSession.GetLOSAStatus() == GameSession.LOSAStatus.LOW)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
         }
-        else if (LOSA >= 30 && LOSA < 70)
+        else if (GameSession.GetLOSAStatus() == GameSession.LOSAStatus.MEDIUM)
         {
             responseText = objectProperties.losaResponseTexts.MedLOSA;
         }
@@ -265,9 +259,8 @@ public class OptionsManager : MonoBehaviour
 
     public void HandleLOSAMediumThenOptions()       // If LOSA is medium, then object has options to choose from, otherwise has a low LOSA response
     {
-        float LOSA = GameSession.GetLOSA();
         string responseText = "";
-        if (LOSA < 30)
+        if (GameSession.GetLOSAStatus() == GameSession.LOSAStatus.LOW)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
             ShowTextOnDescriptionBox(responseText, 0f);
@@ -281,14 +274,13 @@ public class OptionsManager : MonoBehaviour
 
     public void HandleLOSAHighThenOptions()         // If LOSA is high, then object has options to choose from, otherwise has a low and a medium LOSA response
     {
-        float LOSA = GameSession.GetLOSA();
         string responseText = "";
-        if (LOSA < 30)
+        if (GameSession.GetLOSAStatus() == GameSession.LOSAStatus.LOW)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
             ShowTextOnDescriptionBox(responseText, 0f);
         }
-        else if(LOSA >= 30 && LOSA < 70)
+        else if (GameSession.GetLOSAStatus() == GameSession.LOSAStatus.MEDIUM)
         {
             responseText = objectProperties.losaResponseTexts.MedLOSA;
             ShowTextOnDescriptionBox(responseText, 0f);
@@ -304,6 +296,7 @@ public class OptionsManager : MonoBehaviour
     private void HandleOptionResponse(int buttonIndex, int reaction, bool destroyOnPositive, bool destroyOnNegative, bool behaviorAfterChoice)
     {
         objectProperties.LOSAUpdateResponse = reaction;     // Stores the type of response selected in the object's properties
+        objectProperties.responseIndex = buttonIndex;       // Stores the index of the response selected in the object's properties
         
         // Check whether response is positive or negative
         gameSession.ChangeLOSA(reaction);                   // Update the LOSA score
@@ -362,7 +355,7 @@ public class OptionsManager : MonoBehaviour
         {
             descriptionBox.SetActive(true);
         }
-        ShowTextOnDescriptionBox(objectProperties.responses[buttonIndex][0], 0f);
+        ShowTextOnDescriptionBox(objectProperties.responses[buttonIndex], 0f);
     }
 
     public void HandleOptionLOSAUpdateOnly()       // Option has only options to choose from

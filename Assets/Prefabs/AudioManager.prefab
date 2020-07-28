@@ -109,21 +109,21 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: H_Clock_Strike_Noon
     audioClip: {fileID: 8300000, guid: f6f04ace754af3a449c26898a37f5335, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     spatialBlend: 0.5
     loop: 0
     source: {fileID: 0}
   - name: H_Clock_Strike_Midnight
     audioClip: {fileID: 8300000, guid: d999f27514c513247bb84e9879d45af9, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     spatialBlend: 0.5
     loop: 0
     source: {fileID: 0}
   - name: H_Clock_Strike_Evening_6
     audioClip: {fileID: 8300000, guid: fd623eac40f71d746b687038b3022869, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     spatialBlend: 0.5
     loop: 0
@@ -278,6 +278,13 @@ MonoBehaviour:
   - name: Morning_Rain_Inside
     audioClip: {fileID: 8300000, guid: 025509fbd0deda44c8beea2f4057a933, type: 3}
     volume: 1
+    pitch: 1
+    spatialBlend: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: LR_TV_Static
+    audioClip: {fileID: 8300000, guid: 3f4437b12c1214840a9541f56fd4ddbd, type: 3}
+    volume: 0.104
     pitch: 1
     spatialBlend: 0.5
     loop: 0

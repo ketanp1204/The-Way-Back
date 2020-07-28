@@ -39,8 +39,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void LR_Television_Behavior()
     {
-        // TODO: Turn off animation and sound of the television after interaction
+        GameEventsTracker.LR_TV_On = false;
 
+        AudioManager.Stop("LR_TV_Static");
+
+        // TODO: Turn off animation of the television
     }
 
     private void LR_Gramophone_Behavior()
@@ -148,6 +151,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void K_FruitBasket_Behavior()
     {
+
         if (objectProperties.LOSAUpdateResponse == 1)    // Option 'Eat The Edible Fruits' selected
         {
             // TODO: Replace the image of the fruit basket with one with lesser fruits
@@ -327,15 +331,45 @@ public class ObjectSpecificBehavior : MonoBehaviour
     
     private void G_Shovel_Behavior()
     {
-        // If player has interacted with the plant in the living room and chosen a positive response, then show the options and handle the behavior
-        if(GameEventsTracker.LR_Plant_Interacted)
+        if(behaviorIndex == 1)
         {
-            // TODO: show options
+            // If player has interacted with the plant in the living room and chosen a positive response, then show the options and handle the behavior
+            if (GameEventsTracker.LR_Plant_Interacted)
+            {
+                objectProperties.HandleResponse(2);
+                behaviorIndex += 1;
+            }
+            else
+            {
+                objectProperties.HandleResponse(1);
+            }
         }
+        else
+        {
+            if(objectProperties.responseIndex == 0)
+            {
+                // Dig a deep hole
+                GameAssets.instance.G_BigHole.SetActive(true);
 
-        // TODO: Add hole digging animation/photo
+                // Show the plant
+                StartCoroutine(G_Show_Plant());
+            }
+            else
+            {
+                // Dig a small hole
+                GameAssets.instance.G_SmallHole.SetActive(true);
 
-        // TODO: Add plant image to the scene after digging
+                // Show the plant
+                StartCoroutine(G_Show_Plant());
+            }
+        }
+    }
+
+    private IEnumerator G_Show_Plant()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        GameAssets.instance.G_Plant.SetActive(true);
     }
 
     private void G_Pond_Behavior()
@@ -362,6 +396,45 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
     }
 
+    private void G_LooseBrick_Behavior()
+    {
+        if(objectProperties.LOSAUpdateResponse == 1)
+        {
+            // Put it out of the wall
+            GameAssets.instance.G_LooseBrickOut.SetActive(true);
+        }
+        else
+        {
+            // Put it back in the hole
+            // TODO: add image 
+        }
+    }
+
+    private void G_PowerSocket_Behavior()
+    {
+        if(behaviorIndex == 1)
+        {
+            if (GameEventsTracker.G_Pond_Filled)
+            {
+                behaviorIndex += 1;
+                // Show Options
+                objectProperties.HandleResponse(2);
+            }
+            else
+            {
+                objectProperties.HandleResponse(1);
+            }
+        }
+        else
+        {
+            if(objectProperties.LOSAUpdateResponse == 1)
+            {
+                // Plug in the socket
+                GameAssets.instance.G_PluggedInSocket.SetActive(true);
+            }
+        }
+    }
+
     private void G_Brazier_Behavior()
     {
         if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
@@ -380,6 +453,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
                 if(objectProperties.LOSAUpdateResponse == 1)       // Option 'Light the Fire' is selected
                 {
                     // TODO: Start fire animation + sound
+                    AudioManager.Play("G_Fire_Burning");
                 }
             }
         }
@@ -406,10 +480,34 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
     }
 
+    private void Bed_Guitar_Behavior()
+    {
+        if(objectProperties.LOSAUpdateResponse == 1)
+        {
+            AudioManager.Play("Bed_Guitar_Strum");
+        }
+    }
+
+    private void Bed_Bed_Behavior()
+    {
+        if (objectProperties.LOSAUpdateResponse == 1)
+        {
+            GameObject backgroundImage = GameObject.Find("BackgroundImage");
+
+            backgroundImage.transform.Find("MorningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.Bed_Done_Day;
+            backgroundImage.transform.Find("NoonImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.Bed_Done_Noon;
+            backgroundImage.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.Bed_Done_Eve;
+
+            GameAssets.instance.LR_Diary.SetActive(true);
+        }
+    }
+
     private void Bed_HallwayDoor_Behavior()
     {
         LevelChanger.LoadLevel("Hallway");
     }
+
+   
 
     /// <summary>
     /// Behaviors for objects in the Hallway

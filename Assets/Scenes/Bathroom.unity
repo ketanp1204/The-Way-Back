@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2053,6 +2053,7 @@ GameObject:
   - component: {fileID: 1703416900}
   - component: {fileID: 1703416902}
   - component: {fileID: 1703416901}
+  - component: {fileID: 1703416903}
   m_Layer: 0
   m_Name: B_Buckets
   m_TagString: Object
@@ -2087,7 +2088,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 03000000
+  objectType: 06000000
   objectName: Buckets
   description: I've been saving these full buckets now already for days and it is
     getting kind of annoying. I can barely walk here anymore.
@@ -2152,6 +2153,18 @@ PolygonCollider2D:
       - {x: 0.2674842, y: -0.29738283}
       - {x: 0.7252394, y: -0.2439282}
       - {x: 0.8899659, y: 0.65265226}
+--- !u!114 &1703416903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703416899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1755796177
 GameObject:
   m_ObjectHideFlags: 0
