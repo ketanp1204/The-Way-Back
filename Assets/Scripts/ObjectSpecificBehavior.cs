@@ -114,6 +114,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         if(objectProperties.LOSAUpdateResponse == 1)
         {
+            GameEventsTracker.LR_Window_Open = true;
             AudioManager.Stop("Morning_Rain_Inside");
             AudioManager.PlaySoundAtCurrentGameTime("LR_Morning_Window_Open");
         }
@@ -242,11 +243,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
     
     private void B_SleepingPills_Behavior()
     {
-        if (objectProperties.LOSAUpdateResponse == 0)
-        {
-            Destroy(gameObject);
-        }
-        /*
         if (GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
         {
             objectProperties.HandleResponse(1);
@@ -261,12 +257,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        */
-    }
-
-    private void B_Bathub_Behavior()
-    {
-        GameAssets.instance.B_WaterDripping.enabled = false;
     }
 
     private void B_Light_Behavior()
@@ -436,6 +426,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
                 if(objectProperties.LOSAUpdateResponse == 1)        // Option 'Fill the Pond' is selected
                 {
                     // TODO: Replace the image of the pond
+                    GameEventsTracker.G_Pond_Filled = true;
                 }
             }
         }
@@ -558,6 +549,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         if (objectProperties.LOSAUpdateResponse == 1)
         {
+            GameEventsTracker.Bed_BedDone = true;
             GameObject backgroundImage = GameObject.Find("BackgroundImage");
 
             backgroundImage.transform.Find("MorningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.Bed_Done_Day;
@@ -700,25 +692,21 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void H_AtticStairs_Behavior()
     {
-        if (GameSession.GetLOSA() < 90)      // TODO: change LOSA calculation
+        if (GameSession.GetLOSAStatus() != GameSession.LOSAStatus.MAX)     
         {
             objectProperties.HandleResponse(1);
         }
         else
         {
-            optionsManager.ShowTextOnDescriptionBox(objectProperties.description, 0f);  
-            StartCoroutine(GoToAttic());
+            GameSession.instance.atticEnding = true;
+            Cursor.visible = false;
+            GameObject.Find("UI_References").GetComponent<UIReferences>().interactableObjects.SetActive(false);
+            optionsManager.ShowTextOnDescriptionBox(objectProperties.description, 0f);
+            GameSession.instance.StartCoroutine(GameSession.instance.GoToAttic());
         }
     }
-    
-    private IEnumerator GoToAttic()
-    {
-        yield return new WaitForSeconds(8f);
 
-        GameSession.FadeOut(GameObject.Find("Description Box").GetComponent<CanvasGroup>(), 0f);
 
-        LevelChanger.LoadLevel("Attic");
-    }
 
     private void H_LivingRoomDoor_Behavior()
     { 

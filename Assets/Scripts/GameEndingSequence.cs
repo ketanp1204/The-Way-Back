@@ -25,6 +25,7 @@ public class GameEndingSequence : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
         GameSession.LOSAStatus LOSAStatus = GameSession.GetLOSAStatus();
 
         if (LOSAStatus == GameSession.LOSAStatus.LOW)
@@ -56,12 +57,12 @@ public class GameEndingSequence : MonoBehaviour
         topText.text = lowLOSAText[0];
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 0.7f));
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4.5f);
 
         bottomText.text = lowLOSAText[1];
         StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 0f, 1f, 0f, 0.7f));
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4.5f);
 
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 1f, 0f, 0f, 0.7f));
         StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 1f, 0f, 1f, 0.7f));

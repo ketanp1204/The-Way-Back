@@ -23,6 +23,7 @@ public class GameEventsTracker : MonoBehaviour
 
     // Bedroom Events
     public static bool Bed_VacationPictureExamined = false;
+    public static bool Bed_BedDone = false;
 
     void Awake()
     {

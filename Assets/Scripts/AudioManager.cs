@@ -43,10 +43,10 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        HandleSceneChanges(scene);
+        HandleSceneAudioChanges(scene);
     }
 
-    private void HandleSceneChanges(Scene scene)
+    private void HandleSceneAudioChanges(Scene scene)
     {
         // Different sounds for when scenes load
 
@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
         {
             if (scene.name == "Garden")
             {
-                Stop("LR_Gramophone");
+                ChangeVolume("LR_Gramophone", 0.05f);
             }
             else
             {
@@ -66,21 +66,26 @@ public class AudioManager : MonoBehaviour
         {
             // Stop hallway sounds
             Stop("Morning_Rain_Inside");
-            Stop("H_Noon");
+            Stop("Noon_Inside");
             Stop("H_Clock_Ticking");
             Stop("Evening_Inside");
-
-            // Stop intro sound
-            Stop("Intro_Sounds");
 
             // Play living room sounds
             if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
             {
-                PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
+                if(GameEventsTracker.LR_Window_Open)
+                {
+                    PlaySoundAtCurrentGameTime("Morning_Rain_Outside");
+                }
+                else
+                {
+                    PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
+                }
+                
             }
             else if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
             {
-                PlaySoundAtCurrentGameTime("LR_Noon");
+                PlaySoundAtCurrentGameTime("Noon_Inside");
             }
             else
             {
@@ -89,16 +94,10 @@ public class AudioManager : MonoBehaviour
             if(GameEventsTracker.LR_TV_On)
             {
                 Play("LR_TV_Static");
-                GameAssets.instance.LR_TV_Static.GetComponent<Animator>().enabled = true;
-                GameAssets.instance.LR_TV_Static.GetComponent<Animator>().Play("Base Layer.LR_TV_Static");
-            }
-            if(GameEventsTracker.G_Plant_Planted)
-            {
-                GameAssets.instance.LR_Plant.SetActive(false);
             }
             else
             {
-                GameAssets.instance.LR_Plant.SetActive(true);
+                Stop("LR_TV_Static");
             }
         }
 
@@ -108,13 +107,11 @@ public class AudioManager : MonoBehaviour
             if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
             {
                 Stop("Morning_Rain_Inside");
+                Stop("Morning_Rain_Outside");
             }
             else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
             {
-                Stop("LR_Noon");
-                Stop("K_Noon");
-                Stop("B_Noon");
-                Stop("Bed_Noon");
+                Stop("Noon_Inside");
             }
             else
             {
@@ -130,7 +127,7 @@ public class AudioManager : MonoBehaviour
             }
             else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
             {
-                PlaySoundAtCurrentGameTime("H_Noon");
+                PlaySoundAtCurrentGameTime("Noon_Inside");
             }
             else
             {
@@ -143,7 +140,7 @@ public class AudioManager : MonoBehaviour
         {
             // Stop hallway sounds
             Stop("Morning_Rain_Inside");
-            Stop("H_Noon");
+            Stop("Noon_Inside");
             Stop("H_Clock_Ticking");
             Stop("Evening_Inside");
 
@@ -154,13 +151,12 @@ public class AudioManager : MonoBehaviour
             }
             else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
             {
-                PlaySoundAtCurrentGameTime("B_Noon");
+                PlaySoundAtCurrentGameTime("Noon_Inside");
             }
             else
             {
                 PlaySoundAtCurrentGameTime("Evening_Inside");
             }
-
             Play("B_Water_Dripping");
         }
 
@@ -168,7 +164,7 @@ public class AudioManager : MonoBehaviour
         {
             // Stop hallway sounds
             Stop("Morning_Rain_Inside");
-            Stop("H_Noon");
+            Stop("Noon_Inside");
             Stop("H_Clock_Ticking");
             Stop("Evening_Inside");
             
@@ -186,7 +182,7 @@ public class AudioManager : MonoBehaviour
             }
             else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
             {
-                PlaySoundAtCurrentGameTime("K_Noon");
+                PlaySoundAtCurrentGameTime("Noon_Inside");
             }
             else
             {
@@ -215,9 +211,12 @@ public class AudioManager : MonoBehaviour
         {
             // Stop hallway sounds
             Stop("Morning_Rain_Inside");
-            Stop("H_Noon");
+            Stop("Noon_Inside");
             Stop("H_Clock_Ticking");
             Stop("Evening_Inside");
+
+            // Stop intro sound
+            Stop("Intro_Sounds");
 
             // Play bedroom sounds
             if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
@@ -226,7 +225,7 @@ public class AudioManager : MonoBehaviour
             }
             else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
             {
-                PlaySoundAtCurrentGameTime("Bed_Noon");
+                PlaySoundAtCurrentGameTime("Noon_Inside");
             }
             else
             {
@@ -238,7 +237,7 @@ public class AudioManager : MonoBehaviour
         {
             // Stop hallway sounds
             Stop("Morning_Rain_Inside");
-            Stop("H_Noon");
+            Stop("Noon_Inside");
             Stop("H_Clock_Ticking");
             Stop("Evening_Inside");
 
@@ -249,7 +248,7 @@ public class AudioManager : MonoBehaviour
             }
             else if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
             {
-                PlaySoundAtCurrentGameTime("A_Noon");
+                PlaySoundAtCurrentGameTime("Noon_Inside");
             }
             else
             {

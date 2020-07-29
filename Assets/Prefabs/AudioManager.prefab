@@ -44,20 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: LR_Morning_Window_Closed
-    audioClip: {fileID: 8300000, guid: b529e4eff3a61d6498fa239b68b62e12, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 1
-    source: {fileID: 0}
-  - name: LR_Morning_Window_Open
-    audioClip: {fileID: 8300000, guid: 81cffada0d54ec14e9548c98f33f20c1, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 1
-    source: {fileID: 0}
   - name: LR_Gramophone
     audioClip: {fileID: 8300000, guid: d514ab29a0f903e4286ce4d7c682d73f, type: 3}
     volume: 0.5
@@ -65,36 +51,8 @@ MonoBehaviour:
     spatialBlend: 0.5
     loop: 0
     source: {fileID: 0}
-  - name: LR_Noon
-    audioClip: {fileID: 8300000, guid: bebeec200fa66db48ae0a006eb996ac2, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: LR_Evening
-    audioClip: {fileID: 8300000, guid: 163737564737f216574696f6f2c69667, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
   - name: Intro_Sounds
     audioClip: {fileID: 8300000, guid: cbe0a81c099eed24c9b13b8b19009084, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: H_Morning
-    audioClip: {fileID: 8300000, guid: 953e96afa62b09f49a99db847185dbb7, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: H_Noon
-    audioClip: {fileID: 8300000, guid: 3e4b7c3638854844ebeff7c2af4568d3, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0.5
@@ -124,27 +82,6 @@ MonoBehaviour:
   - name: H_Clock_Strike_Evening_6
     audioClip: {fileID: 8300000, guid: fd623eac40f71d746b687038b3022869, type: 3}
     volume: 0.5
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: K_Morning
-    audioClip: {fileID: 8300000, guid: cbc995f9528de054aae767e3783c2a00, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: K_Noon
-    audioClip: {fileID: 8300000, guid: 9fb098e7d5fb80640830f2fa1ef78a78, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: K_Evening
-    audioClip: {fileID: 8300000, guid: a5054fb20eb87124c8b3818d10456e8a, type: 3}
-    volume: 1
     pitch: 1
     spatialBlend: 0.5
     loop: 0
@@ -184,54 +121,12 @@ MonoBehaviour:
     spatialBlend: 0.5
     loop: 1
     source: {fileID: 0}
-  - name: B_Morning
-    audioClip: {fileID: 8300000, guid: e02572a6146b0d745b33e3423b87d43f, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: B_Noon
-    audioClip: {fileID: 8300000, guid: e1086fdf6bcca9e4abb41046833d7781, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: B_Evening
-    audioClip: {fileID: 8300000, guid: 64293aa2b45e3994896b9364b30d585f, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
   - name: B_Water_Dripping
     audioClip: {fileID: 8300000, guid: 90665a809b95d8b4487823fb4f6477d6, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0.5
     loop: 1
-    source: {fileID: 0}
-  - name: Bed_Morning
-    audioClip: {fileID: 8300000, guid: 35ace0a962273054ea05182c371cdb46, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: Bed_Noon
-    audioClip: {fileID: 8300000, guid: 587ef937a84fee94ca30fb4794a69953, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: Bed_Evening
-    audioClip: {fileID: 8300000, guid: 9a3f2618adec45e48accfb58c387dd52, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
     source: {fileID: 0}
   - name: Bed_Guitar_Strum
     audioClip: {fileID: 8300000, guid: a52916966cf61044fab2f919d8f0bcc9, type: 3}
@@ -240,30 +135,9 @@ MonoBehaviour:
     spatialBlend: 0.5
     loop: 0
     source: {fileID: 0}
-  - name: A_Morning
-    audioClip: {fileID: 8300000, guid: 8a993789f006d2f499dcb9fe1d907408, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: A_Noon
-    audioClip: {fileID: 8300000, guid: c2596785cee2f104c8b078842781830a, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
-  - name: A_Evening
-    audioClip: {fileID: 8300000, guid: bb3a374225c95c440951c85135bcdd2e, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0.5
-    loop: 0
-    source: {fileID: 0}
   - name: Ending_Music
     audioClip: {fileID: 8300000, guid: aed42dd0eeb464342afc639f33800196, type: 3}
-    volume: 1
+    volume: 0.501
     pitch: 1
     spatialBlend: 0.5
     loop: 0
@@ -276,7 +150,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   - name: Morning_Rain_Inside
-    audioClip: {fileID: 8300000, guid: 025509fbd0deda44c8beea2f4057a933, type: 3}
+    audioClip: {fileID: 8300000, guid: 755046a6cc0fd0a439403299519d31ef, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0.5
@@ -291,6 +165,20 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Object_Click
     audioClip: {fileID: 8300000, guid: 17f6dc650ce0fef41a37d3b6c1e0628c, type: 3}
+    volume: 0.4
+    pitch: 1
+    spatialBlend: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Morning_Rain_Outside
+    audioClip: {fileID: 8300000, guid: e96f0effb56fab541b074c17dcc02191, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Noon_Inside
+    audioClip: {fileID: 8300000, guid: fb4a84bcf9cbb3244be1a97774c74598, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0.5

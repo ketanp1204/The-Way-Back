@@ -19,55 +19,61 @@ public class AtticEnding : MonoBehaviour
 
     void Start()
     {
+        foreach(Sound s in AudioManager.instance.sounds)
+        {
+            if(s.source.isPlaying)
+            {
+                if(s.name != "Ending_Music")
+                {
+                    s.source.Stop();
+                }
+            }
+        }
         StartCoroutine(ShowEnding());
     }
 
     private IEnumerator ShowEnding()
     {
-        yield return new WaitForSeconds(2f);
-
-        AudioManager.Play("Ending_Music");
-
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         topText.text = endingText[0];
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 0.7f));
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4f);
 
         bottomText.text = endingText[1];
         StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 0f, 1f, 0f, 0.7f));
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4f);
 
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 1f, 0f, 0f, 0.7f));
-        StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 1f, 0f, 1f, 0.7f));
+        StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 1f, 0f, 2f, 0.7f));
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
 
         topText.text = endingText[2];
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 0.7f));
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4f);
 
         bottomText.text = endingText[3];
         StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 0f, 1f, 0f, 0.7f));
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4f);
 
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 1f, 0f, 0f, 0.7f));
-        StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 1f, 0f, 1f, 0.7f));
+        StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 1f, 0f, 2f, 0.7f));
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
 
         topText.text = endingText[4];
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 0.7f));
 
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(4f);
 
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 1f, 0f, 0f, 0.7f));
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
 
         LevelChanger.LoadLevel("GameEnding");
     }

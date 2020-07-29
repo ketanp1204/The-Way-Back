@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -519,7 +519,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186620484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.98, y: -0.15, z: 0}
+  m_LocalPosition: {x: -2.83, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408301224}
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 060000000000000006000000
+  objectType: 070000000000000006000000
   objectName: Brazier
   description: After a day of spending the time on the attic, I really enjoyed to
     come out and feel the cool air on my skin. Especially in the summer, when it
@@ -618,7 +618,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.016585946, y: -0.041464806}
+  m_Offset: {x: -0.021012545, y: -0.09458399}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -629,7 +629,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.81755567, y: 0.9170704}
+  m_Size: {x: 0.9680605, y: 1.0233088}
   m_EdgeRadius: 0
 --- !u!1 &241248123
 GameObject:
@@ -1683,16 +1683,14 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.5130892, y: 0.54948264}
-      - {x: -0.55059654, y: 0.32153147}
+      - {x: -0.76420295, y: 0.30932546}
       - {x: -0.9373648, y: -0.25558823}
-      - {x: -0.958735, y: -0.9901277}
+      - {x: -1.093002, y: -0.98402464}
       - {x: -1.0341146, y: -1.4285088}
       - {x: -0.6591487, y: -1.5658178}
-      - {x: -0.41744962, y: -1.147794}
+      - {x: -0.34218356, y: -1.187039}
       - {x: -0.058401823, y: -0.4446873}
-      - {x: -0.2286224, y: 0.096262455}
-      - {x: -0.1265167, y: 0.31862676}
-      - {x: -0.076111734, y: 0.34803545}
+      - {x: 0.021602273, y: 0.2000142}
       - {x: -0.07680273, y: 0.432741}
 --- !u!114 &651157941
 MonoBehaviour:

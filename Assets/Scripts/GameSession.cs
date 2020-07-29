@@ -54,6 +54,7 @@ public class GameSession : MonoBehaviour
     public static bool instructionsSeen = false;                    // Stores whether the user has seen the instructions
     [SerializeField]
     public bool instructionsEnabled;                         // Stores whether to display the instructions of the game
+    public bool atticEnding = false;
 
     // LOSA calculations
     public static int maxScore = 30;
@@ -110,6 +111,7 @@ public class GameSession : MonoBehaviour
             pauseMenuUI.SetActive(false);
             ShowInstructions();
         }
+        HandleSceneImageChanges(scene);
     }
 
     void SetReferences()
@@ -161,7 +163,7 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    private IEnumerator ClockTimer()                    // Coroutine that increments the clock time every 1 second
+    private IEnumerator ClockTimer()                    // Coroutine that increments the clock time
     {
         while(true)
         {
@@ -182,10 +184,12 @@ public class GameSession : MonoBehaviour
             }
             else if (GameSession.gameTime >= timeOfDayInterval && GameSession.gameTime < timeOfDayInterval * 2)
             {
-                if (SceneManager.GetActiveScene().name != "GameEnding")
+                string scene = SceneManager.GetActiveScene().name;
+
+                if (scene != "GameEnding")
                 {
                     AudioManager.Play("H_Clock_Strike_Noon");
-                    if (SceneManager.GetActiveScene().name != "Hallway")
+                    if (scene != "Hallway")
                     {
                         AudioManager.ChangeVolume("H_Clock_Strike_Noon", 0.25f);
                     }
@@ -195,10 +199,12 @@ public class GameSession : MonoBehaviour
             }
             else if (GameSession.gameTime >= timeOfDayInterval * 2 && GameSession.gameTime < timeOfDayInterval * 3)
             {
-                if(SceneManager.GetActiveScene().name != "GameEnding")
+                string scene = SceneManager.GetActiveScene().name;
+
+                if (scene != "GameEnding")
                 {
                     AudioManager.Play("H_Clock_Strike_Evening_6");
-                    if (SceneManager.GetActiveScene().name != "Hallway")
+                    if (scene != "Hallway")
                     {
                         AudioManager.ChangeVolume("H_Clock_Strike_Evening_6", 0.25f);
                     }
@@ -229,39 +235,21 @@ public class GameSession : MonoBehaviour
                 changes++;
 
                 AudioManager.Stop("Morning_Rain_Inside");
-                AudioManager.Stop("LR_Morning_Window_Closed");
-                AudioManager.Stop("LR_Morning_Window_Open");
+                AudioManager.Stop("Morning_Rain_Outside");
 
                 string scene = SceneManager.GetActiveScene().name;
 
-                if(scene == "Bedroom")
+                if(scene != "Garden")
                 {
-                    AudioManager.Play("Bed_Noon");
-                }
-                else if(scene == "Hallway")
-                {
-                    AudioManager.Play("H_Noon");
-                }
-                else if (scene == "Kitchen")
-                {
-                    AudioManager.Play("K_Noon");
-                }
-                else if (scene == "Attic")
-                {
-                    AudioManager.Play("A_Noon");
-                }
-                else if (scene == "LivingRoom")
-                {
-                    AudioManager.Play("LR_Noon");
-                }
-                else if (scene == "Bathroom")
-                {
-                    AudioManager.Play("B_Noon");
+                    AudioManager.Play("Noon_Inside");
                 }
             }
             else if(currentTimeOfDay == TimeOfDay.EVENING)
             {
                 changes++;
+
+                AudioManager.Stop("Noon_Inside");
+                AudioManager.Stop("G_Noon");
 
                 string scene = SceneManager.GetActiveScene().name;
 
@@ -276,6 +264,32 @@ public class GameSession : MonoBehaviour
             }
             yield return new WaitForSeconds(timeOfDayInterval);
         }
+    }
+
+    private void HandleSceneImageChanges(Scene scene)
+    {
+        if(scene.name == "LivingRoom")
+        {
+            if (GameEventsTracker.G_Plant_Planted)
+            {
+                GameAssets.instance.LR_Plant.SetActive(false);
+            }
+            else
+            {
+                GameAssets.instance.LR_Plant.SetActive(true);
+            }
+
+            if(GameEventsTracker.LR_TV_On)
+            {
+                GameAssets.instance.LR_TV_Static.GetComponent<Animator>().enabled = true;
+                GameAssets.instance.LR_TV_Static.GetComponent<Animator>().Play("Base Layer.LR_TV_Static");
+            }
+            {
+                GameAssets.instance.LR_TV_Static.GetComponent<Animator>().enabled = false;
+                GameAssets.instance.LR_TV_Static.GetComponent<SpriteRenderer>().sprite = null;
+            }
+        }
+        
     }
 
     // Update is called once per frame
@@ -363,21 +377,26 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    public void Resume()                // Resume game from the pause menu
+    public void ResumeGame()
     {
-        if(pauseMenuUI != null)
+        Resume();
+    }
+
+    public static void Resume()                // Resume game from the pause menu
+    {
+        if(instance.pauseMenuUI != null)
         {
-            pauseMenuUI.SetActive(false);
+            instance.pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
             GameIsPaused = false;
         }
     }
 
-    void Pause()                        // Pauses the game when 'Escape' is pressed
+    public static void Pause()                        // Pauses the game when 'Escape' is pressed
     {
-        if(pauseMenuUI)
+        if(instance.pauseMenuUI)
         {
-            pauseMenuUI.SetActive(true);
+            instance.pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
         }
@@ -385,6 +404,7 @@ public class GameSession : MonoBehaviour
 
     public void QuitGame()              // Quits the game from the Pause Menu
     {
+        Debug.Log("Quit Game");
         Application.Quit();
     }
 
@@ -471,5 +491,16 @@ public class GameSession : MonoBehaviour
         {
             return 2;
         }
+    }
+
+    public IEnumerator GoToAttic()
+    {
+        AudioManager.Play("Ending_Music");
+
+        yield return new WaitForSeconds(12f);
+
+        GameSession.FadeOut(GameObject.Find("Description Box").GetComponent<CanvasGroup>(), 0f);
+
+        LevelChanger.LoadLevel("Attic");
     }
 }

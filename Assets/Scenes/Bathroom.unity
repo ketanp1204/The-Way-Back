@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 060000000000000006000000
+  objectType: 070000000000000006000000
   objectName: Sleeping Pills
   description: My happy little pill! Even though I am not asking for your help a
     lot anymore, there was a time in my life, when I could really rely on you. And
@@ -3393,7 +3393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   additionalTags: []
   objectType: 03000000
-  objectName: Face Cream
+  objectName: Cream
   description: 'A face cream that was perscribed by the doctor. It has to be applied
     every day. However, I don''t enjoy putting things on my skin, that I don''t even
     know. All these ingredients sound dangerous to me. '

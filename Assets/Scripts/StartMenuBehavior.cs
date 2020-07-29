@@ -22,6 +22,7 @@ public class StartMenuBehavior : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = true;
         AudioManager.Play("G_Noon");
     }
 

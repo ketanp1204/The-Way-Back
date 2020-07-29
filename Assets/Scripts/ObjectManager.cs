@@ -150,13 +150,13 @@ public class ObjectManager : MonoBehaviour
                 }
                 else
                 {
-                    if(!optionsManager.IsWriting)                                                           // Close the description and option boxes when clicking outside of them if no text is being typed currently
+                    if(!optionsManager.IsWriting && !GameSession.instance.atticEnding)                                                           // Close the description and option boxes when clicking outside of them if no text is being typed currently
                         CloseTextBoxes();
                 }
             }
             else
             {
-                if(!optionsManager.IsWriting)                                                               // Close the description and option boxes when clicking outside of them if no text is being typed currently
+                if(!optionsManager.IsWriting && !GameSession.instance.atticEnding)                                                               // Close the description and option boxes when clicking outside of them if no text is being typed currently
                     CloseTextBoxes();
             }
         }
