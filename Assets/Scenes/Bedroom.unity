@@ -386,7 +386,7 @@ Transform:
   - {fileID: 1434787429}
   - {fileID: 833603729}
   m_Father: {fileID: 1909781103}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &217940597
 MonoBehaviour:
@@ -440,6 +440,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!61 &217940598
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -608,6 +609,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &318153989
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -736,6 +738,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!61 &455760101
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -842,6 +845,7 @@ GameObject:
   - component: {fileID: 491708206}
   - component: {fileID: 491708208}
   - component: {fileID: 491708207}
+  - component: {fileID: 491708209}
   m_Layer: 0
   m_Name: Bed_VacationPicture
   m_TagString: Object
@@ -876,7 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   additionalTags: []
-  objectType: 03000000
+  objectType: 06000000
   objectName: Picture Of A Vacation Trip
   description: I hardly recognize myself on that picture. I wonder if I still have
     that part in me now, or whether it got completely lost. I prefer to not know
@@ -909,6 +913,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!61 &491708208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -935,6 +940,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.57901967, y: 0.41050553}
   m_EdgeRadius: 0
+--- !u!114 &491708209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491708205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &493160722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,6 +1101,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!114 &493160727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,6 +1226,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!61 &522189729
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1305,6 +1324,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!61 &696854049
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1456,6 +1476,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &743724856
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1716,6 +1737,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &885454210
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1823,6 +1845,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &929780489
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2064,7 +2087,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097675917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.29, y: -2.71, z: 0}
+  m_LocalPosition: {x: -0.32, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1909781103}
@@ -2114,8 +2137,9 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
---- !u!60 &1097675920
-PolygonCollider2D:
+  responseIndex: 0
+--- !u!61 &1097675920
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2127,7 +2151,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.004455447, y: 0.01782155}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2137,12 +2161,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.1344459, y: 0.23798299}
-      - {x: -0.5589223, y: -0.027167082}
-      - {x: -0.10685158, y: -0.237504}
-      - {x: 0.57012653, y: 0.08489466}
+  serializedVersion: 2
+  m_Size: {x: 0.5901077, y: 0.70594645}
+  m_EdgeRadius: 0
 --- !u!1 &1162250278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2286,6 +2307,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &1187202716
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2348,7 +2370,7 @@ Transform:
   - {fileID: 86648238}
   - {fileID: 28910435}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1200835029
 MonoBehaviour:
@@ -2504,6 +2526,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &1318856905
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2966,6 +2989,37 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1503325679}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1623711383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1623711384}
+  m_Layer: 0
+  m_Name: Rain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1623711384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623711383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5716589870853218690}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1641824069
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,6 +3179,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &1779189215
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3320,6 +3375,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &1814255920
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3393,10 +3449,123 @@ Transform:
   - {fileID: 1779189213}
   - {fileID: 885454208}
   - {fileID: 1318856902}
+  - {fileID: 1955489313}
   - {fileID: 217940596}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1955489312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1955489313}
+  - component: {fileID: 1955489315}
+  - component: {fileID: 1955489314}
+  m_Layer: 0
+  m_Name: Bed_Letter
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1955489313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955489312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.24, y: -2.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1909781103}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1955489314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955489312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 03000000
+  objectName: Letter
+  description: A far too old and unanswered letter from a once very precious person
+    that hasn't been opened yet. The soft paper has already gone yellow.
+  option1Text: 'Ignore It
+
+'
+  option1responses:
+  - Sometimes it is better to just not know everything.
+  option2Text: Read It
+  option2responses:
+  - '''Hello my love. I lightened up a few candles in the room. Their smell reminded
+    me of the evenings we''ve spent together and I had to think of you. The talk
+    we had meant so much to me and I will always be there if you need me. Changes
+    are frightening but necessary and enriching as well. I am thinking of you xxxx
+    PS: Fondle Cosmo''s ears for me, next time I will get him more treats.'' It had
+    a reason I''ve never read it. The only thing that can be sharper than words are
+    memories, they cut incredibly deep.'
+  option3Text: 
+  option3responses: []
+  reactions: 0200000001000000
+  losaResponseTexts:
+    LowLOSA: 
+    MedLOSA: 
+    HighLOSA: 
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+  responseIndex: 0
+--- !u!60 &1955489315
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955489312}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.2474432, y: 0.27534485}
+      - {x: -0.5003562, y: -0.00028705597}
+      - {x: -0.0663867, y: -0.2522695}
+      - {x: 0.57011175, y: 0.08354616}
 --- !u!1 &1987249460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,6 +3648,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &1987249463
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3537,7 +3707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029436341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.82, y: 1.77, z: 0}
+  m_LocalPosition: {x: 3.84, y: 1.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1909781103}
@@ -3586,6 +3756,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &2029436344
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3784,7 +3955,7 @@ MonoBehaviour:
   objectNameBackground: {fileID: 1403249564}
   objectNameText: {fileID: 1403249563}
   backgroundImage: {fileID: 1200835027}
-  rainSystem: {fileID: 5716589871253594222}
+  rain: {fileID: 1623711383}
   interactableObjects: {fileID: 1909781102}
   closeUpObjects: {fileID: 738831211}
 --- !u!4 &1637973330149221865
@@ -3869,13 +4040,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5716589870853218693}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.78, y: 2.33, z: 0}
   m_LocalScale: {x: 0.42, y: 0.416666, z: 1}
   m_Children:
   - {fileID: 5716589871253594221}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1623711384}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!331 &5716589870853218691
 SpriteMask:
@@ -8755,6 +8926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   B_Day_ShelfOpen: {fileID: 21300000, guid: ad337b3f8089785438ce8ae6d9fd739c, type: 3}
   B_Day_ShelfClosed: {fileID: 21300000, guid: 752364eb5af02c44b86df2ab2b80345e, type: 3}
+  B_Noon_ShelfOpen: {fileID: 0}
+  B_Noon_ShelfClosed: {fileID: 0}
   B_Eve_ShelfOpenLightOn: {fileID: 21300000, guid: cc24b68734d0f3c46b87978c204a72d0,
     type: 3}
   B_Eve_ShelfOpenLightOff: {fileID: 21300000, guid: 3a1f16286f6cb4548a6157d59158a86e,
@@ -8765,7 +8938,29 @@ MonoBehaviour:
     type: 3}
   B_Eve_Light_On: {fileID: 21300000, guid: 71febb03faf5da248a6b5d0723105064, type: 3}
   B_Eve_Light_Off: {fileID: 21300000, guid: 3bd7145082bc21d40845b685b7a585b9, type: 3}
+  B_WaterDripping: {fileID: 0}
+  B_Mirror: {fileID: 0}
+  B_SleepingPills: {fileID: 0}
+  B_MouthMask: {fileID: 0}
   Bed_Done_Day: {fileID: 21300000, guid: 45bfb06c5db19e644ae09b8507e112f4, type: 3}
   Bed_Done_Noon: {fileID: 21300000, guid: 258e09f8d64f9514484edc0b0f0c8875, type: 3}
   Bed_Done_Eve: {fileID: 21300000, guid: 63ad50509a6955041bbf386f78f55c48, type: 3}
   LR_Diary: {fileID: 217940595}
+  LR_Record: {fileID: 0}
+  LR_Player: {fileID: 0}
+  LR_TV_Static: {fileID: 0}
+  LR_Broschure: {fileID: 0}
+  LR_Drawer_Open_Day: {fileID: 0}
+  LR_Drawer_Open_Noon: {fileID: 0}
+  LR_Drawer_Open_Eve: {fileID: 0}
+  LR_Drawer_Closed_Day: {fileID: 0}
+  LR_Drawer_Closed_Noon: {fileID: 0}
+  LR_Drawer_Closed_Eve: {fileID: 0}
+  LR_Plant: {fileID: 0}
+  G_Plant: {fileID: 0}
+  G_SmallHole: {fileID: 0}
+  G_BigHole: {fileID: 0}
+  G_LooseBrickOut: {fileID: 0}
+  G_PluggedInSocket: {fileID: 0}
+  G_Fountain: {fileID: 0}
+  G_Brazier: {fileID: 0}

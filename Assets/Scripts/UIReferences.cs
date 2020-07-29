@@ -11,7 +11,7 @@ public class UIReferences : MonoBehaviour
     public GameObject objectNameBackground;
     public GameObject objectNameText;
     public GameObject backgroundImage;
-    public GameObject rainSystem;
+    public GameObject rain;
     public GameObject interactableObjects;
     public GameObject closeUpObjects;
 }

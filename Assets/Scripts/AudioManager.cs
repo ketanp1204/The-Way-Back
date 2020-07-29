@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -42,10 +43,10 @@ public class AudioManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        HandleAudioChanges(scene);
+        HandleSceneChanges(scene);
     }
 
-    private void HandleAudioChanges(Scene scene)
+    private void HandleSceneChanges(Scene scene)
     {
         // Different sounds for when scenes load
 
@@ -88,6 +89,16 @@ public class AudioManager : MonoBehaviour
             if(GameEventsTracker.LR_TV_On)
             {
                 Play("LR_TV_Static");
+                GameAssets.instance.LR_TV_Static.GetComponent<Animator>().enabled = true;
+                GameAssets.instance.LR_TV_Static.GetComponent<Animator>().Play("Base Layer.LR_TV_Static");
+            }
+            if(GameEventsTracker.G_Plant_Planted)
+            {
+                GameAssets.instance.LR_Plant.SetActive(false);
+            }
+            else
+            {
+                GameAssets.instance.LR_Plant.SetActive(true);
             }
         }
 

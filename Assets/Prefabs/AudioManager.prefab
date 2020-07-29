@@ -210,7 +210,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Bed_Morning
     audioClip: {fileID: 8300000, guid: 35ace0a962273054ea05182c371cdb46, type: 3}
@@ -284,7 +284,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: LR_TV_Static
     audioClip: {fileID: 8300000, guid: 3f4437b12c1214840a9541f56fd4ddbd, type: 3}
-    volume: 0.104
+    volume: 0.066
+    pitch: 1
+    spatialBlend: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Object_Click
+    audioClip: {fileID: 8300000, guid: 17f6dc650ce0fef41a37d3b6c1e0628c, type: 3}
+    volume: 1
     pitch: 1
     spatialBlend: 0.5
     loop: 0

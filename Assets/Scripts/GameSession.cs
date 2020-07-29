@@ -58,6 +58,8 @@ public class GameSession : MonoBehaviour
     public static int maxScore = 30;
     public static int minScore = 3;
 
+    private bool gameEndingScene = false;
+
     public enum LOSAStatus
     {
         LOW,
@@ -79,11 +81,18 @@ public class GameSession : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        if(clockText == null)
+        if(!(SceneManager.GetActiveScene().name == "GameEnding"))
         {
-            clockText = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
+            if (clockText == null)
+            {
+                clockText = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
+            }
+            StartCoroutine(WaitForInstructionsSeen());
         }
-        StartCoroutine(WaitForInstructionsSeen());
+        else
+        {
+            gameEndingScene = true;
+        }
     }
 
     void OnEnable()
@@ -93,10 +102,13 @@ public class GameSession : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SetReferences();
-        descriptionBox.SetActive(false);
-        pauseMenuUI.SetActive(false);
-        ShowInstructions();
+        if(!gameEndingScene)
+        {
+            SetReferences();
+            descriptionBox.SetActive(false);
+            pauseMenuUI.SetActive(false);
+            ShowInstructions();
+        }
     }
 
     void SetReferences()
@@ -136,6 +148,7 @@ public class GameSession : MonoBehaviour
         StartCoroutine(GameTimer());
         StartCoroutine(ClockTimer());
         StartCoroutine(TimeOfDayChanger());
+        StartCoroutine(TimeOfDaySounds());
     }
 
     private IEnumerator GameTimer()                     // Coroutine that increments the custom game time counter every frame
@@ -166,17 +179,28 @@ public class GameSession : MonoBehaviour
                 currentTimeOfDay = TimeOfDay.MORNING;
                 changes++;
             }
-            else if (GameSession.gameTime >= timeOfDayInterval && Time.time < timeOfDayInterval * 2)
+            else if (GameSession.gameTime >= timeOfDayInterval && GameSession.gameTime < timeOfDayInterval * 2)
             {
-                AudioManager.Play("H_Clock_Strike_Noon");
-                currentTimeOfDay = TimeOfDay.NOON;
-                changes++;
+                if (SceneManager.GetActiveScene().name != "GameEnding")
+                {
+                    AudioManager.Play("H_Clock_Strike_Noon");
+                    if (SceneManager.GetActiveScene().name != "Hallway")
+                    {
+                        AudioManager.ChangeVolume("H_Clock_Strike_Noon", 0.25f);
+                    }
+                    currentTimeOfDay = TimeOfDay.NOON;
+                    changes++;
+                }
             }
-            else if (GameSession.gameTime >= timeOfDayInterval * 2 && Time.time < timeOfDayInterval * 3)
+            else if (GameSession.gameTime >= timeOfDayInterval * 2 && GameSession.gameTime < timeOfDayInterval * 3)
             {
-                if(!(SceneManager.GetActiveScene().name != "GameEnding"))
+                if(SceneManager.GetActiveScene().name != "GameEnding")
                 {
                     AudioManager.Play("H_Clock_Strike_Evening_6");
+                    if (SceneManager.GetActiveScene().name != "Hallway")
+                    {
+                        AudioManager.ChangeVolume("H_Clock_Strike_Evening_6", 0.25f);
+                    }
                     currentTimeOfDay = TimeOfDay.EVENING;
                     changes++;
                 }
@@ -190,11 +214,73 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    private IEnumerator TimeOfDaySounds()
+    {
+        int changes = 0;
+        while(changes < 3)
+        {
+            if(currentTimeOfDay == TimeOfDay.MORNING)
+            {
+                changes++;
+            }
+            else if(currentTimeOfDay == TimeOfDay.NOON)
+            {
+                changes++;
+
+                string scene = SceneManager.GetActiveScene().name;
+
+                if(scene == "Bedroom")
+                {
+                    AudioManager.Play("Bed_Noon");
+                }
+                else if(scene == "Hallway")
+                {
+                    AudioManager.Play("H_Noon");
+                }
+                else if (scene == "Kitchen")
+                {
+                    AudioManager.Play("K_Noon");
+                }
+                else if (scene == "Attic")
+                {
+                    AudioManager.Play("A_Noon");
+                }
+                else if (scene == "LivingRoom")
+                {
+                    AudioManager.Play("LR_Noon");
+                }
+                else if (scene == "Bathroom")
+                {
+                    AudioManager.Play("B_Noon");
+                }
+            }
+            else if(currentTimeOfDay == TimeOfDay.EVENING)
+            {
+                changes++;
+
+                string scene = SceneManager.GetActiveScene().name;
+
+                if(scene == "Garden")
+                {
+                    AudioManager.Play("G_Evening");
+                }
+                else
+                {
+                    AudioManager.Play("Evening_Inside");
+                }
+            }
+            yield return new WaitForSeconds(timeOfDayInterval);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        clockText.text = clockTime.ToString(@"hh\:mm");             // Update the clock display
-
+        if(!gameEndingScene)
+        {
+            clockText.text = clockTime.ToString(@"hh\:mm");             // Update the clock display
+        }
+        
         if (descriptionBox != null && descriptionBox.activeSelf && !optionsManager.IsWriting)       // Close the description box if space is pressed and there is no text being typed
         {
             if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))

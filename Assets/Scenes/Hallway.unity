@@ -222,6 +222,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!114 &19262793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +307,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &108617722
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -456,6 +458,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &147739504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 147739505}
+  - component: {fileID: 147739506}
+  m_Layer: 0
+  m_Name: ObjectData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &147739505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147739504}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &147739506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147739504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322fe369b3aa7b846981a500a85cdce6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactedObjects: []
 --- !u!1001 &259665906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -831,7 +877,7 @@ MonoBehaviour:
   objectNameBackground: {fileID: 259665908}
   objectNameText: {fileID: 259665907}
   backgroundImage: {fileID: 359324214}
-  rainSystem: {fileID: 0}
+  rain: {fileID: 2096857109}
   interactableObjects: {fileID: 1152099211}
   closeUpObjects: {fileID: 1094559162}
 --- !u!4 &427294100
@@ -846,7 +892,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &455946843
 PrefabInstance:
@@ -1018,6 +1064,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!114 &512324814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,6 +1077,120 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &583229045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583229046}
+  - component: {fileID: 583229048}
+  - component: {fileID: 583229047}
+  m_Layer: 0
+  m_Name: H_PhotoAlbum
+  m_TagString: ObjectMultipleClick
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &583229046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583229045}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.3, y: -4.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1152099212}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &583229047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583229045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 00000000
+  objectName: Photo Album
+  description: 
+  option1Text: 
+  option1responses: []
+  option2Text: 
+  option2responses: []
+  option3Text: 
+  option3responses: []
+  reactions: 
+  losaResponseTexts:
+    LowLOSA: 'It''s sad, that everybody takes pictures with their phone to have something
+      to remember. By doing this, they achieve the opposite. People take so many
+      pictures, that the important ones get lost between the irrelevance. The end
+      result is a full storage coming with the feeling of pressure to finally sort
+      them out. '
+    MedLOSA: 'It''s sad, that everybody takes pictures with their phone to have something
+      to remember. By doing this, they achieve the opposite. People take so many
+      pictures, that the important ones get lost between the irrelevance. The end
+      result is a full storage coming with the feeling of pressure to finally sort
+      them out. '
+    HighLOSA: 'It''s sad, that everybody takes pictures with their phone to have
+      something to remember. By doing this, they achieve the opposite. People take
+      so many pictures, that the important ones get lost between the irrelevance.
+      The end result is a full storage coming with the feeling of pressure to finally
+      sort them out. '
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+  responseIndex: 0
+--- !u!60 &583229048
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583229045}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.4700508, y: 0.41841125}
+      - {x: -0.990891, y: 0.022206306}
+      - {x: -1.0498695, y: -0.21946144}
+      - {x: 0.79492664, y: -0.17165947}
+      - {x: 0.9351225, y: 0.062041283}
 --- !u!1 &584361348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,7 +1247,7 @@ SpriteRenderer:
   m_SortingLayerID: 1382938419
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7141cf47f95903142889c5a28e4d926b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a4bf69a320985e45a36aef298ab8d3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1188,6 +1349,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &753502242
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1334,6 +1496,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!114 &797834511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1616,6 +1779,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &1026909768
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1792,6 +1956,8 @@ Transform:
   - {fileID: 1222377507}
   - {fileID: 512324811}
   - {fileID: 797834508}
+  - {fileID: 1905261478}
+  - {fileID: 583229046}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1896,6 +2062,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!114 &1222377510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2135,15 +2302,15 @@ SpriteRenderer:
   m_SortingLayerID: 1382938419
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 154dd4e61bc67914cbd55ea5a3a0591f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1519409713
@@ -2375,6 +2542,7 @@ MonoBehaviour:
   responseSelected: 0
   callIndex: 0
   showOptions: 0
+  responseIndex: 0
 --- !u!60 &1817165763
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2472,4 +2640,163 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1905261477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1905261478}
+  - component: {fileID: 1905261480}
+  - component: {fileID: 1905261479}
+  - component: {fileID: 1905261481}
+  m_Layer: 0
+  m_Name: H_GreenLittleBook
+  m_TagString: ObjectMultipleClick
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1905261478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905261477}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.12, y: -3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1152099212}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1905261479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905261477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 070000000000000003000000
+  objectName: Green Little Book
+  description: A green little notebook that I had been carrying with me all the time.
+    It is covered by a thin layer of dust. One of the best habits I've ever picked.
+    Even though it has fallen victim to other things.
+  option1Text: Open It
+  option1responses:
+  - 
+  - 'If I had the chance to see my past ego, I would express my gratitude. For writing
+    down all the memories so that I can experience them now, vividly in front of
+    my eyes. '
+  option2Text: Blow Away The Dust
+  option2responses:
+  - Except for the green colour that is looking a bit more rich now, nothing has
+    changed. There was a reason I didn't open it for so long. Some matters just belong
+    to the past.
+  option3Text: 
+  option3responses: []
+  reactions: 0100000002000000
+  losaResponseTexts:
+    LowLOSA: A green little notebook that I had been carrying with me all the time.
+      It is covered by a thin layer of dust. I wonder how I was able to find the
+      time to write down these scribbles.
+    MedLOSA: A green little notebook that I had been carrying with me all the time.
+      It is covered by a thin layer of dust. I wonder how I was able to find the
+      time to write down these scribbles.
+    HighLOSA: A green little notebook that I had been carrying with me all the time.
+      It is covered by a thin layer of dust. I wonder how I was able to find the
+      time to write down these scribbles.
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+  responseIndex: 0
+--- !u!60 &1905261480
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905261477}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.47122884, y: 0.23023915}
+      - {x: -0.11511946, y: -0.23608828}
+      - {x: 0.5519769, y: -0.1071794}
+      - {x: 0.04153204, y: 0.28753233}
+--- !u!114 &1905261481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905261477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a761048fa187e264c9d9e46f7a74739a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2096857109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2096857110}
+  m_Layer: 0
+  m_Name: Rain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2096857110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096857109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

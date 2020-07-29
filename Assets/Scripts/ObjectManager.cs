@@ -26,7 +26,7 @@ public class ObjectManager : MonoBehaviour
     private GameObject interactableObjects;         // Reference to the interactable objects
     private GameObject descriptionBox;              // Reference to the description box
     private GameObject optionsBox;                  // Reference to the option box
-    private GameObject rainSystem;                  // Reference to the rain particle system
+    private GameObject rain;                        // Reference to the rain particle system
     public Button backButtonPrefab;                 // Reference to the back button prefab
     public GameObject zoomedInObject;               // Reference to the zoomed in object 
     private PersistentObjectData objectData;        // Reference to the singleton object data instance
@@ -63,7 +63,7 @@ public class ObjectManager : MonoBehaviour
         optionsManager = FindObjectOfType<OptionsManager>();
         descriptionBox = uiReferences.descriptionBox;
         optionsBox = uiReferences.optionsBox;
-        rainSystem = uiReferences.rainSystem;
+        rain = uiReferences.rain;
         interactableObjects = uiReferences.interactableObjects;
         objectData = FindObjectOfType<PersistentObjectData>();
     }
@@ -87,13 +87,13 @@ public class ObjectManager : MonoBehaviour
                 {
                     if (hit.collider.gameObject.tag == "Object")                                            // Player clicks on an object which can be only clicked once
                     {
+                        AudioManager.Play("Object_Click");
                         if(!objectData.interactedObjects.Contains(hit.collider.gameObject.name))
                         {
                             objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                             if (objectProperties.interactedWith == false)                                       // Prevent player from clicking an object twice
                             {
                                 optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
-                                // objectProperties.interactedWith = true;
                                 objectProperties.HandleResponse(0);
                             }
                         }
@@ -101,6 +101,7 @@ public class ObjectManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "ObjectMultipleClick")                               // Player clicks on an object which can be clicked on multiple times
                     {
+                        AudioManager.Play("Object_Click");
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         optionsManager.SetSelectedObjectReference(hit.collider.gameObject);
                         objectProperties.HandleResponse(0);
@@ -108,6 +109,7 @@ public class ObjectManager : MonoBehaviour
 
                     if(hit.collider.gameObject.tag == "MultipleObjectChild")                                // Player clicks on an object with multiple collision boxes
                     {
+                        AudioManager.Play("Object_Click");
                         GameObject selectedObject = hit.collider.gameObject.transform.parent.gameObject;
                         objectProperties = selectedObject.GetComponent<ObjectProperties>();
                         optionsManager.SetSelectedObjectReference(selectedObject);
@@ -116,9 +118,16 @@ public class ObjectManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "CloseUp")                                           // Player clicks on an object which has a close up view
                     {
-                        if(rainSystem != null)
+                        AudioManager.Play("Object_Click");
+                        if (rain != null)
                         {
-                            StartCoroutine(GameSession.DisableGameObjectAfterDelay(rainSystem, 1f));        // TODO: Refactor into a rain manager script
+                            foreach(Transform c in rain.transform)
+                            {
+                                foreach(Transform child in c)
+                                {
+                                    child.gameObject.GetComponent<ParticleSystem>().Stop();
+                                }
+                            }
                         }
                         objectProperties = hit.collider.gameObject.GetComponent<ObjectProperties>();
                         GameSession.closeUpObjects = true;
@@ -129,11 +138,13 @@ public class ObjectManager : MonoBehaviour
 
                     if (hit.collider.gameObject.tag == "PrevLevel")                                         // Player clicks on the next level object/button
                     {
+                        AudioManager.Play("Object_Click");
                         LevelChanger.LoadPreviousLevel();
                     }
                         
                     if (hit.collider.gameObject.tag == "NextLevel")                                         // Player clicks on the previous level object/button
                     {
+                        AudioManager.Play("Object_Click");
                         LevelChanger.LoadNextLevel();
                     }
                 }
@@ -166,9 +177,15 @@ public class ObjectManager : MonoBehaviour
     {
         GameSession.closeUpObjects = false;
         GameSession.instance.enableBackgroundImage();
-        if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+        if (rain != null)
         {
-            StartCoroutine(GameSession.EnableGameObjectAfterDelay(rainSystem, 1f));                         // TODO: Refactor into a rain manager script
+            foreach (Transform c in rain.transform)
+            {
+                foreach (Transform child in c)
+                {
+                    child.gameObject.GetComponent<ParticleSystem>().Play();
+                }
+            }
         }
         StartCoroutine(LevelChanger.CrossFadeStart(true));                                                  // Fade In and Out Animation
         StartCoroutine(ExitCloseUp());                                                                      // Go back from Close Up View
@@ -192,6 +209,7 @@ public class ObjectManager : MonoBehaviour
 
     private void HandleBackButton()                                                                         // Return to the main scene on clicking the back button
     {
+        AudioManager.Play("Object_Click");
         ExitCloseUpView();
     }
 

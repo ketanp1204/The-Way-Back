@@ -41,9 +41,14 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         GameEventsTracker.LR_TV_On = false;
 
+        // Stop sound
         AudioManager.Stop("LR_TV_Static");
 
-        // TODO: Turn off animation of the television
+        // Stop animation
+        GameAssets.instance.LR_TV_Static.GetComponent<Animator>().enabled = false;
+
+        // Destroy sprite object
+        GameAssets.instance.LR_TV_Static.SetActive(false);
     }
 
     private void LR_Gramophone_Behavior()
@@ -56,9 +61,9 @@ public class ObjectSpecificBehavior : MonoBehaviour
         if(objectProperties.LOSAUpdateResponse == 1)    // Option 'Play The Record' is selected
         {
             AudioManager.Play("LR_Gramophone");
-            
-            Animator recordAnim = transform.Find("Record_Sprites").GetComponent<Animator>();
-            Animator playerAnim = transform.Find("Player_Sprites").GetComponent<Animator>();
+
+            Animator recordAnim = GameAssets.instance.LR_Record;
+            Animator playerAnim = GameAssets.instance.LR_Player;
 
             Sound s = AudioManager.GetSound("LR_Gramophone");
             StartCoroutine(LR_G_PlayerAnimation(s, playerAnim));
@@ -96,7 +101,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
         anim.enabled = false;
     }
 
-    private void LR_Plants_Behavior()
+    private void LR_Plant_Behavior()
     {
         // Storing a bool whether 'Check the plant's ground' or 'Answer' is selected for future reference for the object 'Shovel' in the Garden
         if (objectProperties.LOSAUpdateResponse == 1)
@@ -111,7 +116,42 @@ public class ObjectSpecificBehavior : MonoBehaviour
         {
             AudioManager.Stop("LR_Morning_Window_Closed");
             AudioManager.PlaySoundAtCurrentGameTime("LR_Morning_Window_Open");
-            // TODO: change LR image to window open and play curtain animation
+        }
+    }
+
+    private void LR_DrawerInteract_Behavior()
+    {
+        GameObject CU_Drawer = transform.parent.parent.gameObject;     // Get the parent zoomed in object
+
+        if (behaviorIndex % 2 == 1)
+        {
+            behaviorIndex += 1;
+
+            objectProperties.objectName = "Close Drawer";      // Change the text to be displayed on hover to "Close Drawer"
+
+            // Change the sprites to open drawer
+            CU_Drawer.transform.Find("MorningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.LR_Drawer_Open_Day;
+            CU_Drawer.transform.Find("NoonImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.LR_Drawer_Open_Noon;
+            CU_Drawer.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.LR_Drawer_Open_Eve;
+
+            // Enable object inside the drawer
+            GameAssets.instance.LR_Broschure.SetActive(true);
+
+
+        }
+        else
+        {
+            behaviorIndex += 1;
+
+            objectProperties.objectName = "Open Drawer";       // Change the text to be displayed on hover to "Open Drawer"
+
+            // Change the sprites to closed drawer
+            CU_Drawer.transform.Find("MorningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.LR_Drawer_Closed_Day;
+            CU_Drawer.transform.Find("NoonImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.LR_Drawer_Closed_Noon;
+            CU_Drawer.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.LR_Drawer_Closed_Eve;
+
+            // Disable object inside the drawer
+            GameAssets.instance.LR_Broschure.SetActive(false);
         }
     }
 
@@ -202,6 +242,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
     
     private void B_SleepingPills_Behavior()
     {
+        if (objectProperties.LOSAUpdateResponse == 0)
+        {
+            Destroy(gameObject);
+        }
+        /*
         if (GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
         {
             objectProperties.HandleResponse(1);
@@ -213,9 +258,15 @@ public class ObjectSpecificBehavior : MonoBehaviour
             // Pills must disappear if 'Wash Them Down' option is selected
             if(objectProperties.LOSAUpdateResponse == 0)
             {
-                // TODO: remove pills from scene
+                Destroy(gameObject);
             }
         }
+        */
+    }
+
+    private void B_Bathub_Behavior()
+    {
+        GameAssets.instance.B_WaterDripping.enabled = false;
     }
 
     private void B_Light_Behavior()
@@ -269,25 +320,24 @@ public class ObjectSpecificBehavior : MonoBehaviour
             // Set the sprite of the close up object CU_MirrorShelf to the cabinet open sprite
             if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
             {
-                CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Day_ShelfOpen;
+                CU_MirrorShelf.transform.Find("MorningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Day_ShelfOpen;
+                CU_MirrorShelf.transform.Find("NoonImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Noon_ShelfOpen;
             }
             else
             {
                 if(GameEventsTracker.B_Light_On)
                 {
-                    CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfOpenLightOn;
+                    CU_MirrorShelf.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfOpenLightOn;
                 }
                 else
                 {
-                    CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfOpenLightOff;
+                    CU_MirrorShelf.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfOpenLightOff;
                 }
             }
 
-            transform.parent.transform.Find("B_Mirror").gameObject.SetActive(false);        // Disable the mirror since its no longer in view
-
-            transform.parent.transform.Find("B_SleepingPills").gameObject.SetActive(true);  // Enable the sleeping pills object which is now in view
-
-            transform.parent.transform.Find("B_MouthMask").gameObject.SetActive(true);      // Enable the mouth mask object which is now in view
+            GameAssets.instance.B_Mirror.SetActive(false);
+            GameAssets.instance.B_SleepingPills.SetActive(true);
+            GameAssets.instance.B_MouthMask.SetActive(true);
         }
         else
         {
@@ -298,25 +348,24 @@ public class ObjectSpecificBehavior : MonoBehaviour
             // Set the sprite of the close up object CU_MirrorShelf to the cabinet closed sprite
             if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.EVENING)
             {
-                CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Day_ShelfClosed;
+                CU_MirrorShelf.transform.Find("MorningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Day_ShelfClosed;
+                CU_MirrorShelf.transform.Find("NoonImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Noon_ShelfClosed;
             }
             else
             {
                 if (GameEventsTracker.B_Light_On)
                 {
-                    CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfClosedLightOn;
+                    CU_MirrorShelf.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfClosedLightOn;
                 }
                 else
                 {
-                    CU_MirrorShelf.GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfClosedLightOff;
+                    CU_MirrorShelf.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfClosedLightOff;
                 }
             }
 
-            transform.parent.transform.Find("B_Mirror").gameObject.SetActive(true);        // Enable the mirror object which is now in view
-
-            transform.parent.transform.Find("B_SleepingPills").gameObject.SetActive(false);  // Disable the sleeping pills object since its no longer in view
-
-            transform.parent.transform.Find("B_MouthMask").gameObject.SetActive(false);      // Disable the mouth mask object since its no longer in view
+            GameAssets.instance.B_Mirror.SetActive(true);
+            GameAssets.instance.B_SleepingPills.SetActive(false);
+            GameAssets.instance.B_MouthMask.SetActive(false);
         }
     }
 
@@ -362,6 +411,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
                 // Show the plant
                 StartCoroutine(G_Show_Plant());
             }
+            GameEventsTracker.G_Plant_Planted = true;
         }
     }
 
@@ -431,6 +481,10 @@ public class ObjectSpecificBehavior : MonoBehaviour
             {
                 // Plug in the socket
                 GameAssets.instance.G_PluggedInSocket.SetActive(true);
+
+                // Start the fountain animation
+                GameAssets.instance.G_Fountain.enabled = true;
+                GameAssets.instance.G_Fountain.Play("Base Layer.G_Fountain");
             }
         }
     }
@@ -452,8 +506,12 @@ public class ObjectSpecificBehavior : MonoBehaviour
             {
                 if(objectProperties.LOSAUpdateResponse == 1)       // Option 'Light the Fire' is selected
                 {
-                    // TODO: Start fire animation + sound
+                    // Sound
                     AudioManager.Play("G_Fire_Burning");
+
+                    // Animation
+                    GameAssets.instance.G_Brazier.enabled = true;
+                    GameAssets.instance.G_Brazier.Play("Base Layer.G_Brazier_Fire");
                 }
             }
         }
@@ -485,6 +543,14 @@ public class ObjectSpecificBehavior : MonoBehaviour
         if(objectProperties.LOSAUpdateResponse == 1)
         {
             AudioManager.Play("Bed_Guitar_Strum");
+        }
+    }
+
+    private void Bed_VacationPicture_Behavior()
+    {
+        if(objectProperties.LOSAUpdateResponse == 1)
+        {
+            GameEventsTracker.Bed_VacationPictureExamined = true;
         }
     }
 
@@ -609,6 +675,25 @@ public class ObjectSpecificBehavior : MonoBehaviour
             {
                 objectProperties.description = H_Chair_Description;
                 optionsManager.ShowTextOnDescriptionBox(objectProperties.description, 0f);
+            }
+        }
+    }
+
+    private void H_GreenLittleBook_Behavior()
+    {
+        if(GameSession.GetLOSAStatus() == GameSession.LOSAStatus.LOW)
+        {
+            objectProperties.HandleResponse(1);
+        }
+        else
+        {
+            if(GameEventsTracker.Bed_VacationPictureExamined)
+            {
+                objectProperties.HandleResponse(2);
+            }
+            else
+            {
+                objectProperties.HandleResponse(1);
             }
         }
     }

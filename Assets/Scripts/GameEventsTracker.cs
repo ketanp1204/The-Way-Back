@@ -15,9 +15,14 @@ public class GameEventsTracker : MonoBehaviour
     // Bathroom Events
     public static bool B_Buckets_Kept = false;
     public static bool B_Light_On = false;
+    public static bool B_Water_Dripping = true;
 
     // Garden Events
     public static bool G_Pond_Filled = false;
+    public static bool G_Plant_Planted = false;
+
+    // Bedroom Events
+    public static bool Bed_VacationPictureExamined = false;
 
     void Awake()
     {

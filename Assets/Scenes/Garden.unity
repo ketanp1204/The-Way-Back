@@ -367,7 +367,7 @@ Transform:
   - {fileID: 1547157572}
   - {fileID: 1549026712}
   m_Father: {fileID: 2014207712}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &151945473
 MonoBehaviour:
@@ -521,7 +521,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.98, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 408301224}
   m_Father: {fileID: 2014207712}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1099,6 +1100,107 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &408301223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 408301224}
+  - component: {fileID: 408301226}
+  - component: {fileID: 408301225}
+  m_Layer: 0
+  m_Name: Fire_Sprites
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &408301224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408301223}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.98, y: 0.15, z: 0}
+  m_LocalScale: {x: 0.833333, y: 0.833333, z: 1}
+  m_Children: []
+  m_Father: {fileID: 186620485}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &408301225
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408301223}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2a0ca50fd151204d94d788eb9191b99, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &408301226
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408301223}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -676469529
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 0e6b8a3f0f18a3c469321ea68b4d63bf, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 19.2, y: 10.8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!224 &441745033 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1800678397315498874, guid: ba0083ad5c83fe84399b285767095ea8,
@@ -1149,7 +1251,7 @@ Transform:
   - {fileID: 1581041010}
   - {fileID: 1032839764}
   m_Father: {fileID: 2014207712}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &507829591
 MonoBehaviour:
@@ -2000,7 +2102,7 @@ Transform:
   - {fileID: 618807032}
   - {fileID: 64924790}
   m_Father: {fileID: 2014207712}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1012616055
 MonoBehaviour:
@@ -2225,6 +2327,36 @@ PolygonCollider2D:
       - {x: -0.46740007, y: -0.11126399}
       - {x: -0.38765144, y: -0.43876934}
       - {x: 0.3109331, y: -0.018488169}
+--- !u!1 &1181888923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181888924}
+  m_Layer: 0
+  m_Name: Rain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1181888924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181888923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1223611496
 GameObject:
   m_ObjectHideFlags: 0
@@ -2418,7 +2550,7 @@ Transform:
   - {fileID: 799254330}
   - {fileID: 1478654149}
   m_Father: {fileID: 2014207712}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1273636288
 GameObject:
@@ -2462,7 +2594,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1346171792
 GameObject:
@@ -2736,9 +2868,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432921098}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1d38f76c6f3ec7d4582528520b570ae1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 32a7b31e0ba89e94995dfbe01bab74c6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3332,7 +3464,7 @@ MonoBehaviour:
   objectNameBackground: {fileID: 533291527}
   objectNameText: {fileID: 533291526}
   backgroundImage: {fileID: 329816666}
-  rainSystem: {fileID: 0}
+  rainSystem: {fileID: 1181888923}
   interactableObjects: {fileID: 2014207711}
   closeUpObjects: {fileID: 162605928}
 --- !u!4 &1701680006
@@ -3347,7 +3479,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1758536164
 GameObject:
@@ -3380,7 +3512,7 @@ Transform:
   - {fileID: 165462215}
   - {fileID: 2094209606}
   m_Father: {fileID: 2014207712}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1828909676
 GameObject:
@@ -3694,6 +3826,123 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fc73e09649fade4396e2c2c875ae8e9, type: 3}
+--- !u!1 &1882967927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1882967928}
+  - component: {fileID: 1882967930}
+  - component: {fileID: 1882967929}
+  m_Layer: 0
+  m_Name: G_Strawberries
+  m_TagString: Object
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1882967928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882967927}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.28, y: -0.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2014207712}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1882967929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882967927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  additionalTags: []
+  objectType: 03000000
+  objectName: Strawberries
+  description: 'I remember being at my grandparent''s place during the weekends as
+    a child. They used to have great fields full of strawberries. I went outside
+    into their garden and plucked them constantly. From the field into my mouth,
+    it was so easy and I felt light as a feather. Now I just see the work behind
+    it: Sowing the seeds. Watering them. Being patient. Watering them. Watching them
+    growing. Checking for their specific needs. Being patient not to forget. Until
+    you finally can pick a few berries, an act that is ridiculously brief compared
+    to the work you''ve spent. However I enjoy it. It throws me back to my childhood.'
+  option1Text: 'Pick A Berry
+
+'
+  option1responses:
+  - The berries I used to eat were deeply red. So red, that the mouth already waters
+    by imagining crushing the soft pulp with your tounge against the palate. These
+    ones, however, seem far from that state. They are not ripe yet, obviously. But
+    I've been patient more than enough, I want to taste results, now! ... This was
+    definitely not worth it. Pity.
+  option2Text: Be Patient
+  option2responses:
+  - The berries I used to eat were deeply red. So red, that the mouth already waters
+    by imagining crushing the soft pulp with your tounge against the palate. These
+    ones, however, seem far from that state. I guess it is worth waiting to give
+    them a little bit more time. I've always hated waiting, but at least I know it'll
+    pay off.
+  option3Text: 
+  option3responses: []
+  reactions: 0000000001000000
+  losaResponseTexts:
+    LowLOSA: 
+    MedLOSA: 
+    HighLOSA: 
+  closeUpObject: {fileID: 0}
+  numberOfResponses: 0
+  numberOfLOSAResponses: 0
+  optionTexts: []
+  interactedWith: 0
+  LOSAUpdateResponse: -1
+  destroyOnPositive: 0
+  destroyOnNegative: 0
+  hasBehavior: 0
+  responseSelected: 0
+  callIndex: 0
+  showOptions: 0
+  responseIndex: 0
+--- !u!61 &1882967930
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882967927}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.09540564, y: -0.043042183}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7082659, y: 0.57676005}
+  m_EdgeRadius: 0
 --- !u!1 &2014207711
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,6 +3980,7 @@ Transform:
   - {fileID: 1223611497}
   - {fileID: 1142779095}
   - {fileID: 1346171793}
+  - {fileID: 1882967928}
   - {fileID: 1012616054}
   - {fileID: 1758536165}
   - {fileID: 1246597115}
@@ -4232,6 +4482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   B_Day_ShelfOpen: {fileID: 21300000, guid: ad337b3f8089785438ce8ae6d9fd739c, type: 3}
   B_Day_ShelfClosed: {fileID: 21300000, guid: 752364eb5af02c44b86df2ab2b80345e, type: 3}
+  B_Noon_ShelfOpen: {fileID: 0}
+  B_Noon_ShelfClosed: {fileID: 0}
   B_Eve_ShelfOpenLightOn: {fileID: 21300000, guid: cc24b68734d0f3c46b87978c204a72d0,
     type: 3}
   B_Eve_ShelfOpenLightOff: {fileID: 21300000, guid: 3a1f16286f6cb4548a6157d59158a86e,
@@ -4242,15 +4494,32 @@ MonoBehaviour:
     type: 3}
   B_Eve_Light_On: {fileID: 21300000, guid: 71febb03faf5da248a6b5d0723105064, type: 3}
   B_Eve_Light_Off: {fileID: 21300000, guid: 3bd7145082bc21d40845b685b7a585b9, type: 3}
+  B_WaterDripping: {fileID: 0}
+  B_Mirror: {fileID: 0}
+  B_SleepingPills: {fileID: 0}
+  B_MouthMask: {fileID: 0}
   Bed_Done_Day: {fileID: 21300000, guid: 45bfb06c5db19e644ae09b8507e112f4, type: 3}
   Bed_Done_Noon: {fileID: 21300000, guid: 258e09f8d64f9514484edc0b0f0c8875, type: 3}
   Bed_Done_Eve: {fileID: 21300000, guid: 63ad50509a6955041bbf386f78f55c48, type: 3}
   LR_Diary: {fileID: 0}
+  LR_Record: {fileID: 0}
+  LR_Player: {fileID: 0}
+  LR_TV_Static: {fileID: 0}
+  LR_Broschure: {fileID: 0}
+  LR_Drawer_Open_Day: {fileID: 0}
+  LR_Drawer_Open_Noon: {fileID: 0}
+  LR_Drawer_Open_Eve: {fileID: 0}
+  LR_Drawer_Closed_Day: {fileID: 0}
+  LR_Drawer_Closed_Noon: {fileID: 0}
+  LR_Drawer_Closed_Eve: {fileID: 0}
+  LR_Plant: {fileID: 0}
   G_Plant: {fileID: 1012616053}
   G_SmallHole: {fileID: 1758536164}
   G_BigHole: {fileID: 1246597114}
   G_LooseBrickOut: {fileID: 151945471}
   G_PluggedInSocket: {fileID: 507829589}
+  G_Fountain: {fileID: 1432921100}
+  G_Brazier: {fileID: 408301225}
 --- !u!1 &8284918491845471561
 GameObject:
   m_ObjectHideFlags: 0

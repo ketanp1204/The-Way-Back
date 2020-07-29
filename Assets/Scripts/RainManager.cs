@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class RainManager : MonoBehaviour
 {
+    public static RainManager instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         if(GameSession.currentTimeOfDay != GameSession.TimeOfDay.MORNING)
@@ -14,6 +21,16 @@ public class RainManager : MonoBehaviour
         {
             StartCoroutine(ShowRainAnimationTillNoon());
         }
+    }
+
+    public static void StopRain()
+    {
+        instance.gameObject.GetComponent<ParticleSystem>().Stop();
+    }
+
+    public static void StartRain()
+    {
+        instance.gameObject.GetComponent<ParticleSystem>().Play();
     }
 
     private IEnumerator ShowRainAnimationTillNoon()

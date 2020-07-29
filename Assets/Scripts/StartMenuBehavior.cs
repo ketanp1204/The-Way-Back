@@ -11,6 +11,7 @@ public class StartMenuBehavior : MonoBehaviour
     public CanvasGroup startMenuUICanvasCG;         // Reference to the startMenuUI canvas group
     public TextMeshProUGUI topText;                 // Reference to the top text box text
     public TextMeshProUGUI bottomText;              // Reference to the bottom text box text
+    public GameObject background;                      // Reference to the background image animation
 
     // To be set in the inspector
     [TextArea(3, 10)]
@@ -18,11 +19,33 @@ public class StartMenuBehavior : MonoBehaviour
     [TextArea(3, 10)]
     public string[] bottomTexts;                    // Stores the texts for the bottom text box
 
+    void Start()
+    {
+        AudioManager.Play("Bed_Noon");
+    }
+
     public void StartStory()                        // Method to start the texts coroutine
     {
+        background.GetComponent<Animator>().enabled = false;
+
+        StartCoroutine(FadeInImage(background.GetComponent<SpriteRenderer>()));
+
+        AudioManager.Stop("Bed_Noon");
+
         StartCoroutine(ShowIntroTexts());
         
         Cursor.visible = false;
+    }
+
+    private IEnumerator FadeInImage(SpriteRenderer sR)
+    {
+        Color c = sR.color;
+        while(c.a != 0)
+        {
+            c.a -= 0.01f;
+            sR.color = c;
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 
     private IEnumerator ShowIntroTexts()            // Coroutine that displays the texts with delays and loads the next level at the end
