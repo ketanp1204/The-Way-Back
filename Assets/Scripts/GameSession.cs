@@ -284,12 +284,33 @@ public class GameSession : MonoBehaviour
                 GameAssets.instance.LR_TV_Static.GetComponent<Animator>().enabled = true;
                 GameAssets.instance.LR_TV_Static.GetComponent<Animator>().Play("Base Layer.LR_TV_Static");
             }
+            else
             {
                 GameAssets.instance.LR_TV_Static.GetComponent<Animator>().enabled = false;
                 GameAssets.instance.LR_TV_Static.GetComponent<SpriteRenderer>().sprite = null;
             }
         }
         
+        if(scene.name == "Bedroom")
+        {
+            if(GameEventsTracker.Bed_BedDone)
+            {
+                GameAssets.instance.Bed_Day_Image.sprite = GameAssets.instance.Bed_Done_Day;
+                GameAssets.instance.Bed_Noon_Image.sprite = GameAssets.instance.Bed_Done_Noon;
+                GameAssets.instance.Bed_Eve_Image.sprite = GameAssets.instance.Bed_Done_Eve;
+                GameAssets.instance.Bed_Diary.SetActive(true);
+            }
+        }
+
+        if(scene.name == "Kitchen")
+        {
+            if(GameEventsTracker.K_Fruits_HalfBasket)
+            {
+                GameAssets.instance.K_Fruits_Day.sprite = GameAssets.instance.K_Fruits_HalfBasket_Day;
+                GameAssets.instance.K_Fruits_Noon.sprite = GameAssets.instance.K_Fruits_HalfBasket_Noon;
+                GameAssets.instance.K_Fruits_Eve.sprite = GameAssets.instance.K_Fruits_HalfBasket_Eve;
+            }
+        }
     }
 
     // Update is called once per frame

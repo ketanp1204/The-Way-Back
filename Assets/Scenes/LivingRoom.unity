@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -687,15 +687,15 @@ SpriteRenderer:
   m_SortingLayerID: -676469529
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0b0c71de9f3fc5341af30e23419cea7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &172360643
@@ -6393,7 +6393,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565086369}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -7625,7 +7625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   additionalTags: []
   objectType: 00000000
-  objectName: Animal Shelter Broschure
+  objectName: Animal Shelter Brochure
   description: 
   option1Text: 
   option1responses: []
@@ -8180,7 +8180,7 @@ MonoBehaviour:
   reactions: 
   losaResponseTexts:
     LowLOSA: I borrowed it from a friend already a while ago. A long while ago. Not
-      only he forgot about about the book, he also forgot me.
+      only did he forget about the book, he also forgot me.
     MedLOSA: I haven't touched it in a while now, but I guess I feel better having
       a book around me and pretending that I want to read it.
     HighLOSA: It's called 'Into The Wild' by Jon Krakauer. Even though I've already
@@ -8886,7 +8886,6 @@ GameObject:
   - component: {fileID: 2040358468}
   - component: {fileID: 2040358470}
   - component: {fileID: 2040358469}
-  - component: {fileID: 2040358471}
   m_Layer: 0
   m_Name: LR_MobilePhone
   m_TagString: Object
@@ -8985,56 +8984,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.687432, y: 2.426969}
   m_EdgeRadius: 0
---- !u!212 &2040358471
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040358467}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -676469529
-  m_SortingLayer: 3
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 76957877b7d2dcb488373b4f8ca239db, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.15, y: 5.39}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1001 &2132095667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13921,6 +13870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelOfSelfAwareness: 0
   instructionsEnabled: 1
+  atticEnding: 0
 --- !u!1 &4418161944180157721
 GameObject:
   m_ObjectHideFlags: 0
@@ -14038,6 +13988,10 @@ MonoBehaviour:
   Bed_Done_Day: {fileID: 21300000, guid: 45bfb06c5db19e644ae09b8507e112f4, type: 3}
   Bed_Done_Noon: {fileID: 21300000, guid: 258e09f8d64f9514484edc0b0f0c8875, type: 3}
   Bed_Done_Eve: {fileID: 21300000, guid: 63ad50509a6955041bbf386f78f55c48, type: 3}
+  Bed_Day_Image: {fileID: 0}
+  Bed_Noon_Image: {fileID: 110095351}
+  Bed_Eve_Image: {fileID: 0}
+  Bed_Diary: {fileID: 0}
   LR_Diary: {fileID: 0}
   LR_Record: {fileID: 1067651313}
   LR_Player: {fileID: 876236488}
@@ -14061,6 +14015,12 @@ MonoBehaviour:
   G_PluggedInSocket: {fileID: 0}
   G_Fountain: {fileID: 0}
   G_Brazier: {fileID: 0}
+  K_Fruits_HalfBasket_Day: {fileID: 0}
+  K_Fruits_HalfBasket_Noon: {fileID: 0}
+  K_Fruits_HalfBasket_Eve: {fileID: 0}
+  K_Fruits_Day: {fileID: 0}
+  K_Fruits_Noon: {fileID: 0}
+  K_Fruits_Eve: {fileID: 0}
 --- !u!1001 &6523759834433771506
 PrefabInstance:
   m_ObjectHideFlags: 0

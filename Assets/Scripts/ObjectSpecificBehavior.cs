@@ -47,8 +47,8 @@ public class ObjectSpecificBehavior : MonoBehaviour
         // Stop animation
         GameAssets.instance.LR_TV_Static.GetComponent<Animator>().enabled = false;
 
-        // Destroy sprite object
-        GameAssets.instance.LR_TV_Static.SetActive(false);
+        // Set sprite to null
+        GameAssets.instance.LR_TV_Static.GetComponent<SpriteRenderer>().sprite = null;
     }
 
     private void LR_Gramophone_Behavior()
@@ -74,7 +74,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
     IEnumerator LR_G_PlayerAnimation(Sound s, Animator anim)
     {
         anim.enabled = true;
-        if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+        if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING || GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
         {
             anim.Play("Base Layer.LR_G_Player_Day");
         }
@@ -85,7 +85,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
         
         while (s.source.isPlaying)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForEndOfFrame();
         }
         anim.enabled = false;
     }
@@ -96,7 +96,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
         anim.Play("Base Layer.LR_G_Record");
         while(s.source.isPlaying)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForEndOfFrame();
         }
         anim.enabled = false;
     }
@@ -116,7 +116,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
         {
             GameEventsTracker.LR_Window_Open = true;
             AudioManager.Stop("Morning_Rain_Inside");
-            AudioManager.PlaySoundAtCurrentGameTime("LR_Morning_Window_Open");
+            AudioManager.PlaySoundAtCurrentGameTime("Morning_Rain_Outside");
         }
     }
 
@@ -137,8 +137,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
             // Enable object inside the drawer
             GameAssets.instance.LR_Broschure.SetActive(true);
-
-
         }
         else
         {
@@ -192,11 +190,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
     private void K_FruitBasket_Behavior()
     {
+        GameEventsTracker.K_Fruits_HalfBasket = true;
 
-        if (objectProperties.LOSAUpdateResponse == 1)    // Option 'Eat The Edible Fruits' selected
-        {
-            // TODO: Replace the image of the fruit basket with one with lesser fruits
-        }
+        GameAssets.instance.K_Fruits_Day.sprite = GameAssets.instance.K_Fruits_HalfBasket_Day;
+        GameAssets.instance.K_Fruits_Noon.sprite = GameAssets.instance.K_Fruits_HalfBasket_Noon;
+        GameAssets.instance.K_Fruits_Eve.sprite = GameAssets.instance.K_Fruits_HalfBasket_Eve;
     }
 
     private void K_GardenDoor_Behavior()

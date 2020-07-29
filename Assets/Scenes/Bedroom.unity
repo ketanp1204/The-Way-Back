@@ -4182,7 +4182,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037818406}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.83333, y: 0.83333, z: 1}
   m_Children: []
@@ -9273,6 +9273,10 @@ MonoBehaviour:
   Bed_Done_Day: {fileID: 21300000, guid: 50ab14c5a3ee6fc4a95419832fc33e08, type: 3}
   Bed_Done_Noon: {fileID: 21300000, guid: e4c6967672ed4ad479cedad329f138d9, type: 3}
   Bed_Done_Eve: {fileID: 21300000, guid: 01775d3bb6155e545b87dfbe68b17bb4, type: 3}
+  Bed_Day_Image: {fileID: 1028480544}
+  Bed_Noon_Image: {fileID: 86648239}
+  Bed_Eve_Image: {fileID: 28910436}
+  Bed_Diary: {fileID: 217940595}
   LR_Diary: {fileID: 217940595}
   LR_Record: {fileID: 0}
   LR_Player: {fileID: 0}

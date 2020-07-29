@@ -25,6 +25,9 @@ public class GameEventsTracker : MonoBehaviour
     public static bool Bed_VacationPictureExamined = false;
     public static bool Bed_BedDone = false;
 
+    // Kitchen Events
+    public static bool K_Fruits_HalfBasket = false;
+
     void Awake()
     {
         if (instance == null)
