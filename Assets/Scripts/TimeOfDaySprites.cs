@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Threading;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class TimeOfDaySprites : MonoBehaviour

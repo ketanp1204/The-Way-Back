@@ -18,7 +18,8 @@ public class GameSession : MonoBehaviour
     }
 
     // Configuration parameters
-    private int levelOfSelfAwareness = 0;
+    [HideInInspector]
+    public int levelOfSelfAwareness = 0;
     private string[] instructions = {"During the last years, you have changed a lot. Above that, the outside world as well. Due to that, you have lost count on the days you’ve spent in a row in your house. Alone.",
                                      "Like clay, your days have been shaped by tiredness and you lost sight of the things that once fulfilled your life. Now the clay hardened. Seemingly unalterable.",
                                      "Today is one of these days. However, something is different. A nearly imperceptible sense of self-awareness is spreading through your body. " +
@@ -226,6 +227,10 @@ public class GameSession : MonoBehaviour
             else if(currentTimeOfDay == TimeOfDay.NOON)
             {
                 changes++;
+
+                AudioManager.Stop("Morning_Rain_Inside");
+                AudioManager.Stop("LR_Morning_Window_Closed");
+                AudioManager.Stop("LR_Morning_Window_Open");
 
                 string scene = SceneManager.GetActiveScene().name;
 

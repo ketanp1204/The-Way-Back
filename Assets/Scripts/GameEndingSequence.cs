@@ -14,7 +14,7 @@ public class GameEndingSequence : MonoBehaviour
     private readonly string[] lowLOSAText = { "One day feels like the other. However, particularly this day has been so trivial, it kind of feels wasted. ",
                                         "I feel tired and it’s late. I should go to bed." };
 
-    private readonly string[] mediumLOSAText = { "Before I had opened my eyes, I already lost my believe that this day might once turn out well. However, I proved myself wrong.",
+    private readonly string[] mediumLOSAText = { "Before I had opened my eyes, I already lost my belief that this day might once turn out well. However, I proved myself wrong.",
                                             "I kind of enjoyed the time and I think it’s smart to make a plan of things I’d like to do in the next days. But nothing too complex. Babysteps!"};
 
     private readonly string[] highLOSAText = { "I should make a big red cross in today’s agenda! I feel surprisingly good and even though I’ve been living here for already quite a while now, " + 
@@ -124,6 +124,18 @@ public class GameEndingSequence : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         topText.fontSize = 40;
+        topText.text = "Project Coordinator";
+        bottomText.text = "Gianluca Pandolfo";
+        StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 1f));
+        StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 0f, 1f, 0f, 1f));
+
+        yield return new WaitForSeconds(2);
+
+        StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 1f, 0f, 0f, 1f));
+        StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 1f, 0f, 0f, 1f));
+
+        yield return new WaitForSeconds(1.5f);
+
         topText.text = "Game Art";
         bottomText.text = "Parva Zahed";
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 1f));
@@ -180,6 +192,19 @@ public class GameEndingSequence : MonoBehaviour
         StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 0f, 1f, 0f, 1f));
 
         yield return new WaitForSeconds(4.5f);
+
+        StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 1f, 0f, 0f, 1f));
+        StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 1f, 0f, 0f, 1f));
+
+        yield return new WaitForSeconds(1.5f);
+
+        topText.text = "Artwork for the \"Attic\" ending";
+        bottomText.text = "Ashkan khatibi, Alireza Omarani & Soheila Aghajafari";
+
+        StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 1f));
+        StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 0f, 1f, 0f, 1f));
+
+        yield return new WaitForSeconds(2.5f);
 
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 1f, 0f, 0f, 1f));
         StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 1f, 0f, 0f, 1f));

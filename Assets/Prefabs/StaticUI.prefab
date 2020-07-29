@@ -1207,9 +1207,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3166219227722357157, guid: 97814b1da46628f4c8e79f8cb85d102a,
-          type: 3}
-        m_MethodName: Resume
+      - m_Target: {fileID: 0}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

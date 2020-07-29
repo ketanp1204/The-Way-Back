@@ -76,7 +76,7 @@ public class AudioManager : MonoBehaviour
             // Play living room sounds
             if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
             {
-                PlaySoundAtCurrentGameTime("LR_Morning_Window_Closed");
+                PlaySoundAtCurrentGameTime("Morning_Rain_Inside");
             }
             else if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
             {

@@ -114,7 +114,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         if(objectProperties.LOSAUpdateResponse == 1)
         {
-            AudioManager.Stop("LR_Morning_Window_Closed");
+            AudioManager.Stop("Morning_Rain_Inside");
             AudioManager.PlaySoundAtCurrentGameTime("LR_Morning_Window_Open");
         }
     }

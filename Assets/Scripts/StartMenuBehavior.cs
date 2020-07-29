@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartMenuBehavior : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class StartMenuBehavior : MonoBehaviour
 
     void Start()
     {
-        AudioManager.Play("Bed_Noon");
+        AudioManager.Play("G_Noon");
     }
 
     public void StartStory()                        // Method to start the texts coroutine
@@ -30,11 +31,12 @@ public class StartMenuBehavior : MonoBehaviour
 
         StartCoroutine(FadeInImage(background.GetComponent<SpriteRenderer>()));
 
-        AudioManager.Stop("Bed_Noon");
+        AudioManager.Stop("G_Noon");
 
         StartCoroutine(ShowIntroTexts());
         
         Cursor.visible = false;
+        startMenuUICanvasCG.gameObject.GetComponent<GraphicRaycaster>().enabled = false;
     }
 
     private IEnumerator FadeInImage(SpriteRenderer sR)

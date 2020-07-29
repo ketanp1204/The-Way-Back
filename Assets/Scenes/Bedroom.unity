@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -587,9 +587,8 @@ MonoBehaviour:
 
 '
   option2responses:
-  - 'A note fell out of the book, it''s a poem I once wrote down: (Here "My house
-    is cloudy" from dropbox comes.) So it''s true, this book was able to tell me
-    something, even without its own words.'
+  - A note fell out of the book, it's a poem I once wrote down. So it's true, this
+    book was able to tell me something, even without its own words.
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
@@ -815,7 +814,7 @@ PrefabInstance:
     - target: {fileID: 1813312694806174479, guid: 2fc73e09649fade4396e2c2c875ae8e9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1813312694806174479, guid: 2fc73e09649fade4396e2c2c875ae8e9,
         type: 3}
@@ -1643,8 +1642,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1382938419
-  m_SortingLayer: 1
+  m_SortingLayerID: -676469529
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ac3e267397e377a4b87b352870936302, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2850,8 +2849,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1382938419
-  m_SortingLayer: 1
+  m_SortingLayerID: -676469529
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 27f78339ab02f1e4ea90dcc0b327e13f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2981,6 +2980,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8270928539083365679, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1718993609}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dbe908dba0e1f640908a1a33ec8f345, type: 3}
 --- !u!1 &1503325680 stripped
@@ -3101,6 +3105,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1718993608
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357156, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166219227722357158, guid: 97814b1da46628f4c8e79f8cb85d102a,
+        type: 3}
+      propertyPath: m_Name
+      value: GameSession
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 97814b1da46628f4c8e79f8cb85d102a, type: 3}
+--- !u!1 &1718993609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3166219227722357158, guid: 97814b1da46628f4c8e79f8cb85d102a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1718993608}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1779189212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3276,8 +3355,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1382938419
-  m_SortingLayer: 1
+  m_SortingLayerID: -676469529
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cc57ec5069a1f5c42a0b4077d1bc55e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3624,11 +3703,11 @@ MonoBehaviour:
     an article of the handball match that I won when I was a teenager.
   option2Text: Open Latest Email
   option2responses:
-  - '''It''s been a long while since you last ordered something and we haven''t forgotten
+  - It's been a long while since you last ordered something and we haven't forgotten
     you. We would appreciate to have you back as a costumer. To make the decision
     easier for you, use the following code "12COLOURS" to get 10% off on everything.
-    We are looking forward to deliver again. Stay inspired. Your twelvecolours team.''
-    Why do I still get their mails. It''s not necessary anyway anymore.'''
+    We are looking forward to deliver again. Stay inspired. Your twelvecolours team.'
+    Why do I still get their mails? It's not necessary anyway anymore.
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
@@ -3989,50 +4068,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &3166219227081837237
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3166219227081837239}
-  - component: {fileID: 3166219227081837238}
-  m_Layer: 0
-  m_Name: GameSession
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &3166219227081837238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3166219227081837237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f60fbb0e55f237447898eb85b5339a76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  instructionsEnabled: 1
---- !u!4 &3166219227081837239
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3166219227081837237}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 944.0739, y: 464.6763, z: -43.125}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5716589870853218690
 Transform:
   m_ObjectHideFlags: 0

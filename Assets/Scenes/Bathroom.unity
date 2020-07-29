@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -261,7 +261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &32874251
 Transform:
   m_ObjectHideFlags: 0
@@ -3560,7 +3560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027701214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.69, y: -3.53, z: 0}
+  m_LocalPosition: {x: 5, y: -2.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 132383492}
@@ -3637,14 +3637,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.0739975, y: 0.96745205}
-      - {x: -0.60948277, y: 0.5185344}
-      - {x: -0.7619529, y: -0.014296055}
-      - {x: -1.5823817, y: -0.11845732}
-      - {x: -1.5952997, y: -0.95935225}
-      - {x: 1.300024, y: -1.0003068}
-      - {x: 1.2998109, y: 0.6017537}
-      - {x: 0.47336817, y: 0.8474829}
+    - - {x: -1.5924447, y: 1.6626447}
+      - {x: -1.6135943, y: -0.90446854}
+      - {x: -1.2511523, y: -1.6987991}
+      - {x: -0.3676138, y: -1.6822734}
+      - {x: 1.2907767, y: -0.48361444}
+      - {x: 1.2643251, y: 1.1708884}
+      - {x: 0.4308195, y: 1.6445429}
 --- !u!1 &2056686122
 GameObject:
   m_ObjectHideFlags: 0
