@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -920,7 +920,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 
   objectName: Sink
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -929,9 +929,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 1752475983}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Bunch Of Lighters
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1363,15 +1363,18 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 'This bundle of lighters is a symbol for my weakness. Each lighter epitomises
+    LowLOSA:
+    - 'These bundle of lighters are a symbol for my weakness. Each lighter epitomises
       the moment I was somewhere else, relapsed and bought cigarettes and - of course
       - a lighter once again. '
-    MedLOSA: 'This bundle of lighters is a symbol for my weakness. Each lighter epitomises
+    MedLOSA:
+    - 'These bundle of lighters are a symbol for my weakness. Each lighter epitomises
       the moment I was somewhere else, relapsed and bought cigarettes and - of course
       - a lighter once again. '
-    HighLOSA: 'This bundle of lighters is a symbol for my weakness. Each lighter
-      epitomises the moment I was somewhere else, relapsed and bought cigarettes
-      and - of course - a lighter once again. '
+    HighLOSA:
+    - 'These bundle of lighters are a symbol for my weakness. Each lighter epitomises
+      the moment I was somewhere else, relapsed and bought cigarettes and - of course
+      - a lighter once again. '
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1475,27 +1478,29 @@ MonoBehaviour:
   additionalTags: []
   objectType: 0100000006000000
   objectName: Fruit Basket
-  description: Instead of keeping the fruits decoratively in their basket, I should
-    start to consider it as actual food I can also eat. However, this thought might
-    have come up too late.
+  description:
+  - 'Instead of keeping the fruits decoratively in their basket, I should start to
+    consider it as actual food I can also eat. '
+  - However, this thought might have come up too late.
   option1Text: Throw Away The Rotten Fruits
   option1responses:
   - 'What a shame. But that is the new circle of life I guess: Spending too much
-    money on too many things that we don''t even use at the end. '
+    money on too many things that we don''t even use at the end.'
   option2Text: Eat The Edible Fruits
   option2responses:
-  - ' Even though I am not really hungry, it would be a shame to throw these fruits
-    away. Above that, I don''t want to think about the recources and time it has
-    taken them to grow. Therefore, it would be a horrible end for their journey.'
+  - Even though I am not really hungry, it would be a shame to throw these fruits
+    away. Above that, I don't want to think about the resources and time it has taken
+    them to grow. Therefore, it would be a horrible end for their journey.
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
   losaResponseTexts:
-    LowLOSA: Ah yes, the obligatory fruit basket in the kitchen, which would not
-      be complete without it. Everybody has it and nobody consumes the fruits. It
-      is more a decoration than actual food.
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA:
+    - Ah yes, the obligatory fruit basket in the kitchen, which would not be complete
+      without it. Everybody has it and nobody consumes the fruits. It is more a decoration
+      than actual food.
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1919,8 +1924,9 @@ MonoBehaviour:
   additionalTags: []
   objectType: 07000000
   objectName: Garden
-  description: Why should I do that while it is raining? It's not that there is something
-    important that needs my attention immediately. I guess there will be a more appropriate
+  description:
+  - Why should I do that while it is raining? It's not that there is something important
+    that needs my attention immediately. I guess there will be a more appropriate
     time than now.
   option1Text: 
   option1responses: []
@@ -1930,9 +1936,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2111,7 +2117,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Tea Pot
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -2120,12 +2126,15 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: Tea is supposed to make you healthy. I drank it by the litre last winter
-      and I was still feeling sick.
-    MedLOSA: 'Depening on the season, I drink tea differently. During winter, I almost
+    LowLOSA:
+    - Tea is supposed to make you healthy. I drank it by the litre last winter and
+      I was still feeling sick.
+    MedLOSA:
+    - 'Depending on the season, I drink tea differently. During winter, I almost
       drink it too much, whereas in the summertimes, I barely have it on my radar. '
-    HighLOSA: One day, I would really like to have different kinds of plants in my
-      garden. Then I will dry them and use them as tea leaves. That would be amazing.
+    HighLOSA:
+    - One day, I would really like to have different kinds of plants in my garden.
+      Then I will dry them and use them as tea leaves. That would be amazing.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2187,10 +2196,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Empty Coffee Cup
-  description: 'I used to have the silly habit of reading tea leaves. And I was not
-    one of the whitewashing fortune tellers who weren''t taking it seriously! The
-    future I predicted for the people wasn''t always bloomy. It was harsh, but honest
-    as well. '
+  description: []
   option1Text: Read Tea Leaves
   option1responses:
   - My skills have gotten a bit rusty but I know I still have the talent. Let me
@@ -2207,9 +2213,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 0100000000000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2317,26 +2323,26 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Shopping List
-  description: '''March 13th: Coffee, pasta, batteries, light bulb E14, cereals,
-    dog food,''. Has that list really been hanging there already for such a long
-    time? '
+  description:
+  - '''March 13th: Coffee, pasta, batteries, light bulb E14, cereals, dog food,'''
+  - 'Has that list really been hanging there already for such a long time? '
   option1Text: Tear The Page Off
   option1responses:
-  - 'There is something else written on the paper underneath it: ''March 11th: 08:08
-    am. I am thinking of you. Had to leave sooner than expected and didn''t want
-    to interrupt your sweet sleep. See you soon xxxx'' ... I''ve never seen that
-    note.'
+  - There is something else written on the paper underneath it...
+  - '''March 11th: 08:08 am. I am thinking of you. Had to leave sooner than expected
+    and didn''t want to interrupt your sweet sleep. See you soon xxxx'' ...'
+  - I've never seen that note.'
   option2Text: Throw Away The List
   option2responses:
-  - 'Who does that still need if you have a phone? Shed the unimportant ballast from
+  - 'Who does still need that if you have a phone? Shed the unimportant ballast from
     the past '
   option3Text: 
   option3responses: []
   reactions: 0100000002000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2722,14 +2728,15 @@ MonoBehaviour:
   additionalTags: []
   objectType: 070000000000000003000000
   objectName: Wine Bottle
-  description: I am not sure if it is the right moment now, but this bottle has been
-    smiling at me for already too long. And you could never tell if something was
-    the right moment, if you didn't dare to find it out.
+  description:
+  - I am not sure if it is the right moment now, but this bottle has been smiling
+    at me for already too long. And you could never tell if something was the right
+    moment, if you didn't dare to find it out.
   option1Text: Drink It
   option1responses:
-  - 'I bought this bottle for a special occasion. But lately, these special occasions
+  - I bought this bottle for a special occasion. But lately, these special occasions
     seems to happen rather rarely and it would be a pitty to not drink it if I want
-    to. '
+    to.
   option2Text: Save It
   option2responses:
   - I am really not in a rush to open that bottle. And actually, I bought it to cook
@@ -2739,18 +2746,21 @@ MonoBehaviour:
   option3responses: []
   reactions: 0000000000000000
   losaResponseTexts:
-    LowLOSA: I just can't find an appropriate moment to enjoy a nice glass of wine.
-      Normally, I've enjoyed it in moments of rest and quiet, while sitting somewhere
-      nicely. But these situations seem pretty rare lately. But now is definitely
-      not the time for it, either.
-    MedLOSA: I just can't find an appropriate moment to enjoy a nice glass of wine.
-      Normally, I've enjoyed it in moments of rest and quiet, while sitting somewhere
-      nicely. But these situations seem pretty rare lately. But now is definitely
-      not the time for it, either.
-    HighLOSA: I just can't find an appropriate moment to enjoy a nice glass of wine.
-      Normally, I've enjoyed it in moments of rest and quiet, while sitting somewhere
-      nicely. But these situations seem pretty rare lately. But now is definitely
-      not the time for it, either.
+    LowLOSA:
+    - I just can't find an appropriate moment to enjoy a nice glass of wine. Normally,
+      I've enjoyed it in moments of rest and quiet, while sitting somewhere nicely.
+    - But these situations seem pretty rare lately. And now is definitely not the
+      time for it, either.
+    MedLOSA:
+    - I just can't find an appropriate moment to enjoy a nice glass of wine. Normally,
+      I've enjoyed it in moments of rest and quiet, while sitting somewhere nicely.
+    - But these situations seem pretty rare lately. And now is definitely not the
+      time for it, either.
+    HighLOSA:
+    - I just can't find an appropriate moment to enjoy a nice glass of wine. Normally,
+      I've enjoyed it in moments of rest and quiet, while sitting somewhere nicely.
+    - But these situations seem pretty rare lately. And now is definitely not the
+      time for it, either.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2902,7 +2912,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 07000000
   objectName: Hallway
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -2911,9 +2921,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -7993,7 +8003,7 @@ GameObject:
   - component: {fileID: 2099142487}
   - component: {fileID: 2099142488}
   m_Layer: 0
-  m_Name: S_Tap
+  m_Name: K_Tap
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8028,7 +8038,8 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Water Tap
-  description: It once used to have a shinier glance.
+  description:
+  - It once used to have a shinier glance.
   option1Text: Drink Water
   option1responses:
   - Fresh. Apparently nothing special, yet so significant. Importance has the habit
@@ -8041,9 +8052,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 0100000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0

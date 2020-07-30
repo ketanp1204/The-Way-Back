@@ -91,7 +91,7 @@ public class StartMenuBehavior : MonoBehaviour
 
         yield return new WaitForSeconds(29f);
 
-        topText.text = "Extra Time";
+        topText.text = "The Way Back";
         topText.fontSize = 150;
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 0.7f));
 

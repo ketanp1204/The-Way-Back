@@ -22,9 +22,9 @@ public class ObjectProperties : MonoBehaviour
     [System.Serializable]
     public class LOSAResponseTexts      
     {
-        public string LowLOSA;
-        public string MedLOSA;
-        public string HighLOSA;
+        public string[] LowLOSA;
+        public string[] MedLOSA;
+        public string[] HighLOSA;
     }
 
     // Cached References
@@ -35,21 +35,20 @@ public class ObjectProperties : MonoBehaviour
     public ObjectType[] objectType;             // To store the response type for the current object
     public string objectName;                   // Name of the object
     [TextArea(3, 10)]
-    public string description;                  // Description of the object
-    [TextArea(3, 10)]
+    public string[] description;                // Description of the object
     public string option1Text;                  // Text for the first option 
     [TextArea(3, 10)]
     public string[] option1responses;           // Responses for the first option
-    [TextArea(3, 10)]
     public string option2Text;                  // Text for the second option
     [TextArea(3, 10)]
     public string[] option2responses;           // Responses for the second option
-    [TextArea(3, 10)]
     public string option3Text;                  // Text for the thrid option
     [TextArea(3, 10)]
     public string[] option3responses;           // Responses for the third option
     public int[] reactions;                     // Positive, negative or neutral response
-    public LOSAResponseTexts losaResponseTexts;
+    public LOSAResponseTexts losaResponseTexts; // LOSA reactions
+    [TextArea(6, 10)]
+    public string poem;                         // Poem if any present
     public GameObject closeUpObject;            // To store the close up object reference, if any
   
     // Variables that will be calculated in the code
@@ -71,6 +70,8 @@ public class ObjectProperties : MonoBehaviour
     public bool destroyOnNegative = false;      // Stores whether an object has to be destroyed on a negative response
     [HideInInspector]
     public bool hasBehavior = false;            // Stores whether an object has custom behavior
+    [HideInInspector]
+    public bool hasPoem = false;        // Stores whether an object has a poem in its positive response
     [HideInInspector]
     public bool responseSelected = false;       // Stores whether an option has been chosen 
     [HideInInspector]
@@ -141,6 +142,11 @@ public class ObjectProperties : MonoBehaviour
         else if(objectType.Contains(ObjectType.OptionDestroyOnPositive))
         {
             destroyOnPositive = true;
+        }
+
+        if (additionalTags.Contains("Poem"))
+        {
+            hasPoem = true;
         }
         
         if(objectType.Contains(ObjectType.OptionBehaviorAfterChoice))

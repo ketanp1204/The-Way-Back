@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIReferences : MonoBehaviour
 {
     public GameObject clockText;
+    public GameObject poemPage;
+    public TextMeshProUGUI poemText;
     public GameObject pauseMenuUI;
     public GameObject optionsBox;
     public GameObject descriptionBox;

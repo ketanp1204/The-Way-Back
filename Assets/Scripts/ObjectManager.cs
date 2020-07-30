@@ -26,6 +26,7 @@ public class ObjectManager : MonoBehaviour
     private GameObject interactableObjects;         // Reference to the interactable objects
     private GameObject descriptionBox;              // Reference to the description box
     private GameObject optionsBox;                  // Reference to the option box
+    private GameObject poemPage;                    // Reference to the poem page box
     private GameObject rain;                        // Reference to the rain particle system
     public Button backButtonPrefab;                 // Reference to the back button prefab
     public GameObject zoomedInObject;               // Reference to the zoomed in object 
@@ -63,6 +64,7 @@ public class ObjectManager : MonoBehaviour
         optionsManager = FindObjectOfType<OptionsManager>();
         descriptionBox = uiReferences.descriptionBox;
         optionsBox = uiReferences.optionsBox;
+        poemPage = uiReferences.poemPage;
         rain = uiReferences.rain;
         interactableObjects = uiReferences.interactableObjects;
         objectData = FindObjectOfType<PersistentObjectData>();
@@ -74,7 +76,10 @@ public class ObjectManager : MonoBehaviour
         if(Input.GetMouseButtonDown(0))                                                                     // Handle mouse click in game
         {
             if (EventSystem.current.IsPointerOverGameObject())                                              // Prevent player from clicking through UI elements
+            {
                 return;
+            }
+                
 
             mousePositionWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);                        // Convert mouse position to 3D World Coordinates
             mousePositionWorld2D = new Vector2(mousePositionWorld.x, mousePositionWorld.y);                 // Convert mouse position to 2D world coordinates
@@ -151,18 +156,18 @@ public class ObjectManager : MonoBehaviour
                 else
                 {
                     if(!optionsManager.IsWriting && !GameSession.instance.atticEnding)                                                           // Close the description and option boxes when clicking outside of them if no text is being typed currently
-                        CloseTextBoxes();
+                        CloseBoxes();
                 }
             }
             else
             {
                 if(!optionsManager.IsWriting && !GameSession.instance.atticEnding)                                                               // Close the description and option boxes when clicking outside of them if no text is being typed currently
-                    CloseTextBoxes();
+                    CloseBoxes();
             }
         }
     }
 
-    private void CloseTextBoxes()                                                                           // Method that closes the description and option boxes
+    private void CloseBoxes()                                                                           // Method that closes the description and option boxes
     {
         GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>(), 0f);
         if (optionsBox.activeSelf)
@@ -170,6 +175,7 @@ public class ObjectManager : MonoBehaviour
             GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>(), 0f);
         }
         StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox, 0.5f));
+        poemPage.SetActive(false);
         optionsManager.CloseAndClearOptionsBox();
     }
 

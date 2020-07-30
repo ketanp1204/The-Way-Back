@@ -403,31 +403,33 @@ MonoBehaviour:
   additionalTags: []
   objectType: 04000000
   objectName: Diary
-  description: 'Wow! I didn''t expect to find that one under my bed. Even though
-    I used to write in that diary sporadically, it was worth a lot. It is the best
-    way to treat yourself and that''s why the floor under the bed is definitely not
-    the place this book of memories deserves. '
+  description:
+  - 'Wow! I didn''t expect to find that one under my bed. '
+  - 'Even though I used to write in that diary sporadically, it was worth a lot.
+    It is the best way to treat yourself and that''s why the floor under the bed
+    is definitely not the place this book of memories deserves. '
   option1Text: Open It
   option1responses:
-  - "Tuesday 3rd September, 2013. Rationally, I know moving was the only logic option.
-    However, emotionally, I feel a blockage. In my head it all doesn't make sense
-    yet. I feel empty and overfilled at the same time and it dazzles me. At least
-    I started to arrange the attic. Well, \"arranging\" \xE0 la storing my working
-    tools and utensils. I am lucky I have that room, where I am able to express my
-    inner disbalance and bring my thoughts to life."
+  - "Tuesday 3rd September, 2013. Rationally, I know moving was the only logical
+    option. However, emotionally, I feel a blockage. In my head it all doesn't make
+    sense yet. I feel empty and overfilled at the same time and it dazzles me. At
+    least I started to arrange the attic. Well, \"arranging\" \xE0 la storing my
+    working tools and utensils. I am lucky I have that room, where I am able to express
+    my inner disbalance and bring my thoughts to life. "
   option2Text: 'Store It
 
 '
   option2responses:
-  - 'It means a lot to have this precious souvenir of the past. However, that does
-    not mean that I need to visit and relive that state of mind. '
+  - It means a lot to have this precious souvenir of the past. However, that does
+    not mean that I need to visit and relive that state of mind.
   option3Text: 
   option3responses: []
   reactions: 0100000002000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -437,6 +439,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -573,16 +576,18 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Blue Book
-  description: I bought this one to take a few notes, but I haven't written anything
-    inside it. That means, this book is a contrast itself, because everything and
-    everyone has a story to tell. But also these blank pages are able to tell a story,
-    just in an unexpected way.
+  description:
+  - I bought this one to take a few notes, but I haven't written anything inside
+    it. That means, this book is a contrast itself, because everything and everyone
+    has a story to tell. But also these blank pages are able to tell a story, just
+    in an unexpected way.
   option1Text: Take A Note
   option1responses:
-  - 'To be honest, I don''t know what I should take notes of now. My mind is blank
-    like the book''s pages. I always thought, that reaching this point would be my
-    worst nightmare, because my mind used to be so loud and full of ideas. Almost
-    too chaotic. But I liked it and realizing the difference now makes me sad. '
+  - To be honest, I don't know what I should take notes of now. My mind is blank
+    like the book's pages.
+  - I always thought, that reaching this point would be my worst nightmare, because
+    my mind used to be so loud and full of ideas. Almost too chaotic. But I liked
+    it and realizing the difference now makes me sad.
   option2Text: 'Open It
 
 '
@@ -593,9 +598,10 @@ MonoBehaviour:
   option3responses: []
   reactions: 0200000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -605,6 +611,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -703,10 +710,11 @@ MonoBehaviour:
   additionalTags: []
   objectType: 0700000000000000
   objectName: Window
-  description: Funny that windows change their perspective. During they day, they
-    seem to spend freedom by keeping away curious eyes from the outside. Whereas
-    during the evening, they hold us captive by transforming into mirrors and inviting
-    those stares from the outside.
+  description:
+  - Funny that windows change their perspective. During the day, they seem to spend
+    freedom by keeping away curious eyes from the outside. Whereas during the evening,
+    they hold us captive by transforming into mirrors and inviting those stares from
+    the outside.
   option1Text: 
   option1responses: []
   option2Text: 
@@ -715,16 +723,20 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: Standing in front of the window and looking outside is dangerous! My
-      overly communicative neighbours might spot me and assume I want to come out
-      and chat.
-    MedLOSA: Funny that everybody envies the birds when they seem to cut the air
-      with their precise wings. But flying for them is as normal as walking is for
-      us. Comparing is dangerous.
-    HighLOSA: These clouds look exactly like a pack of dogs! One of them seems to
-      try to catch his own tail. As a child I was laying in the fields for hours
-      trying to decrypt the hidden stories the clouds wanted to tell. It feels comforable
-      to know that I am still able to understand this language.
+    LowLOSA:
+    - Standing in front of the window and looking outside is dangerous! My overly
+      communicative neighbours might spot me and assume I want to come out and chat.
+    MedLOSA:
+    - Funny that everybody envies the birds when they seem to cut the air with their
+      precise wings. But flying for them is as normal as walking is for us. Comparing
+      is dangerous.
+    HighLOSA:
+    - 'These clouds look exactly like a pack of dogs! One of them seems to try to
+      catch his own tail. '
+    - As a child I was laying in the fields for hours trying to decrypt the hidden
+      stories the clouds wanted to tell. It feels comforable to know that I am still
+      able to understand this language.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -734,6 +746,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1176,25 +1189,26 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Picture Of A Vacation Trip
-  description: I hardly recognize myself on that picture. I wonder if I still have
-    that part in me now, or whether it got completely lost. I prefer to not know
-    the answer.
+  description:
+  - I hardly recognize myself on that picture. I wonder if I still have that part
+    in me now, or whether it got completely lost. I prefer to not know the answer.
   option1Text: 'Examine It
 
 '
   option1responses:
-  - 'On the back of the frame is something written: ''Anywhere Out Of The World.''
+  - 'On the back of the frame there is something written: ''Anywhere Out Of The World.''
     This reminds me of something, but it is too far away for me to reach.'
   option2Text: Turn It Around
   option2responses:
-  - A mind can not get harmed by things that can't be seen.
+  - 'A mind can not get harmed by things that can''t be seen. '
   option3Text: 
   option3responses: []
   reactions: 0100000002000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1204,6 +1218,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1371,7 +1386,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 07000000
   objectName: Hallway
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1380,9 +1395,10 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1392,6 +1408,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1487,27 +1504,28 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Camera
-  description: This camera meant way more for me than just a camera that is able
-    to take pictures. It used to be my assistant! When I was overwhelmed by many
-    impressions, I could rely on my camera to keep a moment, that I could use and
-    work with. I've always found it difficult to create a scene in my mind, therefore
-    it was very helpful.
+  description:
+  - This camera meant way more for me than just a camera that is able to take pictures.
+    It used to be my assistant! When I was overwhelmed by many impressions, I could
+    rely on my camera to keep a moment, that I could use and work with. I've always
+    found it difficult to create a scene in my mind, therefore it was very helpful.
   option1Text: Look At The Pictures
   option1responses:
-  - Hm. The battery is dead. I haven't used it in such a long time?
+  - 'Hm. The battery is dead. I haven''t used it in such a long time? '
   option2Text: 'Leave It There
 
 '
   option2responses:
-  - 'This assistant made a brilliant job. But it''s been retired already for a long
-    time now. Anyway, there is no need for its help, because I retired as well. '
+  - This assistant made a brilliant job. But it's been retired already for a long
+    time now. Anyway, there is no need for its help, because I retired as well.
   option3Text: 
   option3responses: []
   reactions: 0200000000000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1517,6 +1535,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1594,7 +1613,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 
   objectName: Book Shelf
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1603,9 +1622,10 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 254405139}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1615,6 +1635,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1736,10 +1757,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 0700000000000000
   objectName: Window
-  description: Funny that windows change their perspective. During they day, they
-    seem to spend freedom by keeping away curious eyes from the outside. Whereas
-    during the evening, they hold us captive by transforming into mirrors and inviting
-    those stares from the outside.
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1748,16 +1766,10 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: Standing in front of the window and looking outside is dangerous! My
-      overly communicative neighbours might spot me and assume I want to come out
-      and chat.
-    MedLOSA: Funny that everybody envies the birds when they seem to cut the air
-      with their precise wings. But flying for them is as normal as walking is for
-      us. Comparing is dangerous.
-    HighLOSA: These clouds look exactly like a pack of dogs! One of them seems to
-      try to catch his own tail. As a child I was laying in the fields for hours
-      trying to decrypt the hidden stories the clouds wanted to tell. It feels comforable
-      to know that I am still able to understand this language.
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1767,6 +1779,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1998,7 +2011,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Aquarium
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -2007,18 +2020,22 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: I am a big fan of colours and everything you can create with it. That's
-      why corals facinate me so much. Sometimes I just sit in front of the aquarium
+    LowLOSA:
+    - I am a big fan of colours and everything you can create with them. That's why
+      corals facscinate me so much. Sometimes I just sit in front of the aquarium
       staring at them and after a while I notice, that half an hour has passed. It
       clears my mind and helps me to get back to zero.
-    MedLOSA: I am a big fan of colours and everything you can create with it. That's
-      why corals facinate me so much. Sometimes I just sit in front of the aquarium
+    MedLOSA:
+    - I am a big fan of colours and everything you can create with them. That's why
+      corals facscinate me so much. Sometimes I just sit in front of the aquarium
       staring at them and after a while I notice, that half an hour has passed. It
       clears my mind and helps me to get back to zero.
-    HighLOSA: I am a big fan of colours and everything you can create with it. That's
-      why corals facinate me so much. Sometimes I just sit in front of the aquarium
+    HighLOSA:
+    - I am a big fan of colours and everything you can create with them. That's why
+      corals facscinate me so much. Sometimes I just sit in front of the aquarium
       staring at them and after a while I notice, that half an hour has passed. It
       clears my mind and helps me to get back to zero.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2028,6 +2045,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2109,8 +2127,9 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Bed
-  description: What's the point in making the bed? It'll get messy again anyway.
-    And since I am alone, nobody cares.
+  description:
+  - What's the point in making the bed? It'll get messy again anyway. And since I
+    am alone, nobody cares.
   option1Text: Make The Bed
   option1responses:
   - 'It has something calming, when the bed is made and the bedding is put together.
@@ -2124,9 +2143,10 @@ MonoBehaviour:
   option3responses: []
   reactions: 0100000002000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2136,6 +2156,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2274,6 +2295,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1018972913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1640358421, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+    type: 3}
+  m_PrefabInstance: {fileID: 1503325679}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1028480542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,6 +2382,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1068949877 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 35945012, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+    type: 3}
+  m_PrefabInstance: {fileID: 1503325679}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1097675917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,7 +2420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097675917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.32, y: 1.75, z: 0}
+  m_LocalPosition: {x: 5, y: -1.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1909781103}
@@ -2402,7 +2441,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Postcard
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -2411,14 +2450,18 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: I really do not get the purpose of postcards. I know you all have time
-      to go for adventures. Why do you want to make me jealous?
-    MedLOSA: I remember being on vacations as a child. My parents would always give
-      me pens to write something on the postcards for our friends, even though I
-      could not even write. It was just about the gesture. And to create a memory.
-    HighLOSA: Somehow I can not manage to throw them away. It is nice to hold something
-      that once was in someone else's hand at a different place in the world, while
-      thinking of me. It is nice to have a friend like that.
+    LowLOSA:
+    - I really do not get the purpose of postcards. I know you all have time to go
+      for adventures. Why do you want to make me jealous?
+    MedLOSA:
+    - I remember being on vacations as a child. My parents would always give me pens
+      to write something on the postcards for our friends, even though I could not
+      even write. It was just about the gesture. And to create a memory.
+    HighLOSA:
+    - Somehow I can not manage to throw them away. It is nice to hold something that
+      once was in someone else's hand at a different place in the world, while thinking
+      of me. It is nice to have a friend like that.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2428,6 +2471,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2571,7 +2615,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Paper And Pens
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -2580,15 +2624,19 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: Having these things around me makes me sick. It's like meeting your
-      best friend again and you don't know what to tell each other. You've started
-      to emotionally seperate from each other.
-    MedLOSA: Having these things around me makes me sick. It's like meeting your
-      best friend again and you don't know what to tell each other. You've started
-      to emotionally seperate from each other.
-    HighLOSA: Having these things around me makes me sick. It's like meeting your
-      best friend again and you don't know what to tell each other. You've started
-      to emotionally seperate from each other.
+    LowLOSA:
+    - Having these things around me makes me sick. It's like meeting your best friend
+      again and you don't know what to tell each other. You start to emotionally
+      seperate from each other.
+    MedLOSA:
+    - Having these things around me makes me sick. It's like meeting your best friend
+      again and you don't know what to tell each other. You start to emotionally
+      seperate from each other.
+    HighLOSA:
+    - Having these things around me makes me sick. It's like meeting your best friend
+      again and you don't know what to tell each other. You start to emotionally
+      seperate from each other.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2598,6 +2646,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2782,32 +2831,35 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Guitar
-  description: 'Love can hurt. That''s what this wooden body taught me. At first,
-    my fingers hurt so much that I had the feeling they were bleeding. But I was
-    obsessed with this instrument, with all the sensations, the sounds. I used every
-    moment to practise and suddenly, I had so much callus that there was no pain
-    anymore, just devotion. It''s been a great relationship that we''ve shared with
-    each other. But it was long ago and I think the strings have lost their voice. '
+  description:
+  - Love can hurt. That's what this wooden body taught me. At first, my fingers hurt
+    so much that I had the feeling they were bleeding. But I was obsessed with this
+    instrument, with all the sensations, the sounds.
+  - 'I used every moment to practice and suddenly, I had so much callus that there
+    was no pain anymore, just devotion. It''s been a great relationship that we''ve
+    shared with each other. But it was long ago and I think the strings have lost
+    their voice. '
   option1Text: 'Check The Strings
 
 '
   option1responses:
-  - They seem pretty old. I can't even remember the last time I changed them. So
-    it's needless to try to play on them, they'd sound awful.
+  - 'They seem pretty old. I can''t even remember the last time I changed them. So
+    it''s needless to try to play on them, they''d sound awful. '
   option2Text: 'Strum The Guitar
 
 '
   option2responses:
-  - 'This wasn''t even a chord, these were the blank strings. Kind of like the basic
-    language, everything you need to form your words and thoughts. It''s a language
-    you can unlearn, but you will always understand it. '
+  - This wasn't even a chord, these were the blank strings. Kind of like the basic
+    language, everything you need to form your words and thoughts. It's a language
+    you can unlearn, but you will always understand it.
   option3Text: 
   option3responses: []
   reactions: 0000000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2817,6 +2869,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -3522,14 +3575,15 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Puzzle
-  description: 'Ah, the proof of my impatience. There was a time I really enjoyed
-    it, whereas now frustration prevails. '
+  description:
+  - 'Ah, the proof of my impatience. There was a time when I really enjoyed it, whereas
+    now frustration prevails. '
   option1Text: Try It
   option1responses:
-  - Hmm. Ah! Haha! Oh, no. But it has to fit. Okay, maybe somewhere else. I just
-    saw the piece. Eh. Where is it. Uff. Well, okay. Damned. At least I tried. But
-    I promise, one day I will solve it. I hate starting something without completing
-    it.
+  - 'Hmm. Ah! Haha! Oh, no. But it has to fit. Okay, maybe somewhere else. I just
+    saw the piece. Eh. Where is it. Uff. '
+  - Well, okay. Damned. At least I tried. But I promise, one day I will solve it.
+    I hate starting something without completing it.
   option2Text: Don't Risk Frustration
   option2responses:
   - 'I will not just stare at stamped paper, it would be a waste of time. I have
@@ -3538,9 +3592,10 @@ MonoBehaviour:
   option3responses: []
   reactions: 0100000002000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -3550,6 +3605,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -3711,16 +3767,18 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Red Book
-  description: 'I remember buying that book. It was in a very dark and dusty second
-    hand shop in spain and it was full of books. However, particularly this one ended
-    up in my hands and I had read it within a single day. '
+  description:
+  - 'I remember buying that book. It was in a very dark and dusty second hand shop
+    in Spain and it was full of books. However, particularly this one ended up in
+    my hands and I had read it within a single day. '
   option1Text: Open The First Page
   option1responses:
   - Every book that I read, had its own bookmark. I made them by myself and they
-    vary between a receipt to an image I drew on a paper. After finishing a book,
-    I place the bookmark between the first two pages, as a part of the book. However,
-    because I literally swallowed this book, there was no need for a bookmark. Nonetheless
-    it's not too late and I should create one, to complete the book.
+    vary between a receipt to an image I drew on a paper.
+  - 'After finishing a book, I place the bookmark between the first two pages, as
+    a part of the book. However, because I literally swallowed this book, there was
+    no need for a bookmark. Nonetheless it''s not too late and I should create one,
+    to complete the book. '
   option2Text: 'Open The Last Page
 
 '
@@ -3728,15 +3786,16 @@ MonoBehaviour:
   - 'On the last page of a book I read, I always write down signs that represent
     certain traits: A circle for being emotionally involved. A cross for an incredible
     story. Three horizontal lines for marvellous story telling. A pentagon if I should
-    read it again. And one vertical line for the times I read it. This page has all
-    the symbols and five vertical lines. '
+    read it again. And one vertical line for the times I read it.'
+  - This page has all the symbols and five vertical lines.
   option3Text: 
   option3responses: []
   reactions: 0100000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -3746,6 +3805,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -3873,29 +3933,31 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Letter
-  description: A far too old and unanswered letter from a once very precious person
-    that hasn't been opened yet. The soft paper has already gone yellow.
+  description:
+  - A far too old and unanswered letter from a once very precious person that hasn't
+    been opened yet. The soft paper has already gone yellow.
   option1Text: 'Ignore It
 
 '
   option1responses:
-  - Sometimes it is better to just not know everything.
+  - 'Sometimes it is better to just not know everything. '
   option2Text: Read It
   option2responses:
-  - '''Hello my love. I lightened up a few candles in the room. Their smell reminded
-    me of the evenings we''ve spent together and I had to think of you. The talk
-    we had meant so much to me and I will always be there if you need me. Changes
-    are frightening but necessary and enriching as well. I am thinking of you xxxx
-    PS: Fondle Cosmo''s ears for me, next time I will get him more treats.'' It had
-    a reason I''ve never read it. The only thing that can be sharper than words are
-    memories, they cut incredibly deep.'
+  - '''Hello my love. I lit up a few candles in the room. Their smell reminded me
+    of the evenings we''ve spent together and I had to think of you. The talk we
+    had meant so much to me and I will always be there if you need me.'' '
+  - '''Changes are frightening but necessary and enriching as well. I am thinking
+    of you xxxx PS: Fondle Cosmo''s ears for me, next time I will get him more treats.'''
+  - It had a reason I've never read it. The only thing that can be sharper than words
+    are memories, they cut incredibly deep.
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -3905,6 +3967,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -3985,29 +4048,32 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Laptop
-  description: Why is a smart phone often more expensive than a Laptop? It requires
-    way less material. But I assume, that people are willing to spend more money
-    on a phone, because it's a prestige to show everybody new newest gadget you just
-    spent more than 1000 bucks on. And you don't take out a Laptop in the middle
-    in the city.
+  description:
+  - 'Why is a smart phone often more expensive than a Laptop? It requires way less
+    material. '
+  - But I assume that people are willing to spend more money on a phone, because
+    it's a prestige to show everybody the newest gadget that you just spent more
+    than 1000 bucks on. And you don't take out a Laptop in the middle of the city.
   option1Text: Google Yourself
   option1responses:
-  - I've always wanted to do that. Okay, here we go. Hm. Disappointing. Not even
-    an article of the handball match that I won when I was a teenager.
+  - I've always wanted to do that. Okay, here we go.
+  - Hm. Disappointing. Not even an article of the handball match that I won when
+    I was a teenager.
   option2Text: Open Latest Email
   option2responses:
-  - It's been a long while since you last ordered something and we haven't forgotten
-    you. We would appreciate to have you back as a costumer. To make the decision
+  - '''It''s been a long while since you last ordered something and we haven''t forgotten
+    you. We would appreciate to have you back as a customer. To make the decision
     easier for you, use the following code "12COLOURS" to get 10% off on everything.
-    We are looking forward to deliver again. Stay inspired. Your twelvecolours team.'
-    Why do I still get their mails? It's not necessary anyway anymore.
+    We are looking forward to deliver again. Stay inspired. Your twelvecolours team.'''
+  - Why do I still get their mails? It's not necessary anyway anymore.
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -4017,6 +4083,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -4100,7 +4167,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Agenda
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -4109,13 +4176,17 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: There is not even a blank space anymore to add something new. I'd actually
+    LowLOSA:
+    - There is not even a blank space anymore to add something new. I'd actually
       need two of them to keep it organized.
-    MedLOSA: Oh, I totally forgot that my aunt's birthday is soon! I will get her
-      a nice present. What was her favourite cake again?
-    HighLOSA: The more I look at it, the more I have the feeling I should not give
-      ink on a piece of paper the power about my daily life. I decide what I want
-      to do and what not.
+    MedLOSA:
+    - Oh, I totally forgot that my aunt's birthday is soon! I will get her a nice
+      present. What was her favourite cake again?
+    HighLOSA:
+    - The more I look at it, the more I have the feeling that I should not give ink
+      on a piece of paper the power over my daily life. I decide what I want to do
+      and what not.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -4125,6 +4196,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -4321,6 +4393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockText: {fileID: 1403249567}
+  poemPage: {fileID: 1018972913}
+  poemText: {fileID: 1068949877}
   pauseMenuUI: {fileID: 1503325680}
   optionsBox: {fileID: 1403249566}
   descriptionBox: {fileID: 1403249565}
@@ -9270,9 +9344,9 @@ MonoBehaviour:
   B_Mirror: {fileID: 0}
   B_SleepingPills: {fileID: 0}
   B_MouthMask: {fileID: 0}
-  Bed_Done_Day: {fileID: 21300000, guid: 50ab14c5a3ee6fc4a95419832fc33e08, type: 3}
-  Bed_Done_Noon: {fileID: 21300000, guid: e4c6967672ed4ad479cedad329f138d9, type: 3}
-  Bed_Done_Eve: {fileID: 21300000, guid: 01775d3bb6155e545b87dfbe68b17bb4, type: 3}
+  Bed_Done_Day: {fileID: 21300000, guid: 34d6a6d72f141f646957d61cbf8e9047, type: 3}
+  Bed_Done_Noon: {fileID: 21300000, guid: 1ab6084b8b3f0694a9eb7d7c6a03403d, type: 3}
+  Bed_Done_Eve: {fileID: 21300000, guid: 6eda4647a3ffd004ca7df3a7fd34dca7, type: 3}
   Bed_Day_Image: {fileID: 1028480544}
   Bed_Noon_Image: {fileID: 86648239}
   Bed_Eve_Image: {fileID: 28910436}
@@ -9296,3 +9370,9 @@ MonoBehaviour:
   G_PluggedInSocket: {fileID: 0}
   G_Fountain: {fileID: 0}
   G_Brazier: {fileID: 0}
+  K_Fruits_HalfBasket_Day: {fileID: 0}
+  K_Fruits_HalfBasket_Noon: {fileID: 0}
+  K_Fruits_HalfBasket_Eve: {fileID: 0}
+  K_Fruits_Day: {fileID: 0}
+  K_Fruits_Noon: {fileID: 0}
+  K_Fruits_Eve: {fileID: 0}

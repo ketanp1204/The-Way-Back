@@ -83,7 +83,7 @@ public class GameSession : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        if(!(SceneManager.GetActiveScene().name == "GameEnding"))
+        if((SceneManager.GetActiveScene().name != "GameEnding") || (SceneManager.GetActiveScene().name != "Attic"))
         {
             if (clockText == null)
             {

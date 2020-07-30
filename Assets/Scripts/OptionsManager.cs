@@ -13,6 +13,7 @@ public class OptionsManager : MonoBehaviour
     public int numberOfButtons;     // Number of response options for an object calculated at runtime
     private Button option;          // Local variable to instantiate option prefab
     private Button nextButton;      // Local variable to instantiate next button prefab
+    private Button poemNextButton;  // Local variable to instantiate poem next button prefab;
     UnityAction handleClick;        // Custom action for option response
     Dictionary<int, string[]> responses = new Dictionary<int, string[]>();      // Stores response texts for option choices
     private WaitForUIButtons nextButtonWait;        // Custom yield instruction class to wait for button press inside a coroutine
@@ -30,6 +31,9 @@ public class OptionsManager : MonoBehaviour
     private TextMeshProUGUI descriptionText;        // Stores a reference to the description text
     private GameSession gameSession;                // Stores a reference to the current GameSession instance
     private PersistentObjectData objectData;        // Stores a reference to the singleton object data instance
+    private GameObject poemPage;                    // Stores a reference to the poem page object
+    private TextMeshProUGUI poemText;               // Stores a reference to the poem text object
+    public Button poemNextButtonPrefab;            // Stores a reference to the poem next button prefab
 
     [HideInInspector]
     public ObjectProperties objectProperties;       // Stores a reference to the selected object's properties
@@ -51,6 +55,8 @@ public class OptionsManager : MonoBehaviour
         descriptionBox = uiReferences.descriptionBox;
         descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
         descriptionText = descriptionBox.GetComponentInChildren<TextMeshProUGUI>();
+        poemPage = uiReferences.poemPage;
+        poemText = uiReferences.poemText;
         optionsBox.SetActive(false);
         gameSession = FindObjectOfType<GameSession>();
         dynamicUI = GameObject.Find("DynamicUI");
@@ -174,17 +180,6 @@ public class OptionsManager : MonoBehaviour
                 }
             }
 
-            if (objectProperties != null)
-            {
-                if (objectProperties.numberOfResponses > 0
-                && !objectProperties.responseSelected
-                && objectProperties.showOptions)            // If object has options to choose from, then display them
-                {
-                    ShowOptions();
-                    objectProperties.showOptions = false;
-                }
-            }
-
             if(i < texts.Length - 1)                        // Creates a 'Next' button to move to the next page in the text
             {
                 nextButton = Instantiate(nextButtonPrefab, GameObject.Find("DynamicUI").transform);
@@ -197,7 +192,18 @@ public class OptionsManager : MonoBehaviour
             }
         }
 
-        if(GameSession.instance.instructionsEnabled)
+        if (objectProperties != null)
+        {
+            if (objectProperties.numberOfResponses > 0
+            && !objectProperties.responseSelected
+            && objectProperties.showOptions)            // If object has options to choose from, then display them
+            {
+                ShowOptions();
+                objectProperties.showOptions = false;
+            }
+        }
+
+        if (GameSession.instance.instructionsEnabled)
         {
             if(!GameSession.instructionsSeen)
             {
@@ -241,7 +247,7 @@ public class OptionsManager : MonoBehaviour
 
     public void HandleLOSAResponseOnly()    // Object will only have a text response based on the current LOSA score
     {
-        string responseText = "";
+        string[] responseText;
         if (GameSession.GetLOSAStatus() == GameSession.LOSAStatus.LOW)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
@@ -259,7 +265,7 @@ public class OptionsManager : MonoBehaviour
 
     public void HandleLOSAMediumThenOptions()       // If LOSA is medium, then object has options to choose from, otherwise has a low LOSA response
     {
-        string responseText = "";
+        string[] responseText;
         if (GameSession.GetLOSAStatus() == GameSession.LOSAStatus.LOW)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
@@ -274,7 +280,7 @@ public class OptionsManager : MonoBehaviour
 
     public void HandleLOSAHighThenOptions()         // If LOSA is high, then object has options to choose from, otherwise has a low and a medium LOSA response
     {
-        string responseText = "";
+        string[] responseText;
         if (GameSession.GetLOSAStatus() == GameSession.LOSAStatus.LOW)
         {
             responseText = objectProperties.losaResponseTexts.LowLOSA;
@@ -293,7 +299,7 @@ public class OptionsManager : MonoBehaviour
     }
 
     // Handles the events that take place when an option is selected
-    private void HandleOptionResponse(int buttonIndex, int reaction, bool destroyOnPositive, bool destroyOnNegative, bool behaviorAfterChoice)
+    private void HandleOptionResponse(int buttonIndex, int reaction, bool destroyOnPositive, bool destroyOnNegative, bool behaviorAfterChoice, bool hasPoem)
     {
         objectProperties.LOSAUpdateResponse = reaction;     // Stores the type of response selected in the object's properties
         objectProperties.responseIndex = buttonIndex;       // Stores the index of the response selected in the object's properties
@@ -335,6 +341,12 @@ public class OptionsManager : MonoBehaviour
             selectedObject.GetComponent<ObjectSpecificBehavior>().HandleBehavior(selectedObject);
         }
 
+        // Show a poem on positive response if present
+        if (hasPoem && reaction == 1)
+        {
+            ShowPoem();
+        }
+
         // Set the interactedWith boolean of the object so that it can't be clicked on again
         if(!objectProperties.additionalTags.Contains("OptionsMultipleTimes"))
         {
@@ -358,10 +370,44 @@ public class OptionsManager : MonoBehaviour
         ShowTextOnDescriptionBox(objectProperties.responses[buttonIndex], 0f);
     }
 
+    private void ShowPoem()
+    {
+        StartCoroutine(PoemDisplay());
+    }
+
+    private IEnumerator PoemDisplay()
+    {
+        poemPage.SetActive(true);
+        int pageIndex = 1;
+
+        poemText.overflowMode = TextOverflowModes.Page;
+        poemText.text = objectProperties.poem;
+        poemText.ForceMeshUpdate();
+
+        while (pageIndex < poemText.textInfo.pageCount)
+        {
+            poemText.pageToDisplay = pageIndex;
+
+            pageIndex += 1;
+
+            poemNextButton = Instantiate(poemNextButtonPrefab, GameObject.Find("PoemPage").transform);
+            poemNextButton.gameObject.SetActive(true);
+
+            nextButtonWait = new WaitForUIButtons(poemNextButton);
+            yield return nextButtonWait;
+
+            Destroy(poemNextButton.gameObject);
+        }
+        if (pageIndex == poemText.textInfo.pageCount)
+        {
+            poemText.pageToDisplay = pageIndex;
+        }
+    }
+
     public void HandleOptionLOSAUpdateOnly()       // Option has only options to choose from
     {
         objectProperties.showOptions = true;
-        if (objectProperties.description != "")
+        if (objectProperties.description[0] != "")
         {
             ShowTextOnDescriptionBox(objectProperties.description, 0f);
         }
@@ -409,7 +455,8 @@ public class OptionsManager : MonoBehaviour
                                                          reaction, 
                                                          objectProperties.destroyOnPositive, 
                                                          objectProperties.destroyOnNegative, 
-                                                         objectProperties.hasBehavior);
+                                                         objectProperties.hasBehavior,
+                                                         objectProperties.hasPoem);
                 option.onClick.AddListener(handleClick);
             }
 

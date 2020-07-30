@@ -181,9 +181,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Bath Tub
-  description: 'This noise, gosh! I am about to lose my patience, really. But I just
-    cannot find the letter that I once received with the phone number of the technicians
-    anymore, I guess I dumped it. '
+  description: []
   option1Text: Turn The Tap Off Patiently
   option1responses:
   - It's already turned off and it just won't stop dripping. I finally have to do
@@ -197,9 +195,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 0100000002000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -306,25 +304,26 @@ MonoBehaviour:
   additionalTags: []
   objectType: 070000000000000006000000
   objectName: Sleeping Pills
-  description: My happy little pill! Even though I am not asking for your help a
-    lot anymore, there was a time in my life, when I could really rely on you. And
-    I am scared I might depend on your help again one day.
+  description:
+  - My happy little pill! Even though I am not asking for your help a lot anymore,
+    there was a time in my life, when I could really rely on you. And I am scared
+    I might depend on your help again one day.
   option1Text: 'Take A Pill
 
 '
   option1responses:
   - It is already getting late and I just thought this morning that I want to sleep
-    early today. And what's so bad about... Who am I talking to. There is no need
-    to whitewash. It is a thin line between using and abusing. Anyway, cheers! To
-    my health.
+    early today. And what's so bad about...
+  - Who am I talking to. There is no need to whitewash. It is a thin line between
+    using and abusing. Anyway, cheers! To my health.
   option2Text: 'Wash Them Down
 
 '
   option2responses:
-  - Pity for them! The jar was almost full and I have bought them quite recently.
+  - 'Pity for them! The jar was almost full and I have bought them quite recently.
     Guess I have to deal with my sleeping problems without their help. By the way,
-    isn't it super bad for the environment to wash pills down? Anyway, now it is
-    too late.
+    isn''t it super bad for the environment to wash pills down? Anyway, now it is
+    too late. '
   option3Text: Keep Them
   option3responses:
   - 'Hey, you never know when you need them, right? And why should I throw them away?
@@ -333,12 +332,15 @@ MonoBehaviour:
     to any problem or injury, I felt so safe.'
   reactions: 020000000000000001000000
   losaResponseTexts:
-    LowLOSA: Not that I don't have the wish sometimes to sleep during the day to
-      get it over, but I guess it is too early to take it now.
-    MedLOSA: Not that I don't have the wish sometimes to sleep during the day to
-      get it over, but I guess it is too early to take it now.
-    HighLOSA: Not that I don't have the wish sometimes to sleep during the day to
-      get it over, but I guess it is too early to take it now.
+    LowLOSA:
+    - Not that I don't have the wish sometimes to sleep during the day to get it
+      over, but I guess it is too early to take it now.
+    MedLOSA:
+    - Not that I don't have the wish sometimes to sleep during the day to get it
+      over, but I guess it is too early to take it now.
+    HighLOSA:
+    - Not that I don't have the wish sometimes to sleep during the day to get it
+      over, but I guess it is too early to take it now.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -994,7 +996,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Towel
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1003,12 +1005,15 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: Well, I don't have so many towels. So this is actually the only reason,
-      I should start the waching machine.
-    MedLOSA: Well, I don't have so many towels. So this is actually the only reason,
-      I should start the waching machine.
-    HighLOSA: Well, I don't have so many towels. So this is actually the only reason,
-      I should start the waching machine.
+    LowLOSA:
+    - Well, I don't have so many towels. So this is actually the only reason, I should
+      start the washing machine.
+    MedLOSA:
+    - Well, I don't have so many towels. So this is actually the only reason, I should
+      start the washing machine.
+    HighLOSA:
+    - Well, I don't have so many towels. So this is actually the only reason, I should
+      start the washing machine.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1102,7 +1107,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Mirror
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1111,14 +1116,17 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 'Against all the odds, the face in the mirror becomes even stranger
-      the longer we look at each other. Who are you actually? '
-    MedLOSA: To be honest, I have always been a fan of my body. However, during a
-      very slow process, I lost the connection to it and therefore the connection
-      to myself. I've always seen more than a shell in a body and I would wish to
-      spent more time with it and myself.
-    HighLOSA: 'Somehow I can understand why people always tell me I''d look exactly
-      like my mother. I have her eyes. Her eyes and one of the most warming characteristics:
+    LowLOSA:
+    - 'Against all the odds, the face in the mirror becomes even stranger the longer
+      we look at each other. Who are you actually? '
+    MedLOSA:
+    - To be honest, I have always been a fan of my body. However, during a very slow
+      process, I lost the connection to it and therefore the connection to myself.
+      I've always seen more than a shell in a body and I would wish to spent more
+      time with it and myself.
+    HighLOSA:
+    - 'Somehow I can understand why people always tell me I''d look exactly like
+      my mother. I have her eyes. Her eyes and one of the most warming characteristics:
       Her laughter lines.  '
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
@@ -1239,7 +1247,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 07000000
   objectName: Hallway
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1248,9 +1256,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1373,7 +1381,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 
   objectName: Mirror Shelf
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1382,9 +1390,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 455589421}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1618,7 +1626,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Mouth Mask
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1627,12 +1635,15 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: I remember a time, when people would haven been stared at strangely,
-      if the were wearing these masks. Now it is the other way around.
-    MedLOSA: I remember a time, when people would haven been stared at strangely,
-      if the were wearing these masks. Now it is the other way around.
-    HighLOSA: I remember a time, when people would haven been stared at strangely,
-      if the were wearing these masks. Now it is the other way around.
+    LowLOSA:
+    - I remember a time, when people would haven been stared at strangely, if they
+      were wearing these masks. Now it is the other way around.
+    MedLOSA:
+    - I remember a time, when people would haven been stared at strangely, if they
+      were wearing these masks. Now it is the other way around.
+    HighLOSA:
+    - I remember a time, when people would haven been stared at strangely, if they
+      were wearing these masks. Now it is the other way around.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1789,13 +1800,15 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Bathtub
-  description: 'This noise, gosh! I am about to loose my patience, really. But I
-    just can not find the letter that I once received with the phone number of the
-    technicians anymore, I guess I dumped it. '
+  description:
+  - 'This noise, gosh! I am about to loose my patience, really. But I just can not
+    find the letter that I once received with the phone number of the technicians
+    anymore, I guess I dumped it. '
   option1Text: Turn The Tap Off Patiently
   option1responses:
-  - It's already turned off and it just won't stop dripping. I finally have to do
-    something about it. The buckets in front of the bath tub are a symbol of my procrastination.
+  - 'It''s already turned off and it just won''t stop dripping. I finally have to
+    do something about it. The buckets in front of the bath tub are a symbol of my
+    procrastination. '
   option2Text: Turn The Tap Off Aggressively
   option2responses:
   - 'It just doesn''t want to stop dripping! I really have to do something about
@@ -1805,9 +1818,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 0100000002000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1910,7 +1923,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 0700000000000000
   objectName: Turn On
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -1919,12 +1932,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: I don't see the point in turning on the light in the middle of the day,
-      I can see pretty clearly. Let's save some energy.
-    MedLOSA: I don't see the point in turning on the light in the middle of the day,
-      I can see pretty clearly. Let's save some energy.
-    HighLOSA: I don't see the point in turning on the light in the middle of the
-      day, I can see pretty clearly. Let's save some energy.
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2534,8 +2544,9 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Buckets
-  description: I've been saving these full buckets now already for days and it is
-    getting kind of annoying. I can barely walk here anymore.
+  description:
+  - I've been saving these full buckets now already for days and it is getting kind
+    of annoying. I can barely walk here anymore.
   option1Text: Pour Away
   option1responses:
   - My plan was to give it to the plants. But I can also just fill up a bucket in
@@ -2551,9 +2562,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 0200000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2660,6 +2671,10 @@ MonoBehaviour:
   Bed_Done_Day: {fileID: 21300000, guid: 45bfb06c5db19e644ae09b8507e112f4, type: 3}
   Bed_Done_Noon: {fileID: 21300000, guid: 258e09f8d64f9514484edc0b0f0c8875, type: 3}
   Bed_Done_Eve: {fileID: 21300000, guid: 63ad50509a6955041bbf386f78f55c48, type: 3}
+  Bed_Day_Image: {fileID: 0}
+  Bed_Noon_Image: {fileID: 0}
+  Bed_Eve_Image: {fileID: 0}
+  Bed_Diary: {fileID: 0}
   LR_Diary: {fileID: 0}
   LR_Record: {fileID: 0}
   LR_Player: {fileID: 0}
@@ -2679,6 +2694,12 @@ MonoBehaviour:
   G_PluggedInSocket: {fileID: 0}
   G_Fountain: {fileID: 0}
   G_Brazier: {fileID: 0}
+  K_Fruits_HalfBasket_Day: {fileID: 0}
+  K_Fruits_HalfBasket_Noon: {fileID: 0}
+  K_Fruits_HalfBasket_Eve: {fileID: 0}
+  K_Fruits_Day: {fileID: 0}
+  K_Fruits_Noon: {fileID: 0}
+  K_Fruits_Eve: {fileID: 0}
 --- !u!4 &1706274556
 Transform:
   m_ObjectHideFlags: 0
@@ -2831,7 +2852,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 07000000
   objectName: Open Shelf
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -2840,9 +2861,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -3394,23 +3415,24 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Cream
-  description: 'A face cream that was perscribed by the doctor. It has to be applied
-    every day. However, I don''t enjoy putting things on my skin, that I don''t even
-    know. All these ingredients sound dangerous to me. '
+  description:
+  - 'A face cream that was perscribed by the doctor. It has to be applied every day.
+    However, I don''t enjoy putting things on my skin that I don''t even know. All
+    these ingredients sound dangerous to me. '
   option1Text: Apply It
   option1responses:
-  - But some things just have to happen, even if you don't agree. And if I change
-    my mind, I just stop using it.
+  - 'But some things just have to happen, even if you don''t agree. And if I change
+    my mind, I just stop using it. '
   option2Text: Read The Ingredients
   option2responses:
-  - Wow. There are more numbers than letters. That's scary and confirms my concerns.
+  - 'Wow. There are more numbers than letters. That''s scary and confirms my concerns. '
   option3Text: 
   option3responses: []
   reactions: 0100000000000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -3581,8 +3603,9 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Washing Machine
-  description: I have the feeling everything in this house is either falling apart
-    or breaks. So please, if you have any compassion for me, don't leave me as well.
+  description:
+  - I have the feeling that everything in this house is either falling apart or breaking.
+    So please, if you have any compassion for me, don't leave me as well.
   option1Text: Put The Laundry Inside
   option1responses:
   - Doing that implies drying, folding and ironing. And since I still have a few
@@ -3596,9 +3619,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 0200000000000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -3691,7 +3714,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Dirty Laundry
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -3700,15 +3723,18 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: My mood immediately drops when I take a look at this pile. I don't see
-      clothes anymore, I just see work. Work that can be postponed, because I have
-      still fresh clothes left.
-    MedLOSA: My mood immediately drops when I take a look at this pile. I don't see
-      clothes anymore, I just see work. Work that can be postponed, because I have
-      still fresh clothes left.
-    HighLOSA: My mood immediately drops when I take a look at this pile. I don't
-      see clothes anymore, I just see work. Work that can be postponed, because I
-      have still fresh clothes left.
+    LowLOSA:
+    - My mood immediately drops when I take a look at this pile. I don't see clothes
+      anymore, I just see work. Work that can be postponed, because I have still
+      fresh clothes left.
+    MedLOSA:
+    - My mood immediately drops when I take a look at this pile. I don't see clothes
+      anymore, I just see work. Work that can be postponed, because I have still
+      fresh clothes left.
+    HighLOSA:
+    - My mood immediately drops when I take a look at this pile. I don't see clothes
+      anymore, I just see work. Work that can be postponed, because I have still
+      fresh clothes left.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0

@@ -115,7 +115,7 @@ public class GameEndingSequence : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         topText.fontSize = 150;
-        topText.text = "Extra Time";
+        topText.text = "The Way Back";
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 1f));
 
         yield return new WaitForSeconds(3f);

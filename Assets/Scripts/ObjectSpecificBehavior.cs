@@ -9,7 +9,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
     private OptionsManager optionsManager;          // Reference to the options manager gameobject
     private ObjectProperties objectProperties;      // Reference to the selected object's properties
 
-    private string H_Chair_Description;
+    private string[] H_Chair_Description;
 
     private int behaviorIndex = 1;      // To allow for multiple behaviors
 
@@ -523,7 +523,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
         }
         else
         {
-            optionsManager.ShowTextOnDescriptionBox(new string[] { objectProperties.description }, 0f);
+            optionsManager.ShowTextOnDescriptionBox(objectProperties.description, 0f);
         }
     }
 
@@ -593,7 +593,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
             {
                 if(objectProperties.LOSAUpdateResponse != -1)
                 {
-                    objectProperties.description = "";
+                    Array.Clear(objectProperties.description, 0, objectProperties.description.Length);
                     if (objectProperties.LOSAUpdateResponse == 1)
                     {
                         
@@ -610,8 +610,8 @@ public class ObjectSpecificBehavior : MonoBehaviour
             {
                 if(objectProperties.LOSAUpdateResponse != -1)
                 {
-                    objectProperties.description = "";
-                    if(objectProperties.LOSAUpdateResponse == 1)
+                    Array.Clear(objectProperties.description, 0, objectProperties.description.Length);
+                    if (objectProperties.LOSAUpdateResponse == 1)
                     {
                         // TODO: advance game time
                     }
@@ -703,8 +703,6 @@ public class ObjectSpecificBehavior : MonoBehaviour
             GameSession.instance.StartCoroutine(GameSession.instance.GoToAttic());
         }
     }
-
-
 
     private void H_LivingRoomDoor_Behavior()
     { 

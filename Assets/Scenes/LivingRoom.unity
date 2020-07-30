@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -169,7 +169,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Newspaper
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -178,14 +178,17 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: I don't need to read it to be reminded, that our world is falling apart.
-      But still they do it every single day. As if we all would forget it.
-    MedLOSA: '''1000th baby born in Green Road Hospital''... At least something exhilarant.
+    LowLOSA:
+    - I don't need to read it to be reminded, that our world is falling apart. But
+      still they do it every single day. As if we all would forget it.
+    MedLOSA:
+    - '''1000th baby born in Green Road Hospital''... At least something exhilarant.
       But are all those parents aware of the world''s condition, in which they are
       giving birth to an innocent child? At the end it''s the children who have to
       deal with it. Quite irresponsible.'
-    HighLOSA: It all comes down to raising awareness. Awareness about events occuring
-      on the earth we live in. It is alarming - alarmingly easy to forget about our
+    HighLOSA:
+    - It all comes down to raising awareness. Awareness about events occuring on
+      the earth we live in. It is alarming - alarmingly easy to forget about our
       world's condition, if we distract ourselves too much with inessential triviality.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
@@ -1086,10 +1089,11 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Windows
-  description: Windows. An existing contrast itself. Holes in strong walls, that
-    are protecting what we call home. But it's not a weak point, because they allow
-    essential things. Sometimes we need to take the risk to destroy things, to see
-    that changes can be positive.
+  description:
+  - Windows. An existing contrast itself. Holes in strong walls, that are protecting
+    what we call home. But it's not a weak point, because they allow essential things.
+    Sometimes we need to take the risk to destroy things, to see that changes can
+    be positive.
   option1Text: Keep It Closed
   option1responses:
   - I don't feel like being surrounded by all the outside noises inside the house.
@@ -1103,9 +1107,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 0200000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -5995,7 +5999,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Movies
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -6004,15 +6008,18 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: Gosh, how I loved all these old Disney Movies - and I still do. I wonder
-      if this generation's children also connect nostalgic feelings to movies or
-      songs. In this fast-paced world, everything has lost its value somehow.
-    MedLOSA: Gosh, how I loved all these old Disney Movies - and I still do. I wonder
-      if this generation's children also connect nostalgic feelings to movies or
-      songs. In this fast-paced world, everything has lost its value somehow.
-    HighLOSA: Gosh, how I loved all these old Disney Movies - and I still do. I wonder
-      if this generation's children also connect nostalgic feelings to movies or
-      songs. In this fast-paced world, everything has lost its value somehow.
+    LowLOSA:
+    - Gosh, how I loved all these old Disney Movies - and I still do. I wonder if
+      this generation's children also connect nostalgic feelings to movies or songs.
+      In this fast-paced world, everything has lost its value somehow.
+    MedLOSA:
+    - Gosh, how I loved all these old Disney Movies - and I still do. I wonder if
+      this generation's children also connect nostalgic feelings to movies or songs.
+      In this fast-paced world, everything has lost its value somehow.
+    HighLOSA:
+    - Gosh, how I loved all these old Disney Movies - and I still do. I wonder if
+      this generation's children also connect nostalgic feelings to movies or songs.
+      In this fast-paced world, everything has lost its value somehow.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -6125,24 +6132,27 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Chairs
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
   option2responses: []
   option3Text: 
   option3responses: []
-  reactions: 0200000001000000
+  reactions: 
   losaResponseTexts:
-    LowLOSA: This living room has never looked different. It is nicely arranged,
-      but after a while it just bores me. However, I am neither feeling inspired
-      nor motivated enough to rearrange the furniture.
-    MedLOSA: This living room has never looked different. It is nicely arranged,
-      but after a while it just bores me. However, I am neither feeling inspired
-      nor motivated enough to rearrange the furniture.
-    HighLOSA: This living room has never looked different. It is nicely arranged,
-      but after a while it just bores me. However, I am neither feeling inspired
-      nor motivated enough to rearrange the furniture.
+    LowLOSA:
+    - This living room has never looked different. It is nicely arranged, but after
+      a while it just bores me. However, I am neither feeling inspired nor motivated
+      enough to rearrange the furniture.
+    MedLOSA:
+    - This living room has never looked different. It is nicely arranged, but after
+      a while it just bores me. However, I am neither feeling inspired nor motivated
+      enough to rearrange the furniture.
+    HighLOSA:
+    - This living room has never looked different. It is nicely arranged, but after
+      a while it just bores me. However, I am neither feeling inspired nor motivated
+      enough to rearrange the furniture.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -6203,7 +6213,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 
   objectName: Drawer
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -6212,9 +6222,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 1118968249}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -6538,22 +6548,22 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Gramophone
-  description: This is by far my favourite record. The surface is already dusty,
-    because I listen to it so much, that I don't even put the record back into its
-    case.
+  description:
+  - This is by far my favourite record. The surface is already dusty, because I listen
+    to it so much, that I don't even put the record back into its case.
   option1Text: Remove The Record
   option1responses:
-  - I prefer taking it on me to put the record out of the case whenever I want to
-    listen to it instead of taking the risk that it breaks.
+  - 'I prefer taking it on me to put the record out of the case whenever I want to
+    listen to it instead of taking the risk that it breaks. '
   option2Text: Play The Record
   option2responses: []
   option3Text: 
   option3responses: []
   reactions: 0000000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -6803,7 +6813,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 07000000
   objectName: Hallway
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -6812,9 +6822,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -7477,28 +7487,28 @@ MonoBehaviour:
   additionalTags: []
   objectType: 06000000
   objectName: Television
-  description: My beloved window to other dimensions! You have been serving well
-    and kept me distracted from uncomfortable situations with which I did not want
-    to deal with. But I assume your time has come to an end and I need to replace
-    you...
+  description:
+  - My beloved window to other dimensions! You have been serving me well and have
+    kept me distracted from uncomfortable situations which I did not want to deal
+    with. But I assume your time has come to an end and I need to replace you...
   option1Text: 'Repair It
 
 '
   option1responses:
-  - Well, even if I wanted to, except for turning it off and back on again, I have
-    no clue about these technical matters. I guess I will just turn it off.
+  - 'Well, even if I wanted to, except for turning it off and back on again, I have
+    no clue about these technical matters. I guess I will just turn it off. '
   option2Text: Turn It Off
   option2responses:
-  - 'To be honest, I actually don''t know why I keep on getting annoyed at this old
-    box. Neither the image''s nor the sound''s quality is pleasent. I think I have
-    to seperate myself from the emotional value and throw it away. '
+  - To be honest, I actually don't know why I keep on getting annoyed at this old
+    box. Neither the image nor the sound quality is pleasant.
+  - I think I have to seperate myself from the emotional value and throw it away.
   option3Text: 
   option3responses: []
   reactions: 0100000002000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -7626,7 +7636,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Animal Shelter Brochure
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -7635,13 +7645,16 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: It's funny that you can be upset about something specific and how this
-      can change all of a sudden. Now I miss the hairs on everything. On the furniture,
-      the bed and on my clothes and I would love to vacuum again every couple of
-      days.
-    MedLOSA: 'I remember seeing this piece of paper. I remember how it changed not
-      only one, but two lifes. '
-    HighLOSA: I've never believed in so-called love at first sight - until that day.
+    LowLOSA:
+    - It's funny that you can be upset about something specific and how this can
+      change all of a sudden.
+    - Now I miss the hairs on everything. On the furniture, the bed and on my clothes
+      and I would love to vacuum again every couple of days.
+    MedLOSA:
+    - 'I remember seeing this piece of paper. I remember how it changed not only
+      one, but two lives. '
+    HighLOSA:
+    - I've never believed in the so-called love at first sight - until that day.
       The moment I saw him, I realized that we belonged together and even though
       he was slightly cautious at the beginning, I knew he shared the same view.
   closeUpObject: {fileID: 0}
@@ -7717,7 +7730,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 07000000
   objectName: Open Drawer
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -7726,9 +7739,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -7977,7 +7990,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 
   objectName: Chairs
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -7986,9 +7999,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8170,7 +8183,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 00000000
   objectName: Book
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -8179,14 +8192,17 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: I borrowed it from a friend already a while ago. A long while ago. Not
-      only did he forget about the book, he also forgot me.
-    MedLOSA: I haven't touched it in a while now, but I guess I feel better having
-      a book around me and pretending that I want to read it.
-    HighLOSA: It's called 'Into The Wild' by Jon Krakauer. Even though I've already
-      seen the movie, I want to read the book. You just can't compare the different
-      sensations while receiving a story through given images and sounds, and creating
-      everything in your mind on your own.
+    LowLOSA:
+    - I borrowed it from a friend already a while ago. A long while ago. Not only
+      did he forget about about the book, he also forgot me.
+    MedLOSA:
+    - I haven't touched it in a while now, but I guess I feel better having a book
+      around me and pretending that I want to read it.
+    HighLOSA:
+    - It's called 'Into The Wild' by Jon Krakauer. Even though I've already seen
+      the movie, I want to read the book. You just can't compare the different sensations
+      while receiving a story through given images and sounds, and creating everything
+      in your mind on your own.
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8438,34 +8454,41 @@ MonoBehaviour:
   additionalTags: []
   objectType: 0200000006000000
   objectName: Plant
-  description: '''Why did you place me inside a house, seperated from the sun, wind,
-    air and fresh ground? I am a free spirit trapped in a cage, given the minimum
-    just to survive.'' Hm? Did... Did this plant just say something to me?'
+  description:
+  - '''Why did you place me inside a house, seperated from the sun, wind, air and
+    fresh ground? I am a free spirit trapped in a cage, given the minimum just to
+    survive.'''
+  - Hm? Did... Did this plant just say something to me?
   option1Text: Check The Plant's Ground
   option1responses:
   - Well, I've heard of people talking to plants, but plants talking to people, that
-    is new to me. However it seems that you are humid enough, still you seem to feel
-    so miserable? I thought I'd do you a favor, I am sorry.
+    is new to me.
+  - 'However it seems that you are humid enough, still you seem to feel so miserable?
+    I thought I''d do you a favor, I am sorry. '
   option2Text: Check Own Physical Condition
   option2responses:
   - Well, I've heard of people talking to plants, but plants talking to people, that
-    is new to me. Neither my forehead is too warm nor am I feeling dizzy. So I guess
-    my mind was playing tricks on me. Let's leave it at that.
+    is new to me.
+  - Neither is my forehead too warm nor am I feeling dizzy. So I guess my mind is
+    playing tricks on me. Let's leave it at that.
   option3Text: Answer
   option3responses:
-  - Well, I've heard of people talking to plants, but plants talking to people, that
-    is new to me. But I understand you. Your roots should know what it feels like
-    to spread without barriers, I can relate. People should go outside instead of
-    keeping you trapped inside houses and wasting their time.
+  - 'Well, I''ve heard of people talking to plants, but plants talking to people,
+    that is new to me. But I understand you. '
+  - Your roots should know what it feels like to spread without barriers, I can relate.
+    People should go outside instead of being trapped inside houses and wasting their
+    time.
   reactions: 010000000000000001000000
   losaResponseTexts:
-    LowLOSA: I have the feeling the plant is staring at me, as if it wants to tell
-      me something. I am certain that you do not have eyes, so how is that possible?
-      I am kind of feeling guilty.
-    MedLOSA: I once read, that a room doesn't feel homely not until there are plants.
-      Magical thought that humans still have this instinctively desire for freedom
+    LowLOSA:
+    - I have the feeling the plant is staring at me, as if it wants to tell me something.
+      I am certain that you do not have eyes, so how is that possible? I am kind
+      of feeling guilty.
+    MedLOSA:
+    - I once read, that a room doesn't feel homely until there are plants.
+    - A magical thought that humans still have this instinctive desire for freedom
       and distance, that is buried deep underneath our heavy deflecting burdens.
-    HighLOSA: 
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8580,17 +8603,17 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Telephone
-  description: I am not sure why I still have this phone, when you can reach anybody
-    from anywhere with your smartphone. But I it looks nice and reminds me of my
-    childhood somehow. Relics of the past really have an calming effect on me, it
-    makes me feel grounded.
+  description:
+  - I am not sure why I still have this phone, when you can reach anybody from anywhere
+    with your smartphone. But I it looks nice and reminds me of my childhood somehow.
+    Relics of the past really have a calming effect on me, they make me feel grounded.
   option1Text: 'Call Friends
 
 '
   option1responses:
-  - 'Actually, that is something I''ve been thinking about already for a while now.
-    But after a while not having contact to someone anymore, it feels strange to
-    call out of nowhere. Not that I knew so many things to talk about anyway. '
+  - Actually, that is something I've been thinking about already for a while now.
+    But after a while not having contact with someone anymore, it feels strange to
+    call out of nowhere. Not that I knew so many things to talk about anyway.
   option2Text: 'Call Parents
 
 '
@@ -8602,9 +8625,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 0100000001000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8806,7 +8829,7 @@ MonoBehaviour:
   additionalTags: []
   objectType: 
   objectName: Chairs
-  description: 
+  description: []
   option1Text: 
   option1responses: []
   option2Text: 
@@ -8815,9 +8838,9 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8922,19 +8945,21 @@ MonoBehaviour:
   additionalTags: []
   objectType: 03000000
   objectName: Mobile Phone
-  description: 'It feels weird when I don''t have the phone in my pockets. The empty
-    feeling of it scares me, as if I might lose an essential organ that somebody
-    put inside and made me feel dependent on it. '
+  description:
+  - 'It feels weird when I don''t have the phone in my pockets. The empty feeling
+    of it scares me, as if I might lose an essential organ that somebody put inside
+    and made me feel dependent on it. '
   option1Text: Scroll Through Social Media
   option1responses:
-  - I see people sharing apparently emotional moments of their life, bright laughters
-    and wonderful snapshots of joyful situations. But instead of sharing their luck,
-    I don't feel happy. I rather feel bad and empty. Does that make me a bad person?
+  - 'I see people sharing apparently emotional moments of their life, bright laughters
+    and wonderful snapshots of joyful situations. '
+  - But instead of sharing their luck, I don't feel happy. I rather feel bad and
+    empty. Does that make me a bad person?
   option2Text: Check The Weather
   option2responses:
   - Checking the weather would only make sense, if I planned on going outside to
     do something. However this might be a good idea. Let me see... Ah it is going
-    to rain the next days. Well, what a pity.
+    to rain the next few days. Well, what a pity.
   option3Text: Charge It
   option3responses:
   - Well, if I only knew where my charging cable is hidden. Today is the second day
@@ -8942,9 +8967,9 @@ MonoBehaviour:
     feel relieved if the battery just died.
   reactions: 020000000000000000000000
   losaResponseTexts:
-    LowLOSA: 
-    MedLOSA: 
-    HighLOSA: 
+    LowLOSA: []
+    MedLOSA: []
+    HighLOSA: []
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0

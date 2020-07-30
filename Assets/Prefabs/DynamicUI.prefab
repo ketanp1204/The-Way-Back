@@ -775,6 +775,8 @@ MonoBehaviour:
     type: 3}
   nextButtonPrefab: {fileID: 5694721719423461920, guid: 809ab8a639a15b742891fac98a296d1f,
     type: 3}
+  poemNextButtonPrefab: {fileID: 5140436473594976940, guid: 0416372311cfd1e48aad454578ee68ef,
+    type: 3}
   objectProperties: {fileID: 0}
   IsWriting: 0
   redSelectedOptionSprite: {fileID: 21300000, guid: 7dbcb852ad7b37e45ac3e8fb8a0cae6f,
