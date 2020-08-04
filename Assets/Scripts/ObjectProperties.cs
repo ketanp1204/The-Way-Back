@@ -192,7 +192,7 @@ public class ObjectProperties : MonoBehaviour
         {
             PersistentObjectData objectData = FindObjectOfType<PersistentObjectData>();
 
-            if(!interactedWith && !objectData.interactedObjects.Contains(gameObject.name))
+            if(!interactedWith && !objectData.interactedObjects.Contains(gameObject.name) && GameSession.instructionsSeen)
                 DisplayObjectName.ShowName_static(objectName);
         }
     }

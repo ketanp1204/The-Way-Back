@@ -198,6 +198,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -207,6 +208,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -341,6 +343,7 @@ MonoBehaviour:
     HighLOSA:
     - Not that I don't have the wish sometimes to sleep during the day to get it
       over, but I guess it is too early to take it now.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -350,6 +353,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -747,7 +751,7 @@ PrefabInstance:
     - target: {fileID: 3166219227722357157, guid: 97814b1da46628f4c8e79f8cb85d102a,
         type: 3}
       propertyPath: instructionsEnabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3166219227722357158, guid: 97814b1da46628f4c8e79f8cb85d102a,
         type: 3}
@@ -868,6 +872,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &392069002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1640358421, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+    type: 3}
+  m_PrefabInstance: {fileID: 1328001986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &426051929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1024,7 @@ MonoBehaviour:
     HighLOSA:
     - Well, I don't have so many towels. So this is actually the only reason, I should
       start the washing machine.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1023,6 +1034,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1128,6 +1140,7 @@ MonoBehaviour:
     - 'Somehow I can understand why people always tell me I''d look exactly like
       my mother. I have her eyes. Her eyes and one of the most warming characteristics:
       Her laughter lines.  '
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1137,6 +1150,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1259,6 +1273,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1268,6 +1283,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1393,6 +1409,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 455589421}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1402,6 +1419,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1644,6 +1662,7 @@ MonoBehaviour:
     HighLOSA:
     - I remember a time, when people would haven been stared at strangely, if they
       were wearing these masks. Now it is the other way around.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1653,6 +1672,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1821,6 +1841,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1830,6 +1851,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1932,9 +1954,16 @@ MonoBehaviour:
   option3responses: []
   reactions: 
   losaResponseTexts:
-    LowLOSA: []
-    MedLOSA: []
-    HighLOSA: []
+    LowLOSA:
+    - I don't see the point in turning on the light in the middle of the day, I can
+      see pretty clearly. Let's save some energy.
+    MedLOSA:
+    - I don't see the point in turning on the light in the middle of the day, I can
+      see pretty clearly. Let's save some energy.
+    HighLOSA:
+    - I don't see the point in turning on the light in the middle of the day, I can
+      see pretty clearly. Let's save some energy.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1944,6 +1973,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2156,7 +2186,7 @@ SpriteRenderer:
   m_SortingLayerID: 1382938419
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3bd7145082bc21d40845b685b7a585b9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9f33f39c0f0bf34ba03c9f4c802ccaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2565,6 +2595,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2574,6 +2605,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2663,11 +2695,12 @@ MonoBehaviour:
   B_Eve_ShelfClosedLightOff: {fileID: 21300000, guid: 85815719b1e2cc14cb18b6c4a2587120,
     type: 3}
   B_Eve_Light_On: {fileID: 21300000, guid: 71febb03faf5da248a6b5d0723105064, type: 3}
-  B_Eve_Light_Off: {fileID: 21300000, guid: 3bd7145082bc21d40845b685b7a585b9, type: 3}
+  B_Eve_Light_Off: {fileID: 21300000, guid: e9f33f39c0f0bf34ba03c9f4c802ccaf, type: 3}
   B_WaterDripping: {fileID: 47207492}
   B_Mirror: {fileID: 533140516}
   B_SleepingPills: {fileID: 32874250}
   B_MouthMask: {fileID: 659095487}
+  B_MirrorShelf_Eve: {fileID: 2001594374}
   Bed_Done_Day: {fileID: 21300000, guid: 45bfb06c5db19e644ae09b8507e112f4, type: 3}
   Bed_Done_Noon: {fileID: 21300000, guid: 258e09f8d64f9514484edc0b0f0c8875, type: 3}
   Bed_Done_Eve: {fileID: 21300000, guid: 63ad50509a6955041bbf386f78f55c48, type: 3}
@@ -2694,12 +2727,17 @@ MonoBehaviour:
   G_PluggedInSocket: {fileID: 0}
   G_Fountain: {fileID: 0}
   G_Brazier: {fileID: 0}
+  G_Pond_MoreWater_Noon: {fileID: 0}
+  G_Pond_MoreWater_Eve: {fileID: 0}
+  G_Noon_Image: {fileID: 0}
+  G_Eve_Image: {fileID: 0}
   K_Fruits_HalfBasket_Day: {fileID: 0}
   K_Fruits_HalfBasket_Noon: {fileID: 0}
   K_Fruits_HalfBasket_Eve: {fileID: 0}
   K_Fruits_Day: {fileID: 0}
   K_Fruits_Noon: {fileID: 0}
   K_Fruits_Eve: {fileID: 0}
+  K_ShoppingList: {fileID: 0}
 --- !u!4 &1706274556
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,6 +2902,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2873,6 +2912,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -3433,6 +3473,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -3442,6 +3483,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -3556,6 +3598,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2010425261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 35945012, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+    type: 3}
+  m_PrefabInstance: {fileID: 1328001986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2027701214
 GameObject:
   m_ObjectHideFlags: 0
@@ -3622,6 +3676,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -3631,6 +3686,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -3735,6 +3791,7 @@ MonoBehaviour:
     - My mood immediately drops when I take a look at this pile. I don't see clothes
       anymore, I just see work. Work that can be postponed, because I have still
       fresh clothes left.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -3744,6 +3801,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -3889,6 +3947,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockText: {fileID: 1946522979}
+  poemPage: {fileID: 392069002}
+  poemText: {fileID: 2010425261}
   pauseMenuUI: {fileID: 1328001987}
   optionsBox: {fileID: 1946522978}
   descriptionBox: {fileID: 1946522975}
@@ -3898,6 +3958,7 @@ MonoBehaviour:
   rain: {fileID: 1028721415}
   interactableObjects: {fileID: 132383491}
   closeUpObjects: {fileID: 1243574428}
+  gameSession: {fileID: 0}
 --- !u!1 &4418161945060002894
 GameObject:
   m_ObjectHideFlags: 0

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -897,7 +897,6 @@ MonoBehaviour:
   clockText: {fileID: 259665911}
   poemPage: {fileID: 1640358421}
   poemText: {fileID: 35945012}
-  poemNextButton: {fileID: 0}
   pauseMenuUI: {fileID: 925918045}
   optionsBox: {fileID: 259665910}
   descriptionBox: {fileID: 259665909}
@@ -907,6 +906,7 @@ MonoBehaviour:
   rain: {fileID: 2096857109}
   interactableObjects: {fileID: 1152099211}
   closeUpObjects: {fileID: 1094559162}
+  gameSession: {fileID: 0}
 --- !u!4 &427294100
 Transform:
   m_ObjectHideFlags: 0
@@ -2562,7 +2562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   additionalTags: []
   objectType: 00000000
-  objectName: 
+  objectName: Clock
   description: []
   option1Text: 
   option1responses: []

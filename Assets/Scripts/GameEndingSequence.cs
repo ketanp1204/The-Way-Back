@@ -25,6 +25,20 @@ public class GameEndingSequence : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foreach (Sound s in AudioManager.instance.sounds)
+        {
+            if (s.source.isPlaying)
+            {
+                if (s.name != "H_Clock_Strike_Midnight")
+                {
+                    if(s.name != "Ending_Music")
+                    {
+                        s.source.Stop();
+                    }
+                }
+            }
+        }
+
         Cursor.visible = false;
         GameSession.LOSAStatus LOSAStatus = GameSession.GetLOSAStatus();
 
@@ -114,7 +128,7 @@ public class GameEndingSequence : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
 
-        topText.fontSize = 150;
+        topText.fontSize = 125;
         topText.text = "The Way Back";
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 1f));
 
@@ -200,7 +214,7 @@ public class GameEndingSequence : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         topText.text = "Artwork for the \"Attic\" ending";
-        bottomText.text = "Ashkan khatibi, Alireza Omarani & Soheila Aghajafari";
+        bottomText.text = "Ashkan Goodarzi, Alireza Omarani & Soheila Aghajafari";
 
         StartCoroutine(FadeCanvasGroup(topTextCanvasCG, 0f, 1f, 0f, 1f));
         StartCoroutine(FadeCanvasGroup(bottomTextCanvasCG, 0f, 1f, 0f, 1f));

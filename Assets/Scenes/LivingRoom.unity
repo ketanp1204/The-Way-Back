@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -190,6 +190,7 @@ MonoBehaviour:
     - It all comes down to raising awareness. Awareness about events occuring on
       the earth we live in. It is alarming - alarmingly easy to forget about our
       world's condition, if we distract ourselves too much with inessential triviality.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -199,6 +200,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1110,6 +1112,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1119,6 +1122,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -6020,6 +6024,7 @@ MonoBehaviour:
     - Gosh, how I loved all these old Disney Movies - and I still do. I wonder if
       this generation's children also connect nostalgic feelings to movies or songs.
       In this fast-paced world, everything has lost its value somehow.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -6029,6 +6034,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -6153,6 +6159,7 @@ MonoBehaviour:
     - This living room has never looked different. It is nicely arranged, but after
       a while it just bores me. However, I am neither feeling inspired nor motivated
       enough to rearrange the furniture.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -6162,6 +6169,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -6225,6 +6233,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 1118968249}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -6234,6 +6243,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -6564,6 +6574,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -6573,6 +6584,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -6825,6 +6837,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -6834,6 +6847,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -7509,6 +7523,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -7518,6 +7533,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -7657,6 +7673,7 @@ MonoBehaviour:
     - I've never believed in the so-called love at first sight - until that day.
       The moment I saw him, I realized that we belonged together and even though
       he was slightly cautious at the beginning, I knew he shared the same view.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -7666,6 +7683,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -7742,6 +7760,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -7751,6 +7770,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -8002,6 +8022,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8011,6 +8032,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -8203,6 +8225,7 @@ MonoBehaviour:
       the movie, I want to read the book. You just can't compare the different sensations
       while receiving a story through given images and sounds, and creating everything
       in your mind on your own.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8212,6 +8235,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -8489,6 +8513,7 @@ MonoBehaviour:
     - A magical thought that humans still have this instinctive desire for freedom
       and distance, that is buried deep underneath our heavy deflecting burdens.
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8498,6 +8523,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -8628,6 +8654,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8637,6 +8664,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -8841,6 +8869,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8850,6 +8879,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -8970,6 +9000,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8979,6 +9010,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -13926,6 +13958,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockText: {fileID: 862184524}
+  poemPage: {fileID: 6523759834433771509}
+  poemText: {fileID: 6523759834433771508}
   pauseMenuUI: {fileID: 6523759834433771507}
   optionsBox: {fileID: 37554932}
   descriptionBox: {fileID: 1604934803}
@@ -13935,6 +13969,7 @@ MonoBehaviour:
   rain: {fileID: 1434494324}
   interactableObjects: {fileID: 1479276894}
   closeUpObjects: {fileID: 184627280}
+  gameSession: {fileID: 0}
 --- !u!4 &4418161944180157723
 Transform:
   m_ObjectHideFlags: 0
@@ -14040,12 +14075,17 @@ MonoBehaviour:
   G_PluggedInSocket: {fileID: 0}
   G_Fountain: {fileID: 0}
   G_Brazier: {fileID: 0}
+  G_Pond_MoreWater_Noon: {fileID: 0}
+  G_Pond_MoreWater_Eve: {fileID: 0}
+  G_Noon_Image: {fileID: 0}
+  G_Eve_Image: {fileID: 0}
   K_Fruits_HalfBasket_Day: {fileID: 0}
   K_Fruits_HalfBasket_Noon: {fileID: 0}
   K_Fruits_HalfBasket_Eve: {fileID: 0}
   K_Fruits_Day: {fileID: 0}
   K_Fruits_Noon: {fileID: 0}
   K_Fruits_Eve: {fileID: 0}
+  K_ShoppingList: {fileID: 0}
 --- !u!1001 &6523759834433771506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14168,6 +14208,24 @@ PrefabInstance:
 --- !u!1 &6523759834433771507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8270928538301302327, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+    type: 3}
+  m_PrefabInstance: {fileID: 6523759834433771506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6523759834433771508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 35945012, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+    type: 3}
+  m_PrefabInstance: {fileID: 6523759834433771506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6523759834433771509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1640358421, guid: 8dbe908dba0e1f640908a1a33ec8f345,
     type: 3}
   m_PrefabInstance: {fileID: 6523759834433771506}
   m_PrefabAsset: {fileID: 0}

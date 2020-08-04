@@ -4,6 +4,7 @@ using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
@@ -18,8 +19,7 @@ public class GameSession : MonoBehaviour
     }
 
     // Configuration parameters
-    [HideInInspector]
-    public int levelOfSelfAwareness = 0;
+    public int levelOfSelfAwareness;
     private string[] instructions = {"During the last years, you have changed a lot. Above that, the outside world as well. Due to that, you have lost count on the days you’ve spent in a row in your house. Alone.",
                                      "Like clay, your days have been shaped by tiredness and you lost sight of the things that once fulfilled your life. Now the clay hardened. Seemingly unalterable.",
                                      "Today is one of these days. However, something is different. A nearly imperceptible sense of self-awareness is spreading through your body. " +
@@ -39,28 +39,28 @@ public class GameSession : MonoBehaviour
 
     // Static variables
     [HideInInspector]
-    public static bool GameIsPaused = false;                        // Is true when the game is paused
+    public static bool GameIsPaused;                                // Is true when the game is paused
     [HideInInspector]
     public static TimeOfDay currentTimeOfDay;                       // Static reference to the current time of day (Morning, Noon or Evening)
     [HideInInspector]
-    public static bool closeUpObjects = false;                      // Is true when an object is in close up view
+    public static bool closeUpObjects;                              // Is true when an object is in close up view
     [HideInInspector]
-    public static float timeOfDayInterval = 300f;                   // The interval between consecutive time of day changes (currently set to 5 minutes)
-    [HideInInspector]   
-    public static float gameTime = 0f;                              // The custom game timer
+    public static float timeOfDayInterval;                          // The interval between consecutive time of day changes (currently set to 5 minutes)
     [HideInInspector]
-    public static TimeSpan clockTime = new TimeSpan(6, 00, 00);     // Sets the starting clock time to 06:00
+    public static float gameTime;                                   // The custom game timer
     [HideInInspector]
-    public static bool instructionsSeen = false;                    // Stores whether the user has seen the instructions
+    public static TimeSpan clockTime;                               // Sets the starting clock time to 06:00
+    [HideInInspector]
+    public static bool instructionsSeen;                            // Stores whether the user has seen the instructions
     [SerializeField]
-    public bool instructionsEnabled;                         // Stores whether to display the instructions of the game
+    public bool instructionsEnabled;                                // Stores whether to display the instructions of the game
     public bool atticEnding = false;
+    private bool gameEndingScene = false;
 
     // LOSA calculations
-    public static int maxScore = 30;
-    public static int minScore = 3;
+    public static int maxScore;
+    public static int minScore;
 
-    private bool gameEndingScene = false;
 
     public enum LOSAStatus
     {
@@ -83,18 +83,44 @@ public class GameSession : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        if((SceneManager.GetActiveScene().name != "GameEnding") || (SceneManager.GetActiveScene().name != "Attic"))
+        Initialize();
+        GameEventsTracker.Initialize();
+
+        if (SceneManager.GetActiveScene().name != "GameEnding")
         {
-            if (clockText == null)
+            if(SceneManager.GetActiveScene().name != "Attic")
             {
-                clockText = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
+                if (clockText == null)
+                {
+                    clockText = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
+                }
+                StartCoroutine(WaitForInstructionsSeen());
             }
-            StartCoroutine(WaitForInstructionsSeen());
+            else
+            {
+                atticEnding = true;
+            }
         }
         else
         {
             gameEndingScene = true;
         }
+    }
+
+    void Initialize()
+    {
+        levelOfSelfAwareness = 0;
+        GameIsPaused = false;
+        currentTimeOfDay = TimeOfDay.MORNING;
+        closeUpObjects = false;
+        timeOfDayInterval = 300f;
+        gameTime = 0f;
+        clockTime = new TimeSpan(6, 00, 00);
+        instructionsSeen = false;
+        atticEnding = false;
+        gameEndingScene = false;
+        maxScore = 30;
+        minScore = 3;
     }
 
     void OnEnable()
@@ -127,6 +153,7 @@ public class GameSession : MonoBehaviour
                 descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
             }
             pauseMenuUI = uiReferences.pauseMenuUI;
+            pauseMenuUI.transform.Find("ResumeButton").gameObject.GetComponent<Button>().onClick.AddListener(() => Resume());
         }
         optionsManager = FindObjectOfType<OptionsManager>();
     }
@@ -289,6 +316,12 @@ public class GameSession : MonoBehaviour
                 GameAssets.instance.LR_TV_Static.GetComponent<Animator>().enabled = false;
                 GameAssets.instance.LR_TV_Static.GetComponent<SpriteRenderer>().sprite = null;
             }
+
+            if(GameEventsTracker.LR_Gramophone_Animation_Playing)
+            {
+                StartCoroutine(ObjectSpecificBehavior.LR_G_PlayerAnimation());
+                StartCoroutine(ObjectSpecificBehavior.LR_G_RecordAnimation());
+            }
         }
         
         if(scene.name == "Bedroom")
@@ -300,6 +333,11 @@ public class GameSession : MonoBehaviour
                 GameAssets.instance.Bed_Eve_Image.sprite = GameAssets.instance.Bed_Done_Eve;
                 GameAssets.instance.Bed_Diary.SetActive(true);
             }
+
+            if(GameEventsTracker.Bed_Diary_Kept)
+            {
+                Destroy(GameAssets.instance.Bed_Diary);
+            }
         }
 
         if(scene.name == "Kitchen")
@@ -309,6 +347,40 @@ public class GameSession : MonoBehaviour
                 GameAssets.instance.K_Fruits_Day.sprite = GameAssets.instance.K_Fruits_HalfBasket_Day;
                 GameAssets.instance.K_Fruits_Noon.sprite = GameAssets.instance.K_Fruits_HalfBasket_Noon;
                 GameAssets.instance.K_Fruits_Eve.sprite = GameAssets.instance.K_Fruits_HalfBasket_Eve;
+            }
+
+            if(GameEventsTracker.K_ShoppingList_Removed)
+            {
+                Destroy(GameAssets.instance.K_ShoppingList);
+            }
+        }
+
+        if(scene.name == "Bathroom")
+        {
+            if(GameEventsTracker.B_SleepingPillsWashedDown)
+            {
+                Destroy(GameAssets.instance.B_SleepingPills);
+            }
+        }
+
+        if(scene.name == "Garden")
+        {
+            if(GameEventsTracker.G_Fire_Animation_Playing)
+            {
+                GameAssets.instance.G_Brazier.enabled = true;
+                GameAssets.instance.G_Brazier.Play("Base Layer.G_Brazier_Fire");
+            }
+
+            if(GameEventsTracker.G_Pond_Filled)
+            {
+                GameAssets.instance.G_Noon_Image.sprite = GameAssets.instance.G_Pond_MoreWater_Noon;
+                GameAssets.instance.G_Eve_Image.sprite = GameAssets.instance.G_Pond_MoreWater_Eve;
+            }
+
+            if(GameEventsTracker.G_Pond_Animation_Playing)
+            {
+                GameAssets.instance.G_Fountain.enabled = true;
+                GameAssets.instance.G_Fountain.Play("Base Layer.G_Fountain");
             }
         }
     }

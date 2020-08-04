@@ -21,6 +21,7 @@ public class GameAssets : MonoBehaviour
     public GameObject B_Mirror;
     public GameObject B_SleepingPills;
     public GameObject B_MouthMask;
+    public SpriteRenderer B_MirrorShelf_Eve;
 
     // Bedroom
     public Sprite Bed_Done_Day;
@@ -53,6 +54,10 @@ public class GameAssets : MonoBehaviour
     public GameObject G_PluggedInSocket;
     public Animator G_Fountain;
     public Animator G_Brazier;
+    public Sprite G_Pond_MoreWater_Noon;
+    public Sprite G_Pond_MoreWater_Eve;
+    public SpriteRenderer G_Noon_Image;
+    public SpriteRenderer G_Eve_Image;
 
     // Kitchen
     public Sprite K_Fruits_HalfBasket_Day;
@@ -61,6 +66,7 @@ public class GameAssets : MonoBehaviour
     public SpriteRenderer K_Fruits_Day;
     public SpriteRenderer K_Fruits_Noon;
     public SpriteRenderer K_Fruits_Eve;
+    public GameObject K_ShoppingList;
 
     void Awake()
     {

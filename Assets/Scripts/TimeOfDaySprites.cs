@@ -57,6 +57,7 @@ public class TimeOfDaySprites : MonoBehaviour
             else
             {
                 morningSR.enabled = false;
+                noonSR.enabled = false;
                 if (!eveningSR.enabled)
                     eveningSR.enabled = true;
             }

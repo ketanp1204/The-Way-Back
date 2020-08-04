@@ -17,4 +17,11 @@ public class UIReferences : MonoBehaviour
     public GameObject rain;
     public GameObject interactableObjects;
     public GameObject closeUpObjects;
+    [HideInInspector]
+    public GameObject gameSession;
+
+    void Start()
+    {
+        gameSession = GameObject.Find("GameSession");
+    }
 }

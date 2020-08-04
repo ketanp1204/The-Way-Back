@@ -42,14 +42,14 @@ public class DisplayObjectName : MonoBehaviour
         float textPaddingSize = 8f;
         Vector2 backgroundSize = new Vector2(objectNameText.preferredWidth + textPaddingSize * 2f, objectNameText.preferredHeight + textPaddingSize * 2f);
         backgroundRectTransform.sizeDelta = backgroundSize;
-        GameSession.FadeIn(canvasGroup, 0f);
+        GameSession.instance.StartCoroutine(GameSession.FadeCanvasGroup(canvasGroup, 0f, 1f, 0f, 0.1f));
     }
 
     private void HideName()                         // Hide the name after clicking or moving away from the gameObject
     {
         if(canvasGroup.alpha != 0)
         {
-            GameSession.FadeOut(canvasGroup, 0f);
+            GameSession.instance.StartCoroutine(GameSession.FadeCanvasGroup(canvasGroup, 1f, 0f, 0f, 0.1f));
         }
     }
 

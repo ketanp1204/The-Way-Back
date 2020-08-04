@@ -226,7 +226,7 @@ public class OptionsManager : MonoBehaviour
         StartCoroutine(GameSession.DisableGameObjectAfterDelay(optionsBox, 1f));
     }
 
-    private IEnumerator OptionsFadeOut(CanvasGroup canvasGroup, float delay)    // Fade out canvas group after delay
+    private IEnumerator OptionsFadeOut(CanvasGroup canvasGroup, float delay)    // Fade out options box after delay
     {
         GameSession.instance.StartCoroutine(GameSession.FadeCanvasGroup(canvasGroup, 1f, 0f, delay, 0.3f));
 

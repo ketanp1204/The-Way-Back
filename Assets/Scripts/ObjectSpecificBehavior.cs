@@ -60,19 +60,17 @@ public class ObjectSpecificBehavior : MonoBehaviour
 
         if(objectProperties.LOSAUpdateResponse == 1)    // Option 'Play The Record' is selected
         {
+            GameEventsTracker.LR_Gramophone_Animation_Playing = true;
             AudioManager.Play("LR_Gramophone");
 
-            Animator recordAnim = GameAssets.instance.LR_Record;
-            Animator playerAnim = GameAssets.instance.LR_Player;
-
-            Sound s = AudioManager.GetSound("LR_Gramophone");
-            StartCoroutine(LR_G_PlayerAnimation(s, playerAnim));
-            StartCoroutine(LR_G_RecordAnimation(s, recordAnim));
+            StartCoroutine(LR_G_PlayerAnimation());
+            StartCoroutine(LR_G_RecordAnimation());
         }
     }
 
-    IEnumerator LR_G_PlayerAnimation(Sound s, Animator anim)
+    public static IEnumerator LR_G_PlayerAnimation()
     {
+        Animator anim = GameAssets.instance.LR_Player;
         anim.enabled = true;
         if (GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING || GameSession.currentTimeOfDay == GameSession.TimeOfDay.NOON)
         {
@@ -82,23 +80,29 @@ public class ObjectSpecificBehavior : MonoBehaviour
         {
             anim.Play("Base Layer.LR_G_Player_Night");
         }
-        
+
+        Sound s = AudioManager.GetSound("LR_Gramophone");
         while (s.source.isPlaying)
         {
             yield return new WaitForEndOfFrame();
         }
         anim.enabled = false;
+        GameEventsTracker.LR_Gramophone_Animation_Playing = false;
     }
 
-    IEnumerator LR_G_RecordAnimation(Sound s, Animator anim)
+    public static IEnumerator LR_G_RecordAnimation()
     {
+        Animator anim = GameAssets.instance.LR_Record;
         anim.enabled = true;
         anim.Play("Base Layer.LR_G_Record");
-        while(s.source.isPlaying)
+
+        Sound s = AudioManager.GetSound("LR_Gramophone");
+        while (s.source.isPlaying)
         {
             yield return new WaitForEndOfFrame();
         }
         anim.enabled = false;
+        GameEventsTracker.LR_Gramophone_Animation_Playing = false;
     }
 
     private void LR_Plant_Behavior()
@@ -114,9 +118,12 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         if(objectProperties.LOSAUpdateResponse == 1)
         {
-            GameEventsTracker.LR_Window_Open = true;
-            AudioManager.Stop("Morning_Rain_Inside");
-            AudioManager.PlaySoundAtCurrentGameTime("Morning_Rain_Outside");
+            if(GameSession.currentTimeOfDay == GameSession.TimeOfDay.MORNING)
+            {
+                GameEventsTracker.LR_Window_Open = true;
+                AudioManager.Stop("Morning_Rain_Inside");
+                AudioManager.PlaySoundAtCurrentGameTime("Morning_Rain_Outside");
+            }
         }
     }
 
@@ -168,13 +175,14 @@ public class ObjectSpecificBehavior : MonoBehaviour
     {
         if (objectProperties.LOSAUpdateResponse == 2)
         {
-            StartCoroutine(DestroyShoppingListAfterDelay(gameObject));
+            GameEventsTracker.K_ShoppingList_Removed = true;
+            StartCoroutine(DestroyGameObjectAfterDelay(gameObject));
         }
     }
 
-    private IEnumerator DestroyShoppingListAfterDelay(GameObject shoppingList)
+    private IEnumerator DestroyGameObjectAfterDelay(GameObject gO)
     {
-        SpriteRenderer[] sRs = shoppingList.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer[] sRs = gO.GetComponentsInChildren<SpriteRenderer>();
         SpriteRenderer sR = Array.Find(sRs, s => s.enabled == true);
         float start = Time.time;
 
@@ -185,7 +193,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
             sR.color = color;
             yield return new WaitForEndOfFrame();
         }
-        Destroy(shoppingList);
+        Destroy(gO);
     }
 
     private void K_FruitBasket_Behavior()
@@ -252,6 +260,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
             // Pills must disappear if 'Wash Them Down' option is selected
             if(objectProperties.LOSAUpdateResponse == 0)
             {
+                GameEventsTracker.B_SleepingPillsWashedDown = true;
                 Destroy(gameObject);
             }
         }
@@ -268,6 +277,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
                 objectProperties.objectName = "Turn Off";       // Change the text on the light to 'Turn Off'
 
                 GameObject.Find("BackgroundImage").transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_Light_On;
+                GameAssets.instance.B_MirrorShelf_Eve.sprite = GameAssets.instance.B_Eve_ShelfClosedLightOn;
 
                 GameEventsTracker.B_Light_On = true;
             }
@@ -285,6 +295,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
                 objectProperties.objectName = "Turn On";       // Change the text on the light to 'Turn On'
 
                 GameObject.Find("BackgroundImage").transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_Light_Off;
+                GameAssets.instance.B_MirrorShelf_Eve.sprite = GameAssets.instance.B_Eve_ShelfClosedLightOff;
 
                 GameEventsTracker.B_Light_On = false;
             }
@@ -315,11 +326,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
             {
                 if(GameEventsTracker.B_Light_On)
                 {
-                    CU_MirrorShelf.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfOpenLightOn;
+                    GameAssets.instance.B_MirrorShelf_Eve.sprite = GameAssets.instance.B_Eve_ShelfOpenLightOn;
                 }
                 else
                 {
-                    CU_MirrorShelf.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfOpenLightOff;
+                    GameAssets.instance.B_MirrorShelf_Eve.sprite = GameAssets.instance.B_Eve_ShelfOpenLightOff;
                 }
             }
 
@@ -343,11 +354,11 @@ public class ObjectSpecificBehavior : MonoBehaviour
             {
                 if (GameEventsTracker.B_Light_On)
                 {
-                    CU_MirrorShelf.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfClosedLightOn;
+                    GameAssets.instance.B_MirrorShelf_Eve.sprite = GameAssets.instance.B_Eve_ShelfClosedLightOn;
                 }
                 else
                 {
-                    CU_MirrorShelf.transform.Find("EveningImage").GetComponent<SpriteRenderer>().sprite = GameAssets.instance.B_Eve_ShelfClosedLightOff;
+                    GameAssets.instance.B_MirrorShelf_Eve.sprite = GameAssets.instance.B_Eve_ShelfClosedLightOff;
                 }
             }
 
@@ -425,6 +436,8 @@ public class ObjectSpecificBehavior : MonoBehaviour
                 {
                     // TODO: Replace the image of the pond
                     GameEventsTracker.G_Pond_Filled = true;
+                    GameAssets.instance.G_Noon_Image.sprite = GameAssets.instance.G_Pond_MoreWater_Noon;
+                    GameAssets.instance.G_Eve_Image.sprite = GameAssets.instance.G_Pond_MoreWater_Eve;
                 }
             }
         }
@@ -468,6 +481,8 @@ public class ObjectSpecificBehavior : MonoBehaviour
         {
             if(objectProperties.LOSAUpdateResponse == 1)
             {
+                GameEventsTracker.G_Pond_Animation_Playing = true;
+
                 // Plug in the socket
                 GameAssets.instance.G_PluggedInSocket.SetActive(true);
 
@@ -499,6 +514,7 @@ public class ObjectSpecificBehavior : MonoBehaviour
                     AudioManager.Play("G_Fire_Burning");
 
                     // Animation
+                    GameEventsTracker.G_Fire_Animation_Playing = true;
                     GameAssets.instance.G_Brazier.enabled = true;
                     GameAssets.instance.G_Brazier.Play("Base Layer.G_Brazier_Fire");
                 }
@@ -563,7 +579,14 @@ public class ObjectSpecificBehavior : MonoBehaviour
         LevelChanger.LoadLevel("Hallway");
     }
 
-   
+    private void Bed_Diary_Behavior()
+    {
+        if (objectProperties.LOSAUpdateResponse == 2)
+        {
+            GameEventsTracker.Bed_Diary_Kept = true;
+            StartCoroutine(DestroyGameObjectAfterDelay(gameObject));
+        }
+    }
 
     /// <summary>
     /// Behaviors for objects in the Hallway

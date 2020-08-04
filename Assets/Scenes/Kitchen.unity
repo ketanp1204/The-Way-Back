@@ -932,6 +932,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 1752475983}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -941,6 +942,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1145,6 +1147,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dbe908dba0e1f640908a1a33ec8f345, type: 3}
+--- !u!114 &1173707594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 35945012, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+    type: 3}
+  m_PrefabInstance: {fileID: 1173707593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1173707595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1640358421, guid: 8dbe908dba0e1f640908a1a33ec8f345,
+    type: 3}
+  m_PrefabInstance: {fileID: 1173707593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1218078080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,6 +1395,7 @@ MonoBehaviour:
     - 'These bundle of lighters are a symbol for my weakness. Each lighter epitomises
       the moment I was somewhere else, relapsed and bought cigarettes and - of course
       - a lighter once again. '
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1384,6 +1405,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1501,6 +1523,7 @@ MonoBehaviour:
       than actual food.
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1510,6 +1533,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -1939,6 +1963,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -1948,6 +1973,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2050,7 +2076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1543082546
 Transform:
   m_ObjectHideFlags: 0
@@ -2135,6 +2161,7 @@ MonoBehaviour:
     HighLOSA:
     - One day, I would really like to have different kinds of plants in my garden.
       Then I will dry them and use them as tea leaves. That would be amazing.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2144,6 +2171,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2166,7 +2194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1561883268
 Transform:
   m_ObjectHideFlags: 0
@@ -2216,6 +2244,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2225,6 +2254,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2331,7 +2361,7 @@ MonoBehaviour:
   - There is something else written on the paper underneath it...
   - '''March 11th: 08:08 am. I am thinking of you. Had to leave sooner than expected
     and didn''t want to interrupt your sweet sleep. See you soon xxxx'' ...'
-  - I've never seen that note.'
+  - I've never seen that note.
   option2Text: Throw Away The List
   option2responses:
   - 'Who does still need that if you have a phone? Shed the unimportant ballast from
@@ -2343,6 +2373,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2352,6 +2383,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2505,6 +2537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockText: {fileID: 573337903}
+  poemPage: {fileID: 1173707595}
+  poemText: {fileID: 1173707594}
   pauseMenuUI: {fileID: 1817153510}
   optionsBox: {fileID: 573337902}
   descriptionBox: {fileID: 573337901}
@@ -2514,6 +2548,7 @@ MonoBehaviour:
   rain: {fileID: 1694345987}
   interactableObjects: {fileID: 814084383}
   closeUpObjects: {fileID: 1265611015}
+  gameSession: {fileID: 0}
 --- !u!4 &1665680747
 Transform:
   m_ObjectHideFlags: 0
@@ -2761,6 +2796,7 @@ MonoBehaviour:
       I've enjoyed it in moments of rest and quiet, while sitting somewhere nicely.
     - But these situations seem pretty rare lately. And now is definitely not the
       time for it, either.
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2770,6 +2806,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -2924,6 +2961,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -2933,6 +2971,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -8055,6 +8094,7 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
+  poem: 
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0
@@ -8064,6 +8104,7 @@ MonoBehaviour:
   destroyOnPositive: 0
   destroyOnNegative: 0
   hasBehavior: 0
+  hasPoem: 0
   responseSelected: 0
   callIndex: 0
   showOptions: 0
@@ -8551,6 +8592,10 @@ MonoBehaviour:
   G_PluggedInSocket: {fileID: 0}
   G_Fountain: {fileID: 0}
   G_Brazier: {fileID: 0}
+  G_Pond_MoreWater_Noon: {fileID: 0}
+  G_Pond_MoreWater_Eve: {fileID: 0}
+  G_Noon_Image: {fileID: 0}
+  G_Eve_Image: {fileID: 0}
   K_Fruits_HalfBasket_Day: {fileID: 21300000, guid: 24974ff8f94de4240a8d175b4ff615df,
     type: 3}
   K_Fruits_HalfBasket_Noon: {fileID: 21300000, guid: 6e9de60afcc0b3146a85b9d4874fb36f,
@@ -8560,6 +8605,7 @@ MonoBehaviour:
   K_Fruits_Day: {fileID: 1161540260}
   K_Fruits_Noon: {fileID: 2068190266}
   K_Fruits_Eve: {fileID: 1508435070}
+  K_ShoppingList: {fileID: 1602774513}
 --- !u!1 &5014328015587415599
 GameObject:
   m_ObjectHideFlags: 0
