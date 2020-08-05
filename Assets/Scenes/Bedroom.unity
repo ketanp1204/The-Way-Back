@@ -2974,26 +2974,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7337959249535283798, guid: ba0083ad5c83fe84399b285767095ea8,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0083ad5c83fe84399b285767095ea8, type: 3}
 --- !u!1 &1403249563 stripped
@@ -9206,6 +9186,7 @@ MonoBehaviour:
   B_Mirror: {fileID: 0}
   B_SleepingPills: {fileID: 0}
   B_MouthMask: {fileID: 0}
+  B_MirrorShelf_Eve: {fileID: 0}
   Bed_Done_Day: {fileID: 21300000, guid: 34d6a6d72f141f646957d61cbf8e9047, type: 3}
   Bed_Done_Noon: {fileID: 21300000, guid: 1ab6084b8b3f0694a9eb7d7c6a03403d, type: 3}
   Bed_Done_Eve: {fileID: 21300000, guid: 6eda4647a3ffd004ca7df3a7fd34dca7, type: 3}

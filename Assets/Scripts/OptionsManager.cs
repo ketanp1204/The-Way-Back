@@ -8,7 +8,9 @@ using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
 {
-    // Configuration parameters
+    public static OptionsManager instance;
+
+    // Local parameters
     [HideInInspector]
     public int numberOfButtons;     // Number of response options for an object calculated at runtime
     private Button option;          // Local variable to instantiate option prefab
@@ -48,6 +50,7 @@ public class OptionsManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        instance = this;
         uiReferences = FindObjectOfType<UIReferences>();
         optionsBox = uiReferences.optionsBox;
         optionsBoxCG = optionsBox.GetComponent<CanvasGroup>();
@@ -71,127 +74,18 @@ public class OptionsManager : MonoBehaviour
         }
     }
 
-    public void ShowTextOnDescriptionBox(string text, float delay)          // Method to type a single text automatically on the description box
-    {
-        StartCoroutine(TypeText(new string[] {text}, delay));
-        GameSession.FadeIn(descriptionBoxCG, 0f);
-    }
-
     public void ShowTextOnDescriptionBox(string[] texts, float delay)       // Method to type multiple texts automatically on the description box
     {
-        StartCoroutine(TypeText(texts, delay));
-        GameSession.FadeIn(descriptionBoxCG, 0f);
+        DescriptionBoxManager.ShowText(texts, delay);
     }
 
-    IEnumerator TypeText(string[] texts, float delay)   // Coroutine that types text letter by letter in the description box and shows options after finishing
+    public static void ShowOptionsAfterTyping()
     {
-        yield return new WaitForSeconds(delay);
+        instance.OptionsAfterTyping();
+    }
 
-        descriptionBox.SetActive(true);
-        IsWriting = true;                                // Writing to the description box starts
-
-        for(int i = 0; i < texts.Length; i++)
-        {
-            string text = texts[i];
-            descriptionText.text = text;
-            descriptionText.overflowMode = TextOverflowModes.Page;
-            descriptionText.maxVisibleCharacters = 0;
-
-            descriptionText.ForceMeshUpdate();
-            int pageIndex = 1;
-
-            while (pageIndex < descriptionText.textInfo.pageCount)
-            {
-                descriptionText.pageToDisplay = pageIndex;
-
-                int firstCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].firstCharacterIndex;
-                int lastCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].lastCharacterIndex;
-
-                for (int j = firstCharIndex; j <= lastCharIndex; j++)
-                {
-                    if (j > 5 && Input.GetMouseButtonDown(0))
-                    {
-                        PointerEventData pointer = new PointerEventData(EventSystem.current);
-                        pointer.position = Input.mousePosition;
-
-                        List<RaycastResult> raycastResults = new List<RaycastResult>();
-                        dynamicUI.GetComponent<GraphicRaycaster>().Raycast(pointer, raycastResults);
-                        // EventSystem.current.RaycastAll(pointer, raycastResults);
-
-                        if (!(raycastResults.Count == 0))
-                        {
-                            if (raycastResults[0].gameObject.name == descriptionBox.name || raycastResults[0].gameObject.name == descriptionText.name)
-                            {
-                                descriptionText.maxVisibleCharacters = lastCharIndex;
-                                break;
-                            }
-                        }
-                    }
-
-                    descriptionText.maxVisibleCharacters = j + 1;
-                    yield return new WaitForSeconds(0.015f);
-                }
-
-                pageIndex += 1;
-
-                nextButton = Instantiate(nextButtonPrefab, GameObject.Find("DynamicUI").transform);
-                nextButton.gameObject.SetActive(true);
-
-                nextButtonWait = new WaitForUIButtons(nextButton);
-                yield return nextButtonWait;
-
-                Destroy(nextButton.gameObject);
-            }
-            if (pageIndex == descriptionText.textInfo.pageCount)            // Last page of the text
-            {
-                descriptionText.pageToDisplay = pageIndex;
-
-                int firstCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].firstCharacterIndex;
-                int lastCharIndex = descriptionText.textInfo.pageInfo[pageIndex - 1].lastCharacterIndex;
-
-                for (int j = firstCharIndex; j <= lastCharIndex; j++)
-                {
-                    if (j > 5 && Input.GetMouseButtonDown(0))
-                    {
-                        bool flag = false;
-                        PointerEventData pointer = new PointerEventData(EventSystem.current);
-                        pointer.position = Input.mousePosition;
-
-                        List<RaycastResult> raycastResults = new List<RaycastResult>();
-                        dynamicUI.GetComponent<GraphicRaycaster>().Raycast(pointer, raycastResults);
-                        //EventSystem.current.RaycastAll(pointer, raycastResults);
-
-                        if (!(raycastResults.Count == 0))
-                        {
-                            if (raycastResults[0].gameObject.name == descriptionBox.name || raycastResults[0].gameObject.name == descriptionText.name)
-                            {
-                                flag = true;
-                            }
-                            if (flag == true)
-                            {
-                                descriptionText.maxVisibleCharacters = lastCharIndex;
-                                break;
-                            }
-                        }
-                    }
-
-                    descriptionText.maxVisibleCharacters = j + 1;
-                    yield return new WaitForSeconds(0.015f);
-                }
-            }
-
-            if(i < texts.Length - 1)                        // Creates a 'Next' button to move to the next page in the text
-            {
-                nextButton = Instantiate(nextButtonPrefab, GameObject.Find("DynamicUI").transform);
-                nextButton.gameObject.SetActive(true);
-
-                nextButtonWait = new WaitForUIButtons(nextButton);
-                yield return nextButtonWait;                // Wait for next button to be clicked before typing the next page of text
-
-                Destroy(nextButton.gameObject);
-            }
-        }
-
+    private void OptionsAfterTyping()
+    {
         if (objectProperties != null)
         {
             if (objectProperties.numberOfResponses > 0
@@ -205,13 +99,11 @@ public class OptionsManager : MonoBehaviour
 
         if (GameSession.instance.instructionsEnabled)
         {
-            if(!GameSession.instructionsSeen)
+            if (!GameSession.instructionsSeen)
             {
                 GameSession.instructionsSeen = true;
             }
         }
-
-        IsWriting = false;                                  // Writing to the description box is finished
     }
 
     public void SetSelectedObjectReference(GameObject gameObject)       // Sets the references to an object when it is selected in the scene

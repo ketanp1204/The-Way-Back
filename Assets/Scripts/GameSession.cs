@@ -392,15 +392,6 @@ public class GameSession : MonoBehaviour
         {
             clockText.text = clockTime.ToString(@"hh\:mm");             // Update the clock display
         }
-        
-        if (descriptionBox != null && descriptionBox.activeSelf && !optionsManager.IsWriting)       // Close the description box if space is pressed and there is no text being typed
-        {
-            if (descriptionBoxCG.alpha != 0 && Input.GetKeyDown(KeyCode.Space))
-            {
-                FadeOut(descriptionBoxCG, 0f);
-                StartCoroutine(DisableGameObjectAfterDelay(descriptionBox, 0.5f));
-            }
-        }
 
         if (Input.GetKeyDown(KeyCode.Escape))                   // Pauses the game on pressing 'Escape'
         {

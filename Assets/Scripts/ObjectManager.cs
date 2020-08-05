@@ -79,7 +79,6 @@ public class ObjectManager : MonoBehaviour
             {
                 return;
             }
-                
 
             mousePositionWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);                        // Convert mouse position to 3D World Coordinates
             mousePositionWorld2D = new Vector2(mousePositionWorld.x, mousePositionWorld.y);                 // Convert mouse position to 2D world coordinates
@@ -155,26 +154,31 @@ public class ObjectManager : MonoBehaviour
                 }
                 else
                 {
-                    if(!optionsManager.IsWriting && !GameSession.instance.atticEnding)                                                           // Close the description and option boxes when clicking outside of them if no text is being typed currently
+                    if(!DescriptionBoxManager.IsWriting && !GameSession.instance.atticEnding)                      // Close the description and option boxes when clicking outside of them if no text is being typed currently
+                    {
+                        AudioManager.Play("Object_Click");
                         CloseBoxes();
+                    }
                 }
             }
             else
             {
-                if(!optionsManager.IsWriting && !GameSession.instance.atticEnding)                                                               // Close the description and option boxes when clicking outside of them if no text is being typed currently
+                if(!DescriptionBoxManager.IsWriting && !GameSession.instance.atticEnding)                          // Close the description and option boxes when clicking outside of them if no text is being typed currently
+                {
+                    AudioManager.Play("Object_Click");
                     CloseBoxes();
+                }
             }
         }
     }
 
     private void CloseBoxes()                                                                           // Method that closes the description and option boxes
     {
-        GameSession.FadeOut(descriptionBox.GetComponent<CanvasGroup>(), 0f);
         if (optionsBox.activeSelf)
         {
             GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>(), 0f);
         }
-        StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox, 0.5f));
+        DescriptionBoxManager.CloseDescriptionBox();
         poemPage.SetActive(false);
         optionsManager.CloseAndClearOptionsBox();
     }
