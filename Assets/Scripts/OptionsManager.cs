@@ -199,20 +199,32 @@ public class OptionsManager : MonoBehaviour
         // Check whether response is positive or negative
         gameSession.ChangeLOSA(reaction);                   // Update the LOSA score
 
-        // Show a response text if any present
-        if (objectProperties.responses[buttonIndex].Length != 0)
+        // Show a poem on positive response if present
+        if (hasPoem && reaction == 1)
         {
-            if(objectProperties.responses[buttonIndex].Length > 0)
-            {
-                GameSession.FadeOut(descriptionBoxCG, 0f);
-                ShowNextResponse(buttonIndex);
-            }
+            uiReferences.interactableObjects.SetActive(false);
+            ShowPoem();
+
+            GameSession.FadeOut(descriptionBoxCG, 0f);
+            StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox, 0.5f));
         }
         else
         {
-            // Close the description box
-            GameSession.FadeOut(descriptionBoxCG, 0f);
-            StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox, 0.5f));
+            // Show a response text if any present
+            if (objectProperties.responses[buttonIndex].Length != 0)
+            {
+                if (objectProperties.responses[buttonIndex].Length > 0)
+                {
+                    GameSession.FadeOut(descriptionBoxCG, 0f);
+                    ShowNextResponse(buttonIndex);
+                }
+            }
+            else
+            {
+                // Close the description box
+                GameSession.FadeOut(descriptionBoxCG, 0f);
+                StartCoroutine(GameSession.DisableGameObjectAfterDelay(descriptionBox, 0.5f));
+            }
         }
 
         // Destroy an object after positive response
@@ -233,11 +245,7 @@ public class OptionsManager : MonoBehaviour
             selectedObject.GetComponent<ObjectSpecificBehavior>().HandleBehavior(selectedObject);
         }
 
-        // Show a poem on positive response if present
-        if (hasPoem && reaction == 1)
-        {
-            ShowPoem();
-        }
+        
 
         // Set the interactedWith boolean of the object so that it can't be clicked on again
         if(!objectProperties.additionalTags.Contains("OptionsMultipleTimes"))
@@ -264,35 +272,26 @@ public class OptionsManager : MonoBehaviour
 
     private void ShowPoem()
     {
-        StartCoroutine(PoemDisplay());
+        PoemManager.ShowPoem(objectProperties.poem, 0f);
     }
 
-    private IEnumerator PoemDisplay()
+    public static void ShowResponseAfterPoem()
     {
-        poemPage.SetActive(true);
-        int pageIndex = 1;
+        instance.uiReferences.interactableObjects.SetActive(true);
+        instance.StartCoroutine(instance.ResponseAfterPoem());
+    }
 
-        poemText.overflowMode = TextOverflowModes.Page;
-        poemText.text = objectProperties.poem;
-        poemText.ForceMeshUpdate();
+    private IEnumerator ResponseAfterPoem()
+    {
+        yield return new WaitForSeconds(0.5f);
 
-        while (pageIndex < poemText.textInfo.pageCount)
+        // Show a response text if any present
+        if (objectProperties.responses[objectProperties.responseIndex].Length != 0)
         {
-            poemText.pageToDisplay = pageIndex;
-
-            pageIndex += 1;
-
-            poemNextButton = Instantiate(poemNextButtonPrefab, GameObject.Find("PoemPage").transform);
-            poemNextButton.gameObject.SetActive(true);
-
-            nextButtonWait = new WaitForUIButtons(poemNextButton);
-            yield return nextButtonWait;
-
-            Destroy(poemNextButton.gameObject);
-        }
-        if (pageIndex == poemText.textInfo.pageCount)
-        {
-            poemText.pageToDisplay = pageIndex;
+            if (objectProperties.responses[objectProperties.responseIndex].Length > 0)
+            {
+                ShowNextResponse(objectProperties.responseIndex);
+            }
         }
     }
 

@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelOfSelfAwareness: 0
-  instructionsEnabled: 1
+  instructionsEnabled: 0
+  atticEnding: 0

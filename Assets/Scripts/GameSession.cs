@@ -499,7 +499,7 @@ public class GameSession : MonoBehaviour
 
     public static void FadeOut(CanvasGroup canvasGroup, float delay)    // Fade out canvas group after delay
     {
-        instance.StartCoroutine(FadeCanvasGroup(canvasGroup, 1f, 0f, delay));
+        instance.StartCoroutine(FadeCanvasGroup(canvasGroup, canvasGroup.alpha, 0f, delay));
     }
 
     public static IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float start, float end, float delay, float lerpTime = 0.5f)  // Coroutine to fade canvas group

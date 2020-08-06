@@ -586,7 +586,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f34eb2f7c191a46a4ca773e4d22025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionalTags: []
+  additionalTags:
+  - Poem
   objectType: 03000000
   objectName: Blue Book
   description:
@@ -605,8 +606,7 @@ MonoBehaviour:
 
 '
   option2responses:
-  - A note fell out of the book, it's a poem I once wrote down. So it's true, this
-    book was able to tell me something, even without its own words.
+  - So it's true, this book was able to tell me something, even without its own words.
   option3Text: 
   option3responses: []
   reactions: 0200000001000000
@@ -614,7 +614,14 @@ MonoBehaviour:
     LowLOSA: []
     MedLOSA: []
     HighLOSA: []
-  poem: 
+  poem: "My House is cloudy\r\nThe earth all over is cloudy\r\n\r\nOver the ridge
+    whirls the wind \r\nRuined and wretched and drunk\r\nThe world all over is wretched
+    by him,\r\n\r\nO piper, cast away by the song of pipe, where are you?\n\r\nMy
+    house is cloudy but\r\nThe cloud has let a downpour.\r\nIn the fancy of my bright
+    days that are no more,\r\nToward the sun I stand,\r\nBeholding the realm of the
+    sea,\r\nAnd the world Entire is ruined and wretched by wind\r\nAnd on the road
+    the piper, ever playing the pipe,\r\nIs going his own way, in this world wrapped
+    in clouds.\r\n\nPoem by Nima Youshij"
   closeUpObject: {fileID: 0}
   numberOfResponses: 0
   numberOfLOSAResponses: 0

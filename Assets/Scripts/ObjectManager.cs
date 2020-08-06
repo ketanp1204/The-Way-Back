@@ -26,7 +26,6 @@ public class ObjectManager : MonoBehaviour
     private GameObject interactableObjects;         // Reference to the interactable objects
     private GameObject descriptionBox;              // Reference to the description box
     private GameObject optionsBox;                  // Reference to the option box
-    private GameObject poemPage;                    // Reference to the poem page box
     private GameObject rain;                        // Reference to the rain particle system
     public Button backButtonPrefab;                 // Reference to the back button prefab
     public GameObject zoomedInObject;               // Reference to the zoomed in object 
@@ -64,7 +63,6 @@ public class ObjectManager : MonoBehaviour
         optionsManager = FindObjectOfType<OptionsManager>();
         descriptionBox = uiReferences.descriptionBox;
         optionsBox = uiReferences.optionsBox;
-        poemPage = uiReferences.poemPage;
         rain = uiReferences.rain;
         interactableObjects = uiReferences.interactableObjects;
         objectData = FindObjectOfType<PersistentObjectData>();
@@ -179,7 +177,6 @@ public class ObjectManager : MonoBehaviour
             GameSession.FadeOut(optionsBox.GetComponent<CanvasGroup>(), 0f);
         }
         DescriptionBoxManager.CloseDescriptionBox();
-        poemPage.SetActive(false);
         optionsManager.CloseAndClearOptionsBox();
     }
 
