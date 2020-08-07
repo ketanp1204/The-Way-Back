@@ -14,8 +14,8 @@ public class DescriptionBoxManager : MonoBehaviour
     // Local parameters
     private Button nextButton;                  // Local variable to instantiate next button prefab
     private WaitForUIButtons nextButtonWait;    // Custom yield instruction class to wait for button press inside a coroutine
-    public static bool IsWriting;       // Boolean to store whether text is being typed on the description box
-    private bool skipText;              // Boolean to trigger skipping text while typing
+    public static bool IsWriting;               // Boolean to store whether text is being typed on the description box
+    private bool skipText;                      // Boolean to trigger skipping text while typing
 
     // Cached references
     private CanvasGroup canvasGroup;            // Reference to the description box CanvasGroup

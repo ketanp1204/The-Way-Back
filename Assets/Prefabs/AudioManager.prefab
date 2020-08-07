@@ -91,14 +91,14 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: G_Evening
     audioClip: {fileID: 8300000, guid: d8a52878c3e38254fbb1ecfc84b8ef3d, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: G_Fire_Burning
     audioClip: {fileID: 8300000, guid: 2820ca95b73054a4fad54129ab6da4a6, type: 3}
@@ -112,7 +112,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: G_Wind_Chime
     audioClip: {fileID: 8300000, guid: 3c3d794e36856f84da374a28cbb6dd24, type: 3}
@@ -175,12 +175,12 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: Noon_Inside
     audioClip: {fileID: 8300000, guid: fb4a84bcf9cbb3244be1a97774c74598, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0.5
-    loop: 0
+    loop: 1
     source: {fileID: 0}

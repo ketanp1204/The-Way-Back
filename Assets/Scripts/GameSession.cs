@@ -19,7 +19,7 @@ public class GameSession : MonoBehaviour
     }
 
     // Configuration parameters
-    public int levelOfSelfAwareness;
+    private int levelOfSelfAwareness;
     private string[] instructions = {"During the last years, you have changed a lot. Above that, the outside world as well. Due to that, you have lost count on the days you’ve spent in a row in your house. Alone.",
                                      "Like clay, your days have been shaped by tiredness and you lost sight of the things that once fulfilled your life. Now the clay hardened. Seemingly unalterable.",
                                      "Today is one of these days. However, something is different. A nearly imperceptible sense of self-awareness is spreading through your body. " +
@@ -34,7 +34,6 @@ public class GameSession : MonoBehaviour
     private GameObject backgroundImage;                             // Stores the reference to the background image gameObject
     private GameObject descriptionBox;                              // Stores the reference to the description box
     private GameObject pauseMenuUI;                                 // Stores the reference to the Pause Menu UI gameObject
-    private CanvasGroup descriptionBoxCG;                           // Stores the reference to the description box canvas group
     private OptionsManager optionsManager;                          // Stores the reference to the options manager
 
     // Static variables
@@ -113,7 +112,7 @@ public class GameSession : MonoBehaviour
         GameIsPaused = false;
         currentTimeOfDay = TimeOfDay.MORNING;
         closeUpObjects = false;
-        timeOfDayInterval = 300f;
+        timeOfDayInterval = 480f;
         gameTime = 0f;
         clockTime = new TimeSpan(6, 00, 00);
         instructionsSeen = false;
@@ -148,10 +147,6 @@ public class GameSession : MonoBehaviour
             clockText = uiReferences.clockText.GetComponent<TextMeshProUGUI>();
             backgroundImage = uiReferences.backgroundImage;
             descriptionBox = uiReferences.descriptionBox;
-            if (descriptionBox != null)
-            {
-                descriptionBoxCG = descriptionBox.GetComponent<CanvasGroup>();
-            }
             pauseMenuUI = uiReferences.pauseMenuUI;
             pauseMenuUI.transform.Find("ResumeButton").gameObject.GetComponent<Button>().onClick.AddListener(() => Resume());
         }
@@ -194,7 +189,7 @@ public class GameSession : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(8.33f);
+            yield return new WaitForSeconds(13.33f);
             clockTime = clockTime.Add(TimeSpan.FromMinutes(10f));
         }
     }
